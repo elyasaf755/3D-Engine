@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Cylinder extends RadialGeometry implements IGeometry{
     protected Ray _ray;
+    int x;
 
     //Constructors
     public Cylinder(double radius, Ray ray) {
@@ -55,4 +56,4 @@ public class Cylinder extends RadialGeometry implements IGeometry{
         return null;
     }
 }
-/*****************TEST TEST TEST***********************
+/*****************TEST TEST TEST************************/
