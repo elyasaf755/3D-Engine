@@ -10,6 +10,11 @@ public class Point2D {
         this._y = new Coordinate(y);
     }
 
+    public Point2D(double x, double y){
+        this._x = new Coordinate(x);
+        this._y = new Coordinate(y);
+    }
+
     public Point2D(Point2D point){
         _x = new Coordinate(point._x);
         _y = new Coordinate(point._y);

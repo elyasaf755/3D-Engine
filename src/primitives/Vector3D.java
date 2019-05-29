@@ -12,6 +12,14 @@ public class Vector3D {
         _point = new Point3D(x,y,z);
     }
 
+    public Vector3D(double x, double y, double z) throws IllegalArgumentException{
+        if (new Coordinate(x).equals(Coordinate.ZERO) && new Coordinate(y).equals(Coordinate.ZERO) && new Coordinate(z).equals(Coordinate.ZERO)){
+            throw new IllegalArgumentException("(0,0,0) is not a vector");
+        }
+
+        _point = new Point3D(x,y,z);
+    }
+
     public Vector3D(Point3D point3D){
         if (point3D.getX().equals(Coordinate.ZERO) && point3D.getY().equals(Coordinate.ZERO) && point3D.getZ().equals(Coordinate.ZERO)){
             throw new IllegalArgumentException("(0,0,0) is not a vector");

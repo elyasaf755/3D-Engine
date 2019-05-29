@@ -12,11 +12,19 @@ public class Point3D extends Point2D{
         this._z = new Coordinate(z);
     }
 
+    public Point3D(double x, double y, double z){
+        super(x, y);
+
+        this._z = new Coordinate(z);
+    }
+
     public Point3D(Point3D point){
         super(point._x, point._y);
 
         _z = new Coordinate(point._z);
     }
+
+
 
     //Getters
     public Coordinate getZ() {

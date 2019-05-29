@@ -2,6 +2,7 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector3D;
 
 import java.util.ArrayList;
@@ -38,9 +39,24 @@ public class Plane implements Intersectable{
         return new Vector3D(_normal);
     }
 
-    //TODO: IMPLEMENT
+
     @Override
     public ArrayList<Point3D> findIntersections(Ray ray) {
-        return null;
+        double denom = _normal.dotProduct(ray.get_direction());
+        //if denom approaches 0
+        if (denom > 1e-6){
+            if (_point.equals(ray.get_point()))
+                return new ArrayList<Point3D>();
+
+            double t = (_point.subtract(ray.get_point()).dotProduct(_normal)) / denom;
+
+            if (t >= 0){
+                ArrayList<Point3D> result = new ArrayList<>();
+                result.add(ray.get_point().add(ray.get_direction().scale(t)));
+                return result;
+            }
+        }
+
+        return new ArrayList<Point3D>();
     }
 }

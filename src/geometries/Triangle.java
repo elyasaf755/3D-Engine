@@ -42,6 +42,7 @@ public class Triangle extends Plane{
 
     @Override
     public ArrayList<Point3D> findIntersections(Ray ray) {
+
         return super.findIntersections(ray);
     }
 }
