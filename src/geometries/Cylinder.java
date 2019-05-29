@@ -50,9 +50,9 @@ public class Cylinder extends RadialGeometry implements IGeometry{
         //return point3D.subtract(_ray.get_point().add(_ray.get_direction().scale(_ray.get_direction().dotProduct(point3D.subtract(_ray.get_point()))))).normalized();
     }
 
-    //Todo: Implement
     @Override
     public ArrayList<Point3D> findIntersections(Ray ray) {
+        //Todo: Implement
         return null;
     }
 }
