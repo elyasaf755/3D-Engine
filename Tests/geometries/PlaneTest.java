@@ -52,6 +52,5 @@ class PlaneTest {
         Ray ray5 = new Ray(new Point3D(1,0,0), new Vector3D(0,0,1));
         assertEquals(new ArrayList<Point3D>(), plane2.findIntersections(ray5));
 
-
     }
 }

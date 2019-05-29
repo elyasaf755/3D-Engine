@@ -69,5 +69,14 @@ public class Util {
         return getExp(number) < ACCURACY ? 0.0 : number;
     }
 
+    public static boolean isNegative(double num){
+        if (isZero(num) == true){
+            return false;
+        }
+        if (num / Math.abs(num) == -1){
+            return true;
+        }
 
+        return false;
+    }
 }
