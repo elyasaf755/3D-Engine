@@ -24,8 +24,6 @@ public class Point3D extends Point2D{
         _z = new Coordinate(point._z);
     }
 
-
-
     //Getters
     public Coordinate getZ() {
         return new Coordinate(_z);

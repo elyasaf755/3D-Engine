@@ -38,7 +38,6 @@ public class Tube extends Cylinder {
     }
 
     //Overrides
-
     @Override
     public Vector3D get_normal(Point3D point3D) {
         if (point3D.equals(_ray.get_point())){

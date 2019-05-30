@@ -2,13 +2,13 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector3D;
 
 import java.util.ArrayList;
 
 public class Cylinder extends RadialGeometry implements IGeometry{
     protected Ray _ray;
-    int x;
 
     //Constructors
     public Cylinder(double radius, Ray ray) {
@@ -52,7 +52,20 @@ public class Cylinder extends RadialGeometry implements IGeometry{
 
     @Override
     public ArrayList<Point3D> findIntersections(Ray ray) {
-        //Todo: Implement
-        return null;
+        ArrayList<Point3D> result = new ArrayList<>();
+        double a = Util.uadd(Util.squared(ray.get_direction().getPoint().getX().getCoord()), Util.squared(ray.get_direction().getPoint().getY().getCoord()));
+        double B1 = Util.uscale(2, Util.uscale(ray.get_point().getX().getCoord(), ray.get_direction().getPoint().getX().getCoord()));
+        double B2 = Util.uscale(2, Util.uscale(ray.get_point().getY().getCoord(), ray.get_direction().getPoint().getY().getCoord()));
+        double b = Util.uadd(B1, B2);
+        double C1 = Util.squared(ray.get_point().getX().getCoord());
+        double C2 = Util.squared(ray.get_point().getY().getCoord());
+        double c = Util.usubtract(Util.uadd(C1, C2), Util.squared(_radius));
+        double[] roots = Util.quadraticRoots(a, b, c);
+
+        for (double root : roots){
+            result.add(ray.get_point().add(ray.get_direction().scale(root)));
+        }
+
+        return result;
     }
 }

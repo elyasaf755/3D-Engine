@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.ArrayList;
+
 public class Util {
     // It is binary, equivalent to ~1/1,000,000,000,000 in decimal (12 digits)
     private static final int ACCURACY = -40;
@@ -78,5 +80,45 @@ public class Util {
         }
 
         return false;
+    }
+
+    public static <T> void removeDuplicates(ArrayList<T> list) {
+        ArrayList<T> newList = new ArrayList<T>();
+
+        for (T element : list) {
+            if (!newList.contains(element)) {
+                newList.add(element);
+            }
+        }
+
+        list.clear();
+
+        for (T element : newList) {
+            list.add(element);
+        }
+    }
+
+    public static double squared(double number){
+        return uscale(number, number);
+    }
+
+    public static double[] quadraticRoots(double a, double b, double c){
+        double[] result = new double[2];
+
+        //b^2-4*a*c
+        double dt = Util.usubtract(Util.squared(b), Util.uscale(4, Util.uscale(a, c)));
+
+        //root1 = (-b-sqrt(dt))*[(2a)^(-1)]
+        result[0] = Util.uscale(Util.usubtract(-b, Math.sqrt(dt)), Math.pow(Util.uscale(2, a), -1));
+
+        //root2 = (-b+sqrt(dt))*[(2a)^(-1)]
+        result[1] = Util.uscale(Util.uadd(-b, Math.sqrt(dt)), Math.pow(Util.uscale(2, a), -1));
+
+        if (result[0] == result[1]){
+            double[] res = new double[1];
+            return res;
+        }
+
+        return result;
     }
 }

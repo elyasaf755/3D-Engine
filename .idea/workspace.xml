@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="TEST">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Geometries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Geometries.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/IGeometry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/IGeometry.class" afterDir="false" />
@@ -21,17 +21,11 @@
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Ray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Ray.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Util.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Vector3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Vector3D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/geometries/CylinderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/geometries/PlaneTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/geometries/RadialGeometryTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/geometries/SphereTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/geometries/TriangleTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/geometries/TubeTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/primitives/Point2DTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/primitives/Point3DTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/primitives/RayTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/3D-Engine/primitives/Vector3DTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Util.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,127 +39,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/geometries/Cylinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-282">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            <state relative-caret-position="428">
+              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#Cylinder#0;class#Cylinder#0" />
                 <element signature="method#Cylinder#1;class#Cylinder#0" />
                 <element signature="method#Cylinder#2;class#Cylinder#0" />
+                <element signature="method#get_normal#0;class#Cylinder#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometries/RadialGeometry.java">
+        <entry file="file://$PROJECT_DIR$/src/primitives/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometries/Tube.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+            <state relative-caret-position="258">
+              <caret line="110" column="43" lean-forward="true" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Tube#1;class#Tube#0" />
-                <element signature="method#Tube#2;class#Tube#0" />
-                <element signature="method#Tube#3;class#Tube#0" />
-                <element signature="method#get_normal#0;class#Tube#0" />
+                <element signature="method#getExp#0;class#Util#0" />
+                <element signature="method#usubtract#0;class#Util#0" />
+                <element signature="method#uadd#0;class#Util#0" />
+                <element signature="method#uscale#0;class#Util#0" />
+                <element signature="method#isNegative#0;class#Util#0" />
+                <element signature="method#removeDuplicates#0;class#Util#0" />
+                <element signature="e#3748#3825#1" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometries/Sphere.java">
+        <entry file="file://$PROJECT_DIR$/src/primitives/Vector3D.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="74" column="29" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="29" />
+            <state relative-caret-position="408">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Sphere#0;class#Sphere#0" />
-                <element signature="method#Sphere#1;class#Sphere#0" />
-                <element signature="method#Sphere#2;class#Sphere#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometries/Plane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#878#879#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#1000#1001#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#339#340#0" expanded="true" />
-                <element signature="e#539#540#0" expanded="true" />
-                <element signature="e#721#730#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/geometries/GeometriesTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#692#701#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/geometries/CylinderTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-98">
-              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-              <folding>
-                <element signature="method#get_point#0;class#CylinderTest#0" />
-                <element signature="method#get_direction#0;class#CylinderTest#0" />
-                <element signature="method#equals#0;class#CylinderTest#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/geometries/SphereTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="37" column="96" selection-start-line="36" selection-start-column="8" selection-end-line="37" selection-end-column="96" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2554#2563#0" expanded="true" />
+                <element signature="method#Vector3D#0;class#Vector3D#0" />
+                <element signature="method#Vector3D#1;class#Vector3D#0" />
+                <element signature="method#Vector3D#2;class#Vector3D#0" />
+                <element signature="method#dotProduct#0;class#Vector3D#0" />
+                <element signature="method#crossProduct#0;class#Vector3D#0" />
+                <element signature="method#scale#0;class#Vector3D#0" />
+                <element signature="method#normalized#0;class#Vector3D#0" />
+                <element signature="method#normalize#0;class#Vector3D#0" />
+                <element signature="method#equals#0;class#Vector3D#0" />
               </folding>
             </state>
           </provider>
@@ -174,12 +96,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/primitives/Coordinate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="372">
               <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
               <folding>
-                <element signature="e#491#492#0" expanded="true" />
-                <element signature="e#528#529#0" expanded="true" />
+                <element signature="method#Coordinate#0;class#Coordinate#0" />
                 <element signature="method#equals#0;class#Coordinate#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/geometries/CylinderTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#get_point#0;class#CylinderTest#0" />
+                <element signature="method#get_direction#0;class#CylinderTest#0" />
+                <element signature="method#equals#0;class#CylinderTest#0" />
+                <element signature="method#findIntersections#0;class#CylinderTest#0" />
               </folding>
             </state>
           </provider>
@@ -222,28 +159,30 @@
         <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
         <option value="$PROJECT_DIR$/src/geometries/RadialGeometry.java" />
         <option value="$PROJECT_DIR$/src/geometries/Sphere.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Tube.java" />
         <option value="$PROJECT_DIR$/src/primitives/Point2DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Point2DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Point3DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Vector3DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/RayTest.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/RadialGeometryTest.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/SphereTest.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/TubeTest.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
         <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
         <option value="$PROJECT_DIR$/src/geometries/Intersectable.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" />
         <option value="$PROJECT_DIR$/src/geometries/Geometries.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Tube.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" />
+        <option value="$PROJECT_DIR$/src/primitives/Point3D.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
+        <option value="$PROJECT_DIR$/src/primitives/Util.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="977" />
+    <option name="x" value="-7" />
+    <option name="width" value="1118" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -253,7 +192,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -289,10 +227,17 @@
               <item name="Tests" type="462c0819:PsiDirectoryNode" />
               <item name="geometries" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="Tests" type="462c0819:PsiDirectoryNode" />
+              <item name="primitives" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,7 +274,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GeometriesTest">
+  <component name="RunManager" selected="JUnit.CylinderTest.findIntersections">
+    <configuration name="CylinderTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="3D-Engine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.CylinderTest" />
+      <option name="METHOD_NAME" value="findIntersections" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GeometriesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
@@ -345,7 +306,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaneTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GeometriesTest.add_geometry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
@@ -354,7 +315,23 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTest" />
+      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTest" />
+      <option name="METHOD_NAME" value="add_geometry" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeometriesTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="3D-Engine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTest" />
       <option name="METHOD_NAME" value="findIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -377,44 +354,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TriangleTest.findIntersections1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="3D-Engine" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTest" />
-      <option name="METHOD_NAME" value="findIntersections1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TubeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="3D-Engine" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TubeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CylinderTest.findIntersections" />
         <item itemvalue="JUnit.GeometriesTest" />
+        <item itemvalue="JUnit.GeometriesTest.findIntersections" />
+        <item itemvalue="JUnit.GeometriesTest.add_geometry" />
         <item itemvalue="JUnit.TriangleTest.findIntersections" />
-        <item itemvalue="JUnit.TriangleTest.findIntersections1" />
-        <item itemvalue="JUnit.PlaneTest.findIntersections" />
-        <item itemvalue="JUnit.TubeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -455,35 +401,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PlaneTest_findIntersections - 2019.05.29 at 18h 26m 02s.xml">
-      <configuration name="PlaneTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 01m 23s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlaneTest_findIntersections - 2019.05.29 at 18h 26m 53s.xml">
-      <configuration name="PlaneTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 26m 26s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections1 - 2019.05.29 at 19h 18m 12s.xml">
-      <configuration name="TriangleTest.findIntersections1" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 26m 28s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections1 - 2019.05.29 at 19h 18m 20s.xml">
-      <configuration name="TriangleTest.findIntersections1" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 34m 30s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections - 2019.05.29 at 19h 41m 15s.xml">
-      <configuration name="TriangleTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 34m 33s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections - 2019.05.29 at 19h 42m 02s.xml">
-      <configuration name="TriangleTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 36m 13s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections - 2019.05.29 at 19h 42m 12s.xml">
-      <configuration name="TriangleTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 36m 16s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections - 2019.05.29 at 19h 42m 20s.xml">
-      <configuration name="TriangleTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 37m 20s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections - 2019.05.29 at 19h 42m 52s.xml">
-      <configuration name="TriangleTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 37m 31s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TriangleTest_findIntersections - 2019.05.29 at 19h 42m 56s.xml">
-      <configuration name="TriangleTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="CylinderTest_findIntersections - 2019.05.30 at 12h 37m 40s.xml">
+      <configuration name="CylinderTest.findIntersections" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -499,11 +445,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49394673" weight="0.12556732" />
-      <window_info id="Structure" order="1" sideWeight="0.50605327" side_tool="true" weight="0.12556732" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4894309" weight="0.08635394" />
+      <window_info id="Structure" order="1" sideWeight="0.5105691" side_tool="true" weight="0.08635394" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -512,15 +458,15 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33044422" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3954496" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3336945" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39111593" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3267974" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3251634" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32932165" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3267974" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.3267974" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3267974" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -615,6 +561,24 @@
     <MESSAGE value="Ray Plane Intersections" />
     <option name="LAST_COMMIT_MESSAGE" value="Ray Plane Intersections" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/primitives/Util.java</url>
+          <line>85</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Cylinder.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/primitives/Point2DTest.java" />
     <entry file="file://$PROJECT_DIR$/Tests/primitives/Point2DTest.java">
@@ -623,22 +587,6 @@
           <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
           <folding>
             <element signature="method#equals#0;class#Point2DTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/primitives/Point3DTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
-          <folding>
-            <element signature="method#getZ#0;class#Point3DTest#0" />
-            <element signature="method#subtract#0;class#Point3DTest#0" />
-            <element signature="method#add#0;class#Point3DTest#0" />
-            <element signature="method#distanceSquared#0;class#Point3DTest#0" />
-            <element signature="method#distance#0;class#Point3DTest#0" />
-            <element signature="method#equals#0;class#Point3DTest#0" />
-            <element signature="method#toStringTest#0;class#Point3DTest#0" />
           </folding>
         </state>
       </provider>
@@ -684,20 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Tube.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Tube#1;class#Tube#0" />
-            <element signature="method#Tube#2;class#Tube#0" />
-            <element signature="method#Tube#3;class#Tube#0" />
-            <element signature="method#get_normal#0;class#Tube#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/geometries/TubeTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -725,77 +659,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Coordinate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-          <folding>
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="method#equals#0;class#Coordinate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class" />
     <entry file="file://$PROJECT_DIR$/src/geometries/RadialGeometry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Cylinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-282">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Cylinder#1;class#Cylinder#0" />
-            <element signature="method#Cylinder#2;class#Cylinder#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Triangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Triangle#0;class#Triangle#0" />
-            <element signature="method#Triangle#1;class#Triangle#0" />
-            <element signature="method#findIntersections#0;class#Triangle#0" />
-            <element signature="e#1685#1694#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-          <folding>
-            <element signature="method#getExp#0;class#Util#0" />
-            <element signature="method#usubtract#0;class#Util#0" />
-            <element signature="method#uadd#0;class#Util#0" />
-            <element signature="method#uscale#0;class#Util#0" />
-            <element signature="method#isNegative#0;class#Util#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/geometries/TriangleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-          <folding>
-            <element signature="method#get_point1#0;class#TriangleTest#0" />
-            <element signature="method#get_point2#0;class#TriangleTest#0" />
-            <element signature="method#get_point3#0;class#TriangleTest#0" />
-            <element signature="method#findIntersections#0;class#TriangleTest#0" />
-            <element signature="e#1745#1754#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -837,17 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/geometries/GeometriesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#692#701#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/geometries/Intersectable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -858,28 +714,184 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/geometries/CylinderTest.java">
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/PlaneTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        <state relative-caret-position="68">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Triangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
-            <element signature="method#get_point#0;class#CylinderTest#0" />
-            <element signature="method#get_direction#0;class#CylinderTest#0" />
-            <element signature="method#equals#0;class#CylinderTest#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#Triangle#0;class#Triangle#0" />
+            <element signature="method#Triangle#1;class#Triangle#0" />
+            <element signature="method#findIntersections#0;class#Triangle#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+        <state relative-caret-position="363">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#539#540#0" expanded="true" />
-            <element signature="e#721#730#0" expanded="true" />
+            <element signature="method#add_geometry#0;class#Geometries#0" />
+            <element signature="method#findIntersections#0;class#Geometries#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/TriangleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="24" selection-start-line="24" selection-end-line="25" />
+          <folding>
+            <element signature="method#get_point1#0;class#TriangleTest#0" />
+            <element signature="method#get_point2#0;class#TriangleTest#0" />
+            <element signature="method#get_point3#0;class#TriangleTest#0" />
+            <element signature="method#findIntersections#0;class#TriangleTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Tube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Tube#1;class#Tube#0" />
+            <element signature="method#Tube#2;class#Tube#0" />
+            <element signature="method#Tube#3;class#Tube#0" />
+            <element signature="method#get_normal#0;class#Tube#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/primitives/Point3DTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
+          <folding>
+            <element signature="method#getZ#0;class#Point3DTest#0" />
+            <element signature="method#subtract#0;class#Point3DTest#0" />
+            <element signature="method#add#0;class#Point3DTest#0" />
+            <element signature="method#distanceSquared#0;class#Point3DTest#0" />
+            <element signature="method#distance#0;class#Point3DTest#0" />
+            <element signature="method#equals#0;class#Point3DTest#0" />
+            <element signature="method#toStringTest#0;class#Point3DTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/GeometriesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+          <folding>
+            <element signature="method#add_geometry#0;class#GeometriesTest#0" />
+            <element signature="method#findIntersections#0;class#GeometriesTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <folding>
+            <element signature="method#Point3D#0;class#Point3D#0" />
+            <element signature="method#Point3D#1;class#Point3D#0" />
+            <element signature="method#Point3D#2;class#Point3D#0" />
+            <element signature="method#subtract#0;class#Point3D#0" />
+            <element signature="method#add#0;class#Point3D#0" />
+            <element signature="method#distanceSquared#0;class#Point3D#0" />
+            <element signature="method#equals#0;class#Point3D#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="356" selection-start-line="356" selection-end-line="356" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+          <folding>
+            <element signature="method#Coordinate#0;class#Coordinate#0" />
+            <element signature="method#equals#0;class#Coordinate#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Vector3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="method#Vector3D#0;class#Vector3D#0" />
+            <element signature="method#Vector3D#1;class#Vector3D#0" />
+            <element signature="method#Vector3D#2;class#Vector3D#0" />
+            <element signature="method#dotProduct#0;class#Vector3D#0" />
+            <element signature="method#crossProduct#0;class#Vector3D#0" />
+            <element signature="method#scale#0;class#Vector3D#0" />
+            <element signature="method#normalized#0;class#Vector3D#0" />
+            <element signature="method#normalize#0;class#Vector3D#0" />
+            <element signature="method#equals#0;class#Vector3D#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="110" column="43" lean-forward="true" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
+          <folding>
+            <element signature="method#getExp#0;class#Util#0" />
+            <element signature="method#usubtract#0;class#Util#0" />
+            <element signature="method#uadd#0;class#Util#0" />
+            <element signature="method#uscale#0;class#Util#0" />
+            <element signature="method#isNegative#0;class#Util#0" />
+            <element signature="method#removeDuplicates#0;class#Util#0" />
+            <element signature="e#3748#3825#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/CylinderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#get_point#0;class#CylinderTest#0" />
+            <element signature="method#get_direction#0;class#CylinderTest#0" />
+            <element signature="method#equals#0;class#CylinderTest#0" />
+            <element signature="method#findIntersections#0;class#CylinderTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Cylinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Cylinder#0;class#Cylinder#0" />
+            <element signature="method#Cylinder#1;class#Cylinder#0" />
+            <element signature="method#Cylinder#2;class#Cylinder#0" />
+            <element signature="method#get_normal#0;class#Cylinder#0" />
           </folding>
         </state>
       </provider>
