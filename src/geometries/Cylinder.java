@@ -50,6 +50,7 @@ public class Cylinder extends RadialGeometry implements IGeometry{
         //return point3D.subtract(_ray.get_point().add(_ray.get_direction().scale(_ray.get_direction().dotProduct(point3D.subtract(_ray.get_point()))))).normalized();
     }
 
+
     @Override
     public ArrayList<Point3D> findIntersections(Ray ray) {
         ArrayList<Point3D> result = new ArrayList<>();
@@ -68,4 +69,28 @@ public class Cylinder extends RadialGeometry implements IGeometry{
 
         return result;
     }
+
+    /*
+
+    @Override
+    public ArrayList<Point3D> findIntersections(Ray ray) {
+        ArrayList<Point3D> result = new ArrayList<>();
+
+        Vector3D A1 = ray.get_direction().subtract(_ray.get_direction().scale(ray.get_direction().dotProduct(_ray.get_direction())));
+        double A = A1.squared();
+        Vector3D dp = ray.get_point().subtract(_ray.get_point());
+        Vector3D B1 = dp.subtract(_ray.get_direction().scale(dp.dotProduct(_ray.get_direction())));
+        double B = Util.uscale(2, A1.dotProduct(B1));
+        double C = Util.usubtract(B1.squared(), Util.squared(_radius));
+
+        double[] roots = Util.quadraticRoots(A, B, C);
+
+        for (double root : roots){
+            result.add(ray.get_point().add(ray.get_direction().scale(root)));
+        }
+
+        return result;
+    }
+     */
+
 }

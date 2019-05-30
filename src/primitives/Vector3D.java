@@ -91,6 +91,10 @@ public class Vector3D {
         _point._z = new Coordinate(_point._z.scale(1/length));
     }
 
+    public double squared(){
+        return this.dotProduct(this);
+    }
+
     //Overrides
     @Override
     public boolean equals(Object obj) {

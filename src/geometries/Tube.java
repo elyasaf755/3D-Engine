@@ -4,6 +4,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector3D;
 
+import java.util.ArrayList;
+
 public class Tube extends Cylinder {
     protected double _height;
 
@@ -51,5 +53,10 @@ public class Tube extends Cylinder {
             return _ray.get_direction().scale(-1);
 
         return super.get_normal(point3D);
+    }
+
+    @Override
+    public ArrayList<Point3D> findIntersections(Ray ray) {
+        return super.findIntersections(ray);
     }
 }
