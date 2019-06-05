@@ -14,6 +14,9 @@ class CylinderTest {
     //y^2+z^2=16
     Cylinder cylinder2 = new Cylinder(4, new Ray(new Point3D(0,0,0), new Vector3D(1,0,0)));
 
+    //x^2+(z-6)^2=1
+    Cylinder cylinder3 = new Cylinder(1, new Ray(new Point3D(0,0,6), new Vector3D(0,1,0)));
+
     Ray ray1 = new Ray(new Point3D(new Coordinate(1), new Coordinate(1), new Coordinate(1)), new Vector3D(new Coordinate(1), new Coordinate(0), new Coordinate(0)));
     Ray ray2 = new Ray(new Point3D(new Coordinate(0), new Coordinate(1), new Coordinate(1)), new Vector3D(new Coordinate(0), new Coordinate(1), new Coordinate(0)));
 

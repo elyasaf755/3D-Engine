@@ -41,6 +41,15 @@ public class Point3D extends Point2D{
         return new Point3D(_x.add(vector3D._point._x), _y.add(vector3D._point._y), _z.add(vector3D._point._z));
     }
 
+    //TODO: Check
+    public void add(Point3D point, Vector3D vector) {
+
+        this._x = new Coordinate(Util.uadd(vector.getPoint().getX().getCoord(), point.getX().getCoord()));
+        this._y = new Coordinate(Util.uadd(vector.getPoint().getY().getCoord(), point.getY().getCoord()));
+        this._z = new Coordinate(Util.uadd(vector.getPoint().getZ().getCoord(), point.getZ().getCoord()));
+
+    }
+
     public double distanceSquared(Point3D point3D){
         Point3D result = subtract(point3D)._point;
 

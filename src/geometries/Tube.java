@@ -5,6 +5,7 @@ import primitives.Ray;
 import primitives.Vector3D;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Tube extends Cylinder {
     protected double _height;

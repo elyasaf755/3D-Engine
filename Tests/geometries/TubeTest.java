@@ -6,6 +6,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector3D;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TubeTest {
@@ -31,4 +33,5 @@ class TubeTest {
         assertEquals(tube._ray.get_direction(),tube.get_normal(p4));
         assertEquals(tube._ray.get_direction().scale(-1),tube.get_normal(p5));
     }
+
 }

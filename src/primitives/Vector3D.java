@@ -1,7 +1,11 @@
 package primitives;
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory;
+
 public class Vector3D {
     protected Point3D _point;
+
+    public static Vector3D ZERO = new Vector3D();
 
     //Constructors
     public Vector3D(Coordinate x, Coordinate y, Coordinate z) throws IllegalArgumentException{
@@ -31,9 +35,27 @@ public class Vector3D {
         _point = new Point3D(vector3D._point);
     }
 
+    private Vector3D(){
+        _point = new Point3D(0,0,0);
+    }
+
+
     //Getters
     public Point3D getPoint() {
         return new Point3D(_point);
+    }
+
+    //Setters
+    public void set_point(Point3D point) {
+        this._point = new Point3D(point);
+    }
+
+    public void set_point(double x, double y, double z) {
+        this._point = new Point3D(x, y, z);
+    }
+
+    public void set_point(Coordinate x, Coordinate y, Coordinate z) {
+        this._point = new Point3D(x, y, z);
     }
 
     //Methods
@@ -93,6 +115,10 @@ public class Vector3D {
 
     public double squared(){
         return this.dotProduct(this);
+    }
+
+    public Vector3D projection(Vector3D projector){
+        return new Vector3D(this.scale(Util.udiv(this.dotProduct(projector), this.dotProduct(this))));
     }
 
     //Overrides

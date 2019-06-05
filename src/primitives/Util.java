@@ -59,6 +59,10 @@ public class Util {
         return deltaExp < ACCURACY ? lhs : lhs * factor;
     }
 
+    public static double udiv(double numerator, double denominator){
+        return alignZero(numerator/denominator);
+    }
+
     public static boolean isZero(double number) {
         return getExp(number) < ACCURACY;
     }
