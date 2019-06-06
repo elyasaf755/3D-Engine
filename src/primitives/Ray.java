@@ -45,15 +45,7 @@ public class Ray {
     }
 
     public double angleBetween_deg(Ray ray){
-        BigDecimal numerator = new BigDecimal(this.get_direction().dotProduct(ray.get_direction()));
-        BigDecimal denom = new BigDecimal(Util.uscale(this.get_direction().length(), ray.get_direction().length()));
-
-        double cos = numerator.doubleValue() / denom.doubleValue();
-
-        if (cos > 1)
-            cos = 1;
-
-        return Math.toDegrees(Math.acos(cos));
+        return Math.toDegrees(this.angleBetween_rad(ray));
     }
 
     public boolean isParallelTo(Ray ray){

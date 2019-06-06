@@ -6,37 +6,61 @@ import primitives.Ray;
 import primitives.Vector3D;
 
 public class Camera {
-    private Point3D _position;
+    private Point3D _origin;
+    private Vector3D _direction;
     private Vector3D _up;
-    private Vector3D _to;
     private Vector3D _right;
 
-    public Camera(Point3D position, Vector3D up, Vector3D to, Vector3D right){
-        if (up.dotProduct(to) == 0 && up.dotProduct(right) == 0 && to.dotProduct(right) == 0){
-            _position = new Point3D(position);
+    public Camera(Point3D origin, Vector3D direction, Vector3D up, Vector3D right){
+        if (direction.dotProduct(up) == 0 && direction.dotProduct(right) == 0 && up.dotProduct(right) == 0){
+            _origin = new Point3D(origin);
+            _direction = (new Vector3D(direction)).normalized();
             _up = (new Vector3D(up)).normalized();
-            _to = (new Vector3D(to)).normalized();
             _right = (new Vector3D(right)).normalized();
         }
         else{
-            Matrix orthonormalBase = (new Matrix(up, to, right)).orthonormalized();
-            _position = new Point3D(position);
-            _up = (new Vector3D(up)).normalized();
-            _to = Matrix.getColumnAsVector3(orthonormalBase, 1);
+            Matrix orthonormalBase = (new Matrix(direction, up, right)).orthonormalized();
+            _origin = new Point3D(origin);
+            _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
+            _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
             _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
         }
     }
 
-    public Point3D get_position(){
-        return new Point3D(_position);
+    public Camera(Point3D origin, Vector3D direction, Vector3D up){
+        if (direction.dotProduct(up) == 0){
+            _origin = new Point3D(origin);
+            _direction = (new Vector3D(direction)).normalized();
+            _up = (new Vector3D(up)).normalized();
+            _right = (_direction.crossProduct(_up)).normalized();
+        }
+        else{
+            Matrix orthonormalBase = (new Matrix(direction, up, direction.crossProduct(up))).orthonormalized();
+            _origin = new Point3D(origin);
+            _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
+            _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
+            _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
+        }
+    }
+
+    public Camera(Point3D origin, Vector3D direction){
+        Matrix orthonormalBase = Matrix.orthonormalBasis3X3(direction);
+        _origin = new Point3D(origin);
+        _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
+        _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
+        _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
+    }
+
+    public Point3D get_origin(){
+        return new Point3D(_origin);
     }
 
     public Vector3D get_up() {
         return new Vector3D(_up);
     }
 
-    public Vector3D get_to() {
-        return new Vector3D(_to);
+    public Vector3D get_direction() {
+        return new Vector3D(_direction);
     }
 
     public Vector3D get_right() {
@@ -44,13 +68,13 @@ public class Camera {
     }
 
     public Ray constructRayThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
-        Point3D p0 = get_position();
+        Point3D p0 = get_origin();
         Vector3D up = get_up();
-        Vector3D to = get_to();
+        Vector3D direction = get_direction();
         Vector3D right = get_right();
 
         //Image center point
-        Point3D Pc = p0.add(to.scale(screenDistance));
+        Point3D Pc = p0.add(direction.scale(screenDistance));
 
         //Ratio (pixel height/width)
         double Ry = screenHeight / Ny;
