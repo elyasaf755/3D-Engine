@@ -39,7 +39,7 @@ class RayTest {
 
     @Test
     void isParallelTo() {
-        Ray r1 = new Ray(new Point3D(0,0,0), new Vector3D(1,1,1));
+        Ray r1 = new Ray(new Vector3D(1,1,1));
         Ray r2 = new Ray(new Point3D(1,0,0), new Vector3D(2,2,2));
         assertEquals(true, r1.isParallelTo(r2));
 
@@ -55,7 +55,7 @@ class RayTest {
     void findIntersection() {
         Ray ray1 = new Ray(new Vector3D(1,0,0));
         Ray ray2 = new Ray(new Vector3D(0,1,0));
-        assertEquals(new Point3D(0,0,0), ray1.findIntersection(ray2));
+        assertEquals(new Point3D(), ray1.findIntersection(ray2));
 
         Ray ray3 = new Ray(new Point3D(0,1,0), new Vector3D(1,0,0));
         assertEquals(new Point3D(0,1,0), ray3.findIntersection(ray2));

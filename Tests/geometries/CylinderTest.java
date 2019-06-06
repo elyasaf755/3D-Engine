@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CylinderTest {
     //x^2+y^2=16
-    Cylinder cylinder1 = new Cylinder(4, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
+    Cylinder cylinder1 = new Cylinder(4, new Ray(new Point3D(), new Vector3D(0,0,1)));
 
     //y^2+z^2=16
-    Cylinder cylinder2 = new Cylinder(4, new Ray(new Point3D(0,0,0), new Vector3D(1,0,0)));
+    Cylinder cylinder2 = new Cylinder(4, new Ray(new Point3D(), new Vector3D(1,0,0)));
 
     //x^2+(z-6)^2=1
     Cylinder cylinder3 = new Cylinder(1, new Ray(new Point3D(0,0,6), new Vector3D(0,1,0)));

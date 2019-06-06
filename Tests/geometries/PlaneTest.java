@@ -30,7 +30,7 @@ class PlaneTest {
     @Test
     void findIntersections() {
         //orthogonal and ray origin is before the plane
-        Ray ray1 = new Ray(new Point3D(0,0,0), new Vector3D(1,0,0));
+        Ray ray1 = new Ray(new Vector3D(1,0,0));
         ArrayList<Point3D> expected1 = new ArrayList<Point3D>();
         expected1.add(new Point3D(1, 0, 0));
         assertEquals(expected1, plane2.findIntersections(ray1));
@@ -45,7 +45,7 @@ class PlaneTest {
         assertEquals(new ArrayList<Point3D>(), plane2.findIntersections(ray3));
 
         //parllel and ray not included
-        Ray ray4 = new Ray(new Point3D(0,0,0), new Vector3D(0,0,1));
+        Ray ray4 = new Ray(new Vector3D(0,0,1));
         assertEquals(new ArrayList<Point3D>(), plane2.findIntersections(ray4));
 
         //parllel and ray included

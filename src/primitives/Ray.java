@@ -13,7 +13,7 @@ public class Ray {
     }
 
     public Ray(Vector3D direction){
-        _point = new Point3D(0, 0, 0);
+        _point = new Point3D();
         _direction = new Vector3D(direction);
     }
 

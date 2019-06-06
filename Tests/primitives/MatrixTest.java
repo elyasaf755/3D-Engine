@@ -460,8 +460,8 @@ class MatrixTest {
         Vector3D U2 = Matrix.getColumnAsVector3(actual1, 1);
         Vector3D U3 = Matrix.getColumnAsVector3(actual1, 2);
 
-        double a1 = U2.dotProduct(U1);
-        double b1 = U3.dotProduct(U1);
+        double a1 = U1.dotProduct(U2);
+        double b1 = U1.dotProduct(U3);
         double c1 = U2.dotProduct(U3);
 
         assertEquals(true, a1 == 0 && b1 == 0 && c1 ==0);

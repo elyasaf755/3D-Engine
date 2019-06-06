@@ -51,6 +51,10 @@ public class Matrix {
     }
 
     public Matrix(Vector3D v1, Vector3D v2, Vector3D v3){
+        _matrix = new double[3][3];
+        _numOfRows = 3;
+        _numOfCols = 3;
+
         _matrix[0][0] = v1.getPoint().getX().getCoord();
         _matrix[1][0] = v1.getPoint().getY().getCoord();
         _matrix[2][0] = v1.getPoint().getZ().getCoord();
@@ -403,6 +407,10 @@ public class Matrix {
         Vector3D V2 = Matrix.getColumnAsVector3(basis, 1);
         Vector3D V3 = Matrix.getColumnAsVector3(basis, 2);
 
+        if (V1.dotProduct(V2) == 0 && V1.dotProduct(V3) == 0 && V2.dotProduct(V3) == 0){
+            return basis;
+        }
+
         Vector3D U1 = V1;
         Vector3D U2 = V2.subtract(U1.projection(V2));
         Vector3D U3 = (V3.subtract(U1.projection(V3))).subtract(U2.projection(V3));
@@ -437,9 +445,28 @@ public class Matrix {
         _matrix[2][2] = orthonormalizedMat.get_element(2,2);
     }
 
-    //Better use grahmSchmidt
     public static Matrix orthonormalBasis3X3(Vector3D vector){
         Matrix result = new Matrix(3,3);
+
+        //Trivial solutions
+        if (vector.normalized().equals(new Vector3D(1,0,0))){
+            Vector3D v1 = new Vector3D(1,0,0);
+            Vector3D v2 = new Vector3D(0,1,0);
+            Vector3D v3 = new Vector3D(0,0,1);
+            return new Matrix(v1, v2, v3);
+        }
+        if (vector.normalized().equals(new Vector3D(0,1,0))){
+            Vector3D v1 = new Vector3D(1,0,0);
+            Vector3D v2 = new Vector3D(0,1,0);
+            Vector3D v3 = new Vector3D(0,0,1);
+            return new Matrix(v1, v2, v3);
+        }
+        if (vector.normalized().equals(new Vector3D(0,0,1))){
+            Vector3D v1 = new Vector3D(1,0,0);
+            Vector3D v2 = new Vector3D(0,1,0);
+            Vector3D v3 = new Vector3D(0,0,1);
+            return new Matrix(v1, v2, v3);
+        }
 
         Vector3D U1 = new Vector3D(vector);
         double x1 = U1.getPoint().getX().getCoord();

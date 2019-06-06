@@ -36,7 +36,7 @@ public class Vector3D {
     }
 
     private Vector3D(){
-        _point = new Point3D(0,0,0);
+        _point = new Point3D();
     }
 
 

@@ -20,6 +20,11 @@ public class Point2D {
         _y = new Coordinate(point._y);
     }
 
+    public Point2D(){
+        _x = new Coordinate(0);
+        _y = new Coordinate(0);
+    }
+
     //Getters
     public Coordinate getX() {
         return new Coordinate(_x);
