@@ -354,7 +354,7 @@ class MatrixTest {
     }
 
     @Test
-    void inverseMatrix3X3() {
+    void inversedMatrix3X3() {
         Matrix matrix = new Matrix(3,3);
 
         matrix.set_element(0, 0, 1);
@@ -379,10 +379,42 @@ class MatrixTest {
         expected.set_element(2, 1, 0);
         expected.set_element(2, 2, 1);
 
-        Matrix m = matrix.inverseMatrix3X3();
+        Matrix m = matrix.inversedMatrix3X3();
 
 
-        assertEquals(expected, matrix.mult(matrix.inverseMatrix3X3()));
+        assertEquals(expected, matrix.mult(matrix.inversedMatrix3X3()));
+    }
+
+    @Test
+    void inverse3x3() {
+        Matrix matrix = new Matrix(3,3);
+
+        matrix.set_element(0, 0, 1);
+        matrix.set_element(0, 1, 3);
+        matrix.set_element(0, 2, 2);
+        matrix.set_element(1, 0, 2);
+        matrix.set_element(1, 1, 2);
+        matrix.set_element(1, 2, 6);
+        matrix.set_element(2, 0, 1);
+        matrix.set_element(2, 1, 5);
+        matrix.set_element(2, 2, 6);
+
+        Matrix expected = new Matrix(3,3);
+
+        expected.set_element(0, 0, 1);
+        expected.set_element(0, 1, 0);
+        expected.set_element(0, 2, 0);
+        expected.set_element(1, 0, 0);
+        expected.set_element(1, 1, 1);
+        expected.set_element(1, 2, 0);
+        expected.set_element(2, 0, 0);
+        expected.set_element(2, 1, 0);
+        expected.set_element(2, 2, 1);
+
+        Matrix inversed = new Matrix(matrix);
+        inversed.inverse3x3();
+
+        assertEquals(expected, matrix.mult(inversed));
     }
 
     @Test
@@ -407,8 +439,9 @@ class MatrixTest {
         double ab = a/b;
         Vector3D e3 = new Vector3D(ab, ab, 3);
 
-        expected.set_matrix_3x3(e1, e2, e3);
-        assertEquals(expected, Matrix.grahmSchmidt3X3(matrix));
+        expected.set_matrix_3x3(e1.normalized(), e2.normalized(), e3.normalized());
+        Matrix actual = Matrix.grahmSchmidt3X3(matrix);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -451,5 +484,52 @@ class MatrixTest {
 
         assertEquals(true, a2 == 0 && b2 == 0 && c2 ==0);
         assertEquals(true, V1.length() == 1 && V2.length() == 1 && V3.length() == 1);
+    }
+
+    @Test
+    void orthonormalized() {
+        Matrix matrix = new Matrix(3,3);
+        Vector3D v1 = new Vector3D(1,1,1);
+        Vector3D v2 = new Vector3D(6,4,5);
+        Vector3D v3 = new Vector3D(3,6,9);
+        matrix.set_matrix_3x3(v1, v2, v3);
+
+        Matrix expected = new Matrix(3,3);
+
+
+        Vector3D e1 = new Vector3D(1,1,1);
+        Vector3D e2 = new Vector3D(1,-1,0);
+        double a = -3;
+        double b = 2;
+        double ab = a/b;
+        Vector3D e3 = new Vector3D(ab, ab, 3);
+
+        expected.set_matrix_3x3(e1.normalized(), e2.normalized(), e3.normalized());
+
+        assertEquals(expected, matrix.orthonormalized());
+    }
+
+    @Test
+    void orthonormalize() {
+        Matrix matrix = new Matrix(3,3);
+        Vector3D v1 = new Vector3D(1,1,1);
+        Vector3D v2 = new Vector3D(6,4,5);
+        Vector3D v3 = new Vector3D(3,6,9);
+        matrix.set_matrix_3x3(v1, v2, v3);
+
+        Matrix expected = new Matrix(3,3);
+
+
+        Vector3D e1 = new Vector3D(1,1,1);
+        Vector3D e2 = new Vector3D(1,-1,0);
+        double a = -3;
+        double b = 2;
+        double ab = a/b;
+        Vector3D e3 = new Vector3D(ab, ab, 3);
+
+        expected.set_matrix_3x3(e1.normalized(), e2.normalized(), e3.normalized());
+        matrix.orthonormalize();
+
+        assertEquals(expected, matrix);
     }
 }

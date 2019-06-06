@@ -50,6 +50,18 @@ public class Matrix {
         }
     }
 
+    public Matrix(Vector3D v1, Vector3D v2, Vector3D v3){
+        _matrix[0][0] = v1.getPoint().getX().getCoord();
+        _matrix[1][0] = v1.getPoint().getY().getCoord();
+        _matrix[2][0] = v1.getPoint().getZ().getCoord();
+        _matrix[0][1] = v2.getPoint().getX().getCoord();
+        _matrix[1][1] = v2.getPoint().getY().getCoord();
+        _matrix[2][1] = v2.getPoint().getZ().getCoord();
+        _matrix[0][2] = v3.getPoint().getX().getCoord();
+        _matrix[1][2] = v3.getPoint().getY().getCoord();
+        _matrix[2][2] = v3.getPoint().getZ().getCoord();
+    }
+
     public int getRows(){return _numOfRows;}
 
     public int getColumns(){return _numOfCols;}
@@ -298,7 +310,7 @@ public class Matrix {
         );
     }
 
-    public Matrix inverseMatrix3X3(){
+    public Matrix inversedMatrix3X3(){
         if (_numOfRows != _numOfCols || _numOfRows != 3)
             return null;
 
@@ -345,7 +357,25 @@ public class Matrix {
         BigDecimal a = new BigDecimal(1, MathContext.DECIMAL32);
         BigDecimal b = new BigDecimal(determinant(), MathContext.DECIMAL32);
         BigDecimal c = new BigDecimal((a.divide(b)).doubleValue(), MathContext.DECIMAL32);
+
         return result.mult(c.doubleValue());
+    }
+
+    public void inverse3x3(){
+        if (_numOfRows != _numOfCols || _numOfRows != 3)
+            return;
+
+        Matrix inversed = this.inversedMatrix3X3();
+
+        _matrix[0][0] = inversed.get_element(0,0);
+        _matrix[1][0] = inversed.get_element(1,0);
+        _matrix[2][0] = inversed.get_element(2,0);
+        _matrix[0][1] = inversed.get_element(0,1);
+        _matrix[1][1] = inversed.get_element(1,1);
+        _matrix[2][1] = inversed.get_element(2,1);
+        _matrix[0][2] = inversed.get_element(0,2);
+        _matrix[1][2] = inversed.get_element(1,2);
+        _matrix[2][2] = inversed.get_element(2,2);
     }
 
     public void set_matrix_3x3(Vector3D v1, Vector3D v2, Vector3D v3){
@@ -377,11 +407,37 @@ public class Matrix {
         Vector3D U2 = V2.subtract(U1.projection(V2));
         Vector3D U3 = (V3.subtract(U1.projection(V3))).subtract(U2.projection(V3));
 
-        result.set_matrix_3x3(U1, U2, U3);
+        result.set_matrix_3x3(U1.normalized(), U2.normalized(), U3.normalized());
 
         return result;
     }
 
+    /**
+     get an orthonormalized 3x3 vector space basis
+     @return Orthonormalized basis of this matrix representing a 3x3 vector space
+     */
+    public Matrix orthonormalized(){
+        if (_numOfRows != _numOfCols || _numOfRows != 3)
+            return null;
+
+        return Matrix.grahmSchmidt3X3(this);
+    }
+
+    public void orthonormalize(){
+        Matrix orthonormalizedMat = this.orthonormalized();
+
+        _matrix[0][0] = orthonormalizedMat.get_element(0,0);
+        _matrix[1][0] = orthonormalizedMat.get_element(1,0);
+        _matrix[2][0] = orthonormalizedMat.get_element(2,0);
+        _matrix[0][1] = orthonormalizedMat.get_element(0,1);
+        _matrix[1][1] = orthonormalizedMat.get_element(1,1);
+        _matrix[2][1] = orthonormalizedMat.get_element(2,1);
+        _matrix[0][2] = orthonormalizedMat.get_element(0,2);
+        _matrix[1][2] = orthonormalizedMat.get_element(1,2);
+        _matrix[2][2] = orthonormalizedMat.get_element(2,2);
+    }
+
+    //Better use grahmSchmidt
     public static Matrix orthonormalBasis3X3(Vector3D vector){
         Matrix result = new Matrix(3,3);
 
