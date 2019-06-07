@@ -119,14 +119,28 @@ public class Camera {
         //Image center point
         Point3D Pc = p0.add(direction.scale(screenDistance));
 
-        //Ratio (pixel height/width)
-        double Rx = screenWidth / Nx;
-        double Ry = screenHeight / Ny;
+        //Pixel ratios
+        double Rx = screenWidth / Nx; //Pixel width
+        double Ry = screenHeight / Ny; //Pixel height
 
         //Center pixel
-        double Xi = (i - Nx / 2)*Rx + Rx/2;
-        double Yj = (j - Ny / 2)*Ry + Ry/2;
-        Point3D p_ij = Pc.add((right.scale(Xi)).subtract(up.scale(Yj)));
+        double Xi = (i - Nx / 2.0)*Rx + Rx / 2.0;
+        double Yj = (j - Ny / 2.0)*Ry + Ry / 2.0;
+
+        Point3D p_ij;
+        if (Xi == 0 && Yj == 0){
+            p_ij = new Point3D(Pc);
+        }
+        else if (Xi == 0){
+            p_ij = new Point3D(Pc.add(Vector3D.ZERO.subtract(up.scale(Yj))));
+        }
+        else if (Yj == 0){
+            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(Vector3D.ZERO)));
+        }
+        else{
+            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(up.scale(Yj))));
+        }
+
         Vector3D v_ij = p_ij.subtract(p0);
 
         return new Ray(p0, v_ij.normalized());
