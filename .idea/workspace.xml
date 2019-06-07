@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Tests/renderer/ImageWriterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/elements/AmbientLight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/elements/CameraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/elements/CameraTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Point2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Point2D.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Point3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Point3D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Ray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Ray.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Vector3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Vector3D.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Vector3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector3D.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,45 +29,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
+        <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="145" column="46" lean-forward="true" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+            <state relative-caret-position="153">
+              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
               <folding>
-                <element signature="method#Camera#0;class#Camera#0" />
-                <element signature="method#Camera#1;class#Camera#0" />
-                <element signature="method#Camera#2;class#Camera#0" />
-                <element signature="method#Camera#3;class#Camera#0" />
-                <element signature="method#Camera#4;class#Camera#0" />
-                <element signature="docComment;method#constructRayThroughPixel#0;class#Camera#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/elements/CameraTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="85" column="59" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/primitives/Vector3D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="96" column="32" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
-              <folding>
-                <element signature="method#Vector3D#0;class#Vector3D#0" />
-                <element signature="method#Vector3D#2;class#Vector3D#0" />
-                <element signature="method#dotProduct#0;class#Vector3D#0" />
-                <element signature="method#scale#0;class#Vector3D#0" />
-                <element signature="method#normalized#0;class#Vector3D#0" />
-                <element signature="method#normalize#0;class#Vector3D#0" />
-                <element signature="method#projection#0;class#Vector3D#0" />
-                <element signature="method#equals#0;class#Vector3D#0" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -98,6 +70,8 @@
       <find>angleBetween</find>
       <find>get_position</find>
       <find>new Point3D(0,0,0)</find>
+      <find>2 equal points</find>
+      <find>...</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,19 +106,26 @@
         <option value="$PROJECT_DIR$/Tests/geometries/TubeTest.java" />
         <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
         <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Geometries.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Vector3DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/MatrixTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Point2D.java" />
         <option value="$PROJECT_DIR$/src/primitives/Ray.java" />
-        <option value="$PROJECT_DIR$/src/primitives/Vector3D.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/RayTest.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/PlaneTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Matrix.java" />
-        <option value="$PROJECT_DIR$/src/primitives/Point3D.java" />
-        <option value="$PROJECT_DIR$/src/elements/Camera.java" />
         <option value="$PROJECT_DIR$/Tests/elements/CameraTest.java" />
+        <option value="$PROJECT_DIR$/src/primitives/Point3D.java" />
+        <option value="$PROJECT_DIR$/src/primitives/Vector3D.java" />
+        <option value="$PROJECT_DIR$/src/elements/Camera.java" />
+        <option value="$PROJECT_DIR$/src/primitives/Color.java" />
+        <option value="$PROJECT_DIR$/src/renderer/ImageWriter.java" />
+        <option value="$PROJECT_DIR$/Tests/renderer/ImageWriterTest.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Geometries.java" />
+        <option value="$PROJECT_DIR$/Tests/scene/Scene.java" />
+        <option value="$PROJECT_DIR$/src/scene/Scene.java" />
+        <option value="$PROJECT_DIR$/src/renderer/Render.java" />
+        <option value="$PROJECT_DIR$/src/elements/AmbientLight.java" />
       </list>
     </option>
   </component>
@@ -177,13 +158,13 @@
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="geometries" type="462c0819:PsiDirectoryNode" />
+              <item name="renderer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="primitives" type="462c0819:PsiDirectoryNode" />
+              <item name="scene" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
@@ -194,7 +175,7 @@
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
               <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="primitives" type="462c0819:PsiDirectoryNode" />
+              <item name="renderer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -218,6 +199,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="renderer" />
       <recent name="elements" />
       <recent name="primitives" />
       <recent name="geometries" />
@@ -238,7 +220,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CameraTest.constructRayThroughPixel">
+  <component name="RunManager" selected="JUnit.ImageWriterTest.writeToimage">
     <configuration name="CameraTest.constructRayThroughPixel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
@@ -270,17 +252,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatrixTest.orthonormalBasis3X3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageWriterTest.writeToimage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="primitives.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.MatrixTest" />
-      <option name="METHOD_NAME" value="orthonormalBasis3X3" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
+      <option name="METHOD_NAME" value="writeToimage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -320,11 +302,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImageWriterTest.writeToimage" />
         <item itemvalue="JUnit.CameraTest.constructRayThroughPixel" />
         <item itemvalue="JUnit.PlaneTest.findIntersections" />
         <item itemvalue="JUnit.CylinderTest" />
         <item itemvalue="JUnit.RayTest.findIntersection" />
-        <item itemvalue="JUnit.MatrixTest.orthonormalBasis3X3" />
       </list>
     </recent_temporary>
   </component>
@@ -403,39 +385,46 @@
       <option name="project" value="LOCAL" />
       <updated>1559844600217</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="constructRayThroughPixel Fix">
+      <created>1559917748544</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1559917748544</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 06m 13s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 21m 32s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 06m 16s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 21m 48s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 08m 26s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 22m 37s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 08m 41s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 22m 53s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 11m 31s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 23m 10s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 11m 34s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 27m 15s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 13m 35s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 29m 15s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 13m 52s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 31m 53s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 14m 29s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 35m 39s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CameraTest_constructRayThroughPixel - 2019.06.07 at 17h 14m 33s.xml">
-      <configuration name="CameraTest.constructRayThroughPixel" configurationId="JUnit" />
+    <history-entry file="ImageWriterTest_writeToimage - 2019.06.07 at 18h 36m 18s.xml">
+      <configuration name="ImageWriterTest.writeToimage" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -454,7 +443,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.108208954" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.108208954" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -463,8 +452,8 @@
       <window_info id="Learn" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.3261105" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33150986" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.248104" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -573,7 +562,8 @@
     <MESSAGE value="Matrix class" />
     <MESSAGE value="New Vector3 method, including ray-ray intersection" />
     <MESSAGE value="Camera class, constructRayThroughPixel method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Camera class, constructRayThroughPixel method" />
+    <MESSAGE value="constructRayThroughPixel Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="constructRayThroughPixel Fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -598,7 +588,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/elements/Camera.java</url>
-          <line>145</line>
+          <line>151</line>
           <properties />
           <option name="timeStamp" value="117" />
         </line-breakpoint>
@@ -674,17 +664,6 @@
             <element signature="method#distance#0;class#Point3DTest#0" />
             <element signature="method#equals#0;class#Point3DTest#0" />
             <element signature="method#toStringTest#0;class#Point3DTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/geometries/GeometriesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
-          <folding>
-            <element signature="method#add_geometry#0;class#GeometriesTest#0" />
-            <element signature="method#findIntersections#0;class#GeometriesTest#0" />
           </folding>
         </state>
       </provider>
@@ -804,18 +783,6 @@
             <element signature="method#Plane#1;class#Plane#0" />
             <element signature="method#Plane#2;class#Plane#0" />
             <element signature="method#findIntersections#0;class#Plane#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#add_geometry#0;class#Geometries#0" />
-            <element signature="method#findIntersections#0;class#Geometries#0" />
           </folding>
         </state>
       </provider>
@@ -981,10 +948,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="356" selection-start-line="356" selection-end-line="356" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        <state relative-caret-position="340">
+          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
           <folding>
             <element signature="method#Point3D#0;class#Point3D#0" />
             <element signature="method#Point3D#1;class#Point3D#0" />
@@ -999,14 +973,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/elements/CameraTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="method#constructRayThroughPixel#0;class#CameraTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/primitives/Vector3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="96" column="32" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+        <state relative-caret-position="272">
+          <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
           <folding>
             <element signature="method#Vector3D#0;class#Vector3D#0" />
+            <element signature="method#Vector3D#1;class#Vector3D#0" />
             <element signature="method#Vector3D#2;class#Vector3D#0" />
+            <element signature="method#Vector3D#3;class#Vector3D#0" />
             <element signature="method#dotProduct#0;class#Vector3D#0" />
+            <element signature="method#crossProduct#0;class#Vector3D#0" />
             <element signature="method#scale#0;class#Vector3D#0" />
             <element signature="method#normalized#0;class#Vector3D#0" />
             <element signature="method#normalize#0;class#Vector3D#0" />
@@ -1016,31 +1003,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+    <entry file="file://$PROJECT_DIR$/writeToimageTest.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/GeometriesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="356" selection-start-line="356" selection-end-line="356" />
+        <state relative-caret-position="306">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="method#findIntersections#0;class#GeometriesTest#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/elements/CameraTest.java">
+    <entry file="file://$PROJECT_DIR$/Tests/scene/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="85" column="59" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
+        <state relative-caret-position="204">
+          <caret line="34" column="13" lean-forward="true" selection-end-line="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Scene#0;class#Scene#0" />
+            <element signature="method#Scene#1;class#Scene#0" />
+            <element signature="method#set_camera#0;class#Scene#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/AmbientLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#add_geometry#0;class#Geometries#0" />
+            <element signature="method#findIntersections#0;class#Geometries#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Scene#0;class#Scene#0" />
+            <element signature="method#Scene#1;class#Scene#0" />
+            <element signature="method#set_camera#0;class#Scene#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/renderer/ImageWriterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#writeToimage#0;class#ImageWriterTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/awt/image/BufferedImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="1014" column="29" selection-start-line="1014" selection-start-column="29" selection-end-line="1014" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ImageWriter#0;class#ImageWriter#0" />
+            <element signature="method#ImageWriter#1;class#ImageWriter#0" />
+            <element signature="method#writeToimage#0;class#ImageWriter#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="155" lean-forward="true" selection-start-line="155" selection-end-line="155" />
+          <folding>
+            <element signature="docComment;class#Color#0" />
+            <element signature="docComment;field#_r#0;class#Color#0" />
+            <element signature="docComment;method#Color#0;class#Color#0" />
+            <element signature="method#Color#0;class#Color#0" />
+            <element signature="docComment;method#Color#1;class#Color#0" />
+            <element signature="method#Color#1;class#Color#0" />
+            <element signature="docComment;method#Color#2;class#Color#0" />
+            <element signature="method#Color#2;class#Color#0" />
+            <element signature="docComment;method#Color#3;class#Color#0" />
+            <element signature="method#Color#3;class#Color#0" />
+            <element signature="docComment;method#getColor#0;class#Color#0" />
+            <element signature="method#getColor#0;class#Color#0" />
+            <element signature="docComment;method#setColor#0;class#Color#0" />
+            <element signature="method#setColor#0;class#Color#0" />
+            <element signature="docComment;method#setColor#1;class#Color#0" />
+            <element signature="method#setColor#1;class#Color#0" />
+            <element signature="docComment;method#setColor#2;class#Color#0" />
+            <element signature="method#setColor#2;class#Color#0" />
+            <element signature="docComment;method#setColor#3;class#Color#0" />
+            <element signature="method#setColor#3;class#Color#0" />
+            <element signature="docComment;method#add#0;class#Color#0" />
+            <element signature="method#add#0;class#Color#0" />
+            <element signature="docComment;method#scale#0;class#Color#0" />
+            <element signature="method#scale#0;class#Color#0" />
+            <element signature="docComment;method#reduce#0;class#Color#0" />
+            <element signature="method#reduce#0;class#Color#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="145" column="46" lean-forward="true" selection-start-line="145" selection-start-column="46" selection-end-line="145" selection-end-column="46" />
+        <state relative-caret-position="442">
+          <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
           <folding>
             <element signature="method#Camera#0;class#Camera#0" />
             <element signature="method#Camera#1;class#Camera#0" />
             <element signature="method#Camera#2;class#Camera#0" />
             <element signature="method#Camera#3;class#Camera#0" />
             <element signature="method#Camera#4;class#Camera#0" />
+            <element signature="method#Camera#5;class#Camera#0" />
             <element signature="docComment;method#constructRayThroughPixel#0;class#Camera#0" />
+            <element signature="method#constructRayThroughPixel#0;class#Camera#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -24,11 +24,20 @@ public class Vector3D {
         _point = new Point3D(x,y,z);
     }
 
-    public Vector3D(Point3D point3D){
+    public Vector3D(Point3D point3D)throws IllegalArgumentException{
         if (point3D.getX().equals(Coordinate.ZERO) && point3D.getY().equals(Coordinate.ZERO) && point3D.getZ().equals(Coordinate.ZERO)){
             throw new IllegalArgumentException("(0,0,0) is not a vector");
         }
         _point = new Point3D(point3D);
+    }
+
+    public Vector3D(Point3D start, Point3D end) throws IllegalArgumentException{
+        if (start.equals(end))
+            throw new IllegalArgumentException("Can't subtract 2 equal points.");
+
+        Vector3D result = end.subtract(start);
+
+        _point = new Point3D(result.getPoint());
     }
 
     public Vector3D(Vector3D vector3D){

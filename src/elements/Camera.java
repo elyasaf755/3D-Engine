@@ -8,6 +8,8 @@ public class Camera {
     private Vector3D _up;
     private Vector3D _right;
 
+    //Constructors
+
     public Camera(Point3D origin, Vector3D direction, Vector3D up, Vector3D right){
         if (direction.dotProduct(up) == 0 && direction.dotProduct(right) == 0 && up.dotProduct(right) == 0){
             _origin = new Point3D(origin);
@@ -90,6 +92,8 @@ public class Camera {
         _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
     }
 
+    //Getters
+
     public Point3D get_origin(){
         return new Point3D(_origin);
     }
@@ -105,6 +109,8 @@ public class Camera {
     public Vector3D get_right() {
         return new Vector3D(_right);
     }
+
+    //Methods
 
     /**
     @param Nx Number of pixel in the width of the screen

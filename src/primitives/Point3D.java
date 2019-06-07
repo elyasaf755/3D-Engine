@@ -36,10 +36,7 @@ public class Point3D extends Point2D{
     }
 
     //Methods
-    public Vector3D subtract(Point3D point3d) throws IllegalArgumentException{
-        if (this.equals(point3d))
-            throw new IllegalArgumentException("Can's subtract 2 equal points.");
-
+    public Vector3D subtract(Point3D point3d) {
         Point2D point2d = subtract(new Point2D(point3d._x, point3d._y));
         Coordinate z = _z.subtract(point3d._z);
 

@@ -98,4 +98,5 @@ class CameraTest {
         Ray expected2 = new Ray(new Vector3D(100, 75, -75).normalized());
         assertEquals(expected2, actual2);
     }
+
 }
