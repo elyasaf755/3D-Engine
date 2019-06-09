@@ -18,7 +18,7 @@ public class Scene {
 
     //Constructors
 
-    public Scene(){
+    private Scene(){
         _name = "MyScene";
         _background = new Color(java.awt.Color.WHITE);
         _ambientLight = new AmbientLight();
@@ -76,7 +76,7 @@ public class Scene {
 
     //Methods
 
-    public void addGeometris(Intersectable... geometries){
+    public void addGeometries(Intersectable... geometries){
         _geometries.add_geometry(geometries);
     }
 }

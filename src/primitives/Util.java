@@ -87,6 +87,9 @@ public class Util {
     }
 
     public static <T> void removeDuplicates(ArrayList<T> list) {
+        if (list.size() == 0 || list.size() == 1)
+            return;
+
         ArrayList<T> newList = new ArrayList<T>();
 
         for (T element : list) {

@@ -64,7 +64,8 @@ public class ImageWriter {
         }
     }
 
-    public void writePixel(int xIndex, int yIndex, Color color){
+    //Todo: change Color to "primitives" type from "java.awt" type?
+    public void writePixel(int xIndex, int yIndex, java.awt.Color color){
         _image.setRGB(xIndex, yIndex, color.getRGB());
     }
 

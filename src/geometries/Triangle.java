@@ -46,7 +46,7 @@ public class Triangle extends Plane{
     public ArrayList<Point3D> findIntersections(Ray ray) {
         ArrayList<Point3D> planeIntersections = super.findIntersections(ray);
 
-        if (planeIntersections == new ArrayList<Point3D>()){
+        if (planeIntersections.size() == 0){
             return planeIntersections;
         }
 

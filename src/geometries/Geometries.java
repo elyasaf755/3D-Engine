@@ -37,17 +37,17 @@ public class Geometries implements Intersectable {
 
     @Override
     public ArrayList<Point3D> findIntersections(Ray ray) {
-        ArrayList<Point3D> intersectionsList=new ArrayList<Point3D>();
-        ArrayList<Point3D> intersectionsGeometryList;
-        Iterator<Intersectable> iter= _geometriesList.iterator();
+        ArrayList<Point3D> result = new ArrayList<Point3D>();
+
+        Iterator<Intersectable> iter = _geometriesList.iterator();
         while(iter.hasNext())
         {
-            intersectionsGeometryList=iter.next().findIntersections(ray);
-            intersectionsList.addAll(intersectionsGeometryList);
+            ArrayList<Point3D> intersectionPoints = iter.next().findIntersections(ray);
+            result.addAll(intersectionPoints);
         }
 
-        Util.removeDuplicates(intersectionsList);
+        Util.removeDuplicates(result);
 
-        return intersectionsList;
+        return result;
     }
 }
