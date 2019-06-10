@@ -1,6 +1,6 @@
 package geometries;
 
-public class RadialGeometry {
+public abstract class RadialGeometry extends IGeometry {
     protected double _radius;
 
     //Constructors

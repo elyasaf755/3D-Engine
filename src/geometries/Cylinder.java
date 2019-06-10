@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.SplittableRandom;
 
-public class Cylinder extends RadialGeometry implements IGeometry{
+public class Cylinder extends RadialGeometry{
     protected Ray _ray;
 
     //Constructors

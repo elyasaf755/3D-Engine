@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/elements/CameraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/elements/CameraTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3D-Engine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/3D-Engine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/IGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/IGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,34 +26,68 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
+        <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="156" column="46" lean-forward="true" selection-start-line="156" selection-start-column="46" selection-end-line="156" selection-end-column="46" />
+            <state relative-caret-position="83">
+              <caret line="31" column="58" lean-forward="true" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
               <folding>
-                <element signature="method#Camera#0;class#Camera#0" />
-                <element signature="method#Camera#1;class#Camera#0" />
-                <element signature="method#Camera#2;class#Camera#0" />
-                <element signature="method#Camera#3;class#Camera#0" />
-                <element signature="method#Camera#4;class#Camera#0" />
-                <element signature="method#Camera#5;class#Camera#0" />
-                <element signature="docComment;method#constructRayThroughPixel#0;class#Camera#0" />
+                <element signature="e#1111#1112#0" expanded="true" />
+                <element signature="e#1145#1146#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
+        <entry file="file://$PROJECT_DIR$/src/primitives/Material.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="85">
+              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="42" column="70" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#ImageWriter#0;class#ImageWriter#0" />
-                <element signature="method#ImageWriter#1;class#ImageWriter#0" />
-                <element signature="method#writeToimage#0;class#ImageWriter#0" />
-                <element signature="method#writePixel#0;class#ImageWriter#0" />
+                <element signature="e#983#1014#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometries/IGeometry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="8" column="31" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometries/Intersectable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,8 +99,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -99,27 +137,21 @@
         <option value="Elyasaf &amp; Barak" />
       </list>
     </option>
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/primitives/Coordinate.java" />
-        <option value="$PROJECT_DIR$/src/geometries/IGeometry.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Intersectable.java" />
-        <option value="$PROJECT_DIR$/src/geometries/RadialGeometry.java" />
         <option value="$PROJECT_DIR$/src/geometries/Sphere.java" />
         <option value="$PROJECT_DIR$/src/primitives/Point2DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Point2DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Point3DTest.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/RadialGeometryTest.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/SphereTest.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Intersectable.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" />
         <option value="$PROJECT_DIR$/src/geometries/Tube.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/TubeTest.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
         <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Vector3DTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/MatrixTest.java" />
@@ -140,12 +172,18 @@
         <option value="$PROJECT_DIR$/src/elements/AmbientLight.java" />
         <option value="$PROJECT_DIR$/src/geometries/Triangle.java" />
         <option value="$PROJECT_DIR$/Tests/elements/CameraTest.java" />
-        <option value="$PROJECT_DIR$/src/renderer/Render.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Geometries.java" />
         <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
         <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
         <option value="$PROJECT_DIR$/Tests/renderer/RenderTest.java" />
         <option value="$PROJECT_DIR$/src/elements/Camera.java" />
+        <option value="$PROJECT_DIR$/src/primitives/Material.java" />
+        <option value="$PROJECT_DIR$/src/geometries/IGeometry.java" />
+        <option value="$PROJECT_DIR$/src/geometries/RadialGeometry.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Intersectable.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Intersectable.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Geometries.java" />
+        <option value="$PROJECT_DIR$/src/renderer/Render.java" />
       </list>
     </option>
   </component>
@@ -160,6 +198,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -171,6 +210,38 @@
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="renderer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -178,6 +249,12 @@
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="elements" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="geometries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
@@ -197,16 +274,10 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="scene" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,7 +288,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559162477857" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560204008686" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -468,9 +539,9 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8369000" />
+    <option name="totallyTimeSpent" value="14680000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -480,10 +551,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.11140725" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.14220877" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -493,7 +564,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3261105" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33694476" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3398693" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2383532" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -515,38 +586,6 @@
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.02292111" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49394673" visible="true" weight="0.12556732" />
-      <window_info id="Structure" order="1" sideWeight="0.50605327" side_tool="true" weight="0.12556732" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Learn" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33044422" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3954496" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3251634" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32932165" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" visible="true" weight="0.3267974" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32827735" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -629,12 +668,6 @@
           <properties />
           <option name="timeStamp" value="160" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/geometries/Geometries.java</url>
-          <line>42</line>
-          <properties />
-          <option name="timeStamp" value="172" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -663,23 +696,6 @@
           <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
           <folding>
             <element signature="method#equals#0;class#Point2DTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/IGeometry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-          <folding>
-            <element signature="method#Point2D#0;class#Point2D#0" />
-            <element signature="method#Point2D#1;class#Point2D#0" />
-            <element signature="method#Point2D#1;class#Point2D#0" />
-            <element signature="method#equals#0;class#Point2D#0" />
-            <element signature="method#Sphere#0;class#Sphere#0" />
-            <element signature="method#Sphere#1;class#Sphere#0" />
-            <element signature="method#Sphere#2;class#Sphere#0" />
-            <element signature="e#1785#1794#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -723,45 +739,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Coordinate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-          <folding>
-            <element signature="method#Coordinate#0;class#Coordinate#0" />
-            <element signature="method#equals#0;class#Coordinate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/math/BigDecimal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="1657" column="22" selection-start-line="1657" selection-start-column="22" selection-end-line="1657" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Cylinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Cylinder#0;class#Cylinder#0" />
-            <element signature="method#Cylinder#1;class#Cylinder#0" />
-            <element signature="method#Cylinder#2;class#Cylinder#0" />
-            <element signature="method#get_normal#0;class#Cylinder#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/RadialGeometry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/math/BigDecimal.java" />
     <entry file="file://$PROJECT_DIR$/Tests/geometries/TubeTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -769,19 +747,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#get_normal#0;class#TubeTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Point2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="method#Point2D#0;class#Point2D#0" />
-            <element signature="method#Point2D#1;class#Point2D#0" />
-            <element signature="method#Point2D#2;class#Point2D#0" />
-            <element signature="method#Point2D#3;class#Point2D#0" />
           </folding>
         </state>
       </provider>
@@ -803,45 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="447" column="61" selection-start-line="447" selection-start-column="61" selection-end-line="447" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Matrix#0;class#Matrix#0" />
-            <element signature="method#Matrix#1;class#Matrix#0" />
-            <element signature="method#Matrix#2;class#Matrix#0" />
-            <element signature="method#Matrix#3;class#Matrix#0" />
-            <element signature="method#add#0;class#Matrix#0" />
-            <element signature="method#sub#0;class#Matrix#0" />
-            <element signature="method#mult#0;class#Matrix#0" />
-            <element signature="method#mult#1;class#Matrix#0" />
-            <element signature="method#mult#2;class#Matrix#0" />
-            <element signature="method#multRow#0;class#Matrix#0" />
-            <element signature="method#multCol#0;class#Matrix#0" />
-            <element signature="method#staticDeterminant#0;class#Matrix#0" />
-            <element signature="method#staticDeterminant#1;class#Matrix#0" />
-            <element signature="method#transpose#0;class#Matrix#0" />
-            <element signature="method#copyColumnToColumn#0;class#Matrix#0" />
-            <element signature="method#copyRowToRow#0;class#Matrix#0" />
-            <element signature="method#copyVector3ToColumn#0;class#Matrix#0" />
-            <element signature="method#getColumn#0;class#Matrix#0" />
-            <element signature="method#getColumnAsVector3#0;class#Matrix#0" />
-            <element signature="method#inversedMatrix3X3#0;class#Matrix#0" />
-            <element signature="method#inverse3x3#0;class#Matrix#0" />
-            <element signature="method#set_matrix_3x3#0;class#Matrix#0" />
-            <element signature="method#grahmSchmidt3X3#0;class#Matrix#0" />
-            <element signature="docComment;method#orthonormalized#0;class#Matrix#0" />
-            <element signature="method#orthonormalized#0;class#Matrix#0" />
-            <element signature="method#orthonormalize#0;class#Matrix#0" />
-            <element signature="method#orthonormalBasis3X3#0;class#Matrix#0" />
-            <element signature="method#toString#0;class#Matrix#0" />
-            <element signature="method#equals#0;class#Matrix#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -894,38 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Ray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="method#Ray#0;class#Ray#0" />
-            <element signature="method#Ray#1;class#Ray#0" />
-            <element signature="method#isParallelTo#0;class#Ray#0" />
-            <element signature="method#findIntersection#0;class#Ray#0" />
-            <element signature="method#equals#0;class#Ray#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-          <folding>
-            <element signature="method#Point3D#0;class#Point3D#0" />
-            <element signature="method#Point3D#1;class#Point3D#0" />
-            <element signature="method#Point3D#2;class#Point3D#0" />
-            <element signature="method#Point3D#3;class#Point3D#0" />
-            <element signature="method#subtract#0;class#Point3D#0" />
-            <element signature="method#add#0;class#Point3D#0" />
-            <element signature="method#add#1;class#Point3D#0" />
-            <element signature="method#distanceSquared#0;class#Point3D#0" />
-            <element signature="method#equals#0;class#Point3D#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/primitives/Vector3D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -946,9 +840,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/writeToImageTest.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/writeToImageTest.jpg" />
     <entry file="file://$PROJECT_DIR$/Tests/geometries/GeometriesTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -960,23 +852,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/scene/Scene.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/awt/image/BufferedImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="1014" column="29" selection-start-line="1014" selection-start-column="29" selection-end-line="1014" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Intersectable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/awt/image/BufferedImage.java" />
     <entry file="file://$PROJECT_DIR$/src/geometries/Tube.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
@@ -1009,57 +885,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/renderer/ImageWriterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="170">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#writeToimage#0;class#ImageWriterTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Color.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
-          <folding>
-            <element signature="docComment;class#Color#0" />
-            <element signature="docComment;field#_r#0;class#Color#0" />
-            <element signature="docComment;method#Color#0;class#Color#0" />
-            <element signature="method#Color#0;class#Color#0" />
-            <element signature="docComment;method#Color#1;class#Color#0" />
-            <element signature="method#Color#1;class#Color#0" />
-            <element signature="docComment;method#Color#2;class#Color#0" />
-            <element signature="method#Color#2;class#Color#0" />
-            <element signature="docComment;method#Color#3;class#Color#0" />
-            <element signature="method#Color#3;class#Color#0" />
-            <element signature="docComment;method#getColor#0;class#Color#0" />
-            <element signature="method#getColor#0;class#Color#0" />
-            <element signature="docComment;method#setColor#0;class#Color#0" />
-            <element signature="method#setColor#0;class#Color#0" />
-            <element signature="docComment;method#setColor#1;class#Color#0" />
-            <element signature="method#setColor#1;class#Color#0" />
-            <element signature="docComment;method#setColor#2;class#Color#0" />
-            <element signature="method#setColor#2;class#Color#0" />
-            <element signature="docComment;method#setColor#3;class#Color#0" />
-            <element signature="method#setColor#3;class#Color#0" />
-            <element signature="docComment;method#add#0;class#Color#0" />
-            <element signature="method#add#0;class#Color#0" />
-            <element signature="docComment;method#scale#0;class#Color#0" />
-            <element signature="method#scale#0;class#Color#0" />
-            <element signature="docComment;method#reduce#0;class#Color#0" />
-            <element signature="method#reduce#0;class#Color#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4947">
-          <caret line="356" selection-start-line="356" selection-end-line="356" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class" />
     <entry file="file://$PROJECT_DIR$/src/geometries/Sphere.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1069,55 +903,6 @@
             <element signature="method#Sphere#0;class#Sphere#0" />
             <element signature="method#Sphere#1;class#Sphere#0" />
             <element signature="method#Sphere#2;class#Sphere#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/AmbientLight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding>
-            <element signature="method#AmbientLight#0;class#AmbientLight#0" />
-            <element signature="method#AmbientLight#1;class#AmbientLight#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ImageWriter#0;class#ImageWriter#0" />
-            <element signature="method#ImageWriter#1;class#ImageWriter#0" />
-            <element signature="method#writeToimage#0;class#ImageWriter#0" />
-            <element signature="method#writePixel#0;class#ImageWriter#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Render#0;class#Render#0" />
-            <element signature="method#calcColor#0;class#Render#0" />
-            <element signature="method#getClosestPoint#0;class#Render#0" />
-            <element signature="method#printGrid#0;class#Render#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="61" column="41" lean-forward="true" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1137,20 +922,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/elements/CameraTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="97" column="56" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#add_geometry#0;class#Geometries#0" />
-            <element signature="e#930#939#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-187">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1163,19 +936,6 @@
             <element signature="method#Plane#0;class#Plane#0" />
             <element signature="method#Plane#2;class#Plane#0" />
             <element signature="method#findIntersections#0;class#Plane#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Scene#0;class#Scene#0" />
-            <element signature="method#Scene#1;class#Scene#0" />
-            <element signature="method#set_camera#0;class#Scene#0" />
           </folding>
         </state>
       </provider>
@@ -1194,10 +954,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="156" column="46" lean-forward="true" selection-start-line="156" selection-start-column="46" selection-end-line="156" selection-end-column="46" />
+        <state relative-caret-position="680">
+          <caret line="121" column="10" selection-start-line="121" selection-start-column="10" selection-end-line="121" selection-end-column="10" />
           <folding>
             <element signature="method#Camera#0;class#Camera#0" />
             <element signature="method#Camera#1;class#Camera#0" />
@@ -1207,6 +984,181 @@
             <element signature="method#Camera#5;class#Camera#0" />
             <element signature="docComment;method#constructRayThroughPixel#0;class#Camera#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/AmbientLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Ray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="method#Ray#0;class#Ray#0" />
+            <element signature="method#Ray#1;class#Ray#0" />
+            <element signature="method#isParallelTo#0;class#Ray#0" />
+            <element signature="method#findIntersection#0;class#Ray#0" />
+            <element signature="method#equals#0;class#Ray#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="447" column="61" selection-start-line="447" selection-start-column="61" selection-end-line="447" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Matrix#0;class#Matrix#0" />
+            <element signature="method#Matrix#1;class#Matrix#0" />
+            <element signature="method#Matrix#2;class#Matrix#0" />
+            <element signature="method#Matrix#3;class#Matrix#0" />
+            <element signature="method#add#0;class#Matrix#0" />
+            <element signature="method#sub#0;class#Matrix#0" />
+            <element signature="method#mult#0;class#Matrix#0" />
+            <element signature="method#mult#1;class#Matrix#0" />
+            <element signature="method#mult#2;class#Matrix#0" />
+            <element signature="method#multRow#0;class#Matrix#0" />
+            <element signature="method#multCol#0;class#Matrix#0" />
+            <element signature="method#staticDeterminant#0;class#Matrix#0" />
+            <element signature="method#staticDeterminant#1;class#Matrix#0" />
+            <element signature="method#transpose#0;class#Matrix#0" />
+            <element signature="method#copyColumnToColumn#0;class#Matrix#0" />
+            <element signature="method#copyRowToRow#0;class#Matrix#0" />
+            <element signature="method#copyVector3ToColumn#0;class#Matrix#0" />
+            <element signature="method#getColumn#0;class#Matrix#0" />
+            <element signature="method#getColumnAsVector3#0;class#Matrix#0" />
+            <element signature="method#inversedMatrix3X3#0;class#Matrix#0" />
+            <element signature="method#inverse3x3#0;class#Matrix#0" />
+            <element signature="method#set_matrix_3x3#0;class#Matrix#0" />
+            <element signature="method#grahmSchmidt3X3#0;class#Matrix#0" />
+            <element signature="docComment;method#orthonormalized#0;class#Matrix#0" />
+            <element signature="method#orthonormalized#0;class#Matrix#0" />
+            <element signature="method#orthonormalize#0;class#Matrix#0" />
+            <element signature="method#orthonormalBasis3X3#0;class#Matrix#0" />
+            <element signature="method#toString#0;class#Matrix#0" />
+            <element signature="method#equals#0;class#Matrix#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <element signature="method#Coordinate#0;class#Coordinate#0" />
+            <element signature="method#equals#0;class#Coordinate#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Point2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="method#Point2D#0;class#Point2D#0" />
+            <element signature="method#Point2D#1;class#Point2D#0" />
+            <element signature="method#Point2D#2;class#Point2D#0" />
+            <element signature="method#Point2D#3;class#Point2D#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Material.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/RadialGeometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Cylinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Cylinder#0;class#Cylinder#0" />
+            <element signature="method#Cylinder#1;class#Cylinder#0" />
+            <element signature="method#Cylinder#2;class#Cylinder#0" />
+            <element signature="method#get_normal#0;class#Cylinder#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Intersectable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/IGeometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+          <folding>
+            <element signature="e#1111#1112#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="42" column="70" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#983#1014#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="31" column="58" lean-forward="true" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
         </state>
       </provider>
     </entry>

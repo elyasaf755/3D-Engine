@@ -1,5 +1,6 @@
 package renderer;
 
+import geometries.IGeometry;
 import primitives.Point3D;
 import primitives.Ray;
 import scene.Scene;
@@ -7,6 +8,7 @@ import scene.Scene;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Render {
     private Scene _scene;
@@ -31,14 +33,14 @@ public class Render {
                         _imageWriter.getWidth(), _imageWriter.getHeight()
                 );
 
-                ArrayList<Point3D> intersectionPoints = _scene.get_geometries().findIntersections(ray);
+                Map<IGeometry, ArrayList<Point3D>> intersectionPoints = _scene.get_geometries().getSceneRayIntersections(ray);
 
                 if (intersectionPoints.isEmpty() == true)
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
-                    Point3D closestPoint = getClosestPoint(intersectionPoints);
-                    //_imageWriter.writePixel(i, j, calcColor(closestPoint));
-                    _imageWriter.writePixel(i, j, Color.BLUE);//TODO: fix
+                    Map<IGeometry, Point3D> closestPoint = getClosestPoint(intersectionPoints);
+                    _imageWriter.writePixel(i, j, calcColor(closestPoint.geometry, closestPoint.point));
+                    //_imageWriter.writePixel(i, j, Color.BLUE);
                 }
             }
         }
@@ -50,7 +52,7 @@ public class Render {
     }
 
     private Point3D getClosestPoint(ArrayList<Point3D> points){
-        //TODO: Check
+        //TODO: implement for map
         if (points.size() == 0)
             return null;
 
