@@ -35,20 +35,26 @@ class RenderTest {
 
         //Upper right
         Triangle triangle1 = new Triangle(
-                new Point3D(100, -250, 250),
-                new Point3D(100, -250, 0),
-                new Point3D(100, 0, 250));
+                new Point3D(100, -100, 100),
+                new Point3D(100, -100, 0),
+                new Point3D(100, 0, 100));
 
         //Upper left
         Triangle triangle2 = new Triangle(
-                new Point3D(100, 250, 250),
-                new Point3D(100, 0, 250),
-                new Point3D(100, 250, 0));
+                new Point3D(100, 100, 100),
+                new Point3D(100, 0, 100),
+                new Point3D(100, 100, 0));
 
         Triangle triangle3 = new Triangle(
-                new Point3D(100, 0, 0),
-                new Point3D(100, 10, 10),
-                new Point3D(100, 0, 10));
+                new Point3D(100, 100, 0),
+                new Point3D(100, 100, -100),
+                new Point3D(100, 0, -100));
+
+        Triangle triangle4 = new Triangle(
+                new Point3D(100, -100, 0),
+                new Point3D(100, 0, -100),
+                new Point3D(100, -100, -100));
+
 
 /*
         //unknown
@@ -65,7 +71,7 @@ class RenderTest {
                 new Point3D(-98, -98, -49));
 */
         //scene.addGeometries(triangle1, triangle2, triangle3, triangle4);
-        scene.addGeometries(triangle1, triangle2, triangle3);
+        scene.addGeometries(triangle1, triangle2, triangle3, triangle4);
 
         ImageWriter imageWriter = new ImageWriter("1stRenderTest", 500, 500, 500, 500);
 

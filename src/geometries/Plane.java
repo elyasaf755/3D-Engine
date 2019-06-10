@@ -44,7 +44,7 @@ public class Plane implements Intersectable{
     public ArrayList<Point3D> findIntersections(Ray ray) {
         double denom = _normal.dotProduct(ray.get_direction());
         //if denom approaches 0
-        if (denom > 1e-6){
+        if (Math.abs(denom) > 1e-6){
             if (_point.equals(ray.get_point()))
                 return new ArrayList<Point3D>();
 

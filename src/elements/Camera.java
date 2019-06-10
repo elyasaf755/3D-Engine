@@ -118,8 +118,9 @@ public class Camera {
     **/
     public Ray constructRayThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
         //Fix pixel locations
-        i = Nx - i;
+        i = Nx - i - 1;
         //j = Ny - j;
+
 
         Point3D p0 = get_origin();
         Vector3D direction = get_direction();
