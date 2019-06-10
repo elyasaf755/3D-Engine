@@ -43,6 +43,10 @@ public class Geometries implements Intersectable {
         while(iter.hasNext())
         {
             ArrayList<Point3D> intersectionPoints = iter.next().findIntersections(ray);
+            if (intersectionPoints.isEmpty() == false){
+                int x = 5;
+                x++;
+            }
             result.addAll(intersectionPoints);
         }
 
