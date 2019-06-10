@@ -19,7 +19,7 @@ class CameraTest {
         Camera camera = new Camera(new Point3D(), direction, up , right);
 
         Ray actual = camera.constructRayThroughPixel(3, 3, 0, 0, 100, 150, 150);
-        Ray expected = new Ray(new Vector3D(100, 50, -50).normalized());
+        Ray expected = new Ray(new Vector3D(100, 50, 50).normalized());
         assertEquals(expected, actual);
 
         //Constructors check BTW
@@ -51,16 +51,16 @@ class CameraTest {
         Camera camera1 = new Camera(direction1);
 
         Ray actual1 = camera1.constructRayThroughPixel(3, 3, 0, 0, 100, 150, 150);
-        Ray expected1 = new Ray(new Vector3D(100, 50, -50).normalized());
+        Ray expected1 = new Ray(new Vector3D(100, 50, 50).normalized());
         assertEquals(expected1, actual1);
 
         //Different pixel positions check
         actual1 = camera1.constructRayThroughPixel(3, 3, 0, 1, 100, 150, 150);
-        expected1 = new Ray(new Vector3D(100, 0, -50).normalized());
+        expected1 = new Ray(new Vector3D(100, 0, 50).normalized());
         assertEquals(expected1, actual1);
 
         actual1 = camera1.constructRayThroughPixel(3, 3, 0, 2, 100, 150, 150);
-        expected1 = new Ray(new Vector3D(100, -50, -50).normalized());
+        expected1 = new Ray(new Vector3D(100, -50, 50).normalized());
         assertEquals(expected1, actual1);
 
         actual1 = camera1.constructRayThroughPixel(3, 3, 1, 0, 100, 150, 150);
@@ -76,15 +76,15 @@ class CameraTest {
         assertEquals(expected1, actual1);
 
         actual1 = camera1.constructRayThroughPixel(3, 3, 2, 0, 100, 150, 150);
-        expected1 = new Ray(new Vector3D(100, 50, 50).normalized());
+        expected1 = new Ray(new Vector3D(100, 50, -50).normalized());
         assertEquals(expected1, actual1);
 
         actual1 = camera1.constructRayThroughPixel(3, 3, 2, 1, 100, 150, 150);
-        expected1 = new Ray(new Vector3D(100, 0, 50).normalized());
+        expected1 = new Ray(new Vector3D(100, 0, -50).normalized());
         assertEquals(expected1, actual1);
 
         actual1 = camera1.constructRayThroughPixel(3, 3, 2, 2, 100, 150, 150);
-        expected1 = new Ray(new Vector3D(100, -50, 50).normalized());
+        expected1 = new Ray(new Vector3D(100, -50, -50).normalized());
         assertEquals(expected1, actual1);
 
         /************************************************/
@@ -95,7 +95,7 @@ class CameraTest {
         Camera camera2 = new Camera(new Point3D(), direction2);
 
         Ray actual2 = camera2.constructRayThroughPixel(4, 4, 0, 0, 100, 200, 200);
-        Ray expected2 = new Ray(new Vector3D(100, 75, -75).normalized());
+        Ray expected2 = new Ray(new Vector3D(100, 75, 75).normalized());
         assertEquals(expected2, actual2);
     }
 
