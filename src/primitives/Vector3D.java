@@ -67,6 +67,11 @@ public class Vector3D {
 
     //Methods
     public Vector3D subtract(Vector3D vector3D){
+        //TODO: Q: THROW EXCEPTION?
+        if (this.equals(vector3D)){
+            return null;
+        }
+
         return new Vector3D(_point.subtract(vector3D._point));
     }
 

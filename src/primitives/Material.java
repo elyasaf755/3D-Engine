@@ -3,7 +3,7 @@ package primitives;
 public class Material {
     protected double _Kd;
     protected double _Ks;
-    protected int _nShininess;
+    protected int _nShininess;//Shininess factor. higher values - higher shininess. range from 0 and on.
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXISTS).
 
     //TODO: Implement class
@@ -12,9 +12,9 @@ public class Material {
 
     public Material(){
         //TODO: change to good values.
-        _Kd = 1;
-        _Ks = 1;
-        _nShininess = 1;
+        _Kd = 0.3;
+        _Ks = 0.3;
+        _nShininess = 3;
     }
 
     public Material(Material material){

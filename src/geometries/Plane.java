@@ -7,7 +7,7 @@ import primitives.Vector3D;
 
 import java.util.ArrayList;
 
-public class Plane extends Geometry{
+public class Plane extends Geometry  implements FlatGeometry{
     protected Point3D _point;
     protected Vector3D _normal;
 
@@ -42,7 +42,7 @@ public class Plane extends Geometry{
     //Methods
 
     @Override
-    Vector3D get_normal(Point3D point3D) {
+    public Vector3D get_normal(Point3D point3D) {
         return get_normal();
     }
 

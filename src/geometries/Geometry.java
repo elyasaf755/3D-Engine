@@ -8,11 +8,11 @@ import primitives.Vector3D;
 public abstract class Geometry implements Intersectable {
     private Color _emission;
     private Material _material;
-    //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXISTS).
+    //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXIST).
 
     //TODO: Implement class
 
-    //Contructors
+    //Constructors
 
     public Geometry(){
         _emission = new Color(java.awt.Color.WHITE);
@@ -60,7 +60,7 @@ public abstract class Geometry implements Intersectable {
 
     //Methods
 
-    abstract Vector3D get_normal(Point3D point3D);
+    public abstract Vector3D get_normal(Point3D point3D);
 
     //Overrides
 

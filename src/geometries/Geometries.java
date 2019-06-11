@@ -5,6 +5,7 @@ import primitives.Ray;
 import primitives.Util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Geometries implements Intersectable {
 
@@ -32,19 +33,6 @@ public class Geometries implements Intersectable {
         }
     }
 
-    //TODO:Duplicate of findIntersections
-    public ArrayList<GeoPoint> getSceneRayIntersections(Ray ray) {
-        ArrayList<GeoPoint> result = new ArrayList<>();;
-
-        for (Geometry geometry : _geometriesList){
-            result.addAll(geometry.findIntersections(ray));
-        }
-
-        Util.removeDuplicates(result);
-
-        return result;
-    }
-
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         ArrayList<GeoPoint> result = new ArrayList<>();;
@@ -56,6 +44,10 @@ public class Geometries implements Intersectable {
         Util.removeDuplicates(result);
 
         return result;
+    }
+
+    public Iterator<Geometry> getGeometriesIterator(){
+        return _geometriesList.iterator();
     }
 
     //Overrides
