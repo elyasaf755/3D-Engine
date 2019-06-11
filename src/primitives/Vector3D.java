@@ -1,7 +1,5 @@
 package primitives;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory;
-
 public class Vector3D {
     protected Point3D _point;
 

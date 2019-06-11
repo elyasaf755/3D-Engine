@@ -11,6 +11,7 @@ public class Tube extends Cylinder {
     protected double _height;
 
     //Constructors
+
     public Tube(double radius, Ray ray, double height){
         super(radius, ray);
 
@@ -36,11 +37,13 @@ public class Tube extends Cylinder {
     }
 
     //Getters
+
     public double get_height() {
         return _height;
     }
 
-    //Overrides
+    //Methods
+
     @Override
     public Vector3D get_normal(Point3D point3D) {
         if (point3D.equals(_ray.get_point())){
@@ -57,7 +60,27 @@ public class Tube extends Cylinder {
     }
 
     @Override
-    public ArrayList<Point3D> findIntersections(Ray ray) {
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
         return super.findIntersections(ray);
+    }
+
+    //Overrides
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO: CHECK
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (!(obj instanceof Tube))
+            return false;
+
+        Tube tube = (Tube) obj;
+
+        return super.equals(obj) &&
+                _height == tube.get_height();
     }
 }

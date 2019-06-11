@@ -1,63 +1,85 @@
 package geometries;
 
-import primitives.Point3D;
+import primitives.Coordinate;
 import primitives.Ray;
 import primitives.Util;
-import geometries.IGeometry;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
+public class Geometries implements Intersectable {
 
-public class Geometries {
-
-    protected ArrayList<IGeometry> _geometriesList;
+    protected ArrayList<Geometry> _geometriesList;
 
 
     /********** Constructors ***********/
 
     public Geometries()
     {
-        _geometriesList = new ArrayList<IGeometry>();
+        _geometriesList = new ArrayList<>();
     }
 
     /********** Getters ***********/
 
-    public ArrayList<IGeometry> get_GeometriesList() {
+    public ArrayList<Geometry> get_GeometriesList() {
         return _geometriesList;
     }
 
-    /************** Operations ***************/
+    /************** Methods ***************/
 
-    public void add_geometry (IGeometry... geometries) {
-        for (IGeometry geometry: geometries) {
+    public void add_geometry (Geometry... geometries) {
+        for (Geometry geometry: geometries) {
             _geometriesList.add(geometry);
         }
     }
 
-    /*************** Overrides *****************/
+    //TODO:Duplicate of findIntersections
+    public ArrayList<GeoPoint> getSceneRayIntersections(Ray ray) {
+        ArrayList<GeoPoint> result = new ArrayList<>();;
 
-    //@Override
-    public Map<IGeometry, ArrayList<Point3D>> getSceneRayIntersections(Ray ray) {
-        Map<IGeometry, ArrayList<Point3D>> intersectionPoints = new HashMap<IGeometry, ArrayList<Point3D>>();;
-
-        for (IGeometry geometry : _geometriesList){
-            ArrayList<Point3D> geometryIntersectionPoints = geometry.findIntersections(ray);
-            intersectionPoints.put(geometry , geometryIntersectionPoints);
+        for (Geometry geometry : _geometriesList){
+            result.addAll(geometry.findIntersections(ray));
         }
-        /*
-        Iterator<Intersectable> iter = _geometriesList.iterator();
-        while(iter.hasNext())
-        {
-            ArrayList<Point3D> intersectionPoints = iter.next().findIntersections(ray);
-            result.addAll(intersectionPoints);
+
+        Util.removeDuplicates(result);
+
+        return result;
+    }
+
+    @Override
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        ArrayList<GeoPoint> result = new ArrayList<>();;
+
+        for (Geometry geometry : _geometriesList){
+            result.addAll(geometry.findIntersections(ray));
         }
-         */
 
-        //Util.removeDuplicates(result);todo: to implement for map
+        Util.removeDuplicates(result);
 
-        return intersectionPoints;
+        return result;
+    }
+
+    //Overrides
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO: CHECK
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (!(obj instanceof Geometries))
+            return false;
+
+        Geometries geometries = (Geometries) obj;
+        ArrayList<Geometry> geometriesList = geometries.get_GeometriesList();
+
+        for (int i = 0; i < _geometriesList.size(); ++i){
+            if (!(_geometriesList.get(i).equals(geometriesList.get(i))))
+                return false;
+        }
+
+        return true;
     }
 }

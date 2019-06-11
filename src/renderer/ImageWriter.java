@@ -1,6 +1,6 @@
 package renderer;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class ImageWriter {
     }
 
     //Todo: change Color to "primitives" type from "java.awt" type?
-    public void writePixel(int xIndex, int yIndex, java.awt.Color color){
+    public void writePixel(int xIndex, int yIndex, Color color){
         _image.setRGB(xIndex, yIndex, color.getRGB());
     }
 

@@ -7,7 +7,7 @@ import primitives.Vector3D;
 
 import java.util.ArrayList;
 
-public class Plane implements Intersectable{
+public class Plane extends Geometry{
     protected Point3D _point;
     protected Vector3D _normal;
 
@@ -39,24 +39,52 @@ public class Plane implements Intersectable{
         return new Vector3D(_normal);
     }
 
+    //Methods
 
     @Override
-    public ArrayList<Point3D> findIntersections(Ray ray) {
+    Vector3D get_normal(Point3D point3D) {
+        return get_normal();
+    }
+
+    @Override
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
         double denom = _normal.dotProduct(ray.get_direction());
         //if denom approaches 0
         if (Math.abs(denom) > 1e-6){
             if (_point.equals(ray.get_point()))
-                return new ArrayList<Point3D>();
+                return new ArrayList<>();
 
             double t = (_point.subtract(ray.get_point()).dotProduct(_normal)) / denom;
 
             if (t >= 0){
-                ArrayList<Point3D> result = new ArrayList<>();
-                result.add(ray.get_point().add(ray.get_direction().scale(t)));
+                ArrayList<GeoPoint> result = new ArrayList<>();
+                result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scale(t))));
                 return result;
             }
         }
 
-        return new ArrayList<Point3D>();
+        return new ArrayList<>();
+    }
+
+    //Overrides
+
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO: CHECK
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (!(obj instanceof Plane))
+            return false;
+
+        Plane plane = (Plane) obj;
+
+        return super.equals(obj) &&
+                _point.equals(plane.get_point()) &&
+                _normal.equals(plane.get_normal());
     }
 }

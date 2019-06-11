@@ -1,6 +1,8 @@
 package renderer;
 
-import geometries.IGeometry;
+import geometries.Geometry;
+import geometries.Sphere;
+import geometries.Triangle;
 import primitives.Point3D;
 import primitives.Ray;
 import scene.Scene;
@@ -9,6 +11,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static geometries.Intersectable.GeoPoint;
 
 public class Render {
     private Scene _scene;
@@ -24,7 +28,6 @@ public class Render {
     //Methods
 
     public void renderImage(){
-        //TODO: check
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
                 Ray ray = _scene.get_camera().constructRayThroughPixel(
@@ -33,43 +36,43 @@ public class Render {
                         _imageWriter.getWidth(), _imageWriter.getHeight()
                 );
 
-                Map<IGeometry, ArrayList<Point3D>> intersectionPoints = _scene.get_geometries().getSceneRayIntersections(ray);
+                ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().getSceneRayIntersections(ray);
 
                 if (intersectionPoints.isEmpty() == true)
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
-                    Map<IGeometry, Point3D> closestPoint = getClosestPoint(intersectionPoints);
-                    _imageWriter.writePixel(i, j, calcColor(closestPoint.geometry, closestPoint.point));
-                    //_imageWriter.writePixel(i, j, Color.BLUE);
+                    GeoPoint closestPoint = getClosestPoint(intersectionPoints);
+                    _imageWriter.writePixel(i, j, calcColor(closestPoint));
+                    //_imageWriter.writePixel(i, j, Color.BLUE);TODO: for del
                 }
             }
         }
     }
 
-    private primitives.Color calcColor(Point3D point){
+    private Color calcColor(GeoPoint geoPoint){
         //TODO: Implement
-        return _scene.get_ambientLight().getIntensity();
+        return geoPoint.geometry.get_emission().getColor();
     }
 
-    private Point3D getClosestPoint(ArrayList<Point3D> points){
+    private GeoPoint getClosestPoint(ArrayList<GeoPoint> geoPoints){
         //TODO: implement for map
-        if (points.size() == 0)
+        if (geoPoints.size() == 0)
             return null;
 
         Point3D origin = _scene.get_camera().get_origin();
         double shortestDistance = 0;
-        Point3D closestPoint = null;
+        GeoPoint closestPoint = null;
 
-        for(Point3D point : points){
+        for(GeoPoint geoPoint : geoPoints){
             if (closestPoint == null && shortestDistance == 0){
-                closestPoint = point;
-                shortestDistance = origin.distance(point);
+                closestPoint = geoPoint;
+                shortestDistance = origin.distance(geoPoint.point);
             }
             else{
-                double distance = origin.distance(point);
+                double distance = origin.distance(geoPoint.point);
                 if (distance < shortestDistance){
                     shortestDistance = distance;
-                    closestPoint = point;
+                    closestPoint = geoPoint;
                 }
             }
         }
@@ -78,7 +81,6 @@ public class Render {
     }
 
     public void printGrid(int interval){
-        //TODO: Check
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
                 if (i % interval == 0 || j % interval == 0){
@@ -89,7 +91,6 @@ public class Render {
     }
 
     public void printGrid(int interval, java.awt.Color color){
-        //TODO: Check
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
                 if (i % interval == 0 || j % interval == 0){

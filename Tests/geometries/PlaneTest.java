@@ -6,6 +6,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector3D;
 
+import geometries.Intersectable.GeoPoint;
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,26 +33,26 @@ class PlaneTest {
     void findIntersections() {
         //orthogonal and ray origin is before the plane
         Ray ray1 = new Ray(new Vector3D(1,0,0));
-        ArrayList<Point3D> expected1 = new ArrayList<Point3D>();
-        expected1.add(new Point3D(1, 0, 0));
+        ArrayList<GeoPoint> expected1 = new ArrayList<>();
+        expected1.add(new GeoPoint(plane2, new Point3D(1, 0, 0)));
         assertEquals(expected1, plane2.findIntersections(ray1));
 
 
         //orthogonal and ray origin is in the plane
         Ray ray2 = new Ray(new Point3D(1,0,0), new Vector3D(1,0,0));
-        assertEquals(new ArrayList<Point3D>(), plane2.findIntersections(ray2));
+        assertEquals(new ArrayList<GeoPoint>(), plane2.findIntersections(ray2));
 
         //orthogonal and ray origin is after the plane
         Ray ray3 = new Ray(new Point3D(2,0,0), new Vector3D(1,0,0));
-        assertEquals(new ArrayList<Point3D>(), plane2.findIntersections(ray3));
+        assertEquals(new ArrayList<GeoPoint>(), plane2.findIntersections(ray3));
 
         //parllel and ray not included
         Ray ray4 = new Ray(new Vector3D(0,0,1));
-        assertEquals(new ArrayList<Point3D>(), plane2.findIntersections(ray4));
+        assertEquals(new ArrayList<GeoPoint>(), plane2.findIntersections(ray4));
 
         //parllel and ray included
         Ray ray5 = new Ray(new Point3D(1,0,0), new Vector3D(0,0,1));
-        assertEquals(new ArrayList<Point3D>(), plane2.findIntersections(ray5));
+        assertEquals(new ArrayList<GeoPoint>(), plane2.findIntersections(ray5));
 
     }
 }

@@ -42,9 +42,11 @@ public class Triangle extends Plane{
         return new Point3D(_point3);
     }
 
+    //Methods
+
     @Override
-    public ArrayList<Point3D> findIntersections(Ray ray) {
-        ArrayList<Point3D> planeIntersections = super.findIntersections(ray);
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        ArrayList<GeoPoint> planeIntersections = super.findIntersections(ray);
 
         if (planeIntersections.size() == 0){
             return planeIntersections;
@@ -58,9 +60,9 @@ public class Triangle extends Plane{
         Vector3D n2 = v2.crossProduct(v3).normalized();
         Vector3D n3 = v3.crossProduct(v1).normalized();
 
-        ArrayList<Point3D> result = new ArrayList<Point3D>();
+        ArrayList<GeoPoint> result = new ArrayList<>();
 
-        Point3D p = planeIntersections.get(0);
+        Point3D p = planeIntersections.get(0).point;
 
         double scalar1 = p.subtract(ray.get_point()).dotProduct(n1);
         double scalar2 = p.subtract(ray.get_point()).dotProduct(n2);
@@ -72,16 +74,36 @@ public class Triangle extends Plane{
                 Util.isNegative(scalar2) &&
                 Util.isNegative(scalar3))
         {
-            result.add(p);
+            result.add(new GeoPoint(this, p));
         }
         else if (!Util.isNegative(scalar1) &&
                     !Util.isNegative(scalar2) &&
                     !Util.isNegative(scalar3))
         {
-            result.add(p);
+            result.add(new GeoPoint(this, p));
         }
 
         return result;
     }
 
+    //Overrides
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO: CHECK
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (!(obj instanceof Triangle))
+            return false;
+        Triangle triangle = (Triangle) obj;
+
+        return super.equals(obj) &&
+                _point1.equals(triangle.get_point1()) &&
+                _point2.equals(triangle.get_point2()) &&
+                _point3.equals(triangle.get_point3());
+    }
 }

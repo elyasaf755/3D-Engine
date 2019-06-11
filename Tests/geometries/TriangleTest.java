@@ -3,6 +3,8 @@ package geometries;
 import org.junit.jupiter.api.Test;
 import primitives.*;
 
+import geometries.Intersectable.GeoPoint;
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,8 +46,8 @@ class TriangleTest {
     void findIntersections() {
         //ray origin before triangle (no need more tests since it's kindda inheritted from plane interesections and we already tested that).
         Ray ray1 = new Ray(new Point3D(0, 1.5, 1), new Vector3D(1, 0, 0));
-        ArrayList<Point3D> expected1 = new ArrayList<Point3D>();
-        expected1.add(new Point3D(1, 1.5, 1));
+        ArrayList<Intersectable.GeoPoint> expected1 = new ArrayList<>();
+        expected1.add(new GeoPoint(t4, new Point3D(1, 1.5, 1)));
         assertEquals(expected1, t4.findIntersections(ray1));
 
     }

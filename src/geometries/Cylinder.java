@@ -33,7 +33,7 @@ public class Cylinder extends RadialGeometry{
         return _ray;
     }
 
-    //Overrides
+    //Methods
     @Override
     public Vector3D get_normal(Point3D point3D) {
         Vector3D subPoints = point3D.subtract(_ray.get_point());
@@ -53,8 +53,8 @@ public class Cylinder extends RadialGeometry{
 
     //Cylinder in the Z direction.
     @Override
-    public ArrayList<Point3D> findIntersections(Ray ray) {
-        ArrayList<Point3D> result = new ArrayList<>();
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        ArrayList<GeoPoint> result = new ArrayList<>();
 
         Vector3D A1 = ray.get_direction().subtract(_ray.get_direction().scale(ray.get_direction().dotProduct(_ray.get_direction())));
         double A = A1.squared();
@@ -66,10 +66,26 @@ public class Cylinder extends RadialGeometry{
         double[] roots = Util.quadraticRoots(A, B, C);
 
         for (double root : roots){
-            result.add(ray.get_point().add(ray.get_direction().scale(root)));
+            result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scale(root))));
         }
 
         return result;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        //TODO: Check
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (!(obj instanceof Cylinder))
+            return false;
+
+        Cylinder cylinder = (Cylinder) obj;
+
+        return super.equals(obj) && _ray.equals(cylinder.get_ray());
+    }
 }

@@ -3,11 +3,10 @@ package scene;
 import elements.AmbientLight;
 import elements.Camera;
 import geometries.Geometries;
-import geometries.Intersectable;
+import geometries.Geometry;
 import primitives.Color;
 import primitives.Vector3D;
 
-//TODO: QUESTION: Make Scene class inherit from Geometries class?
 public class Scene {
     private String _name;
     private Color _background;
@@ -76,7 +75,7 @@ public class Scene {
 
     //Methods
 
-    public void addGeometries(Intersectable... geometries){
+    public void addGeometries(Geometry... geometries){
         _geometries.add_geometry(geometries);
     }
 }

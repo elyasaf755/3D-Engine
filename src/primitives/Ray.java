@@ -3,8 +3,8 @@ package primitives;
 import java.math.BigDecimal;
 
 public class Ray {
-    Point3D _point;
-    Vector3D _direction;
+    private Point3D _point;
+    private Vector3D _direction;
 
     //Constructors
     public Ray(Point3D point, Vector3D direction){
@@ -18,8 +18,8 @@ public class Ray {
     }
 
     public Ray(Ray ray){
-        _point = new Point3D(ray._point);
-        _direction = (new Vector3D(ray._direction)).normalized();
+        _point = new Point3D(ray.get_point());
+        _direction = (new Vector3D(ray.get_direction())).normalized();
     }
 
     //Getters
@@ -99,6 +99,7 @@ public class Ray {
     //Overrides
     @Override
     public boolean equals(Object obj) {
+        //TODO: CHECK
         if (this == obj)
             return true;
 
@@ -110,8 +111,8 @@ public class Ray {
 
         Ray ray = (Ray)obj;
 
-        return _point.equals(ray._point) &&
-                _direction.equals(ray._direction);
+        return _point.equals(ray.get_point()) &&
+                _direction.equals(ray.get_direction());
     }
 
     @Override
