@@ -171,6 +171,19 @@ public class Color {
     }
 
     /**
+     * Multiply the color by a color (added by Elyasaf Elbaz)
+     * @param color color to multiply by
+     * @return new color (R1*R2, G1*G2, B1*B2)
+     */
+    public Color mult(Color color){
+        return new Color(
+                this.getColor().getRed() * color.getColor().getRed(),
+                this.getColor().getGreen() * color.getColor().getGreen(),
+                this.getColor().getBlue() * color.getColor().getBlue()
+        );
+    }
+
+    /**
      * Scale the color by (1 / reduction factor)
      *
      * @param k reduction factor

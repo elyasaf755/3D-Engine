@@ -51,7 +51,7 @@ public class Cylinder extends RadialGeometry{
         //return point3D.subtract(_ray.get_point().add(_ray.get_direction().scale(_ray.get_direction().dotProduct(point3D.subtract(_ray.get_point()))))).normalized();
     }
 
-    //Cylinder in the Z direction.
+    //only works when the cylinder in the Z direction.
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         ArrayList<GeoPoint> result = new ArrayList<>();

@@ -4,27 +4,25 @@ import primitives.Color;
 import primitives.Point3D;
 
 public abstract class Light {
-    protected Color _intensity;
+    protected Color _color;
 
-    //TODO: Implement class
+    //TODO: Test class functions.
 
     //Constructors
 
     public Light(){
-        _intensity = new Color(java.awt.Color.WHITE);
+        _color = new Color(java.awt.Color.WHITE);
     }
 
-    public Light(Color intensity){
-        _intensity = new Color(intensity);
+    public Light(Color color){
+        _color = new Color(color);
     }
 
-    public Light(java.awt.Color intensity){
-        _intensity = new Color(intensity);
+    public Light(java.awt.Color color){
+        _color = new Color(color);
     }
 
     //Methods
 
-    public Color getIntensity(Point3D point){
-        return new Color(_intensity);
-    }
+    public abstract Color getIntensity();
 }

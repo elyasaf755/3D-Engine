@@ -8,6 +8,8 @@ public class Matrix {
     private int _numOfRows;
     private int _numOfCols;
 
+    //Constructors
+
     public Matrix(int rows, int cols){
         _matrix = new double[rows][cols];
         _numOfRows = rows;
@@ -65,6 +67,8 @@ public class Matrix {
         _matrix[1][2] = v3.getPoint().getY().getCoord();
         _matrix[2][2] = v3.getPoint().getZ().getCoord();
     }
+
+    //Methods
 
     public int getRows(){return _numOfRows;}
 
@@ -306,7 +310,7 @@ public class Matrix {
         return result;
     }
 
-    public static Vector3D getColumnAsVector3(Matrix source, int colIndex){
+    public static Vector3D getColumnAsVector3(Matrix source, int colIndex) {
         return new Vector3D(
                 source.get_element(0, colIndex),
                 source.get_element(1, colIndex),

@@ -2,10 +2,15 @@ package scene;
 
 import elements.AmbientLight;
 import elements.Camera;
+import elements.Light;
+import elements.LightSource;
 import geometries.Geometries;
 import geometries.Geometry;
 import primitives.Color;
 import primitives.Vector3D;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Scene {
     private String _name;
@@ -14,6 +19,7 @@ public class Scene {
     private Geometries _geometries;
     private Camera _camera;
     private double _screenDistance;
+    ArrayList<LightSource> _lights;
 
     //Constructors
 
@@ -22,8 +28,9 @@ public class Scene {
         _background = new Color(java.awt.Color.WHITE);
         _ambientLight = new AmbientLight();
         _geometries = new Geometries();
-        _camera = new Camera(new Vector3D(1,0,0));
+        _camera = new Camera(new Vector3D(1,0,0), new Vector3D(0,0,1));
         _screenDistance = 100;
+        _lights = new ArrayList<>();
     }
 
     public Scene(String name){
@@ -57,6 +64,10 @@ public class Scene {
         return _screenDistance;
     }
 
+    public ArrayList<LightSource> get_lights() {
+        return _lights;
+    }
+
     //Setters
 
     public void set_background(Color _background) {
@@ -77,5 +88,15 @@ public class Scene {
 
     public void addGeometries(Geometry... geometries){
         _geometries.add_geometry(geometries);
+    }
+
+    public void addLights(LightSource... lights){
+        for (LightSource light : lights){
+            _lights.add(light);
+        }
+    }
+
+    public Iterator<LightSource> getLightsIterator(){
+        return _lights.iterator();
     }
 }
