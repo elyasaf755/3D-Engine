@@ -71,20 +71,54 @@ class SphereTest {
     }
 
     @Test
-    void scale() {
-        double originalVolume = sphere2.getVolume();
-        sphere2.scale(4);
-        double scaledVolume = sphere2.getVolume();
-        assertEquals(true, Math.abs(originalVolume * 4 - scaledVolume) < 0.000000001);
-
-    }
-
-    @Test
     void equals1() {
         Sphere sphere3 = new Sphere(4, new Point3D(1,1,1));
 
         assertEquals(true, sphere1.equals(sphere1));
         assertEquals(false, sphere1.equals(sphere2));
         assertEquals(true, sphere1.equals(sphere3));
+    }
+
+    @Test
+    void scaleVolume() {
+        double originalVolume = sphere2.getVolume();
+        sphere2.scaleVolume(4);
+        double scaledVolume = sphere2.getVolume();
+
+        double x = Math.abs(originalVolume * 4 - scaledVolume);
+
+        assertEquals(true,  x < 0.000000001);
+    }
+
+    @Test
+    void scale() {
+        Sphere actual = new Sphere(5, new Point3D());
+        actual.scale(5);
+        Sphere expected = new Sphere(25, new Point3D());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void translate() {
+        Sphere actual = new Sphere(5,new Point3D());
+        actual.translate(5,5,5);
+        Sphere expected = new Sphere(5, new Point3D(5,5,5));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void rotate() {
+    }
+
+    @Test
+    void scaleXYZ() {
+    }
+
+    @Test
+    void transform() {
+    }
+
+    @Test
+    void transform1() {
     }
 }

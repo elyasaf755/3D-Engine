@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Transform;
-import primitives.Vector3D;
+import primitives.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -74,6 +71,11 @@ public class Tube extends Cylinder {
     @Override
     public void rotate(double x, double y, double z) {
         _ray.rotate(x, y, z);
+    }
+
+    public void scale(double factor){
+        _radius = Util.uscale(_radius, factor);
+        _height = Util.uscale(_height, factor);
     }
 
     @Override

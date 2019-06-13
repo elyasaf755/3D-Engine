@@ -63,6 +63,9 @@ class TubeTest {
 
     @Test
     void scale() {
+        Tube actual = new Tube(5, new Ray(new Point3D(), new Vector3D(0,0,1)), 5);
+        actual.scale(5);
+        Tube expected = new Tube(25, new Ray(new Point3D(), new Vector3D(0,0,1)), 25);
     }
 
     @Test

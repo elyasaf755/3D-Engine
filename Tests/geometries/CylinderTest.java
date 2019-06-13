@@ -89,6 +89,9 @@ class CylinderTest {
 
     @Test
     void scale() {
+        Cylinder actual = new Cylinder(5, new Ray(new Point3D(), new Vector3D(0,0,1)));
+        actual.scale(5);
+        Cylinder expected = new Cylinder(25, new Ray(new Point3D(), new Vector3D(0,0,1)));
     }
 
     @Test

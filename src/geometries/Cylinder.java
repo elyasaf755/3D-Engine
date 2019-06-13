@@ -2,6 +2,7 @@ package geometries;
 
 import javafx.scene.transform.MatrixType;
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.nio.channels.Pipe;
 import java.util.ArrayList;
@@ -82,19 +83,26 @@ public class Cylinder extends RadialGeometry{
         _ray.rotate(x, y, z);
     }
 
+    public void scale(double factor){
+        _radius = Util.uscale(_radius, factor);
+    }
+
     @Override
     public void scale(double x, double y, double z) {
         //TODO: Implement
+        throw new NotImplementedException();
     }
 
     @Override
     public void transform(Transform _transform) {
         //TODO: Implement
+        throw new NotImplementedException();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         //TODO: Implement
+        throw new NotImplementedException();
     }
 
     //Overrides
