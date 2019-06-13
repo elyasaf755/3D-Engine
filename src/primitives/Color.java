@@ -155,7 +155,7 @@ public class Color {
     }
 
     /**
-     * Scale the color by a scalar
+     * scale the color by a scalar
      *
      * @param k scale factor
      * @return new Color object which is the result of the operation
@@ -184,7 +184,7 @@ public class Color {
     }
 
     /**
-     * Scale the color by (1 / reduction factor)
+     * scale the color by (1 / reduction factor)
      *
      * @param k reduction factor
      * @return new Color object which is the result of the operation
@@ -197,5 +197,25 @@ public class Color {
         double g = _g / k;
         double b = _b / k;
         return new Color(r, g, b);
+    }
+
+    //Overrides
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (!(obj instanceof Color))
+            return false;
+        Color color = (Color) obj;
+
+        return  Util.equals(_r, color.getColor().getRed()) &&
+                Util.equals(_g, color.getColor().getGreen()) &&
+                Util.equals(_b, color.getColor().getBlue());
+
     }
 }

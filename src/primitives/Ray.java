@@ -2,7 +2,7 @@ package primitives;
 
 import java.math.BigDecimal;
 
-public class Ray {
+public class Ray implements ITransform{
     private Point3D _point;
     private Vector3D _direction;
 
@@ -96,10 +96,42 @@ public class Ray {
         return null;
     }
 
+    @Override
+    public void translate(double x, double y, double z) {
+        _point.translate(x, y, z);
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        _point.rotate(x, y, z);
+        _direction.rotate(x, y, z);
+        _direction.normalize();
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        _point.scale(x, y, z);
+        _direction.scale(x, y, z);
+        _direction.normalize();
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        _point.transform(_transform);
+        _direction.transform(_transform);
+        _direction.normalize();
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        _point.transform(translation, rotation, scale);
+        _direction.transform(translation, rotation, scale);
+        _direction.normalize();
+    }
+
     //Overrides
     @Override
     public boolean equals(Object obj) {
-        //TODO: CHECK
         if (this == obj)
             return true;
 
@@ -119,4 +151,5 @@ public class Ray {
     public String toString() {
         return _point.toString() + " + " + _direction.toString();
     }
+
 }

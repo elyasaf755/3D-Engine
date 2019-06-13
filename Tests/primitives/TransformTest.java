@@ -49,11 +49,16 @@ class TransformTest {
 
         Matrix4 matrix = new Matrix4();
 
-        Vector3D vector = new Vector3D(2,0,0);
+        Vector3D vector1 = new Vector3D(2,0,0);
 
-        Vector3D result = transform1.getTransformation().mult(vector);
+        Vector3D actual1 = transform1.getTransformation().mult(vector1);
 
-        assertEquals(new Vector3D(-8,0,0), result);
+        assertEquals(new Vector3D(-8,0,0), actual1);
+
+        Vector3D expected2 = new Vector3D(2,3,4);
+        Vector3D actual2 = transform.getTransformation().mult(expected2);
+
+        assertEquals(expected2, actual2);
 
 
     }

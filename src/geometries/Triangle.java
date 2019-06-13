@@ -41,6 +41,17 @@ public class Triangle extends Plane implements FlatGeometry{
 
     //Methods
 
+    public static boolean isTriangle(Point3D p1, Point3D p2, Point3D p3){
+        double d1 = p1.distance(p2);
+        double d2 = p1.distance(p3);
+        double d3 = p2.distance(p3);
+
+
+        return  Util.uadd(d1, d2) > d3 &&
+                Util.uadd(d1, d3) > d2 &&
+                Util.uadd(d2, d3) > d1;
+    }
+
     public Point3D getCentroid(){
         double x1 = _point1.getX().getCoord();
         double x2 = _point2.getX().getCoord();
@@ -99,11 +110,71 @@ public class Triangle extends Plane implements FlatGeometry{
         return result;
     }
 
+    @Override
+    public void translate(double x, double y, double z) {
+        super.translate(x, y, z);
+
+        _point1.translate(x, y, z);
+        _point2.translate(x, y, z);
+        _point3.translate(x, y, z);
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        super.rotate(x, y, z);
+
+        _point1.rotate(x, y, z);
+        _point2.rotate(x, y, z);
+        _point3.rotate(x, y, z);
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        super.scale(x, y, z);
+
+        _point1.scale(x, y, z);
+        _point2.scale(x, y, z);
+        _point3.scale(x, y, z);
+    }
+
+    public void scaleInPlace(double x, double y, double z){
+        Point3D oldCentroid = this.getCentroid();
+
+        this.scale(x, y, z);
+
+        Point3D newCentroid = this.getCentroid();
+
+        Vector3D direction = oldCentroid.subtract(newCentroid);
+
+        this.translate(
+                direction.getPoint().getX().getCoord(),
+                direction.getPoint().getY().getCoord(),
+                direction.getPoint().getZ().getCoord()
+        );
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        super.transform(_transform);
+
+        _point1.transform(_transform);
+        _point2.transform(_transform);
+        _point3.transform(_transform);
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        super.transform(translation, rotation, scale);
+
+        _point1.transform(translation, rotation, scale);
+        _point2.transform(translation, rotation, scale);
+        _point3.transform(translation, rotation, scale);
+    }
+
     //Overrides
 
     @Override
     public boolean equals(Object obj) {
-        //TODO: CHECK
         if (this == obj)
             return true;
 
@@ -112,9 +183,10 @@ public class Triangle extends Plane implements FlatGeometry{
 
         if (!(obj instanceof Triangle))
             return false;
+
         Triangle triangle = (Triangle) obj;
 
-        return super.equals(obj) &&
+        return   super.equals(obj) &&
                 _point1.equals(triangle.get_point1()) &&
                 _point2.equals(triangle.get_point2()) &&
                 _point3.equals(triangle.get_point3());

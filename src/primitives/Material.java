@@ -6,7 +6,6 @@ public class Material {
     protected int _nShininess;//Shininess factor. higher values - higher shininess. range from 0 and on.
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXISTS).
 
-    //TODO: Implement class
 
     //Constructors
 
@@ -56,7 +55,6 @@ public class Material {
 
     @Override
     public boolean equals(Object obj) {
-        //TODO: CHECK
         if (this == obj)
             return true;
 
@@ -68,8 +66,8 @@ public class Material {
 
         Material material = (Material) obj;
 
-        return _Kd == material.get_Kd() &&
-                _Ks == material.get_Ks() &&
-                _nShininess == material.get_nShininess();
+        return  Util.equals(_Kd, material.get_Kd()) &&
+                Util.equals(_Ks, material.get_Ks()) &&
+                Util.equals(_nShininess, material.get_nShininess());
     }
 }

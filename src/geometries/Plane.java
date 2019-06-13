@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Util;
-import primitives.Vector3D;
+import primitives.*;
 
 import java.util.ArrayList;
 
@@ -18,6 +15,9 @@ public class Plane extends Geometry  implements FlatGeometry{
     }
 
     public Plane(Point3D p1, Point3D p2, Point3D p3){
+        if (!Triangle.isTriangle(p1, p2, p3))
+            throw new IllegalArgumentException("These points can't form a triangle/plane!");
+
         Vector3D v1 = new Vector3D(p2.subtract(p1));
         Vector3D v2 = new Vector3D(p3.subtract(p1));
 
@@ -89,11 +89,50 @@ public class Plane extends Geometry  implements FlatGeometry{
         return new ArrayList<>();
     }
 
+    @Override
+    public void translate(double x, double y, double z) {
+        _point.translate(x, y, z);
+        _normal.translate(x, y, z);
+        _normal.normalize();
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        _point.rotate(x, y, z);
+        _normal.rotate(x, y, z);
+        _normal.normalize();
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        return;
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        Transform temp = new Transform(_transform);
+
+        _point.transform(_transform);
+
+        temp.setTranslation(Vector3D.ZERO);//Vectors are not translated
+        temp.setScale(1,1,1);//Planes are not scaled.
+
+        _normal.transform(temp);
+        _normal.normalize();
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        _point.transform(translation, rotation, scale);
+
+        _normal.transform(Vector3D.ZERO, rotation , new Vector3D(1,1,1));//Vectors are not translated, planes are not scaled
+        _normal.normalize();
+    }
+
     //Overrides
 
     @Override
     public boolean equals(Object obj) {
-        //TODO: CHECK
         if (this == obj)
             return true;
 
@@ -109,4 +148,5 @@ public class Plane extends Geometry  implements FlatGeometry{
                 _point.equals(plane.get_point()) &&
                 _normal.equals(plane.get_normal());
     }
+
 }

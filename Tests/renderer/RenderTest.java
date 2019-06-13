@@ -352,7 +352,7 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 7 - Scale Test (Occludded)
+    @Test//TEST 7 - Scale Test
     void renderImage7(){
         Scene scene = new Scene("renderTest");
         scene.set_background(new Color(75, 127,190));
@@ -363,24 +363,20 @@ class RenderTest {
 
         //Center sphere
         Sphere sphere = new Sphere(35, new Point3D(100, 0, 0));
+        sphere.set_emission(java.awt.Color.magenta);
 
         Sphere sphereScaled = new Sphere(sphere);
+        sphereScaled.set_emission(java.awt.Color.green);
+        sphereScaled.scale(70);
         Transform transform = new Transform();
-        //transform.
+        transform.setTranslation(new Vector3D(200,0,0));
+
+        sphereScaled.set_point(transform.getTransformation().mult(new Vector3D(sphereScaled.get_point())).getPoint());
+
+        scene.addGeometries(sphere, sphereScaled);
 
 
-        //Upper right
-        Triangle triangle = new Triangle(
-                new Point3D(25, -40, -15),
-                new Point3D(25, -15, -40),
-                new Point3D(25, -40, -40));
-
-        scene.addGeometries(sphere, triangle);
-
-        sphere.set_emission(java.awt.Color.magenta);
-        triangle.set_emission(java.awt.Color.green);
-
-        ImageWriter imageWriter = new ImageWriter("6thRenderTest - Shadow Test", 500, 500, 500, 500);
+        ImageWriter imageWriter = new ImageWriter("7thRenderTest - Sphere Scaling", 500, 500, 500, 500);
 
         Vector3D direction = sphere.get_point().subtract(new Point3D(25,-32,-32));
 

@@ -73,8 +73,34 @@ public class Cylinder extends RadialGeometry{
     }
 
     @Override
+    public void translate(double x, double y, double z) {
+        _ray.translate(x, y, z);
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        _ray.rotate(x, y, z);
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        //TODO: Implement
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        //TODO: Implement
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        //TODO: Implement
+    }
+
+    //Overrides
+
+    @Override
     public boolean equals(Object obj) {
-        //TODO: Check
         if (this == obj)
             return true;
 
@@ -88,4 +114,6 @@ public class Cylinder extends RadialGeometry{
 
         return super.equals(obj) && _ray.equals(cylinder.get_ray());
     }
+
+
 }

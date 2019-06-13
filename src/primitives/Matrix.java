@@ -33,7 +33,8 @@ public class Matrix {
         {
             for(int j = 0; j < _numOfCols; j++)
             {
-                _matrix[i][j] = matrix[i][j];
+                Coordinate temp = new Coordinate(matrix[i][j]);
+                _matrix[i][j] = temp.getCoord();
             }
         }
     }
@@ -91,11 +92,25 @@ public class Matrix {
     }
 
     public void set_element(int row, int col, double value){
-        _matrix[row][col] = value;
+        Coordinate temp = new Coordinate(value);
+        _matrix[row][col] = temp.getCoord();
     }
 
     public void set_matrix(double[][] matrix){
-        _matrix = matrix.clone();
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        if (_numOfRows != rows || _numOfCols != cols){
+            throw new IllegalArgumentException("Can't copy a matrix with different dimensions");
+        }
+
+        for (int i = 0; i < _numOfRows; ++i){
+            for (int j = 0; j < _numOfCols; ++j){
+                Coordinate temp = new Coordinate(matrix[i][j]);
+                _matrix[i][j] = temp.getCoord();
+            }
+        }
+
     }
 
     public Matrix add(Matrix matrix) {
@@ -107,7 +122,8 @@ public class Matrix {
 
         for (int i = 0; i < _numOfRows; ++i){
             for (int j = 0; j < _numOfCols; ++j){
-                result.set_element(i, j, _matrix[i][j] + matrix.get_matrix()[i][j]);
+                Coordinate temp = new Coordinate(_matrix[i][j] + matrix.get_matrix()[i][j]);
+                result.set_element(i, j, temp.getCoord());
             }
         }
 
@@ -123,7 +139,9 @@ public class Matrix {
 
         for (int i = 0; i < _numOfRows; ++i){
             for (int j = 0; j > _numOfCols; ++i){
-                result.set_element(i, j, _matrix[i][j] - matrix.get_matrix()[i][j]);
+                Coordinate temp = new Coordinate(_matrix[i][j] - matrix.get_matrix()[i][j]);
+
+                result.set_element(i, j, temp.getCoord());
             }
         }
 
@@ -141,15 +159,17 @@ public class Matrix {
         {
             for (int j = 0; j < matrix.getColumns(); j++)
             {
-                BigDecimal sum = new BigDecimal(0, MathContext.DECIMAL32);
+                BigDecimal sum = new BigDecimal(0, MathContext.UNLIMITED);
 
                 for (int k = 0; k < matrix.getRows(); k++)
                 {
-                    BigDecimal temp = new BigDecimal(_matrix[i][k]*matrix.get_element(k, j), MathContext.DECIMAL32);
+                    BigDecimal temp = new BigDecimal(_matrix[i][k]*matrix.get_element(k, j), MathContext.UNLIMITED);
                     sum = sum.add(temp);
                 }
 
-                result.set_element(i, j, sum.doubleValue());
+                Coordinate temp = new Coordinate(sum.doubleValue());
+
+                result.set_element(i, j, temp.getCoord());
             }
         }
 
@@ -170,28 +190,31 @@ public class Matrix {
 
         for (int i = 0; i < _numOfRows; ++i){
             for (int j = 0; j < _numOfCols; ++j){
-                result.set_element(i, j, result.get_element(i, j)*scalar);
+                Coordinate temp = new Coordinate(result.get_element(i, j)*scalar);
+                result.set_element(i, j, temp.getCoord());
             }
         }
 
         return result;
     }
 
-    public Matrix multRow(int row, int scalar){
+    public Matrix multRow(int row, double scalar){
         Matrix result = new Matrix(_matrix);
 
         for (int j = 0; j < _numOfCols; ++j){
-            result.set_element(row, j, result.get_element(row, j)*scalar);
+            Coordinate temp = new Coordinate(result.get_element(row, j)*scalar);
+            result.set_element(row, j, temp.getCoord());
         }
 
         return result;
     }
 
-    public Matrix multCol(int col, int scalar){
+    public Matrix multCol(int col, double scalar){
         Matrix result = new Matrix(_matrix);
 
         for (int i = 0; i < _numOfRows; ++i){
-            result.set_element(i, col, result.get_element(i, col)*scalar);
+            Coordinate temp = new Coordinate(result.get_element(i, col)*scalar);
+            result.set_element(i, col, temp.getCoord());
         }
 
         return result;
@@ -255,9 +278,11 @@ public class Matrix {
             for (int j = 1; j < m.length; j++) {
                 for (int k = 0; k < m[0].length; k++) {
                     if (k < i) {
-                        temporary[j - 1][k] = m[j][k];
+                        Coordinate temp = new Coordinate(m[j][k]);
+                        temporary[j - 1][k] = temp.getCoord();
                     } else if (k > i) {
-                        temporary[j - 1][k - 1] = m[j][k];
+                        Coordinate temp = new Coordinate(m[j][k]);
+                        temporary[j - 1][k - 1] = temp.getCoord();
                     }
                 }
             }
@@ -272,7 +297,8 @@ public class Matrix {
         Matrix result = new Matrix(matrix.getColumns(), matrix.getRows());
         for (int i = 0; i < matrix.getRows(); i++) {
             for (int j = 0; j < matrix.getColumns(); j++) {
-                result.set_element(j, i, matrix.get_element(i, j));
+                Coordinate temp = new Coordinate(matrix.get_element(i, j));
+                result.set_element(j, i, temp.getCoord());
             }
         }
         return result;
@@ -351,28 +377,39 @@ public class Matrix {
 
         Matrix result = new Matrix(3,3);
 
-        BigDecimal e00 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(0,0), temp.get_element(1,1)), Util.uscale(temp.get_element(0,1), temp.get_element(1,0))), MathContext.DECIMAL32);
-        result.set_element(0,0, e00.doubleValue());
-        BigDecimal e01 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(1,0), temp.get_element(2,1)), Util.uscale(temp.get_element(1,1), temp.get_element(2,0))), MathContext.DECIMAL32);
-        result.set_element(0,1, e01.doubleValue());
-        BigDecimal e02 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(2,0), temp.get_element(3,1)), Util.uscale(temp.get_element(2,1), temp.get_element(3,0))), MathContext.DECIMAL32);
-        result.set_element(0,2, e02.doubleValue());
-        BigDecimal e10 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(0,1), temp.get_element(1,2)), Util.uscale(temp.get_element(0,2), temp.get_element(1,1))), MathContext.DECIMAL32);
-        result.set_element(1,0, e10.doubleValue());
-        BigDecimal e11 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(1,1), temp.get_element(2,2)), Util.uscale(temp.get_element(1,2), temp.get_element(2,1))), MathContext.DECIMAL32);
-        result.set_element(1,1, e11.doubleValue());
-        BigDecimal e12 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(2,1), temp.get_element(3,2)), Util.uscale(temp.get_element(2,2), temp.get_element(3,1))), MathContext.DECIMAL32);
-        result.set_element(1,2, e12.doubleValue());
-        BigDecimal e20 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(0,2), temp.get_element(1,3)), Util.uscale(temp.get_element(0,3), temp.get_element(1,2))), MathContext.DECIMAL32);
-        result.set_element(2,0, e20.doubleValue());
-        BigDecimal e21 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(1,2), temp.get_element(2,3)), Util.uscale(temp.get_element(1,3), temp.get_element(2,2))), MathContext.DECIMAL32);
-        result.set_element(2,1, e21.doubleValue());
-        BigDecimal e22 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(2,2), temp.get_element(3,3)), Util.uscale(temp.get_element(2,3), temp.get_element(3,2))), MathContext.DECIMAL32);
-        result.set_element(2,2, e22.doubleValue());
+        Coordinate coord;
 
-        BigDecimal a = new BigDecimal(1, MathContext.DECIMAL32);
-        BigDecimal b = new BigDecimal(determinant(), MathContext.DECIMAL32);
-        BigDecimal c = new BigDecimal((a.divide(b)).doubleValue(), MathContext.DECIMAL32);
+        BigDecimal e00 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(0,0), temp.get_element(1,1)), Util.uscale(temp.get_element(0,1), temp.get_element(1,0))), MathContext.UNLIMITED);
+        coord = new Coordinate(e00.doubleValue());
+        result.set_element(0,0, coord.getCoord());
+        BigDecimal e01 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(1,0), temp.get_element(2,1)), Util.uscale(temp.get_element(1,1), temp.get_element(2,0))), MathContext.UNLIMITED);
+        coord = new Coordinate(e01.doubleValue());
+        result.set_element(0,1, coord.getCoord());
+        BigDecimal e02 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(2,0), temp.get_element(3,1)), Util.uscale(temp.get_element(2,1), temp.get_element(3,0))), MathContext.UNLIMITED);
+        coord = new Coordinate(e02.doubleValue());
+        result.set_element(0,2, coord.getCoord());
+        BigDecimal e10 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(0,1), temp.get_element(1,2)), Util.uscale(temp.get_element(0,2), temp.get_element(1,1))), MathContext.UNLIMITED);
+        coord = new Coordinate(e10.doubleValue());
+        result.set_element(1,0, coord.getCoord());
+        BigDecimal e11 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(1,1), temp.get_element(2,2)), Util.uscale(temp.get_element(1,2), temp.get_element(2,1))), MathContext.UNLIMITED);
+        coord = new Coordinate(e11.doubleValue());
+        result.set_element(1,1, coord.getCoord());
+        BigDecimal e12 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(2,1), temp.get_element(3,2)), Util.uscale(temp.get_element(2,2), temp.get_element(3,1))), MathContext.UNLIMITED);
+        coord = new Coordinate(e12.doubleValue());
+        result.set_element(1,2, coord.getCoord());
+        BigDecimal e20 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(0,2), temp.get_element(1,3)), Util.uscale(temp.get_element(0,3), temp.get_element(1,2))), MathContext.UNLIMITED);
+        coord = new Coordinate(e20.doubleValue());
+        result.set_element(2,0, coord.getCoord());
+        BigDecimal e21 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(1,2), temp.get_element(2,3)), Util.uscale(temp.get_element(1,3), temp.get_element(2,2))), MathContext.UNLIMITED);
+        coord = new Coordinate(e21.doubleValue());
+        result.set_element(2,1, coord.getCoord());
+        BigDecimal e22 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(2,2), temp.get_element(3,3)), Util.uscale(temp.get_element(2,3), temp.get_element(3,2))), MathContext.UNLIMITED);
+        coord = new Coordinate(e22.doubleValue());
+        result.set_element(2,2, coord.getCoord());
+
+        BigDecimal a = new BigDecimal(1, MathContext.UNLIMITED);
+        BigDecimal b = new BigDecimal(determinant(), MathContext.UNLIMITED);
+        BigDecimal c = new BigDecimal((a.divide(b)).doubleValue(), MathContext.UNLIMITED);
 
         return result.mult(c.doubleValue());
     }
@@ -543,7 +580,7 @@ public class Matrix {
 
         for (int i = 0; i < _numOfRows; ++i){
             for (int j = 0; j < _numOfCols; ++j){
-                if (_matrix[i][j] != matrix.get_element(i, j))
+                if (!Util.equals(_matrix[i][j], matrix.get_element(i, j)))
                     return false;
             }
         }

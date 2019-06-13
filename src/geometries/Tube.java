@@ -2,7 +2,9 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Transform;
 import primitives.Vector3D;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,11 +66,39 @@ public class Tube extends Cylinder {
         return super.findIntersections(ray);
     }
 
+    @Override
+    public void translate(double x, double y, double z) {
+        _ray.translate(x, y, z);
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        _ray.rotate(x, y, z);
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        //TODO: Implement
+        throw new NotImplementedException();
+
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        //TODO: Implement
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        //TODO: Implement
+        throw new NotImplementedException();
+    }
+
     //Overrides
 
     @Override
     public boolean equals(Object obj) {
-        //TODO: CHECK
         if (this == obj)
             return true;
 
@@ -83,4 +113,6 @@ public class Tube extends Cylinder {
         return super.equals(obj) &&
                 _height == tube.get_height();
     }
+
+
 }

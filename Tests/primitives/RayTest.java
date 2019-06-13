@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RayTest {
-    Ray ray1 = new Ray(new Point3D(new Coordinate(1), new Coordinate(1), new Coordinate(1)), new Vector3D(new Coordinate(1), new Coordinate(0), new Coordinate(0)));
-    Ray ray2 = new Ray(new Point3D(new Coordinate(0), new Coordinate(1), new Coordinate(1)), new Vector3D(new Coordinate(0), new Coordinate(1), new Coordinate(0)));
+    Ray ray1 = new Ray(new Point3D(1, 1, 1), new Vector3D(1, 0, 0));
+    Ray ray2 = new Ray(new Point3D(0, 1, 1), new Vector3D(0, 1, 0));
 
     @Test
     void toStringTest() {
@@ -15,17 +15,17 @@ class RayTest {
 
     @Test
     void get_point() {
-        assertEquals(new Point3D(new Coordinate(1), new Coordinate(1), new Coordinate(1)), ray1.get_point());
+        assertEquals(new Point3D(1, 1, 1), ray1.get_point());
     }
 
     @Test
     void get_direction() {
-        assertEquals(new Vector3D(new Coordinate(1), new Coordinate(0), new Coordinate(0)), ray1.get_direction());
+        assertEquals(new Vector3D(1, 0, 0), ray1.get_direction());
     }
 
     @Test
     void equals() {
-        assertEquals(new Ray(new Point3D(new Coordinate(1), new Coordinate(1), new Coordinate(1)), new Vector3D(new Coordinate(1), new Coordinate(0), new Coordinate(0))), ray1);
+        assertEquals(new Ray(new Point3D(1, 1, 1), new Vector3D(1, 0, 0)), ray1);
         assertNotEquals(ray2, ray1);
     }
 
@@ -67,5 +67,62 @@ class RayTest {
         Ray ray6 = new Ray(new Point3D(1,0,0), new Vector3D(1,0,0));
         Ray ray7 = new Ray(new Point3D(-1,0,0), new Vector3D(-1,0,0));
         assertEquals(null, ray6.findIntersection(ray7));
+    }
+
+    @Test
+    void equals1() {
+        assertEquals(true,ray1.equals(ray1));
+        assertEquals(false, ray1.equals(ray2));
+        assertEquals(true, ray1.equals(new Ray(new Point3D(1, 1, 1), new Vector3D(1, 0, 0))));
+    }
+
+    @Test
+    void translate() {
+        Ray actual = new Ray(new Point3D(), new Vector3D(1,0,0));
+        actual.translate(10,0,0);
+        Ray expected = new Ray(new Point3D(10,0,0), new Vector3D(1,0,0));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void rotate() {
+        Ray actual = new Ray(new Point3D(5,0,0), new Vector3D(1,0,0));
+        actual.rotate(0,180,0);
+        Ray expected = new Ray(new Point3D(-5,0,0), new Vector3D(-1,0,0));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void scale() {
+        Ray actual = new Ray(new Point3D(1,1,1), new Vector3D(1,2,3));
+        actual.scale(5,10,20);
+        Ray expected = new Ray(new Point3D(5,10,20), new Vector3D(5,20,60));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void transform() {
+        Vector3D translation = new Vector3D(-120,0,0);
+        Vector3D rotation = new Vector3D(0,180, 0);
+        Vector3D scale = new Vector3D(5,10, 5);
+
+        Transform transform = new Transform(translation, rotation, scale);
+
+        Ray actual = new Ray(new Point3D(1,0,0), new Vector3D(1,0,0));
+        actual.transform(transform);
+        Ray expected = new Ray(new Point3D(-125,0,0), new Vector3D(-125,0,0));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void transformTRS() {
+        Vector3D translation = new Vector3D(-120,0,0);
+        Vector3D rotation = new Vector3D(0,180, 0);
+        Vector3D scale = new Vector3D(5,10, 5);
+
+        Ray actual = new Ray(new Point3D(1,0,0), new Vector3D(1,0,0));
+        actual.transform(translation, rotation, scale);
+        Ray expected = new Ray(new Point3D(-125,0,0), new Vector3D(-125,0,0));
+        assertEquals(expected, actual);
     }
 }

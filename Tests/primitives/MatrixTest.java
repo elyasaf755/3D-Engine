@@ -381,8 +381,10 @@ class MatrixTest {
 
         Matrix m = matrix.inversedMatrix3X3();
 
+        Matrix actual = matrix.mult(matrix.inversedMatrix3X3());
 
-        assertEquals(expected, matrix.mult(matrix.inversedMatrix3X3()));
+
+        assertEquals(expected, actual);
     }
 
     @Test

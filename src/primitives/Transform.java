@@ -1,6 +1,6 @@
 package primitives;
 
-//TODO: Make sure vectors representing a point can be TRS, but vectors representing a displacement can only be RS.
+//TODO: Make sure Points can be TRS, but Vectors can only be RS but bot translated.
 public class Transform {
     private Vector3D _translation;
     private Vector3D _rotation;
@@ -18,6 +18,13 @@ public class Transform {
         _translation = new Vector3D(translation);
         _rotation = new Vector3D(rotation);
         _scale = new Vector3D(scale);
+    }
+
+    public Transform(Transform _transform){
+        _translation = _transform.getTranslation();
+        _rotation = _transform.getRotation();
+        _scale = _transform.getScale();
+
     }
 
     //Getters
@@ -83,4 +90,6 @@ public class Transform {
 
         return translationMatrix.mult(rotationMatrix.mult(scaleMatrix));
     }
+
+
 }

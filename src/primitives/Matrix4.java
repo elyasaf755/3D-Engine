@@ -3,6 +3,14 @@ package primitives;
 public class Matrix4 {
     private double[][] _m;
 
+    public static final Matrix4 IDENTITY = new Matrix4(new double[][]{
+            {1,0,0,0},
+            {0,1,0,0},
+            {0,0,1,0},
+            {0,0,0,1}
+    });
+
+
     //Constructors
 
     public Matrix4(){
@@ -257,5 +265,43 @@ public class Matrix4 {
         );
     }
 
+    public Point3D mult (Point3D point3D){
+        Matrix lhs = new Matrix(this.getMatrix());
+        Matrix rhs = new Matrix(4,1);
+        rhs.set_element(0,0, point3D.getX().getCoord());
+        rhs.set_element(1,0, point3D.getY().getCoord());
+        rhs.set_element(2,0, point3D.getZ().getCoord());
+        rhs.set_element(3,0, 1);
 
+        Matrix result = lhs.mult(rhs);
+
+        return new Point3D(
+                (double)result.get_element(0,0),
+                (double)result.get_element(1,0),
+                (double)result.get_element(2,0)
+        );
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (getClass() != obj.getClass())
+            return false;
+
+        Matrix4 matrix = (Matrix4) obj;
+
+        for (int i = 0; i < 4; ++i){
+            for (int j = 0; j < 4; ++j){
+                if (!Util.equals(getMatrix()[i][j], matrix.getMatrix()[i][j]))
+                    return false;
+            }
+        }
+
+        return true;
+    }
 }
