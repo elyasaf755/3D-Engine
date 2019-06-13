@@ -51,4 +51,13 @@ class TriangleTest {
         assertEquals(expected1, t4.findIntersections(ray1));
 
     }
+
+    @Test
+    void getCentroid() {
+        Triangle triangle = new Triangle(new Point3D(0,0,0), new Point3D(3,9,0), new Point3D(12,0,0));
+        Point3D expected = new Point3D(5,3,0);
+        Point3D actual = triangle.getCentroid();
+
+        assertEquals(expected, actual);
+    }
 }

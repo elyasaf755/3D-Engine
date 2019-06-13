@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Material;
-import primitives.Point3D;
-import primitives.Vector3D;
+import primitives.*;
 
 public abstract class Geometry implements Intersectable {
     private Color _emission;

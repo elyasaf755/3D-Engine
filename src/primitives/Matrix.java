@@ -75,7 +75,15 @@ public class Matrix {
     public int getColumns(){return _numOfCols;}
 
     public double[][] get_matrix() {
-        return _matrix.clone();
+        double[][] result = new double[_numOfRows][_numOfCols];
+
+        for (int i = 0; i < _numOfRows; ++i){
+            for (int j = 0; j < _numOfCols; ++j){
+                result[i][j] = _matrix[i][j];
+            }
+        }
+
+        return result;
     }
 
     public double get_element(int row, int col){

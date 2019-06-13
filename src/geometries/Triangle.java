@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Util;
-import primitives.Vector3D;
+import primitives.*;
 
 import java.util.ArrayList;
 
@@ -43,6 +40,22 @@ public class Triangle extends Plane implements FlatGeometry{
     }
 
     //Methods
+
+    public Point3D getCentroid(){
+        double x1 = _point1.getX().getCoord();
+        double x2 = _point2.getX().getCoord();
+        double x3 = _point3.getX().getCoord();
+
+        double y1 = _point1.getY().getCoord();
+        double y2 = _point2.getY().getCoord();
+        double y3 = _point3.getY().getCoord();
+
+        double z1 = _point1.getZ().getCoord();
+        double z2 = _point2.getZ().getCoord();
+        double z3 = _point3.getZ().getCoord();
+
+        return new Point3D((double)(x1 + x2 + x3)/3.0, (double)(y1 + y2 + y3)/3.0, (double)(z1 + z2 + z3)/3.0);
+    }
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
