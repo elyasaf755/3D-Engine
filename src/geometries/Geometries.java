@@ -54,7 +54,6 @@ public class Geometries implements Intersectable {
 
     @Override
     public boolean equals(Object obj) {
-        //TODO: CHECK
         if (this == obj)
             return true;
 
@@ -66,6 +65,9 @@ public class Geometries implements Intersectable {
 
         Geometries geometries = (Geometries) obj;
         ArrayList<Geometry> geometriesList = geometries.get_GeometriesList();
+
+        if (geometriesList.size() != _geometriesList.size())
+            return false;
 
         for (int i = 0; i < _geometriesList.size(); ++i){
             if (!(_geometriesList.get(i).equals(geometriesList.get(i))))

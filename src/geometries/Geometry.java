@@ -1,16 +1,11 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Material;
-import primitives.Point3D;
-import primitives.Vector3D;
+import primitives.*;
 
-public abstract class Geometry implements Intersectable {
+public abstract class Geometry implements Intersectable, ITransform {
     private Color _emission;
     private Material _material;
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXIST).
-
-    //TODO: Implement class
 
     //Constructors
 
@@ -66,7 +61,6 @@ public abstract class Geometry implements Intersectable {
 
     @Override
     public boolean equals(Object obj) {
-        //TODO: CHECK
         if (this == obj)
             return true;
 

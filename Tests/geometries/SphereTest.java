@@ -1,10 +1,7 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.Coordinate;
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector3D;
+import primitives.*;
 
 import static geometries.Intersectable.GeoPoint;
 
@@ -14,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SphereTest {
 
-    Sphere sphere = new Sphere(4, new Point3D(1,1,1));
+    Sphere sphere1 = new Sphere(4, new Point3D(1,1,1));
     Sphere sphere2 = new Sphere(4, new Point3D());
 
     Ray ray = new Ray(new Vector3D(0,0,1));
@@ -31,7 +28,7 @@ class SphereTest {
 
     @Test
     void get_point() {
-        assertEquals(new Point3D(1,1,1), sphere.get_point());
+        assertEquals(new Point3D(1,1,1), sphere1.get_point());
     }
 
     @Test
@@ -71,5 +68,23 @@ class SphereTest {
     @Test
     void get_normal() {
         assertEquals(new Vector3D(1,0,0),sphere2.get_normal(new Point3D(4,0,0)));
+    }
+
+    @Test
+    void scale() {
+        double originalVolume = sphere2.getVolume();
+        sphere2.scale(4);
+        double scaledVolume = sphere2.getVolume();
+        assertEquals(true, Math.abs(originalVolume * 4 - scaledVolume) < 0.000000001);
+
+    }
+
+    @Test
+    void equals1() {
+        Sphere sphere3 = new Sphere(4, new Point3D(1,1,1));
+
+        assertEquals(true, sphere1.equals(sphere1));
+        assertEquals(false, sphere1.equals(sphere2));
+        assertEquals(true, sphere1.equals(sphere3));
     }
 }

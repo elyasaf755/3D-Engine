@@ -57,4 +57,23 @@ class GeometriesTest {
         ArrayList<GeoPoint> actual2 = geometries2.findIntersections(ray);
         assertEquals(expected2, actual2);
     }
+
+    @Test
+    void equals1() {
+        Geometries geometries1 = new Geometries();
+        geometries1.add_geometry(sphere1, sphere2);
+
+        Geometries geometries2 = new Geometries();
+        geometries2.add_geometry(sphere1,sphere2,sphere3);
+
+        Geometries geometries3 = new Geometries();
+        geometries3.add_geometry(
+                new Sphere(4, new Point3D(0,0,0)),
+                new Sphere(4, new Point3D(8,0,0))
+        );
+
+        assertEquals(true,  geometries1.equals(geometries1));
+        assertEquals(false, geometries1.equals(geometries2));
+        assertEquals(true,  geometries1.equals(geometries3));
+    }
 }

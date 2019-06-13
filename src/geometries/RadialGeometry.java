@@ -1,5 +1,8 @@
 package geometries;
 
+import primitives.ITransform;
+import primitives.Util;
+
 public abstract class RadialGeometry extends Geometry {
     protected double _radius;
 
@@ -15,6 +18,12 @@ public abstract class RadialGeometry extends Geometry {
     //Getters
     public double get_radius() {
         return _radius;
+    }
+
+    //Setters
+
+    public void set_radius(double radius){
+        _radius = radius;
     }
 
     //Overrides
@@ -33,6 +42,6 @@ public abstract class RadialGeometry extends Geometry {
         RadialGeometry radialGeometry = (RadialGeometry) obj;
 
         return super.equals(obj) &&
-                _radius == radialGeometry.get_radius();
+                Util.equals(_radius, radialGeometry.get_radius());
     }
 }

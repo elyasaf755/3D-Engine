@@ -6,6 +6,7 @@ import geometries.Triangle;
 import org.junit.jupiter.api.Test;
 import primitives.Color;
 import primitives.Point3D;
+import primitives.Transform;
 import primitives.Vector3D;
 import scene.Scene;
 
@@ -350,4 +351,41 @@ class RenderTest {
         render.renderImage();
         render.writeToImage();
     }
+
+    @Test//TEST 7 - Scale Test
+    void renderImage7(){
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(75, 127,190));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.set_camera(new Camera(new Point3D(0,0,0), new Vector3D(1,0,0), new Vector3D(0,0,1)), 100);
+
+        scene.set_background(new Color(java.awt.Color.BLACK));
+
+        //Center sphere
+        Sphere sphere = new Sphere(35, new Point3D(100, 0, 0));
+        sphere.set_emission(java.awt.Color.magenta);
+
+        Sphere sphereScaled = new Sphere(sphere);
+        sphereScaled.set_emission(java.awt.Color.green);
+        sphereScaled.scale(70);
+        Transform transform = new Transform();
+        transform.setTranslation(new Vector3D(200,0,0));
+
+        sphereScaled.set_point(transform.getTransformation().mult(new Vector3D(sphereScaled.get_point())).getPoint());
+
+        scene.addGeometries(sphere, sphereScaled);
+
+
+        ImageWriter imageWriter = new ImageWriter("7thRenderTest - Sphere Scaling", 500, 500, 500, 500);
+
+        Vector3D direction = sphere.get_point().subtract(new Point3D(25,-32,-32));
+
+        scene.addLights(new DirectionalLight(direction));
+        Render render = new Render(scene, imageWriter);
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+
 }

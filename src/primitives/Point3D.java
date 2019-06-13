@@ -2,7 +2,7 @@ package primitives;
 
 import static java.lang.Math.sqrt;
 
-public class Point3D extends Point2D{
+public class Point3D extends Point2D implements ITransform{
     protected Coordinate _z;
 
     //Constructors
@@ -57,9 +57,9 @@ public class Point3D extends Point2D{
     }
 
     public double distanceSquared(Point3D point3D){
-        Point3D result = subtract(point3D)._point;
+        Point3D result = this.subtract(point3D)._point;
 
-        return result._x.multiply(result._x)._coord + result._y.multiply(result._y)._coord + result._z.multiply(result._z)._coord;
+        return Util.uadd(Util.uadd(result._x.multiply(result._x)._coord, result._y.multiply(result._y)._coord), result._z.multiply(result._z)._coord);
     }
 
     public double distance(Point3D point3D){
@@ -80,7 +80,7 @@ public class Point3D extends Point2D{
 
         Point3D point3D = (Point3D)obj;
 
-        return _x.equals(point3D._x) &&
+        return  _x.equals(point3D._x) &&
                 _y.equals(point3D._y) &&
                 _z.equals(point3D._z);
     }
@@ -90,4 +90,58 @@ public class Point3D extends Point2D{
         return "(" + _x.toString() + ", " +_y.toString() + ", " + _z.toString() + ")";
     }
 
+    @Override
+    public void translate(double x, double y, double z) {
+        Transform transform = new Transform();
+        transform.setTranslation(x, y, z);
+
+        Point3D result = transform.getTransformation().mult(this);
+
+        _x = result.getX();
+        _y = result.getY();
+        _z = result.getZ();
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        Transform transform = new Transform();
+        transform.setRotation(x, y, z);
+
+        Point3D result = transform.getTransformation().mult(this);
+
+        _x = result.getX();
+        _y = result.getY();
+        _z = result.getZ();
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        Transform transform = new Transform();
+        transform.setScale(x, y, z);
+
+        Point3D result = transform.getTransformation().mult(this);
+        _x = result.getX();
+        _y = result.getY();
+        _z = result.getZ();
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        Point3D result = _transform.getTransformation().mult(this);
+
+        _x = result.getX();
+        _y = result.getY();
+        _z = result.getZ();
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        Transform transform = new Transform(translation, rotation, scale);
+
+        Point3D result = transform.getTransformation().mult(this);
+
+        _x = result.getX();
+        _y = result.getY();
+        _z = result.getZ();
+    }
 }

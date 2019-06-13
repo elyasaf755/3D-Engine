@@ -1,37 +1,37 @@
 package primitives;
 
-public class Vector3D {
+public class Vector3D implements ITransform{
     protected Point3D _point;
 
     public static Vector3D ZERO = new Vector3D();
 
     //Constructors
-    public Vector3D(Coordinate x, Coordinate y, Coordinate z) throws IllegalArgumentException{
+    public Vector3D(Coordinate x, Coordinate y, Coordinate z) {
         if (x.equals(Coordinate.ZERO) && y.equals(Coordinate.ZERO) && z.equals(Coordinate.ZERO)){
-            throw new IllegalArgumentException("(0,0,0) is not a vector");
+            throw new IllegalArgumentException("t(0,0,0) is not a vector");
         }
 
         _point = new Point3D(x,y,z);
     }
 
-    public Vector3D(double x, double y, double z) throws IllegalArgumentException{
+    public Vector3D(double x, double y, double z) {
         if (new Coordinate(x).equals(Coordinate.ZERO) && new Coordinate(y).equals(Coordinate.ZERO) && new Coordinate(z).equals(Coordinate.ZERO)){
-            throw new IllegalArgumentException("(0,0,0) is not a vector");
+            throw new IllegalArgumentException("t(0,0,0) is not a vector");
         }
 
         _point = new Point3D(x,y,z);
     }
 
-    public Vector3D(Point3D point3D)throws IllegalArgumentException{
+    public Vector3D(Point3D point3D){
         if (point3D.getX().equals(Coordinate.ZERO) && point3D.getY().equals(Coordinate.ZERO) && point3D.getZ().equals(Coordinate.ZERO)){
-            throw new IllegalArgumentException("(0,0,0) is not a vector");
+            throw new IllegalArgumentException("t(0,0,0) is not a vector");
         }
         _point = new Point3D(point3D);
     }
 
-    public Vector3D(Point3D start, Point3D end) throws IllegalArgumentException{
+    public Vector3D(Point3D start, Point3D end) {
         if (start.equals(end))
-            throw new IllegalArgumentException("Can't subtract 2 equal points.");
+            throw new IllegalArgumentException("Can't subtract 2 equal points. t(0,0,0) is not a vector");
 
         Vector3D result = end.subtract(start);
 
@@ -66,17 +66,19 @@ public class Vector3D {
     }
 
     //Methods
-    public Vector3D subtract(Vector3D vector3D){
-        //TODO: Q: THROW EXCEPTION?
-        if (this.equals(vector3D)){
-            return null;
+    public Vector3D subtract(Vector3D vector){
+        if (this.equals(vector)){
+            throw new IllegalArgumentException("Cant subtract 2 equal vectors. t(0,0,0) is not a vector");
         }
 
-        return new Vector3D(_point.subtract(vector3D._point));
+        return new Vector3D(_point.subtract(vector._point));
     }
 
-    public Vector3D add(Vector3D vector3D){
-        return new Vector3D(_point.add(vector3D));
+    public Vector3D add(Vector3D vector){
+        if (this.scale(-1).equals(vector))
+            throw new IllegalArgumentException("Can't add vectors with the negative directions. t(0,0,0) is not a vector");
+
+        return new Vector3D(_point.add(vector));
     }
 
     public double dotProduct(Vector3D vector3D){
@@ -93,11 +95,12 @@ public class Vector3D {
     }
 
     public double length(){
-        return _point.distance(new Point3D(Coordinate.ZERO, Coordinate.ZERO, Coordinate.ZERO));
+
+        return _point.distance(new Point3D(0, 0, 0));
     }
 
     public double lengthSquared(){
-        return length()*length();
+        return Util.uscale(length(), length());
     }
 
     public Vector3D scale(double scalar){
@@ -120,9 +123,9 @@ public class Vector3D {
         if (length() == 0)
             _point._x = _point._y = _point._z = new Coordinate(0);
 
-        _point._x = new Coordinate(_point._x.scale(1/length));
-        _point._y = new Coordinate(_point._y.scale(1/length));
-        _point._z = new Coordinate(_point._z.scale(1/length));
+        _point._x = new Coordinate(_point._x.scale(1.0/length));
+        _point._y = new Coordinate(_point._y.scale(1.0/length));
+        _point._z = new Coordinate(_point._z.scale(1.0/length));
     }
 
     public double squared(){
@@ -131,6 +134,49 @@ public class Vector3D {
 
     public Vector3D projection(Vector3D projector){
         return new Vector3D(this.scale(Util.udiv(this.dotProduct(projector), this.dotProduct(this))));
+    }
+
+    @Override
+    public void translate(double x, double y, double z) {
+        return;//Vectors are not translated.
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        Transform transform = new Transform();
+        transform.setRotation(x, y, z);
+
+        Point3D result = transform.getTransformation().mult(new Vector3D(this)).getPoint();
+
+        _point = new Point3D(result);
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        Transform transform = new Transform();
+        transform.setScale(x, y, z);
+
+        Point3D result = transform.getTransformation().mult(new Vector3D(this)).getPoint();
+
+        _point = new Point3D(result);
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        _transform.setTranslation(Vector3D.ZERO);//Vectors are not translated
+
+        Vector3D result = _transform.getTransformation().mult(new Vector3D(this));
+
+        _point = new Point3D(result.getPoint());
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        Transform transform = new Transform(Vector3D.ZERO, rotation, scale);//Vectors are not translated
+
+        Point3D result = transform.getTransformation().mult(new Vector3D(this)).getPoint();
+
+        _point = new Point3D(result);
     }
 
     //Overrides

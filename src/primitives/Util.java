@@ -128,4 +128,8 @@ public class Util {
 
         return result;
     }
+
+    public static boolean equals(double lhs, double rhs){
+        return usubtract(lhs, rhs) == 0.0;
+    }
 }
