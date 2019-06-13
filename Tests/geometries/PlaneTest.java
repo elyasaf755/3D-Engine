@@ -55,4 +55,24 @@ class PlaneTest {
         assertEquals(new ArrayList<GeoPoint>(), plane2.findIntersections(ray5));
 
     }
+
+    @Test
+    void distance() {
+        //Parallel Planes
+        //2x + 4y - 4z = 6
+        Plane plane1 = new Plane(new Point3D(0,1.5,0), new Vector3D(2,4,-4));
+        //x + 2y - 2z = -9
+        Plane plane2 = new Plane(new Point3D(0,0,4.5), new Vector3D(1,2,-2));
+
+        double expected = 4;
+        double actual = plane1.distance(plane2);
+
+        assertEquals(expected, actual);
+
+        //Non-Paralel Planes
+        //x=0
+        Plane plane3 = new Plane(new Point3D(0,0,0), new Vector3D(1,0,0));
+        double actua2 = plane1.distance(plane3);
+        assertEquals(0, actua2);
+    }
 }

@@ -41,6 +41,29 @@ public class Plane extends Geometry  implements FlatGeometry{
 
     //Methods
 
+    public double distance(Plane plane){
+        if (!new Ray(_normal).isParallelTo(new Ray(plane.get_normal())))
+            return 0;
+
+        double A1 = _normal.getPoint().getX().getCoord();
+        double B1 = _normal.getPoint().getY().getCoord();
+        double C1 = _normal.getPoint().getZ().getCoord();
+        double x1 = _point.getX().getCoord();
+        double y1 = _point.getY().getCoord();
+        double z1 = _point.getZ().getCoord();
+        double D1 = A1*x1 + B1*y1 + C1*z1;
+
+        double A2 = plane.get_normal().getPoint().getX().getCoord();
+        double B2 = plane.get_normal().getPoint().getY().getCoord();
+        double C2 = plane.get_normal().getPoint().getZ().getCoord();
+        double x2 = plane.get_point().getX().getCoord();
+        double y2 = plane.get_point().getY().getCoord();
+        double z2 = plane.get_point().getZ().getCoord();
+        double D2 = A2*x2 + B2*y2 + C2*z2;
+
+        return  (Math.abs(D2-D1)) / (Math.sqrt(Math.pow(A1,2)+Math.pow(B1,2)+Math.pow(C1,2)));
+    }
+
     @Override
     public Vector3D get_normal(Point3D point3D) {
         return get_normal();
@@ -67,7 +90,6 @@ public class Plane extends Geometry  implements FlatGeometry{
     }
 
     //Overrides
-
 
     @Override
     public boolean equals(Object obj) {
