@@ -2,6 +2,7 @@ package renderer;
 
 import elements.LightSource;
 
+import geometries.Cylinder;
 import geometries.FlatGeometry;
 import geometries.Geometry;
 import geometries.Triangle;
@@ -268,6 +269,17 @@ public class Render {
 
     public void writeToImage(){
         _imageWriter.writeToimage();
+    }
+
+    public void printAxises(){
+        Cylinder xAxis = new Cylinder(5,new Ray( new Vector3D(1,0,0)));
+        Cylinder yAxis = new Cylinder(5,new Ray( new Vector3D(0,1,0)));
+        Cylinder zAxis = new Cylinder(5,new Ray( new Vector3D(0,0,1)));
+
+        xAxis.set_emission(java.awt.Color.RED);
+        yAxis.set_emission(java.awt.Color.GREEN);
+        zAxis.set_emission(java.awt.Color.BLUE);
+        _scene.addGeometries(xAxis, yAxis, zAxis);
     }
 
 
