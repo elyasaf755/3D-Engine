@@ -47,9 +47,16 @@ public class Point3D extends Point2D implements ITransform{
         return new Point3D(_x.add(vector3D._point._x), _y.add(vector3D._point._y), _z.add(vector3D._point._z));
     }
 
-    //TODO: Check
-    public void add(Point3D point, Vector3D vector) {
+    public Point3D add(Point3D point){
+        if (point.equals(new Point3D())){
+            return this.add(Vector3D.ZERO);
+        }
 
+        return this.add(new Vector3D(point));
+    }
+
+    public void add(Point3D point, Vector3D vector) {
+        //TODO: Check
         this._x = new Coordinate(Util.uadd(vector.getPoint().getX().getCoord(), point.getX().getCoord()));
         this._y = new Coordinate(Util.uadd(vector.getPoint().getY().getCoord(), point.getY().getCoord()));
         this._z = new Coordinate(Util.uadd(vector.getPoint().getZ().getCoord(), point.getZ().getCoord()));

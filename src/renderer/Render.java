@@ -42,7 +42,6 @@ public class Render {
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
                     _imageWriter.writePixel(i, j, calcColor(closestPoint));
-                    //_imageWriter.writePixel(i, j, Color.BLUE);TODO: for del
                 }
             }
         }
@@ -124,7 +123,6 @@ public class Render {
 
                 //Fixing wrong illumination when the camera direction is in the opposite direction of the light. when both dot products have same sign.
                 if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
-                    //TODO: Add the following code into the if statement?
                     Color intensity = light.getIntensity(intersection.point);
 
                     result = result.add(calcDiffusive(Kd, normal, lightDirection, intensity));
@@ -137,7 +135,6 @@ public class Render {
     }
 
     private GeoPoint getClosestPoint(ArrayList<GeoPoint> geoPoints){
-        //TODO: implement for map
         if (geoPoints.size() == 0)
             return null;
 
@@ -146,6 +143,30 @@ public class Render {
         GeoPoint closestPoint = null;
 
         for(GeoPoint geoPoint : geoPoints){
+            /*
+            Point3D point = geoPoint.point;
+            Transform transform = new Transform();
+            transform.setProjection(70, 500, 500, 1000, 100);
+            Matrix pt = new Matrix(transform.getProjectedTransformation().getMatrix());
+            double x = point.getX().getCoord();
+            double y = point.getY().getCoord();
+            double z = point.getZ().getCoord();
+            double[][] ma = {
+                    {x},
+                    {y},
+                    {z},
+                    {1}
+            };
+            Matrix m = new Matrix(ma);
+            Matrix tmp = pt.mult(m);
+            double Z = tmp.get_element(3,0);
+            x = m.get_element(0,0) / Z;
+            y = m.get_element(1,0) / Z;
+            z = m.get_element(2,0) / Z;
+
+            point = new Point3D(x, y, z);
+             */
+
             if (closestPoint == null && shortestDistance == 0){
                 closestPoint = geoPoint;
                 shortestDistance = origin.distance(geoPoint.point);

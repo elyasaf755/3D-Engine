@@ -52,22 +52,98 @@ public class Cylinder extends RadialGeometry{
         //return point3D.subtract(_ray.get_point().add(_ray.get_direction().scale(_ray.get_direction().dotProduct(point3D.subtract(_ray.get_point()))))).normalized();
     }
 
-    //only works when the cylinder in the Z direction.
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-        ArrayList<GeoPoint> result = new ArrayList<>();
+        Vector3D Vc = this.get_ray().get_direction();
+        Vector3D VcT = new Vector3D(0,0,1);
 
-        Vector3D A1 = ray.get_direction().subtract(_ray.get_direction().scale(ray.get_direction().dotProduct(_ray.get_direction())));
-        double A = A1.squared();
-        Vector3D dp = ray.get_point().subtract(_ray.get_point());
-        Vector3D B1 = dp.subtract(_ray.get_direction().scale(dp.dotProduct(_ray.get_direction())));
-        double B = Util.uscale(2, A1.dotProduct(B1));
-        double C = Util.usubtract(B1.squared(), Util.squared(_radius));
+        Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
+
+        Point3D q = R.mult(this.get_ray().get_point());
+
+        Cylinder CT = new Cylinder(_radius, new Ray(VcT));
+
+        Point3D Pr = ray.get_point();
+        Vector3D Vr = ray.get_direction();
+
+        Point3D PrT = R.mult(Pr).subtract(R.mult(q)).getPoint();
+        Vector3D VrT = R.mult(Vr).normalized();
+        Ray RT = new Ray(PrT, VrT);
+
+        ArrayList<GeoPoint> intersectionsT = CT.findIntersectionsInZDirection(RT);
+
+        ArrayList<GeoPoint> result = new ArrayList<>();
+        for(GeoPoint geoPointT : intersectionsT){
+            Point3D point = new Point3D(geoPointT.point);
+            GeoPoint geoPoint = new GeoPoint(this, R.inverse().mult(point.add(q)));
+            result.add(geoPoint);
+        }
+
+        return result;
+    }
+
+    private ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
+        Point3D Pc = this.get_ray().get_point();
+        Vector3D Vc = this.get_ray().get_direction();
+        double r = this.get_radius();
+
+        Point3D Pr = ray.get_point();
+        Vector3D Vr = ray.get_direction();
+
+        double VrVc = Vr.dotProduct(Vc);
+        Vector3D a;
+
+        if (Util.equals(VrVc, 0)){
+            a = new Vector3D(Vr);
+        }
+        else if (Vr.equals(Vc.scale(VrVc))){
+            a = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            a = Vr.subtract(Vc.scale(VrVc));
+        }
+
+        Vector3D deltaP;
+
+        if (Pr.equals(Pc)){
+            deltaP = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            deltaP = Pr.subtract(Pc);
+        }
+
+        double deltaPVc = deltaP.dotProduct(Vc);
+        Vector3D b;
+
+        if (Util.equals(deltaPVc, 0)){
+            b = new Vector3D(deltaP);
+        }
+        else if (deltaP.equals(Vc.scale(deltaPVc))){
+            b = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            b = deltaP.subtract(Vc.scale(deltaPVc));
+        }
+
+        double A = a.squared();
+        double B = Util.uscale(a.dotProduct(b), 2);
+        double C = Util.usubtract(b.squared(), Util.squared(r));
 
         double[] roots = Util.quadraticRoots(A, B, C);
 
+        ArrayList<GeoPoint> result = new ArrayList<>();
+
         for (double root : roots){
-            result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scale(root))));
+            if (Double.isNaN(root))
+                continue;
+
+            if (Util.equals(root, 0)){
+                result.add(new GeoPoint(this, Pr));
+            }
+            else if (root > 0){
+                Point3D q = Pr.add(Vr.scale(root));
+                result.add(new GeoPoint(this, q));
+            }
         }
 
         return result;

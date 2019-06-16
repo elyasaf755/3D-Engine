@@ -51,7 +51,7 @@ public class Ray implements ITransform{
     public boolean isParallelTo(Ray ray){
         double angle = this.angleBetween_deg(ray);
 
-        if (angle == 0 || angle == 180)
+        if (Util.equals(angle, 0) || Util.equals(angle, 180))
             return true;
 
         return false;

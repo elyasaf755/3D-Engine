@@ -1,14 +1,15 @@
 package renderer;
 
+import com.sun.org.apache.regexp.internal.RE;
 import elements.*;
+import geometries.Cylinder;
 import geometries.Sphere;
 import geometries.Triangle;
+import geometries.Tube;
 import org.junit.jupiter.api.Test;
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Transform;
-import primitives.Vector3D;
+import primitives.*;
 import scene.Scene;
+import sun.print.SunPrinterJobService;
 
 class RenderTest {
 
@@ -386,6 +387,33 @@ class RenderTest {
         render.renderImage();
         render.writeToImage();
     }
+
+    @Test//TEST 8 - Render Tube
+    void renderImage8(){
+
+        Scene scene = new Scene("tubeScene");
+        scene.set_background(new Color(75, 127,190));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.set_camera(new Camera(new Point3D(0,0,0), new Vector3D(0,0,1), new Vector3D(0,1,0)), 100);
+        scene.set_background(new Color(java.awt.Color.WHITE));
+
+        //Tube tube1 = new Tube(40, new Ray(new Point3D(0,0,100), new Vector3D(1,0,0)), 50);
+
+        //tube1.set_emission(java.awt.Color.green);
+        Sphere sphere = new Sphere(50, new Point3D(0,50,100));
+        sphere.set_emission(java.awt.Color.cyan);
+
+        //scene.addGeometries(tube1, sphere1, tube2, sphere2);
+        scene.addGeometries(sphere);
+
+        scene.addLights(new DirectionalLight(new Vector3D(0,-1,0)));
+
+        ImageWriter imageWriter = new ImageWriter("8thRenderTest - Tube Test", 500, 500, 500, 500);
+        Render render = new Render(scene, imageWriter);
+        render.renderImage();
+        render.writeToImage();
+    }
+
 
 
 }

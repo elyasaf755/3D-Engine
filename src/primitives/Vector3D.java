@@ -94,6 +94,31 @@ public class Vector3D implements ITransform{
                 _point._x.multiply(rhs._y).subtract(_point._y.multiply(rhs._x)));
     }
 
+    public Matrix3 outterProduct(Vector3D vector){
+        double u[] = {
+                this.getPoint().getX().getCoord(),
+                this.getPoint().getY().getCoord(),
+                this.getPoint().getZ().getCoord()
+        };
+
+        double v[] = {
+                vector.getPoint().getX().getCoord(),
+                vector.getPoint().getY().getCoord(),
+                vector.getPoint().getZ().getCoord()
+        };
+
+        double[][] result = new double[3][3];
+
+        for(int i = 0; i < 3; ++i){
+            for (int j = 0; j < 3; ++j){
+                Coordinate temp = new Coordinate(u[i]*v[j]);
+                result[i][j] = temp.getCoord();
+            }
+        }
+
+        return new Matrix3(result);
+    }
+
     public double length(){
 
         return _point.distance(new Point3D(0, 0, 0));
@@ -130,6 +155,16 @@ public class Vector3D implements ITransform{
 
     public double squared(){
         return this.dotProduct(this);
+    }
+
+    public double angleBetween_rad(Vector3D vector){
+        return new Ray(this).angleBetween_rad(new Ray(vector));
+        //TODO: TEST
+    }
+
+    public double angleBetween_deg(Vector3D vector){
+        return Math.toDegrees(this.angleBetween_rad(vector));
+        //TODO: TEST
     }
 
     public Vector3D projection(Vector3D projector){

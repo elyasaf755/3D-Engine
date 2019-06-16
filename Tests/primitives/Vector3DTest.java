@@ -120,4 +120,21 @@ class Vector3DTest {
         Vector3D expected = new Vector3D(-5,0,0);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void outterProduct() {
+        Vector3D u = new Vector3D(3,4,1);
+        Vector3D v = new Vector3D(3,7,5);
+
+        double[][] matrix = {
+                { 9, 21, 15},
+                {12, 28, 20},
+                { 3,  7,  5}
+        };
+
+        Matrix3 actual = u.outterProduct(v);
+        Matrix3 expected = new Matrix3(matrix);
+
+        assertEquals(expected, actual);
+    }
 }
