@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -82,34 +83,40 @@ public class Sphere extends RadialGeometry {
         return Util.uscale(Util.uscale((3.0/4.0), Math.PI), r_3);
     }
 
-    public void scale(double factor){
+    public void scaleVolume(double factor){
         _radius = Math.pow(Util.alignZero(Util.uscale(factor, getVolume()) / (Util.uscale((3.0/4.0), Math.PI))), 1.0/3.0);
     }
 
 
     @Override
     public void translate(double x, double y, double z) {
-
+        _point.translate(x,y,z);
     }
 
     @Override
     public void rotate(double x, double y, double z) {
+        return;//Spheres are not rotated
+    }
 
+    public void scale(double factor){
+        _radius = Util.uscale(_radius, factor);
     }
 
     @Override
     public void scale(double x, double y, double z) {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public void transform(Transform _transform) {
-
+        throw new NotImplementedException();
+        //TODO: Not Implemented
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
-
+        throw new NotImplementedException();
+        //TODO: Not Implemented
     }
 
     //Overrides

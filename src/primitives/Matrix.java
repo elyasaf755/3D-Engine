@@ -3,6 +3,7 @@ package primitives;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
+//TODO: TEST CLASS FUNCTIONS
 public class Matrix {
     private double[][] _matrix;
     private int _numOfRows;
@@ -69,6 +70,17 @@ public class Matrix {
         _matrix[2][2] = v3.getPoint().getZ().getCoord();
     }
 
+    public Matrix(Vector3D v){
+        _numOfCols = 1;
+        _numOfRows = 3;
+
+        _matrix = new double[3][1];
+
+        _matrix[0][0] = v.getPoint().getX().getCoord();
+        _matrix[1][0] = v.getPoint().getY().getCoord();
+        _matrix[2][0] = v.getPoint().getZ().getCoord();
+    }
+
     //Methods
 
     public int getRows(){return _numOfRows;}
@@ -115,7 +127,7 @@ public class Matrix {
 
     public Matrix add(Matrix matrix) {
         if (matrix.getRows() != _numOfRows || matrix.getColumns() != _numOfCols){
-            return null;
+            throw new IllegalArgumentException("The 2 matrices must be with the same dimension to perform addition");
         }
         Matrix result = new Matrix(matrix.getRows(), matrix.getColumns());
 
@@ -132,13 +144,13 @@ public class Matrix {
 
     public Matrix sub(Matrix matrix) {
         if (matrix.getRows() != _numOfRows || matrix.getColumns() != _numOfCols){
-            return null;
+            throw new IllegalArgumentException("The 2 matrices must be with the same dimension to perform subtraction");
         }
         Matrix result = new Matrix(matrix.getRows(), matrix.getColumns());
 
 
         for (int i = 0; i < _numOfRows; ++i){
-            for (int j = 0; j > _numOfCols; ++i){
+            for (int j = 0; j < _numOfCols; ++j){
                 Coordinate temp = new Coordinate(_matrix[i][j] - matrix.get_matrix()[i][j]);
 
                 result.set_element(i, j, temp.getCoord());
@@ -163,6 +175,10 @@ public class Matrix {
 
                 for (int k = 0; k < matrix.getRows(); k++)
                 {
+                    if (i == 2 && j == 0 && k == 2){
+                        int x =5;
+                        ++x;
+                    }
                     BigDecimal temp = new BigDecimal(_matrix[i][k]*matrix.get_element(k, j), MathContext.UNLIMITED);
                     sum = sum.add(temp);
                 }
@@ -350,6 +366,10 @@ public class Matrix {
                 source.get_element(1, colIndex),
                 source.get_element(2, colIndex)
         );
+    }
+
+    public Vector3D getColumnAsVector3(int colIndex){
+        return Matrix.getColumnAsVector3(this, colIndex);
     }
 
     public Matrix inversedMatrix3X3(){

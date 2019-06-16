@@ -2,6 +2,7 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.*;
+import static geometries.Intersectable.GeoPoint;
 
 import java.util.ArrayList;
 
@@ -43,25 +44,33 @@ class CylinderTest {
 
     @Test
     void findIntersections() {
-        /*
         //ray in x direction with intersections from outside of the cylinder
-        ArrayList<Point3D> expected1 = new ArrayList<>();
-        expected1.add(new Point3D(-4,0,0));
-        expected1.add(new Point3D(4,0,0));
-        Ray ray1 = new Ray(new Point3D(-5,0,0), new Vector3D(1,0,0));
-        assertEquals(expected1, cylinder1.findIntersections(ray1));
+        ArrayList<GeoPoint> expected1 = new ArrayList<>();
+        expected1.add(new GeoPoint(cylinder1, new Point3D(-4,0,0)));
+        expected1.add(new GeoPoint(cylinder1, new Point3D(4,0,0)));
+        Ray r1 = new Ray(new Point3D(-5,0,0), new Vector3D(1,0,0));
+        ArrayList<GeoPoint> actual1 = cylinder1.findIntersections(r1);
+        assertEquals(expected1, actual1);
 
         //ray in -x direction with intersections from outside of the cylinder
-        ArrayList<Point3D> expected2 = new ArrayList<>();
-        expected2.add(new Point3D(4,0,0));
-        expected2.add(new Point3D(-4,0,0));
-        Ray ray2 = new Ray(new Point3D(5,0,0), new Vector3D(-1,0,0));
-        assertEquals(expected2, cylinder1.findIntersections(ray2));
+        ArrayList<GeoPoint> expected2 = new ArrayList<>();
+        expected2.add(new GeoPoint(cylinder1, new Point3D(4,0,0)));
+        expected2.add(new GeoPoint(cylinder1, new Point3D(-4,0,0)));
+        Ray r2 = new Ray(new Point3D(5,0,0), new Vector3D(-1,0,0));
+        ArrayList<GeoPoint> actual2 = cylinder1.findIntersections(r2);
+        assertEquals(expected2, actual2);
 
         //ray in x direction without intersections from inside of the cylinder
-        Ray ray3 = new Ray(new Point3D(5,0,0), new Vector3D(1,0,0));
-        assertEquals(new ArrayList<>(), cylinder2.findIntersections(ray3));
-         */
+        Ray r3 = new Ray(new Point3D(5,0,0), new Vector3D(1,0,0));
+        ArrayList<GeoPoint> actual3 = cylinder2.findIntersections(r3);
+        assertEquals(new ArrayList<>(), actual3);
+
+        Ray r4 = new Ray(new Point3D(0,-5,5), new Vector3D(0,1,0));
+        ArrayList<GeoPoint> expected4 = new ArrayList<>();
+        expected4.add(new GeoPoint(cylinder1, new Point3D(0, -4,5)));
+        expected4.add(new GeoPoint(cylinder1, new Point3D(0, 4,5)));
+        ArrayList<GeoPoint> actual4 = cylinder1.findIntersections(r4);
+        assertEquals(expected4, actual4);
     }
 
     @Test
@@ -89,6 +98,9 @@ class CylinderTest {
 
     @Test
     void scale() {
+        Cylinder actual = new Cylinder(5, new Ray(new Point3D(), new Vector3D(0,0,1)));
+        actual.scale(5);
+        Cylinder expected = new Cylinder(25, new Ray(new Point3D(), new Vector3D(0,0,1)));
     }
 
     @Test

@@ -72,25 +72,55 @@ public class Triangle extends Plane implements FlatGeometry{
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         ArrayList<GeoPoint> planeIntersections = super.findIntersections(ray);
 
+        Point3D Pr = ray.get_point();
+
         if (planeIntersections.size() == 0){
             return planeIntersections;
         }
 
-        Vector3D v1 = _point1.subtract(ray.get_point());
-        Vector3D v2 = _point2.subtract(ray.get_point());
-        Vector3D v3 = _point3.subtract(ray.get_point());
+        Vector3D v1 = _point1.subtract(Pr);
+        Vector3D v2 = _point2.subtract(Pr);
+        Vector3D v3 = _point3.subtract(Pr);
 
         Vector3D n1 = v1.crossProduct(v2).normalized();
         Vector3D n2 = v2.crossProduct(v3).normalized();
-        Vector3D n3 = v3.crossProduct(v1).normalized();
+
+        Vector3D n3;
+        if (v3.normalized().equals(v1.normalized()))
+            n3 = new Vector3D(Vector3D.ZERO);
+        else
+            n3 = v3.crossProduct(v1).normalized();
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
         Point3D p = planeIntersections.get(0).point;
 
-        double scalar1 = p.subtract(ray.get_point()).dotProduct(n1);
-        double scalar2 = p.subtract(ray.get_point()).dotProduct(n2);
-        double scalar3 = p.subtract(ray.get_point()).dotProduct(n3);
+        double scalar1;
+        double scalar2;
+        double scalar3;
+
+        if (p.equals(Pr)){
+            scalar1 = 0;
+            scalar2 = 0;
+            scalar3 = 0;
+        }
+        else{
+            if (n1.equals(Vector3D.ZERO))
+                scalar1 = 0;
+            else
+                scalar1 = p.subtract(Pr).dotProduct(n1);
+
+            if (n2.equals(Vector3D.ZERO))
+                scalar2 = 0;
+            else
+                scalar2 = p.subtract(Pr).dotProduct(n2);
+
+            if (n3.equals(Vector3D.ZERO))
+                scalar3 = 0;
+            else
+                scalar3 = p.subtract(Pr).dotProduct(n3);
+        }
+
         if (Util.isZero(scalar1) == true || Util.isZero(scalar2) == true || Util.isZero(scalar3) == true){
             return result;
         }

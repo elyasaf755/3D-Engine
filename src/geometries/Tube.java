@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Transform;
-import primitives.Vector3D;
+import primitives.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -63,7 +60,94 @@ public class Tube extends Cylinder {
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-        return super.findIntersections(ray);
+        ArrayList<GeoPoint> cIntersections = super.findIntersections(ray);
+
+        Point3D Pr = ray.get_point();
+        Vector3D Vr = ray.get_direction();
+
+        Point3D PtLow = this.get_ray().get_point();
+        Vector3D Vt = this.get_ray().get_direction();
+        double r = this.get_radius();
+        double h = this.get_height();
+        Point3D PtUp = PtLow.add(Vt.scale(h));
+
+        Plane upperCap = new Plane(PtUp, Vt);
+        Plane lowerCap = new Plane(PtLow, Vt);
+
+        ArrayList<GeoPoint> candidates = new ArrayList<>();
+
+        for (GeoPoint geoPoint : cIntersections){
+            Point3D qi = geoPoint.point;
+
+            if (Vt.dotProduct(qi.subtract(PtLow)) > 0 &&
+                Vt.dotProduct(qi.subtract(PtUp)) < 0)
+            {
+                candidates.add(geoPoint);
+            }
+        }
+
+        ArrayList<GeoPoint> pIntersectios = new ArrayList<>();
+
+        pIntersectios.addAll(upperCap.findIntersections(ray));
+        pIntersectios.addAll(lowerCap.findIntersections(ray));
+
+        if (pIntersectios.size() == 2){
+            Point3D q3 = pIntersectios.get(0).point;
+            Point3D q4 = pIntersectios.get(1).point;
+
+            if (q3.subtract(PtLow).squared() <= Util.squared(r) &&
+                q4.subtract(PtUp).squared() <= Util.squared(r)){
+                candidates.addAll(pIntersectios);
+            }
+        }
+        else if (pIntersectios.size() == 1){
+            Point3D q3 = pIntersectios.get(0).point;
+
+            if (q3.subtract(PtLow).squared() <= Util.squared(r)){
+                candidates.addAll(pIntersectios);
+            }
+        }
+
+        double[] t = new double[candidates.size()];
+
+        for (int i = 0; i < candidates.size(); ++i){
+            Point3D qi = candidates.get(i).point;
+
+            double px = Pr.getX().getCoord();
+            double py = Pr.getY().getCoord();
+            double pz = Pr.getZ().getCoord();
+
+            double vx = Vr.getPoint().getX().getCoord();
+            double vy = Vr.getPoint().getY().getCoord();
+            double vz = Vr.getPoint().getZ().getCoord();
+
+            double qx = qi.getX().getCoord();
+            double qy = qi.getY().getCoord();
+            double qz = qi.getZ().getCoord();
+
+            if (!Util.equals(vx, 0))
+                t[i] = Util.udiv(Util.usubtract(qx, px), vx);
+            else if (!Util.equals(vy, 0))
+                t[i] = Util.udiv(Util.usubtract(qy, py), vy);
+            else if (!Util.equals(vz, 0))
+                t[i] = Util.udiv(Util.usubtract(qz, pz), vz);
+        }
+
+        ArrayList<GeoPoint> result = new ArrayList<>();
+
+        Arrays.sort(t);
+        int i = 0;
+        for (double d : t){
+            if ( i < 2){
+                result.add(new GeoPoint(this, Pr.add(Vr.scale(d))));
+                ++i;
+            }
+            else{
+                break;
+            }
+        }
+
+        return result;
     }
 
     @Override
@@ -74,6 +158,11 @@ public class Tube extends Cylinder {
     @Override
     public void rotate(double x, double y, double z) {
         _ray.rotate(x, y, z);
+    }
+
+    public void scale(double factor){
+        _radius = Util.uscale(_radius, factor);
+        _height = Util.uscale(_height, factor);
     }
 
     @Override

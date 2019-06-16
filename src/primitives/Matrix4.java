@@ -29,7 +29,8 @@ public class Matrix4 {
 
         for (int i = 0; i < 4; ++i){
             for (int j = 0; j < 4; ++j){
-                _m[i][j] = matrix[i][j];
+                Coordinate temp = new Coordinate(matrix[i][j]);
+                _m[i][j] = temp.getCoord();
             }
         }
     }
@@ -224,6 +225,20 @@ public class Matrix4 {
         return this;
     }
 
+    public Matrix4 initProjection(double fov, double width, double height, double zFar, double zNear){
+
+        double ar = width / height;
+        double tanHalfFov = Math.tan(Math.toRadians(fov / 2));
+        double zRange = zNear - zFar;
+
+        setRow(0,1 / (tanHalfFov * ar),0,           0,                      0);
+        setRow(1,0,                    1/tanHalfFov,0,                      0);
+        setRow(2,0,                    0,           (-zNear - zFar) / zRange,2 * zFar * zNear / zRange);
+        setRow(3,0,                    0,           1,                      0);
+
+        return this;
+    }
+
     public void setColumn(int column, double x, double y, double z, double w){
         _m[0][column] = x;
         _m[1][column] = y;
@@ -238,9 +253,9 @@ public class Matrix4 {
         _m[row][3] = w;
     }
 
-    public Matrix4 mult(Matrix4 matrix4) {
+    public Matrix4 mult(Matrix4 matrix) {
         Matrix lhs = new Matrix(_m);
-        Matrix rhs = new Matrix(matrix4.getMatrix());
+        Matrix rhs = new Matrix(matrix.getMatrix());
 
         Matrix result = lhs.mult(rhs);
 
@@ -248,7 +263,7 @@ public class Matrix4 {
         return new Matrix4(result.get_matrix());
     }
 
-    public Vector3D mult (Vector3D vector){
+    public Vector3D mult(Vector3D vector){
         Matrix lhs = new Matrix(this.getMatrix());
         Matrix rhs = new Matrix(4,1);
         rhs.set_element(0,0, vector.getPoint().getX().getCoord());
@@ -265,7 +280,7 @@ public class Matrix4 {
         );
     }
 
-    public Point3D mult (Point3D point3D){
+    public Point3D mult(Point3D point3D){
         Matrix lhs = new Matrix(this.getMatrix());
         Matrix rhs = new Matrix(4,1);
         rhs.set_element(0,0, point3D.getX().getCoord());
@@ -280,6 +295,18 @@ public class Matrix4 {
                 (double)result.get_element(1,0),
                 (double)result.get_element(2,0)
         );
+    }
+
+    public Matrix4 scale(double scalar){
+        double[][] result = new double[3][3];
+
+        for (int i = 0; i < 4; ++i){
+            for (int j = 0; j < 4; ++j){
+                result[i][j] = _m[i][j] * scalar;
+            }
+        }
+
+        return new Matrix4(result);
     }
 
     @Override

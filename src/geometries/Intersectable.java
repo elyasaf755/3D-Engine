@@ -15,6 +15,11 @@ public interface Intersectable {
             geometry = _geometry;
         }
 
+        public GeoPoint(GeoPoint geoPoint){
+            point = new Point3D(geoPoint.point);
+            geometry = geoPoint.geometry;
+        }
+
         @Override
         public boolean equals(Object obj) {
             if (this == obj)

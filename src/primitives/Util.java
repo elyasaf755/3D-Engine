@@ -15,7 +15,7 @@ public class Util {
         // 2. Shift all 52 bits to the right (removing mantissa)
         // 3. Zero the sign of number bit by mask 0x7FF
         // 4. "De-normalize" the exponent by subtracting 1023
-        return (int)((Double.doubleToRawLongBits(num) >> 52) & 0x7FFL) - 1023;
+        return (int) ((Double.doubleToRawLongBits(num) >> 52) & 0x7FFL) - 1023;
     }
 
     public static double usubtract(double lhs, double rhs) {
@@ -59,8 +59,8 @@ public class Util {
         return deltaExp < ACCURACY ? lhs : lhs * factor;
     }
 
-    public static double udiv(double numerator, double denominator){
-        return alignZero(numerator/denominator);
+    public static double udiv(double numerator, double denominator) {
+        return alignZero(numerator / denominator);
     }
 
     public static boolean isZero(double number) {
@@ -75,11 +75,11 @@ public class Util {
         return getExp(number) < ACCURACY ? 0.0 : number;
     }
 
-    public static boolean isNegative(double num){
-        if (isZero(num) == true){
+    public static boolean isNegative(double num) {
+        if (isZero(num) == true) {
             return false;
         }
-        if (num / Math.abs(num) == -1){
+        if (num / Math.abs(num) == -1) {
             return true;
         }
 
@@ -105,11 +105,11 @@ public class Util {
         }
     }
 
-    public static double squared(double number){
+    public static double squared(double number) {
         return uscale(number, number);
     }
 
-    public static double[] quadraticRoots(double a, double b, double c){
+    public static double[] quadraticRoots(double a, double b, double c) {
         double[] result = new double[2];
 
         //b^2-4*a*c
@@ -121,7 +121,7 @@ public class Util {
         //root2 = (-b+sqrt(dt))*[(2a)^(-1)]
         result[1] = Util.uscale(Util.uadd(-b, Math.sqrt(dt)), Math.pow(Util.uscale(2, a), -1));
 
-        if (result[0] == result[1]){
+        if (result[0] == result[1]) {
             double[] res = new double[1];
             return res;
         }
@@ -129,7 +129,7 @@ public class Util {
         return result;
     }
 
-    public static boolean equals(double lhs, double rhs){
+    public static boolean equals(double lhs, double rhs) {
         return usubtract(lhs, rhs) == 0.0;
     }
 }

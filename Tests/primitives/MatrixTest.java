@@ -293,6 +293,16 @@ class MatrixTest {
         expected.set_element(2, 2, 9);
 
         assertEquals(expected, matrix.transpose());
+
+        Vector3D v = new Vector3D(1,2,3);
+        Matrix m = new Matrix(v);
+
+        double[][] matrix2 = {{1,2,3}};
+
+        Matrix actual2 = m.transpose();
+        Matrix expected2 = new Matrix(matrix2);
+
+        assertEquals(expected2, actual2);
     }
 
     @Test

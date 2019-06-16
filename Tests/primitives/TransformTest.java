@@ -62,4 +62,37 @@ class TransformTest {
 
 
     }
+
+    @Test
+    void getRodriguesRotation() {
+        Vector3D v1 = new Vector3D(1,0,0);
+        Vector3D v2 = new Vector3D(0,0,1);
+
+        Matrix3 H = Transform.getRodriguesRotation(v1, v2);
+
+        Vector3D v3 = H.inverse().mult(H.mult(v1));
+
+        assertEquals(v1, v3);
+
+        Vector3D source = new Vector3D(1,2,3);
+        Vector3D destination = new Vector3D(0,0,1);
+
+        Matrix3 R = Transform.getRodriguesRotation(source, destination);
+
+        Vector3D expected = R.mult(source).normalized();
+
+        assertEquals(destination, expected);
+    }
+
+    @Test
+    void getHouseholderMatrix() {
+        Vector3D source = new Vector3D(1,2,3);
+        Vector3D destination = new Vector3D(0,0,1);
+
+        Matrix3 H = Transform.getHouseholderMatrix(source, destination);
+
+        Vector3D expected = H.mult(source);
+
+        assertEquals(destination, expected);
+    }
 }

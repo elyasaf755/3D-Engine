@@ -79,11 +79,16 @@ public class Plane extends Geometry  implements FlatGeometry{
 
             double t = (_point.subtract(ray.get_point()).dotProduct(_normal)) / denom;
 
-            if (t >= 0){
-                ArrayList<GeoPoint> result = new ArrayList<>();
-                result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scale(t))));
-                return result;
+            ArrayList<GeoPoint> result = new ArrayList<>();
+
+            if (Util.equals(t, 0)){
+                result.add(new GeoPoint(this, ray.get_point()));
             }
+            else if (t > 0){
+                result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scale(t))));
+            }
+
+            return result;
         }
 
         return new ArrayList<>();

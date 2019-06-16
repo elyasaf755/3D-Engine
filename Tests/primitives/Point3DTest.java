@@ -23,7 +23,7 @@ class Point3DTest {
     }
 
     @Test
-    void add() {
+    void addV() {
         Point3D point = p1.add(new Vector3D(p2));
 
         assertEquals(point, new Point3D(3,3,3));
@@ -108,5 +108,13 @@ class Point3DTest {
         actual.transform(translation, rotation, scale);
         Point3D expected = new Point3D(-125,0,0);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void addP() {
+    }
+
+    @Test
+    void addPV() {
     }
 }
