@@ -50,6 +50,6 @@ public class SpotLight extends PointLight{
 
         double attenuation = _Kc + _Kl * distance + _Ke * distance * distance;
 
-        return _color.scale(Math.abs(_direction.dotProduct(getLightDirectionTo(point)))).reduce(attenuation);
+        return _color.scale(Math.abs(_direction.normalized().dotProduct(getLightDirectionTo(point).normalized()))).reduce(attenuation);
     }
 }

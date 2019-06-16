@@ -24,14 +24,14 @@ class RenderTest {
         scene.set_background(new Color(java.awt.Color.BLACK));
 
         //Center sphere
-        Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));
+      //  Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));
 
         //Upper right
         Triangle triangle1 = new Triangle(
                 new Point3D(100, -100, 100),
-                new Point3D(100, -100, 0),
-                new Point3D(100, 0, 100));
-
+                new Point3D(100, -100, 98),
+                new Point3D(100, -98, 100));
+/*
         //Upper left
         Triangle triangle2 = new Triangle(
                 new Point3D(100, 100, 100),
@@ -49,8 +49,8 @@ class RenderTest {
                 new Point3D(100, -100, 0),
                 new Point3D(100, 0, -100),
                 new Point3D(100, -100, -100));
-
-        scene.addGeometries(sphere, triangle1, triangle2, triangle3, triangle4);
+*/
+        scene.addGeometries( triangle1);//sphere,, triangle2, triangle3, triangle4);
 
         ImageWriter imageWriter1 = new ImageWriter("1stRenderTest - Scene Intersections", 500, 500, 500, 500);
 
@@ -66,12 +66,12 @@ class RenderTest {
 
         render = new Render(scene, imageWriter2);
 
-        sphere.set_emission(java.awt.Color.CYAN);
+        //sphere.set_emission(java.awt.Color.CYAN);
         triangle1.set_emission(java.awt.Color.RED);
-        triangle2.set_emission(java.awt.Color.GREEN);
+       /* triangle2.set_emission(java.awt.Color.GREEN);
         triangle3.set_emission(java.awt.Color.BLUE);
         triangle4.set_emission(java.awt.Color.YELLOW);
-
+*/
         render.renderImage();
         render.printGrid(50);
         render.writeToImage();

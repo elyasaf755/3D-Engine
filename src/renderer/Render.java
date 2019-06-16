@@ -2,11 +2,12 @@ package renderer;
 
 import elements.LightSource;
 
-import geometries.*;
+import geometries.FlatGeometry;
+import geometries.Geometry;
+import geometries.Triangle;
 import primitives.*;
 
 import scene.Scene;
-import sun.util.resources.ca.CalendarData_ca;
 
 import java.util.ArrayList;
 
@@ -15,6 +16,9 @@ import static geometries.Intersectable.GeoPoint;
 public class Render {
     private Scene _scene;
     private ImageWriter _imageWriter;
+    private static final int RECURSION_LEVEL=3;
+    private static final double MIN_CALC_COLOR_K = 0.001;
+
 
     //Constructors
 
@@ -40,7 +44,8 @@ public class Render {
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
-                    _imageWriter.writePixel(i, j, calcColor(closestPoint));
+                    _imageWriter.writePixel(i, j, calcColor(closestPoint,new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
+                    //_imageWriter.writePixel(i, j, Color.BLUE);TODO: for del
                 }
             }
         }
@@ -100,26 +105,23 @@ public class Render {
         return lightColor.scale(Math.abs(k));
     }
 
-    private java.awt.Color calcColor(GeoPoint intersection){
-
+    private java.awt.Color calcColor(GeoPoint intersection, Ray ray) {
+        return calcColor(intersection, ray, 0, 1.0).add(_scene.get_ambientLight().getIntensity()).getColor();
+    }
+    private Color calcColor(GeoPoint intersection, Ray ray, int level, double k){
+        if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K) {
+            return new Color(0, 0, 0);
+        }
         Color emission = intersection.geometry.get_emission();
-        Color ambient = _scene.get_ambientLight().getIntensity();
         double Kd = intersection.geometry.get_material().get_Kd();
         double Ks = intersection.geometry.get_material().get_Ks();
         int shininess = intersection.geometry.get_material().get_nShininess();
         Vector3D normal = intersection.geometry.get_normal(intersection.point);
-        Vector3D cameraDirection;
-        if (intersection.point.equals(_scene.get_camera().get_origin())){
-            cameraDirection = null;
-        }
-        else{
-            cameraDirection = intersection.point.subtract(_scene.get_camera().get_origin());
-        }
+        Vector3D cameraDirection = intersection.point.subtract(_scene.get_camera().get_origin());
 
-        Color result = emission.add(ambient);
+        Color result = emission;
 
         for (LightSource light : _scene.get_lights()){
-            if (!occluded(light, intersection)){
                 Vector3D lightDirection = light.getLightDirectionTo(intersection.point);
 
                 //TODO: If exception should be thrown at PointLight's "getLightDirectionTo" or Point3D's subtract functions - del this;
@@ -129,18 +131,42 @@ public class Render {
 
                 //Fixing wrong illumination when the camera direction is in the opposite direction of the light. when both dot products have same sign.
                 if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
-                    Color intensity = light.getIntensity(intersection.point);
+                    //TODO: Add the following code into the if statement?
+                    double ktr = transparency(light, intersection);
+                    if (ktr * k < MIN_CALC_COLOR_K) {
 
-                    result = result.add(calcDiffusive(Kd, normal, lightDirection, intensity));
-                    result = result.add(calcSpecular(Ks, normal, lightDirection, cameraDirection, shininess, intensity));
+
+                        Color intensity = light.getIntensity(intersection.point).scale(ktr);
+
+                        result = result.add(calcDiffusive(Kd, normal, lightDirection, intensity));
+                        result = result.add(calcSpecular(Ks, normal, lightDirection, cameraDirection, shininess, intensity));
+                    }
                 }
-            }
+
         }
 
-        return result.getColor();
+        Ray reflectedRay = constructReflectedRay(intersection, ray);
+        ArrayList<GeoPoint> reflectionPoints = _scene.get_geometries().findIntersections(reflectedRay);
+        GeoPoint closestReflectedPoint = getClosestPoint(reflectionPoints);
+        double kr = intersection.geometry.get_material().get_Kr();
+        Color reflectedColor = new Color(calcColor(closestReflectedPoint,reflectedRay,level+1,k*kr));
+        Color reflectedLight = new Color(reflectedColor.scale(kr));
+        result = result.add(reflectedLight);
+
+        Ray refractedRay = constructRefractedRay(intersection, ray);
+        ArrayList<GeoPoint> refractionPoints = _scene.get_geometries().findIntersections(refractedRay);
+        GeoPoint closestRefractedPoint = getClosestPoint(refractionPoints);
+        double kt = intersection.geometry.get_material().get_Kt();
+        Color refractedColor = new Color(calcColor(closestRefractedPoint,refractedRay,level+1,k*kt));
+        Color refractedLight = new Color(refractedColor.scale(kt));
+        result = result.add(refractedLight);
+
+
+        return result;
     }
 
     private GeoPoint getClosestPoint(ArrayList<GeoPoint> geoPoints){
+        //TODO: implement for map
         if (geoPoints.size() == 0)
             return null;
 
@@ -149,7 +175,6 @@ public class Render {
         GeoPoint closestPoint = null;
 
         for(GeoPoint geoPoint : geoPoints){
-
             if (closestPoint == null && shortestDistance == 0){
                 closestPoint = geoPoint;
                 shortestDistance = origin.distance(geoPoint.point);
@@ -166,7 +191,7 @@ public class Render {
         return closestPoint;
     }
 
-    private boolean occluded(LightSource lightSource, GeoPoint intersection){
+    private double transparency(LightSource lightSource, GeoPoint intersection){
         Point3D intersectionPoint = new Point3D(intersection.point);
         Vector3D lightDirection = lightSource.getLightDirectionTo(intersectionPoint);
         lightDirection = lightDirection.scale(-1);
@@ -183,7 +208,42 @@ public class Render {
         if (intersection.geometry instanceof FlatGeometry)
             intersections.remove(intersection);
 
-        return !intersections.isEmpty();
+        //todo: to understand how it is work. i just copied it
+        double ktr = 1;
+        for (GeoPoint gp : intersections)
+            ktr *= gp.geometry.get_material().get_Kt();
+        return ktr;
+    }
+
+    private Ray constructReflectedRay(GeoPoint intersection, Ray ray)
+    {
+        Vector3D normal = new Vector3D(intersection.geometry.get_normal(intersection.point));
+        Point3D point = new Point3D(intersection.point);
+        Ray originRay = new Ray(ray);
+
+       //todo: return null? if 'yes', to check if it is null in calcColor.
+        if (originRay.get_direction().dotProduct(normal) == 0){
+           return null;
+        }
+
+        Vector3D R = originRay.get_direction().subtract(normal.scale(2 * originRay.get_direction().dotProduct(normal)));
+        return new Ray(point,R);
+    }
+
+    private Ray constructRefractedRay(GeoPoint intersection, Ray ray)
+    {
+        Vector3D normal = new Vector3D(intersection.geometry.get_normal(intersection.point));
+        Point3D point = new Point3D(intersection.point);
+        Ray originRay = new Ray(ray);
+
+        //todo: return null? if 'yes', to check if it is null in calcColor.
+        if (originRay.get_direction().dotProduct(normal) == 0){
+            return null;
+        }
+
+        //todo: implement calculating R
+        //Vector3D R = ;
+        return new Ray(originRay);
     }
 
     public void printGrid(int interval){
@@ -206,18 +266,9 @@ public class Render {
         }
     }
 
-    public void printAxises(){
-        Cylinder xAxis = new Cylinder(5,new Ray( new Vector3D(1,0,0)));
-        Cylinder yAxis = new Cylinder(5,new Ray( new Vector3D(0,1,0)));
-        Cylinder zAxis = new Cylinder(5,new Ray( new Vector3D(0,0,1)));
-
-        xAxis.set_emission(java.awt.Color.RED);
-        yAxis.set_emission(java.awt.Color.GREEN);
-        zAxis.set_emission(java.awt.Color.BLUE);
-        _scene.addGeometries(xAxis, yAxis, zAxis);
-    }
-
     public void writeToImage(){
         _imageWriter.writeToimage();
     }
+
+
 }
