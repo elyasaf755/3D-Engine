@@ -393,16 +393,14 @@ class RenderTest {
         Scene scene = new Scene("tubeScene");
         scene.set_background(new Color(75, 127,190));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
-        scene.set_camera(new Camera(new Point3D(0,0,-100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 100);
+        Vector3D zAxis = new Vector3D(0,0,1);
+        Vector3D yAxis = new Vector3D(0,1,0);
+        scene.set_camera(new Camera(new Point3D(0,0,-10000), zAxis, yAxis), 10000);
         scene.set_background(new Color(java.awt.Color.CYAN));
+        scene.get_camera().rotate(5, 15, 0);
 
-        Sphere sphere = new Sphere(150, new Point3D(0,0,100));
+        Sphere sphere = new Sphere(5, new Point3D(0,0,0));
         sphere.set_emission(java.awt.Color.GREEN);
-
-        //Tube tube = new Tube(30, new Ray(new Vector3D(0,1,0)), 100);
-        //Tube cap = new Tube(40, new Ray(new Point3D(0,0, -100), new Vector3D(0,1,0)), 10);
-        //tube.set_emission(java.awt.Color.green);
-        //cap.set_emission(java.awt.Color.green);
 
         scene.addGeometries(sphere);
 
@@ -410,6 +408,7 @@ class RenderTest {
 
         ImageWriter imageWriter = new ImageWriter("8thRenderTest - Tube Test", 500, 500, 500, 500);
         Render render = new Render(scene, imageWriter);
+        render.printAxises();
         render.renderImage();
         render.writeToImage();
     }

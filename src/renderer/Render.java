@@ -2,9 +2,7 @@ package renderer;
 
 import elements.LightSource;
 
-import geometries.FlatGeometry;
-import geometries.Geometry;
-import geometries.Triangle;
+import geometries.*;
 import primitives.*;
 
 import scene.Scene;
@@ -110,7 +108,13 @@ public class Render {
         double Ks = intersection.geometry.get_material().get_Ks();
         int shininess = intersection.geometry.get_material().get_nShininess();
         Vector3D normal = intersection.geometry.get_normal(intersection.point);
-        Vector3D cameraDirection = intersection.point.subtract(_scene.get_camera().get_origin());
+        Vector3D cameraDirection;
+        if (intersection.point.equals(_scene.get_camera().get_origin())){
+            cameraDirection = null;
+        }
+        else{
+            cameraDirection = intersection.point.subtract(_scene.get_camera().get_origin());
+        }
 
         Color result = emission.add(ambient);
 
@@ -200,6 +204,17 @@ public class Render {
                 }
             }
         }
+    }
+
+    public void printAxises(){
+        Cylinder xAxis = new Cylinder(5,new Ray( new Vector3D(1,0,0)));
+        Cylinder yAxis = new Cylinder(5,new Ray( new Vector3D(0,1,0)));
+        Cylinder zAxis = new Cylinder(5,new Ray( new Vector3D(0,0,1)));
+
+        xAxis.set_emission(java.awt.Color.RED);
+        yAxis.set_emission(java.awt.Color.GREEN);
+        zAxis.set_emission(java.awt.Color.BLUE);
+        _scene.addGeometries(xAxis, yAxis, zAxis);
     }
 
     public void writeToImage(){

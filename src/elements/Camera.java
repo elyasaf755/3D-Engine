@@ -2,7 +2,7 @@ package elements;
 
 import primitives.*;
 
-public class Camera {
+public class Camera implements ITransform{
     private Point3D _origin;
     private Vector3D _direction;
     private Vector3D _up;
@@ -118,8 +118,9 @@ public class Camera {
     **/
     public Ray constructRayThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
         //Fix pixel locations
+
         i = Nx - i - 1;
-        //j = Ny - j;
+        //j = Ny - j - 1;
 
 
         Point3D p0 = get_origin();
@@ -157,4 +158,37 @@ public class Camera {
         return new Ray(p0, v_ij.normalized());
     }
 
+    @Override
+    public void translate(double x, double y, double z) {
+        _origin.translate(x, y, z);
+    }
+
+    @Override
+    public void rotate(double x, double y, double z) {
+        _origin.rotate(x, y, z);
+        _direction.rotate(x, y, z);
+        _up.rotate(x, y, z);
+        _right.rotate(x, y, z);
+    }
+
+    @Override
+    public void scale(double x, double y, double z) {
+        return;//TODO: make zoom in\out effect?
+    }
+
+    @Override
+    public void transform(Transform _transform) {
+        _origin.transform(_transform);
+        _direction.transform(_transform);
+        _up.transform(_transform);
+        _right.transform(_transform);
+    }
+
+    @Override
+    public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        _origin.transform(translation, rotation, scale);
+        _direction.transform(translation, rotation, scale);
+        _up.transform(translation, rotation, scale);
+        _right.transform(translation, rotation, scale);
+    }
 }
