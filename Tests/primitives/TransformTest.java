@@ -86,13 +86,5 @@ class TransformTest {
 
     @Test
     void getHouseholderMatrix() {
-        Vector3D source = new Vector3D(1,2,3);
-        Vector3D destination = new Vector3D(0,0,1);
-
-        Matrix3 H = Transform.getHouseholderMatrix(source, destination);
-
-        Vector3D expected = H.mult(source);
-
-        assertEquals(destination, expected);
     }
 }

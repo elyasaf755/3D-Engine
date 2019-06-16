@@ -8,6 +8,7 @@ import geometries.Triangle;
 import primitives.*;
 
 import scene.Scene;
+import sun.util.resources.ca.CalendarData_ca;
 
 import java.util.ArrayList;
 
@@ -102,6 +103,7 @@ public class Render {
     }
 
     private java.awt.Color calcColor(GeoPoint intersection){
+
         Color emission = intersection.geometry.get_emission();
         Color ambient = _scene.get_ambientLight().getIntensity();
         double Kd = intersection.geometry.get_material().get_Kd();
@@ -143,29 +145,6 @@ public class Render {
         GeoPoint closestPoint = null;
 
         for(GeoPoint geoPoint : geoPoints){
-            /*
-            Point3D point = geoPoint.point;
-            Transform transform = new Transform();
-            transform.setProjection(70, 500, 500, 1000, 100);
-            Matrix pt = new Matrix(transform.getProjectedTransformation().getMatrix());
-            double x = point.getX().getCoord();
-            double y = point.getY().getCoord();
-            double z = point.getZ().getCoord();
-            double[][] ma = {
-                    {x},
-                    {y},
-                    {z},
-                    {1}
-            };
-            Matrix m = new Matrix(ma);
-            Matrix tmp = pt.mult(m);
-            double Z = tmp.get_element(3,0);
-            x = m.get_element(0,0) / Z;
-            y = m.get_element(1,0) / Z;
-            z = m.get_element(2,0) / Z;
-
-            point = new Point3D(x, y, z);
-             */
 
             if (closestPoint == null && shortestDistance == 0){
                 closestPoint = geoPoint;

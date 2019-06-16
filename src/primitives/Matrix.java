@@ -175,10 +175,6 @@ public class Matrix {
 
                 for (int k = 0; k < matrix.getRows(); k++)
                 {
-                    if (i == 2 && j == 0 && k == 2){
-                        int x =5;
-                        ++x;
-                    }
                     BigDecimal temp = new BigDecimal(_matrix[i][k]*matrix.get_element(k, j), MathContext.UNLIMITED);
                     sum = sum.add(temp);
                 }
