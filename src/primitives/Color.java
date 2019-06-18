@@ -146,11 +146,13 @@ public class Color {
      */
     public Color add(Color... colors) {
         double r = _r, g = _g, b = _b;
+
         for (Color c : colors) {
             r += c._r;
             g += c._g;
             b += c._b;
         }
+
         return new Color(r, g, b);
     }
 

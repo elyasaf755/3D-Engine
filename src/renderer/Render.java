@@ -44,6 +44,7 @@ public class Render {
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
+                    Color colort=new Color( calcColor(closestPoint,new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
                     _imageWriter.writePixel(i, j, calcColor(closestPoint,new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
                     //_imageWriter.writePixel(i, j, Color.BLUE);TODO: for del
                 }
@@ -130,10 +131,12 @@ public class Render {
                 }
 
                 //Fixing wrong illumination when the camera direction is in the opposite direction of the light. when both dot products have same sign.
+               double z=normal.dotProduct(lightDirection);
+               double t=normal.dotProduct(cameraDirection);
                 if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
                     //TODO: Add the following code into the if statement?
                     double ktr = transparency(light, intersection);
-                    if (ktr * k < MIN_CALC_COLOR_K) {
+                    if (ktr * k > MIN_CALC_COLOR_K) {
 
 
                         Color intensity = light.getIntensity(intersection.point).scale(ktr);
@@ -193,8 +196,8 @@ public class Render {
 
     private double transparency(LightSource lightSource, GeoPoint intersection){
         Point3D intersectionPoint = new Point3D(intersection.point);
-        Vector3D lightDirection = lightSource.getLightDirectionTo(intersectionPoint);
-        lightDirection = lightDirection.scale(-1);
+        Vector3D lightDirection = lightSource.getLightDirectionTo(intersectionPoint).scale(-1);
+
 
         Vector3D epsVector = new Vector3D(intersection.geometry.get_normal(intersectionPoint));
         epsVector = epsVector.scale(2);
