@@ -273,10 +273,13 @@ public class Matrix4 {
 
         Matrix result = lhs.mult(rhs);
 
+        //TODO: del division by Z?
+        double Z = result.get_element(3,0);
+
         return new Vector3D(
-                (double)result.get_element(0,0),
-                (double)result.get_element(1,0),
-                (double)result.get_element(2,0)
+                (double)result.get_element(0,0) / Z,
+                (double)result.get_element(1,0) / Z,
+                (double)result.get_element(2,0) / Z
         );
     }
 

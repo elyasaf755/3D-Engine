@@ -1,5 +1,7 @@
 package primitives;
 
+import javax.xml.bind.util.ValidationEventCollector;
+
 import static java.lang.Math.sqrt;
 
 public class Point3D extends Point2D implements ITransform{
@@ -36,9 +38,12 @@ public class Point3D extends Point2D implements ITransform{
     }
 
     //Methods
-    public Vector3D subtract(Point3D point3d) {
-        Point2D point2d = subtract(new Point2D(point3d._x, point3d._y));
-        Coordinate z = _z.subtract(point3d._z);
+    public Vector3D subtract(Point3D point) {
+        if (this.equals(point))
+            throw new IllegalArgumentException("Can't subtract 2 equal point. (0,0,0) is not a vector.");
+
+        Point2D point2d = this.subtract(new Point2D(point._x, point._y));
+        Coordinate z = this._z.subtract(point._z);
 
         return new Vector3D(point2d._x, point2d._y, z);
     }
@@ -63,8 +68,12 @@ public class Point3D extends Point2D implements ITransform{
 
     }
 
-    public double distanceSquared(Point3D point3D){
-        Point3D result = this.subtract(point3D)._point;
+    public double distanceSquared(Point3D point){
+        if (this.equals(point)){
+            return 0;
+        }
+
+        Point3D result = this.subtract(point).getPoint();
 
         return Util.uadd(Util.uadd(result._x.multiply(result._x)._coord, result._y.multiply(result._y)._coord), result._z.multiply(result._z)._coord);
     }

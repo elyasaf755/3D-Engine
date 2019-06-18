@@ -1,5 +1,7 @@
 package primitives;
 
+import javax.management.OperationsException;
+
 public class Vector3D implements ITransform{
     protected Point3D _point;
 
@@ -168,7 +170,18 @@ public class Vector3D implements ITransform{
     }
 
     public Vector3D projection(Vector3D projector){
-        return new Vector3D(this.scale(Util.udiv(this.dotProduct(projector), this.dotProduct(this))));
+        double lhs = this.dotProduct(projector);
+        double rhs = this.dotProduct(this);
+
+        if (Util.equals(rhs, 0)){
+            throw new IllegalArgumentException("Can't devide by zero.");
+        }
+
+        if (Util.equals(lhs, 0)){
+            return new Vector3D(Vector3D.ZERO);
+        }
+
+        return new Vector3D(this.scale(Util.udiv(lhs, rhs)));
     }
 
     @Override

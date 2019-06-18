@@ -368,9 +368,10 @@ class RenderTest {
 
         Sphere sphereScaled = new Sphere(sphere);
         sphereScaled.set_emission(java.awt.Color.green);
-        sphereScaled.scale(70);
+        sphereScaled.scale(6);
         Transform transform = new Transform();
         transform.setTranslation(new Vector3D(200,0,0));
+        sphere.translate(0,-50,0);
 
         sphereScaled.set_point(transform.getTransformation().mult(new Vector3D(sphereScaled.get_point())).getPoint());
 
@@ -379,9 +380,7 @@ class RenderTest {
 
         ImageWriter imageWriter = new ImageWriter("7thRenderTest - Sphere Scaling", 500, 500, 500, 500);
 
-        Vector3D direction = sphere.get_point().subtract(new Point3D(25,-32,-32));
-
-        scene.addLights(new DirectionalLight(direction));
+        scene.addLights(new DirectionalLight(new Vector3D(1,2,0)));
         Render render = new Render(scene, imageWriter);
 
         render.renderImage();
@@ -394,22 +393,22 @@ class RenderTest {
         Scene scene = new Scene("tubeScene");
         scene.set_background(new Color(75, 127,190));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
-        scene.set_camera(new Camera(new Point3D(0,0,0), new Vector3D(0,0,1), new Vector3D(0,1,0)), 100);
-        scene.set_background(new Color(java.awt.Color.WHITE));
+        Vector3D zAxis = new Vector3D(0,0,1);
+        Vector3D yAxis = new Vector3D(0,1,0);
+        scene.set_camera(new Camera(new Point3D(0,0,-10000), zAxis, yAxis), 10000);
+        scene.set_background(new Color(java.awt.Color.CYAN));
+        scene.get_camera().rotate(5, 15, 0);
 
-        //Tube tube1 = new Tube(40, new Ray(new Point3D(0,0,100), new Vector3D(1,0,0)), 50);
+        Sphere sphere = new Sphere(5, new Point3D(0,0,0));
+        sphere.set_emission(java.awt.Color.GREEN);
 
-        //tube1.set_emission(java.awt.Color.green);
-        Sphere sphere = new Sphere(50, new Point3D(0,50,100));
-        sphere.set_emission(java.awt.Color.cyan);
-
-        //scene.addGeometries(tube1, sphere1, tube2, sphere2);
         scene.addGeometries(sphere);
 
-        scene.addLights(new DirectionalLight(new Vector3D(0,-1,0)));
+        scene.addLights(new DirectionalLight(new Vector3D(0,0,1)));
 
         ImageWriter imageWriter = new ImageWriter("8thRenderTest - Tube Test", 500, 500, 500, 500);
         Render render = new Render(scene, imageWriter);
+        render.printAxises();
         render.renderImage();
         render.writeToImage();
     }

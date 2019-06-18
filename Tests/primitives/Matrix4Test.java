@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Matrix4Test {
 
     @Test
-    void mult() {
+    void multVector3() {
         Matrix4 matrix = new Matrix4();
         matrix.setRow(0,1,0,0,0);
         matrix.setRow(1,0,1,0,0);
@@ -26,7 +26,7 @@ class Matrix4Test {
     }
 
     @Test
-    void mult1() {
+    void multPoint3() {
         Matrix4 matrix = new Matrix4();
         matrix.setRow(0,1,0,0,0);
         matrix.setRow(1,0,1,0,0);

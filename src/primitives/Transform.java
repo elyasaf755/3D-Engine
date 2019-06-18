@@ -144,9 +144,10 @@ public class Transform {
     }
 
     public Matrix4 getProjectedTransformation(){
-        Matrix4 transfoormationMatrix = getTransformation();
+
+        Matrix4 transformationMatrix = getTransformation();
         Matrix4 projectionMatrix = new Matrix4().initProjection(_fov, _width, _height, _zNear, _zFar);
 
-        return projectionMatrix.mult(transfoormationMatrix);
+        return projectionMatrix.mult(transformationMatrix);
     }
 }
