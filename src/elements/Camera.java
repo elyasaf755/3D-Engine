@@ -173,7 +173,14 @@ public class Camera implements ITransform{
 
     @Override
     public void scale(double x, double y, double z) {
-        return;//TODO: make zoom in\out effect?
+        x = 1.0 / x;
+        y = 1.0 / y;
+        z = 1.0 / z;
+
+        _origin.scale(x, y, z);
+        _direction.scale(x, y, z);
+        _up.scale(x, y, z);
+        _right.scale(x, y, z);
     }
 
     @Override
