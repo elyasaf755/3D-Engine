@@ -110,7 +110,7 @@ public class Render {
         return calcColor(intersection, ray, 0, 1.0).add(_scene.get_ambientLight().getIntensity()).getColor();
     }
     private Color calcColor(GeoPoint intersection, Ray ray, int level, double k){
-        if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K) {
+        if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K||intersection==null) {
             return new Color(0, 0, 0);
         }
         Color emission = intersection.geometry.get_emission();
@@ -148,22 +148,30 @@ public class Render {
 
         }
 
-        Ray reflectedRay = constructReflectedRay(intersection, ray);
-        ArrayList<GeoPoint> reflectionPoints = _scene.get_geometries().findIntersections(reflectedRay);
-        GeoPoint closestReflectedPoint = getClosestPoint(reflectionPoints);
         double kr = intersection.geometry.get_material().get_Kr();
-        Color reflectedColor = new Color(calcColor(closestReflectedPoint,reflectedRay,level+1,k*kr));
-        Color reflectedLight = new Color(reflectedColor.scale(kr));
-        result = result.add(reflectedLight);
+        if (kr!=0) {
 
-        Ray refractedRay = constructRefractedRay(intersection, ray);
-        ArrayList<GeoPoint> refractionPoints = _scene.get_geometries().findIntersections(refractedRay);
-        GeoPoint closestRefractedPoint = getClosestPoint(refractionPoints);
+            Ray reflectedRay = constructReflectedRay(intersection, ray);
+            ArrayList<GeoPoint> reflectionPoints = _scene.get_geometries().findIntersections(reflectedRay);
+            if (!reflectionPoints.isEmpty()) {
+                GeoPoint closestReflectedPoint = getClosestPoint(reflectionPoints);
+                Color reflectedColor = new Color(calcColor(closestReflectedPoint, reflectedRay, level + 1, k * kr));
+                Color reflectedLight = new Color(reflectedColor.scale(kr));
+                result = result.add(reflectedLight);
+            }
+        }
         double kt = intersection.geometry.get_material().get_Kt();
-        Color refractedColor = new Color(calcColor(closestRefractedPoint,refractedRay,level+1,k*kt));
-        Color refractedLight = new Color(refractedColor.scale(kt));
-        result = result.add(refractedLight);
+        if (kt!=0) {
+            Ray refractedRay = constructRefractedRay(intersection, ray);
+            ArrayList<GeoPoint> refractionPoints = _scene.get_geometries().findIntersections(refractedRay);
+            if (!refractionPoints.isEmpty()) {
+                GeoPoint closestRefractedPoint = getClosestPoint(refractionPoints);
 
+                Color refractedColor = new Color(calcColor(closestRefractedPoint, refractedRay, level + 1, k * kt));
+                Color refractedLight = new Color(refractedColor.scale(kt));
+                result = result.add(refractedLight);
+            }
+        }
 
         return result;
     }

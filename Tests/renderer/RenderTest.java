@@ -197,7 +197,7 @@ class RenderTest {
         triangle3.set_emission(java.awt.Color.BLUE);
         triangle4.set_emission(java.awt.Color.YELLOW);
 
-        scene.addLights(new PointLight(new Color(java.awt.Color.CYAN), new Point3D(35, 0, 0), 1, 0.0, 0.0),new DirectionalLight(new Color(java.awt.Color.YELLOW),new Vector3D(1,-1,0)));
+        scene.addLights(new PointLight(new Color(java.awt.Color.red), new Point3D(35, 0, 0), 1, 0.0, 0.0));
         scene.addGeometries(sphere, triangle1, triangle2, triangle3, triangle4);
         ImageWriter imageWriter = new ImageWriter("3rdRenderTest - Point Light", 500, 500, 500, 500);
 
@@ -414,6 +414,67 @@ class RenderTest {
         render.writeToImage();
     }
 
+    @Test//TEST 9 - reflection and refraction
+    void renderImage9() {
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(75, 127,190));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.set_camera(new Camera(new Point3D(0,0,0), new Vector3D(1,0,0), new Vector3D(0,0,1)), 100);
+
+        scene.set_background(new Color(java.awt.Color.BLACK));
+
+        //Center sphere
+        Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));
+        Sphere sphere1 = new Sphere(30, new Point3D(50, -30, 30));
+        Sphere sphere2 = new Sphere(30, new Point3D(50, 30, -30));
+        //Upper right
+        Triangle triangle1 = new Triangle(
+                new Point3D(100, -100, 100),
+                new Point3D(100, -100, 0),
+                new Point3D(100, 0, 100));
+
+        //Upper left
+        Triangle triangle2 = new Triangle(
+                new Point3D(100, 100, 100),
+                new Point3D(100, 0, 100),
+                new Point3D(100, 100, 0));
+
+        //Lower left
+        Triangle triangle3 = new Triangle(
+                new Point3D(100, 100, 0),
+                new Point3D(100, 100, -100),
+                new Point3D(100, 0, -100));
+
+        //Lower right
+        Triangle triangle4 = new Triangle(
+                new Point3D(100, -100, 0),
+                new Point3D(100, 0, -100),
+                new Point3D(100, -100, -100));
+
+        sphere.set_emission(new Color(32,56,240));
+        sphere1.set_emission(new Color(200,56,40));
+        sphere1.get_material().set_Kr(0.7);
+        sphere2.set_emission(new Color(32,200,24));
+        sphere1.get_material().set_Kt(0.7);
+        triangle1.set_emission(java.awt.Color.RED);
+        triangle1.get_material().set_Kr(0.5);
+        triangle2.set_emission(java.awt.Color.GREEN);
+        triangle2.get_material().set_Kt(0.5);
+
+        triangle3.set_emission(java.awt.Color.BLUE);
+        triangle4.set_emission(java.awt.Color.YELLOW);
+
+        scene.addLights(new PointLight(new Color(java.awt.Color.red), new Point3D(35, 0, 0), 1, 0.0, 0.0),new DirectionalLight(new Color(java.awt.Color.YELLOW),new Vector3D(1,-1,0)));
+        scene.addGeometries(sphere, triangle1, triangle2, triangle3, triangle4,sphere1,sphere2);
+        ImageWriter imageWriter = new ImageWriter("9rdRenderTest - reflection and refraction", 500, 500, 500, 500);
+
+        Render render = new Render(scene, imageWriter);
+
+        render.renderImage();
+        render.printGrid(50);
+        render.writeToImage();
+    }
 
 
 }

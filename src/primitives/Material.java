@@ -69,7 +69,7 @@ public class Material {
         this._Kr = _Kr;
     }
 
-    public void set_Ktd(double _Kt) {
+    public void set_Kt(double _Kt) {
         this._Kt = _Kt;
     }
 
