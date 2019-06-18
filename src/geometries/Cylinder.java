@@ -57,6 +57,10 @@ public class Cylinder extends RadialGeometry{
         Vector3D Vc = this.get_ray().get_direction();
         Vector3D VcT = new Vector3D(0,0,1);
 
+        if (Vc.equals(VcT)){
+            return this.findIntersectionsInZDirection(ray);
+        }
+
         Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
 
         Point3D q = R.mult(this.get_ray().get_point());
@@ -82,6 +86,45 @@ public class Cylinder extends RadialGeometry{
         return result;
     }
 
+    private ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
+        Point3D eye = ray.get_point();
+        Vector3D direction = ray.get_direction();
+        double xe = eye.getX().getCoord();
+        double ye = eye.getY().getCoord();
+        double ze = eye.getZ().getCoord();
+
+        double xd = direction.getPoint().getX().getCoord();
+        double yd = direction.getPoint().getY().getCoord();
+        double zd = direction.getPoint().getZ().getCoord();
+
+        double r = this.get_radius();
+
+        double A = xd*xd+yd*yd;
+        double B = 2*xe*xd+2*ye*yd;
+        double C = xe*xe+ye*ye-r*r;
+
+        double[] roots = Util.quadraticRoots(A, B, C);
+
+        ArrayList<GeoPoint> result = new ArrayList<>();
+
+        for(double root : roots){
+            if (Double.isNaN(root))
+                continue;
+
+            if (Util.equals(root, 0)){
+                result.add(new GeoPoint(this, eye));
+            }
+            else if (root > 0){
+                result.add(new GeoPoint(this, eye.add(direction.scale(root))));
+            }
+
+
+        }
+
+        return result;
+    }
+
+    /*
     private ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
         Point3D Pc = this.get_ray().get_point();
         Vector3D Vc = this.get_ray().get_direction();
@@ -148,6 +191,7 @@ public class Cylinder extends RadialGeometry{
 
         return result;
     }
+     */
 
     @Override
     public void translate(double x, double y, double z) {
