@@ -191,13 +191,13 @@ class RenderTest {
                 new Point3D(100, 0, -100),
                 new Point3D(100, -100, -100));
 
-        sphere.set_emission(java.awt.Color.CYAN);
+        sphere.set_emission(new Color(32,56,240));
         triangle1.set_emission(java.awt.Color.RED);
         triangle2.set_emission(java.awt.Color.GREEN);
         triangle3.set_emission(java.awt.Color.BLUE);
         triangle4.set_emission(java.awt.Color.YELLOW);
 
-        scene.addLights(new PointLight(new Color(java.awt.Color.WHITE), new Point3D(35, 0, 0), 1, 0, 0));
+        scene.addLights(new PointLight(new Color(java.awt.Color.CYAN), new Point3D(35, 0, 0), 1, 0.0, 0.0),new DirectionalLight(new Color(java.awt.Color.YELLOW),new Vector3D(1,-1,0)));
         scene.addGeometries(sphere, triangle1, triangle2, triangle3, triangle4);
         ImageWriter imageWriter = new ImageWriter("3rdRenderTest - Point Light", 500, 500, 500, 500);
 
@@ -307,7 +307,7 @@ class RenderTest {
         triangle4.set_emission(java.awt.Color.YELLOW);
 
         scene.addGeometries(sphere, triangle1, triangle2, triangle3, triangle4);
-        scene.addLights(new SpotLight(new Point3D(30,0,100), new Vector3D(0,0,-1),1, 0.01, 0.01));
+        scene.addLights(new SpotLight(new Point3D(0,0,100), new Vector3D(1,0,-1),1, 0.0, 0.0));
 
         ImageWriter imageWriter = new ImageWriter("5thRenderTest - Spot Light", 500, 500, 500, 500);
 
