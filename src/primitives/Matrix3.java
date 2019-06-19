@@ -103,42 +103,59 @@ public class Matrix3 {
     }
 
     public Matrix3 mult(Matrix3 matrix) {
-        Matrix lhs = new Matrix(_m);
-        Matrix rhs = new Matrix(matrix.getMatrix());
+        double[][] A = this.getMatrix();
+        double[][] B = this.getMatrix();
 
-        Matrix result = lhs.mult(rhs);
+        double a00 = A[0][0]; double a01 = A[0][1]; double a02 = A[0][2];
+        double a10 = A[1][0]; double a11 = A[1][1]; double a12 = A[1][2];
+        double a20 = A[2][0]; double a21 = A[2][1]; double a22 = A[2][2];
 
+        double b00 = B[0][0]; double b01 = B[0][1]; double b02 = B[0][2];
+        double b10 = B[1][0]; double b11 = B[1][1]; double b12 = B[1][2];
+        double b20 = B[2][0]; double b21 = B[2][1]; double b22 = B[2][2];
 
-        return new Matrix3(result.get_matrix());
+        double[][] result = {
+                {a00*b00 + a01*b10 + a02*b20, a00*b01 + a01*b11 + a02*b21, a00*b02 + a01*b12 + a02*b22},
+                {a10*b00 + a11*b10 + a12*b20, a10*b01 + a11*b11 + a12*b21, a10*b02 + a11*b12 + a12*b22},
+                {a20*b00 + a21*b10 + a22*b20, a20*b01 + a21*b11 + a22*b21, a20*b02 + a21*b12 + a22*b22},
+        };
+
+        return new Matrix3(result);
     }
 
     public Vector3D mult(Vector3D vector){
-        Matrix lhs = new Matrix(this.getMatrix());
-        Matrix rhs = new Matrix(vector);
+        double[][] temp = this.getMatrix();
 
-        Matrix result = lhs.mult(rhs);
+        double px = vector.getPoint().getX().getCoord();
+        double py = vector.getPoint().getY().getCoord();
+        double pz = vector.getPoint().getZ().getCoord();
+
+        double a00 = temp[0][0]; double a01 = temp[0][1]; double a02 = temp[0][2];
+        double a10 = temp[1][0]; double a11 = temp[1][1]; double a12 = temp[1][2];
+        double a20 = temp[2][0]; double a21 = temp[2][1]; double a22 = temp[2][2];
 
         return new Vector3D(
-                (double)result.get_element(0,0),
-                (double)result.get_element(1,0),
-                (double)result.get_element(2,0)
+                a00*px + a01*py + a02*pz,
+                a10*px + a11*py + a12*pz,
+                a20*px + a21*py + a22*pz
         );
     }
 
     public Point3D mult(Point3D point3D){
-        Matrix lhs = new Matrix(this.getMatrix());
-        Matrix rhs = new Matrix(3,1);
+        double[][] temp = this.getMatrix();
 
-        rhs.set_element(0,0, point3D.getX().getCoord());
-        rhs.set_element(1,0, point3D.getY().getCoord());
-        rhs.set_element(2,0, point3D.getZ().getCoord());
+        double px = point3D.getX().getCoord();
+        double py = point3D.getY().getCoord();
+        double pz = point3D.getZ().getCoord();
 
-        Matrix result = lhs.mult(rhs);
+        double a00 = temp[0][0]; double a01 = temp[0][1]; double a02 = temp[0][2];
+        double a10 = temp[1][0]; double a11 = temp[1][1]; double a12 = temp[1][2];
+        double a20 = temp[2][0]; double a21 = temp[2][1]; double a22 = temp[2][2];
 
         return new Point3D(
-                (double)result.get_element(0,0),
-                (double)result.get_element(1,0),
-                (double)result.get_element(2,0)
+                a00*px + a01*py + a02*pz,
+                a10*px + a11*py + a12*pz,
+                a20*px + a21*py + a22*pz
         );
     }
 
@@ -160,7 +177,7 @@ public class Matrix3 {
         return new Matrix3(result.transpose().get_matrix());
     }
 
-    public Matrix3 inverse(){
+    public Matrix3 inversed(){
         return new Matrix3(new Matrix(this.getMatrix()).inversedMatrix3X3().get_matrix());
     }
 

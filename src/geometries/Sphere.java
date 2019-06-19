@@ -65,13 +65,20 @@ public class Sphere extends RadialGeometry {
 
         ArrayList<GeoPoint> intersections = new ArrayList<>();
 
-        if (t1 > 0){
+        if (Util.equals(t1, 0)){
+            //intersections.add(new GeoPoint(this, new Point3D(ray.get_point())));//TODO: uncomment?
+        }
+        else if (t1 > 0){
             intersections.add(new GeoPoint(this, new Point3D(ray.get_point().add(ray.get_direction().scale(t1)))));
         }
         if (Util.equals(t1, t2)){
             return intersections;
         }
-        if (t2 > 0){
+
+        if (Util.equals(t2, 0)){
+            //intersections.add(new GeoPoint(this, new Point3D(ray.get_point())));TODO: uncomment?
+        }
+        else if (t2 > 0){
             intersections.add(new GeoPoint(this, new Point3D(ray.get_point().add(ray.get_direction().scale(t2)))));
         }
 

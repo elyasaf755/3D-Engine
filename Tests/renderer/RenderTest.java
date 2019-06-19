@@ -2,10 +2,7 @@ package renderer;
 
 import com.sun.org.apache.regexp.internal.RE;
 import elements.*;
-import geometries.Cylinder;
-import geometries.Sphere;
-import geometries.Triangle;
-import geometries.Tube;
+import geometries.*;
 import org.junit.jupiter.api.Test;
 import primitives.*;
 import scene.Scene;
@@ -24,14 +21,14 @@ class RenderTest {
         scene.set_background(new Color(java.awt.Color.BLACK));
 
         //Center sphere
-      //  Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));
+        Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));
 
         //Upper right
         Triangle triangle1 = new Triangle(
                 new Point3D(100, -100, 100),
-                new Point3D(100, -100, 98),
-                new Point3D(100, -98, 100));
-/*
+                new Point3D(100, -100, 0),
+                new Point3D(100, 0, 100));
+
         //Upper left
         Triangle triangle2 = new Triangle(
                 new Point3D(100, 100, 100),
@@ -49,8 +46,8 @@ class RenderTest {
                 new Point3D(100, -100, 0),
                 new Point3D(100, 0, -100),
                 new Point3D(100, -100, -100));
-*/
-        scene.addGeometries( triangle1);//sphere,, triangle2, triangle3, triangle4);
+
+        scene.addGeometries( sphere, triangle1, triangle2, triangle3, triangle4);
 
         ImageWriter imageWriter1 = new ImageWriter("1stRenderTest - Scene Intersections", 500, 500, 500, 500);
 
@@ -60,43 +57,6 @@ class RenderTest {
         render.printGrid(50, java.awt.Color.WHITE);
 
         render.writeToImage();
-
-        //TEST 2 - with colors
-        ImageWriter imageWriter2 = new ImageWriter("2ndRenderTest - Colors", 500, 500, 500, 500);
-
-        render = new Render(scene, imageWriter2);
-
-        //sphere.set_emission(java.awt.Color.CYAN);
-        triangle1.set_emission(java.awt.Color.RED);
-       /* triangle2.set_emission(java.awt.Color.GREEN);
-        triangle3.set_emission(java.awt.Color.BLUE);
-        triangle4.set_emission(java.awt.Color.YELLOW);
-*/
-        render.renderImage();
-        render.printGrid(50);
-        render.writeToImage();
-
-        //TEST 3 - With point light
-        ImageWriter imageWriter3 = new ImageWriter("3rdRenderTest - Point Light", 500, 500, 500, 500);
-        //scene.addLights(new PointLight(new Color(java.awt.Color.WHITE), new Point3D(35, 0, 0), 1, 0, 0));
-
-        render = new Render(scene, imageWriter3);
-
-        render.renderImage();
-        render.printGrid(50);
-        render.writeToImage();
-
-        //TEST 4 - With directional light
-        ImageWriter imageWriter4 = new ImageWriter("4thRenderTest - Directional Light", 500, 500, 500, 500);
-        //scene.addLights(new DirectionalLight(new Vector3D(0,-1,0)));
-
-        render = new Render(scene, imageWriter4);
-
-        render.renderImage();
-        render.printGrid(50);
-        render.writeToImage();
-
-        //TODO: FIX: DirectionalLight and SpotLight always lit, even if they lit the opposite direction.
     }
 
     @Test//TEST 2 - With Colors
@@ -419,59 +379,93 @@ class RenderTest {
         Scene scene = new Scene("renderTest");
         scene.set_background(new Color(75, 127,190));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
-        scene.set_camera(new Camera(new Point3D(0,0,0), new Vector3D(1,0,0), new Vector3D(0,0,1)), 100);
+        scene.set_camera(new Camera(new Point3D(-1000,0,0), new Vector3D(1,0,0), new Vector3D(0,0,1)), 1100);
 
         scene.set_background(new Color(java.awt.Color.BLACK));
 
         //Center sphere
-        Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));
-        Sphere sphere1 = new Sphere(30, new Point3D(50, -30, 30));
-        Sphere sphere2 = new Sphere(30, new Point3D(50, 30, -30));
+        Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));//middle bigger sphere
+        sphere.set_emission(new Color(32,56,240));
+
+        Sphere sphere1 = new Sphere(30, new Point3D(50, -30, 30));//upper left sphere
+        sphere1.set_emission(new Color(200,56,40));
+        //sphere1.get_material().set_Kr(0.7);
+        //sphere1.get_material().set_Kt(0.7);
+
+        Sphere sphere2 = new Sphere(30, new Point3D(50, 30, -30));//lower right sphere
+        sphere2.set_emission(new Color(32,200,24));
+
         //Upper right
         Triangle triangle1 = new Triangle(
                 new Point3D(100, -100, 100),
                 new Point3D(100, -100, 0),
-                new Point3D(100, 0, 100));
+                new Point3D(100, 0, 100)
+        );
+
+        triangle1.set_emission(java.awt.Color.RED);
+        triangle1.get_material().set_Kr(0.5);
 
         //Upper left
         Triangle triangle2 = new Triangle(
                 new Point3D(100, 100, 100),
                 new Point3D(100, 0, 100),
-                new Point3D(100, 100, 0));
+                new Point3D(100, 100, 0)
+        );
+
+        triangle2.set_emission(java.awt.Color.GREEN);
+        triangle2.get_material().set_Kt(0.5);
 
         //Lower left
         Triangle triangle3 = new Triangle(
                 new Point3D(100, 100, 0),
                 new Point3D(100, 100, -100),
-                new Point3D(100, 0, -100));
+                new Point3D(100, 0, -100)
+        );
+
+        triangle3.set_emission(java.awt.Color.BLUE);
 
         //Lower right
         Triangle triangle4 = new Triangle(
                 new Point3D(100, -100, 0),
                 new Point3D(100, 0, -100),
-                new Point3D(100, -100, -100));
+                new Point3D(100, -100, -100)
+        );
 
-        sphere.set_emission(new Color(32,56,240));
-        sphere1.set_emission(new Color(200,56,40));
-        sphere1.get_material().set_Kr(0.7);
-        sphere2.set_emission(new Color(32,200,24));
-        sphere1.get_material().set_Kt(0.7);
-        triangle1.set_emission(java.awt.Color.RED);
-        triangle1.get_material().set_Kr(0.5);
-        triangle2.set_emission(java.awt.Color.GREEN);
-        triangle2.get_material().set_Kt(0.5);
-
-        triangle3.set_emission(java.awt.Color.BLUE);
         triangle4.set_emission(java.awt.Color.YELLOW);
 
-        scene.addLights(new PointLight(new Color(java.awt.Color.red), new Point3D(35, 0, 0), 1, 0.0, 0.0),new DirectionalLight(new Color(java.awt.Color.YELLOW),new Vector3D(1,-1,0)));
+        scene.addLights(new PointLight(new Color(java.awt.Color.red), new Point3D(35, 0, 0), 1, 0.0, 0.0),
+                        new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(1,-1,0))
+        );
+
         scene.addGeometries(sphere, triangle1, triangle2, triangle3, triangle4,sphere1,sphere2);
-        ImageWriter imageWriter = new ImageWriter("9rdRenderTest - reflection and refraction", 500, 500, 500, 500);
+        ImageWriter imageWriter = new ImageWriter("9thRenderTest - Reflection and Refraction", 500, 500, 500, 500);
 
         Render render = new Render(scene, imageWriter);
 
         render.renderImage();
         render.printGrid(50);
+        render.writeToImage();
+    }
+
+    @Test//TEST 10 - Cone - new geometry
+    void renderImage10(){
+        Scene scene = new Scene("Cone");
+        scene.set_background(new Color(java.awt.Color.WHITE));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1100);
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.get_camera().rotate(5,15,0);
+
+        Cone cone = new Cone(4, new Point3D(0,0,1000));
+        cone.set_emission(java.awt.Color.CYAN);
+
+        scene.addGeometries(cone);
+        scene.addLights(new DirectionalLight(new Vector3D(0,0,1)));
+
+        ImageWriter iw = new ImageWriter("10thRenderTest - Cone", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        render.printAxises();
+
+        render.renderImage();
         render.writeToImage();
     }
 

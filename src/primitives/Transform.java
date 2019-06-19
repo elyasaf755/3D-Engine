@@ -1,5 +1,10 @@
 package primitives;
 
+import sun.security.ssl.Debug;
+
+import java.time.Duration;
+import java.time.Instant;
+
 //TODO: Make sure Points can be TRS, but Vectors can only be RS but bot translated.
 public class Transform {
     private static double _zNear;
@@ -104,10 +109,11 @@ public class Transform {
         return translationMatrix.mult(rotationMatrix.mult(scaleMatrix));
     }
 
-    public static Matrix3 getRodriguesRotation(Vector3D source, Vector3D destination){
+    public static Matrix3 getRodriguesRotation(Vector3D source, Vector3D destination){//TODO: TIME: 0.77 sec (tender test 8).
         if (source.equals(destination)){
             return new Matrix3(Matrix3.IDENTITY);
         }
+
         Vector3D v = new Vector3D(source);
         Vector3D u = new Vector3D(destination);
         Vector3D k = v.crossProduct(u).normalized();
@@ -128,11 +134,9 @@ public class Transform {
 
         Matrix3 K = new Matrix3(tempM);
 
-        Matrix3 R2 = I.add(K.scale(Math.sin(angle))).add(K.mult(K).scale(1-Math.cos(angle)));
         Matrix3 R = I.add(K.scale(Math.sin(angle)));
-        R = R.add(K.mult(K).scale(1-Math.cos(angle)));
 
-        return R;
+        return R.add(K.mult(K).scale(1-Math.cos(angle)));
     }
 
     public static Matrix3 getHouseholderMatrix(Vector3D source, Vector3D destination){

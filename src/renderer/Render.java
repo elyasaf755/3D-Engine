@@ -45,9 +45,8 @@ public class Render {
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
-                    Color colort=new Color( calcColor(closestPoint,new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
+                    Color color = new Color(calcColor(closestPoint, new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
                     _imageWriter.writePixel(i, j, calcColor(closestPoint,new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
-                    //_imageWriter.writePixel(i, j, Color.BLUE);TODO: for del
                 }
             }
         }
@@ -111,7 +110,7 @@ public class Render {
         return calcColor(intersection, ray, 0, 1.0).add(_scene.get_ambientLight().getIntensity()).getColor();
     }
     private Color calcColor(GeoPoint intersection, Ray ray, int level, double k){
-        if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K||intersection==null) {
+        if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K || intersection == null) {
             return new Color(0, 0, 0);
         }
         Color emission = intersection.geometry.get_emission();
@@ -132,9 +131,10 @@ public class Render {
                 }
 
                 //Fixing wrong illumination when the camera direction is in the opposite direction of the light. when both dot products have same sign.
-               double z=normal.dotProduct(lightDirection);
-               double t=normal.dotProduct(cameraDirection);
-                if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
+               double z = normal.dotProduct(lightDirection);
+               double t = normal.dotProduct(cameraDirection);
+
+               if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
                     //TODO: Add the following code into the if statement?
                     double ktr = transparency(light, intersection);
                     if (ktr * k > MIN_CALC_COLOR_K) {
@@ -145,7 +145,7 @@ public class Render {
                         result = result.add(calcDiffusive(Kd, normal, lightDirection, intensity));
                         result = result.add(calcSpecular(Ks, normal, lightDirection, cameraDirection, shininess, intensity));
                     }
-                }
+               }
 
         }
 
