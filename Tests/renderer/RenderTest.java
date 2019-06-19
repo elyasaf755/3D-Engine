@@ -447,7 +447,7 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 10 - Cone - new geometry
+    @Test//TEST 10 - Cone - New Geometry
     void renderImage10(){
         Scene scene = new Scene("Cone");
         scene.set_background(new Color(java.awt.Color.WHITE));
@@ -455,11 +455,11 @@ class RenderTest {
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
         scene.get_camera().rotate(5,15,0);
 
-        Cone cone = new Cone(4, new Point3D(0,0,1000));
+        Cone cone = new Cone(4, new Ray(new Point3D(0,0,0), new Vector3D(1,0,0)), 60);
         cone.set_emission(java.awt.Color.CYAN);
 
         scene.addGeometries(cone);
-        scene.addLights(new DirectionalLight(new Vector3D(0,0,1)));
+        scene.addLights(new DirectionalLight(new Vector3D(0,0,1)), new DirectionalLight(new Vector3D(-1,-1,0)));
 
         ImageWriter iw = new ImageWriter("10thRenderTest - Cone", 500, 500, 500, 500);
         Render render = new Render(scene, iw);
