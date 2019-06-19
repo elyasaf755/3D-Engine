@@ -41,8 +41,6 @@ public class Geometries implements Intersectable {
             result.addAll(geometry.findIntersections(ray));
         }
 
-        Util.removeDuplicates(result);
-
         return result;
     }
 

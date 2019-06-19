@@ -36,6 +36,11 @@ public interface Intersectable {
             return point.equals(geoPoint.point) &&
                     geometry.equals(geoPoint.geometry);
         }
+
+        @Override
+        public String toString() {
+            return point.toString() + " " + geometry.toString();
+        }
     }
 
     ArrayList<GeoPoint> findIntersections(Ray ray);

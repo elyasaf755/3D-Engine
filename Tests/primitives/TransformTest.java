@@ -70,7 +70,7 @@ class TransformTest {
 
         Matrix3 H = Transform.getRodriguesRotation(v1, v2);
 
-        Vector3D v3 = H.inverse().mult(H.mult(v1));
+        Vector3D v3 = H.inversed().mult(H.mult(v1));
 
         assertEquals(v1, v3);
 

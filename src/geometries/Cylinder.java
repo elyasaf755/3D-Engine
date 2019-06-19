@@ -1,13 +1,9 @@
 package geometries;
 
-import javafx.scene.transform.MatrixType;
 import primitives.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.nio.channels.Pipe;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.SplittableRandom;
 
 public class Cylinder extends RadialGeometry{
     protected Ray _ray;
@@ -62,6 +58,7 @@ public class Cylinder extends RadialGeometry{
         }
 
         Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
+        Matrix3 RInv = R.inversed();
 
         Point3D q = R.mult(this.get_ray().get_point());
 
@@ -79,7 +76,7 @@ public class Cylinder extends RadialGeometry{
         ArrayList<GeoPoint> result = new ArrayList<>();
         for(GeoPoint geoPointT : intersectionsT){
             Point3D point = new Point3D(geoPointT.point);
-            GeoPoint geoPoint = new GeoPoint(this, R.inverse().mult(point.add(q)));
+            GeoPoint geoPoint = new GeoPoint(this, RInv.mult(point.add(q)));
             result.add(geoPoint);
         }
 
@@ -91,11 +88,9 @@ public class Cylinder extends RadialGeometry{
         Vector3D direction = ray.get_direction();
         double xe = eye.getX().getCoord();
         double ye = eye.getY().getCoord();
-        double ze = eye.getZ().getCoord();
 
         double xd = direction.getPoint().getX().getCoord();
         double yd = direction.getPoint().getY().getCoord();
-        double zd = direction.getPoint().getZ().getCoord();
 
         double r = this.get_radius();
 

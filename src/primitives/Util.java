@@ -130,6 +130,6 @@ public class Util {
     }
 
     public static boolean equals(double lhs, double rhs) {
-        return usubtract(lhs, rhs) == 0.0;
+        return new Coordinate(lhs).subtract(new Coordinate(rhs)).getCoord() == 0.0;
     }
 }
