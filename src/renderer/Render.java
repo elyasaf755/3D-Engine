@@ -151,6 +151,10 @@ public class Render {
 
         double kr = intersection.geometry.get_material().get_Kr();
         if (kr!=0) {
+            Vector3D epsVectorReflection = new Vector3D(intersection.geometry.get_normal(intersection.point));
+            epsVectorReflection = epsVectorReflection.scale(0.5);
+
+            intersection.point = intersection.point.add(epsVectorReflection);
 
             Ray reflectedRay = constructReflectedRay(intersection, ray);
             ArrayList<GeoPoint> reflectionPoints = _scene.get_geometries().findIntersections(reflectedRay);
@@ -220,7 +224,7 @@ public class Render {
         if (intersection.geometry instanceof FlatGeometry)
             intersections.remove(intersection);
 
-        //todo: to understand how it is work. i just copied it
+
         double ktr = 1;
         for (GeoPoint gp : intersections)
             ktr *= gp.geometry.get_material().get_Kt();
