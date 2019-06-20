@@ -389,7 +389,7 @@ class RenderTest {
 
         Sphere sphere1 = new Sphere(30, new Point3D(50, -30, 30));//upper left sphere
         sphere1.set_emission(new Color(200,56,40));
-        //sphere1.get_material().set_Kr(0.7);
+        sphere1.get_material().set_Kr(1);
         //sphere1.get_material().set_Kt(0.7);
 
         Sphere sphere2 = new Sphere(30, new Point3D(50, 30, -30));//lower right sphere
@@ -469,26 +469,38 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 11 - Torus - New Geometry
-    void renderImage11(){
-        Scene scene = new Scene("Torus");
-        scene.set_background(new Color(java.awt.Color.WHITE));
-        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(1,0,0), new Vector3D(0,0,1)), 1000);
+    @Test//TEST 11 - reflection and refraction 2
+    void renderImage11() {
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(75, 127,190));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
-        //scene.get_camera().rotate(5,15,0);
+        scene.set_camera(new Camera(new Point3D(-1000,0,0), new Vector3D(1,0,0), new Vector3D(0,0,1)), 1100);
 
-        Torus torus = new Torus(3, 1, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
-        torus.set_emission(java.awt.Color.BLUE);
+        scene.set_background(new Color(java.awt.Color.BLACK));
 
-        scene.addGeometries(torus);
-        scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
+        //Center sphere
+        Sphere sphere = new Sphere(45, new Point3D(100, 0, 0));//middle bigger sphere
+        sphere.set_emission(new Color(32,56,240));
+        sphere.get_material().set_Kt(0.5);
+
+        Plane plane= new Plane(new Point3D(100,0,-50),new Vector3D(-10,0,20));
+        plane.set_emission(new Color(java.awt.Color.magenta));
 
 
-        ImageWriter iw = new ImageWriter("11thRenderTest - Torus", 500, 500, 500, 500);
-        Render render = new Render(scene, iw);
-        //render.printAxises();
+
+
+        scene.addLights(new PointLight(new Color(java.awt.Color.red), new Point3D(35, 0, 0), 1, 0.0, 0.0),
+                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(1,-1,0))
+        );
+
+        scene.addGeometries(sphere,plane);
+        ImageWriter imageWriter = new ImageWriter("11thRenderTest - Reflection and Refraction 2", 500, 500, 500, 500);
+
+        Render render = new Render(scene, imageWriter);
 
         render.renderImage();
+        render.printGrid(50);
         render.writeToImage();
     }
 
