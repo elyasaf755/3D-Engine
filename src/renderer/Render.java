@@ -2,13 +2,11 @@ package renderer;
 
 import elements.LightSource;
 
-import geometries.Cylinder;
-import geometries.FlatGeometry;
-import geometries.Geometry;
-import geometries.Triangle;
+import geometries.*;
 import primitives.*;
 
 import scene.Scene;
+import sun.plugin2.gluegen.runtime.CPU;
 
 import java.util.ArrayList;
 
@@ -38,15 +36,33 @@ public class Render {
                         i, j, _scene.get_screenDistance(),
                         _imageWriter.getWidth(), _imageWriter.getHeight()
                 );
+                if (ray.get_direction().equals(new Vector3D(1,0,0))){
+                    int x =5;
+                }
 
                 ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
+
+                for (GeoPoint gp : intersectionPoints){
+                    if (gp.geometry.getClass() == Torus.class){
+                        Point3D p = gp.point;
+                        java.awt.Color color = gp.geometry.get_emission().getColor();
+                        java.awt.Color c = java.awt.Color.cyan;
+                        int x = 5;
+
+                    }
+                }
 
                 if (intersectionPoints.isEmpty() == true)
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
+
                     Color color = new Color(calcColor(closestPoint, new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
-                    _imageWriter.writePixel(i, j, calcColor(closestPoint,new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
+                    //_imageWriter.writePixel(i, j, calcColor(closestPoint, new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));//TODO: DEL?
+                    _imageWriter.writePixel(i, j, color.getColor());
+
+
+
                 }
             }
         }

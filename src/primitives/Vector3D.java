@@ -48,26 +48,35 @@ public class Vector3D implements ITransform{
         _point = new Point3D();
     }
 
-
     //Getters
     public Point3D getPoint() {
         return new Point3D(_point);
     }
 
     //Setters
-    public void set_point(Point3D point) {
-        this._point = new Point3D(point);
-    }
 
     public void set_point(double x, double y, double z) {
-        this._point = new Point3D(x, y, z);
+        this._point.set_x(x);
+        this._point.set_y(y);
+        this._point.set_z(z);
     }
 
     public void set_point(Coordinate x, Coordinate y, Coordinate z) {
-        this._point = new Point3D(x, y, z);
+        this._point.set_x(x);
+        this._point.set_y(y);
+        this._point.set_z(z);
+    }
+
+    public void set_point(Point3D point) {
+        this._point.set_point(point);
+    }
+
+    public void set_vector(Vector3D vector) {
+        this._point.set_point(vector.getPoint());
     }
 
     //Methods
+
     public Vector3D subtract(Vector3D vector){
         if (this.equals(vector)){
             throw new IllegalArgumentException("Cant subtract 2 equal vectors. t(0,0,0) is not a vector");
@@ -228,6 +237,7 @@ public class Vector3D implements ITransform{
     }
 
     //Overrides
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this)

@@ -469,5 +469,28 @@ class RenderTest {
         render.writeToImage();
     }
 
+    @Test//TEST 11 - Torus - New Geometry
+    void renderImage11(){
+        Scene scene = new Scene("Torus");
+        scene.set_background(new Color(java.awt.Color.WHITE));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(1,0,0), new Vector3D(0,0,1)), 1000);
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        //scene.get_camera().rotate(5,15,0);
+
+        Torus torus = new Torus(3, 1, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
+        torus.set_emission(java.awt.Color.BLUE);
+
+        scene.addGeometries(torus);
+        scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
+
+
+        ImageWriter iw = new ImageWriter("11thRenderTest - Torus", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
 
 }

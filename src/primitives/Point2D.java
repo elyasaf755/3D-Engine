@@ -5,6 +5,7 @@ public class Point2D {
     protected Coordinate _y;
 
     //Constructors
+
     public Point2D(Coordinate x, Coordinate y){
         this._x = new Coordinate(x);
         this._y = new Coordinate(y);
@@ -26,6 +27,7 @@ public class Point2D {
     }
 
     //Getters
+
     public Coordinate getX() {
         return new Coordinate(_x);
     }
@@ -34,7 +36,41 @@ public class Point2D {
         return new Coordinate(_y);
     }
 
+    //Setters
+
+    public void set_x(Coordinate x) {
+        this._x.set_coord(x);
+    }
+
+    public void set_y(Coordinate y) {
+        this._y.set_coord(y);
+    }
+
+    public void set_x(double x) {
+        this._x.set_coord(x);
+    }
+
+    public void set_y(double y) {
+        this._y.set_coord(y);
+    }
+
+    public void set_point(double x, double y){
+        _x.set_coord(x);
+        _y.set_coord(y);
+    }
+
+    public void set_point(Coordinate x, Coordinate y){
+        _x.set_coord(x);
+        _y.set_coord(y);
+    }
+
+    public void set_point(Point2D point){
+        _x.set_coord(point.getX());
+        _y.set_coord(point.getY());
+    }
+
     //Methods
+
     public Point2D subtract(Point2D point){
         return new Point2D(_x.subtract(point._x), _y.subtract(point._y));
     }
@@ -44,6 +80,7 @@ public class Point2D {
     }
 
     //Overrides
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

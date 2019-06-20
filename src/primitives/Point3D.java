@@ -8,6 +8,7 @@ public class Point3D extends Point2D implements ITransform{
     protected Coordinate _z;
 
     //Constructors
+
     public Point3D(Coordinate x, Coordinate y, Coordinate z){
         super(x, y);
 
@@ -33,8 +34,37 @@ public class Point3D extends Point2D implements ITransform{
     }
 
     //Getters
+
     public Coordinate getZ() {
         return new Coordinate(_z);
+    }
+
+    //Setters
+
+    public void set_z(double z) {
+        this._z.set_coord(z);
+    }
+
+    public void set_z(Coordinate z) {
+        this._z.set_coord(z);
+    }
+
+    public void set_point(double x, double y, double z){
+        _x.set_coord(x);
+        _y.set_coord(y);
+        _z.set_coord(z);
+    }
+
+    public void set_point(Coordinate x, Coordinate y, Coordinate z){
+        _x.set_coord(x);
+        _y.set_coord(y);
+        _z.set_coord(z);
+    }
+
+    public void set_point(Point3D point){
+        _x.set_coord(point.getX());
+        _y.set_coord(point.getY());
+        _z.set_coord(point.getZ());
     }
 
     //Methods

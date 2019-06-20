@@ -395,6 +395,39 @@ public class Matrix {
 
         Coordinate coord;
 
+        double e00 = Util.usubtract(Util.uscale(temp.get_element(0,0), temp.get_element(1,1)), Util.uscale(temp.get_element(0,1), temp.get_element(1,0)));
+        coord = new Coordinate(e00);
+        result.set_element(0,0, coord.getCoord());
+        double e01 = Util.usubtract(Util.uscale(temp.get_element(1,0), temp.get_element(2,1)), Util.uscale(temp.get_element(1,1), temp.get_element(2,0)));
+        coord = new Coordinate(e01);
+        result.set_element(0,1, coord.getCoord());
+        double e02 = Util.usubtract(Util.uscale(temp.get_element(2,0), temp.get_element(3,1)), Util.uscale(temp.get_element(2,1), temp.get_element(3,0)));
+        coord = new Coordinate(e02);
+        result.set_element(0,2, coord.getCoord());
+        double e10 = Util.usubtract(Util.uscale(temp.get_element(0,1), temp.get_element(1,2)), Util.uscale(temp.get_element(0,2), temp.get_element(1,1)));
+        coord = new Coordinate(e10);
+        result.set_element(1,0, coord.getCoord());
+        double e11 = Util.usubtract(Util.uscale(temp.get_element(1,1), temp.get_element(2,2)), Util.uscale(temp.get_element(1,2), temp.get_element(2,1)));
+        coord = new Coordinate(e11);
+        result.set_element(1,1, coord.getCoord());
+        double e12 = Util.usubtract(Util.uscale(temp.get_element(2,1), temp.get_element(3,2)), Util.uscale(temp.get_element(2,2), temp.get_element(3,1)));
+        coord = new Coordinate(e12);
+        result.set_element(1,2, coord.getCoord());
+        double e20 = Util.usubtract(Util.uscale(temp.get_element(0,2), temp.get_element(1,3)), Util.uscale(temp.get_element(0,3), temp.get_element(1,2)));
+        coord = new Coordinate(e20);
+        result.set_element(2,0, coord.getCoord());
+        double e21 = Util.usubtract(Util.uscale(temp.get_element(1,2), temp.get_element(2,3)), Util.uscale(temp.get_element(1,3), temp.get_element(2,2)));
+        coord = new Coordinate(e21);
+        result.set_element(2,1, coord.getCoord());
+        double e22 = Util.usubtract(Util.uscale(temp.get_element(2,2), temp.get_element(3,3)), Util.uscale(temp.get_element(2,3), temp.get_element(3,2)));
+        coord = new Coordinate(e22);
+        result.set_element(2,2, coord.getCoord());
+
+        double a = 1;
+        double b = determinant();
+        double c = a / b;
+
+        /*
         BigDecimal e00 = new BigDecimal(Util.usubtract(Util.uscale(temp.get_element(0,0), temp.get_element(1,1)), Util.uscale(temp.get_element(0,1), temp.get_element(1,0))), MathContext.UNLIMITED);
         coord = new Coordinate(e00.doubleValue());
         result.set_element(0,0, coord.getCoord());
@@ -427,7 +460,9 @@ public class Matrix {
         BigDecimal b = new BigDecimal(determinant(), MathContext.UNLIMITED);
         BigDecimal c = new BigDecimal((a.divide(b)).doubleValue(), MathContext.UNLIMITED);
 
-        return result.mult(c.doubleValue());
+         */
+
+        return result.mult(c);
     }
 
     public void inverse3x3(){

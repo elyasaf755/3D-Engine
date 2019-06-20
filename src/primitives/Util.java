@@ -129,6 +129,99 @@ public class Util {
         return result;
     }
 
+    public static double[] cubicRoots(double a, double b, double c, double d){
+        double f = ((3*c / a) - (b*b)/(a*a)) / 3;
+        double g = ((2*b*b*b) / (a*a*a) - ((9*b*c) / (a*a)) + ((27*d) / a)) / 27;
+        double h = ((g*g) / 4) + ((f*f*f) / 27);
+
+        if (Util.equals(f, 0) && Util.equals(g, 0) && Util.equals(h, 0)){
+            double[] result = {
+                    Math.pow(d / a, 1.0 / 3.0)*(-1),
+                    Math.pow(d / a, 1.0 / 3.0)*(-1),
+                    Math.pow(d / a, 1.0 / 3.0)*(-1)
+            };
+        }
+        else if (h > 0){
+            double R = -(g / 2) + Math.sqrt(h);
+            double S = Math.pow(R, 1.0 / 3.0);
+            double T = -(g / 2) - Math.sqrt(h);
+            double U = Math.pow(T, 1.0 / 3.0);
+
+            double[] result = {
+                    (S + U) - (b / (3*a))
+            };
+
+            return result;
+        }
+        else if (Util.equals(h, 0) || h < 0){
+            double i = Math.sqrt((g*g) / 4 - h);
+            double j = Math.pow(i, 1.0 / 3.0);
+            double k = Math.acos(-(g / (2*i)));
+            double L = j * (-1);
+            double M = Math.cos(k / 3);
+            double N = (Math.sqrt(3)*Math.sin(k / 3));
+            double P = (b / (3*a))*(-1);
+
+            double[] result = {
+                    2*j*Math.cos(k / 3) - (b / (3*a)),
+                    L*(M + N) + P,
+                    L*(M - N) + P
+            };
+
+            return result;
+        }
+
+        return new double[]{};
+    }
+
+    public static double[] quarticRoots(double a, double b, double c, double d, double e) {
+        if (a != 0){
+            b = b / a;
+            c = c / a;
+            d = d / a;
+            e = e / a;
+            a = a / a;
+        }
+
+        double f = c - (3*b*b / 8);
+        double g = d + (b*b*b / 8) - (b*c / 2);
+        double h = e - (3*b*b*b*b / 256) + (b*b*c/16) - (b*d / 4);
+
+        double A = 1;
+        double B = f / 2;
+        double C = ((f*f - 4*h) / 16);
+        double D = -g*g / 64;
+
+        double[] cubicRoots = Util.cubicRoots(A, B, C, D);
+
+        double p = Double.NaN;
+        double q = Double.NaN;
+
+        for (double root : cubicRoots){
+            if (!Util.equals(root, 0)){
+                if (Double.isNaN(p)){
+                    p = Math.sqrt(root);
+                }
+                else if (Double.isNaN(q)) {
+                    q = Math.sqrt(root);
+                }
+            }
+        }
+
+        double r = -g / (8*p*q);
+        double s = b / (4*a);
+
+        double[] result = {
+                p + q + r - s,
+                p - q - r - s,
+                -p + q - r - s,
+                -p - q + r -s
+        };
+
+        return result;
+    }
+
+
     public static boolean equals(double lhs, double rhs) {
         return new Coordinate(lhs).subtract(new Coordinate(rhs)).getCoord() == 0.0;
     }
