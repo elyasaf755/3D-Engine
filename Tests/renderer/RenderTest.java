@@ -535,5 +535,46 @@ class RenderTest {
         render.writeToImage();
     }
 
+    @Test//TEST 13 - Triangle Mesh
+    void renderImage13(){
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(75, 127,190));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(5,15,0);
+
+        scene.set_background(new Color(53, 215, 255));
+
+        scene.addLights(
+                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0))
+        );
+
+        TriangleMesh mesh = new TriangleMesh();
+        Triangle t3 = new Triangle(new Point3D(0,0,0), new Point3D(0,100,0), new Point3D(0,0,100));
+        Triangle t1 = new Triangle(new Point3D(100,0,0), new Point3D(0,100,0), new Point3D(0,0,100));
+        Triangle t2 = new Triangle(new Point3D(0,0,0), new Point3D(100,0,0), new Point3D(0,0,100));
+        Triangle t4 = new Triangle(new Point3D(0,0,0), new Point3D(0,0,100), new Point3D(100,0,0));
+        t3.set_emission(java.awt.Color.green);
+        t1.set_emission(java.awt.Color.RED);
+        t2.set_emission(java.awt.Color.blue);
+        t4.set_emission(java.awt.Color.MAGENTA);
+        mesh.addTriangle(t1);
+        mesh.addTriangle(t2);
+        mesh.addTriangle(t3);
+        mesh.addTriangle(t4);
+
+        scene.addGeometries(mesh);
+        scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
+
+
+        ImageWriter iw = new ImageWriter("13thRenderTest - Mesh", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+
+    }
+
 
 }
