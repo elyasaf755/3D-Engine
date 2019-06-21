@@ -53,30 +53,67 @@ public class Material {
 
     //Setters
 
-    public void set_Kd(double _Kd) {
-        this._Kd = _Kd;
+    public void set_Kd(double Kd) {
+        if (!Util.equals(Kd, 0)){
+            if (Kd < 0){
+                throw new IllegalArgumentException("Kd can't be negative value");
+            }
+            else{
+                this._Kd = Kd;
+            }
+        }
+        else{
+            this._Kd = Kd;
+        }
     }
 
-    public void set_Ks(double _Ks) {
-        this._Ks = _Ks;
+    public void set_Ks(double Ks) {
+        if (!Util.equals(Ks, 0)){
+            if (Ks < 0){
+                throw new IllegalArgumentException("Ks can't be negative value");
+            }
+            else{
+                this._Ks = Ks;
+            }
+        }
+        else{
+            this._Ks = Ks;
+        }
     }
 
     public void set_nShininess(int _nShininess) {
         this._nShininess = _nShininess;
     }
 
-    public void set_Kr(double _Kr) {
-        this._Kr = _Kr;
+    public void set_Kr(double Kr) {
+        if (!Util.equals(Kr, 0)){
+            if (Kr < 0){
+                throw new IllegalArgumentException("Kr can't be negative value");
+            }
+            else{
+                this._Kr = Kr;
+            }
+        }
+        else{
+            this._Kr = Kr;
+        }
     }
 
-    public void set_Kt(double _Kt) {
-        this._Kt = _Kt;
+    public void set_Kt(double Kt) {
+        if (!Util.equals(Kt, 0)) {
+            if (Kt < 0) {
+                throw new IllegalArgumentException("Kt can't be negative value");
+            }
+            else {
+                this._Kt = Kt;
+            }
+        }
+        else {
+            this._Kt = Kt;
+        }
     }
-
-
 
     //Overrides
-
 
     @Override
     public boolean equals(Object obj) {

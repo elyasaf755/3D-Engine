@@ -478,24 +478,29 @@ class RenderTest {
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
         scene.get_camera().rotate(5,15,0);
 
-        scene.set_background(new Color(java.awt.Color.BLACK));
+        scene.set_background(new Color(java.awt.Color.WHITE));
 
         //Center sphere
-        Sphere sphere = new Sphere(45, new Point3D(0, 0, 0));
-        sphere.set_emission(new Color(32,56,240));
-        sphere.get_material().set_Kt(0.5);
+        Sphere sphere1 = new Sphere(45, new Point3D(40, 0, -40));
+        sphere1.set_emission(new Color(32,56,240));
+        sphere1.get_material().set_Kt(0.2);
+        sphere1.get_material().set_Kr(0.2);
+
+        Sphere sphere2 = new Sphere(22.5, new Point3D(100, 45, -100));
+        sphere2.set_emission(java.awt.Color.GREEN);
 
         Plane plane= new Plane(new Point3D(0,-50,0),new Vector3D(0,1,0));
-        plane.set_emission(new Color(java.awt.Color.magenta));
-
-
+        plane.set_emission(new Color(java.awt.Color.BLACK));
+        plane.get_material().set_Kr(1);
+        plane.get_material().set_Kt(0);
 
 
         scene.addLights(new PointLight(new Color(java.awt.Color.red), new Point3D(0, 0, 35), 1, 0.0, 0.0),
-                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0))
+                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0)),
+                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(-1,0,0))
         );
 
-        scene.addGeometries(sphere,plane);
+        scene.addGeometries(sphere1, sphere2 ,plane);
         ImageWriter imageWriter = new ImageWriter("11thRenderTest - Reflection and Refraction 2", 500, 500, 500, 500);
 
         Render render = new Render(scene, imageWriter);

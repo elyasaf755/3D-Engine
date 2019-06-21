@@ -95,7 +95,7 @@ public class Vector3D implements ITransform{
     public double dotProduct(Vector3D vector3D){
         Point3D point3D = vector3D._point;
 
-        return point3D._x.multiply(_point._x).add(point3D._y.multiply(_point._y).add(point3D._z.multiply(_point._z)))._coord;
+        return point3D._x.multiply(_point._x).add(point3D._y.multiply(_point._y).add(point3D._z.multiply(_point._z))).getCoord();
     }
 
     public Vector3D crossProduct(Vector3D vector3D){
