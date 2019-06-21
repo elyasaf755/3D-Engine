@@ -185,6 +185,9 @@ public class Render {
                 GeoPoint refractedPoint = this.getClosestPoint(refractedIntersections);
                 refractedColor = this.calcColor(refractedPoint, refractedRay, level + 1, k * Kt).scale(Kt);
             }
+            else{
+                refractedColor = _scene.get_background();
+            }
 
             result = result.add(refractedColor);
         }

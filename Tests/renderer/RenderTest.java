@@ -478,7 +478,7 @@ class RenderTest {
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
         scene.get_camera().rotate(5,15,0);
 
-        scene.set_background(new Color(java.awt.Color.WHITE));
+        scene.set_background(new Color(53, 215, 255));
 
         //Center sphere
         Sphere sphere1 = new Sphere(45, new Point3D(40, 0, -40));
@@ -487,12 +487,14 @@ class RenderTest {
         sphere1.get_material().set_Kr(0.2);
 
         Sphere sphere2 = new Sphere(22.5, new Point3D(100, 45, -100));
-        sphere2.set_emission(java.awt.Color.GREEN);
+        sphere2.set_emission(java.awt.Color.CYAN);
+        sphere2.get_material().set_Kt(0.2);
+        sphere2.get_material().set_Kr(0.2);
 
         Plane plane= new Plane(new Point3D(0,-50,0),new Vector3D(0,1,0));
         plane.set_emission(new Color(java.awt.Color.BLACK));
-        plane.get_material().set_Kr(1);
-        plane.get_material().set_Kt(0);
+        plane.get_material().set_Kr(0.2);
+        plane.get_material().set_Kt(0.2);
 
 
         scene.addLights(new PointLight(new Color(java.awt.Color.red), new Point3D(0, 0, 35), 1, 0.0, 0.0),
