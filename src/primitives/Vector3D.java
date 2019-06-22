@@ -86,6 +86,10 @@ public class Vector3D implements ITransform{
     }
 
     public Vector3D add(Vector3D vector){
+        if (this.equals(Vector3D.ZERO)){
+            return new Vector3D(vector);
+        }
+
         if (this.scale(-1).equals(vector))
             throw new IllegalArgumentException("Can't add vectors with the negative directions. t(0,0,0) is not a vector");
 
