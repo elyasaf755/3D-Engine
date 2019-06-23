@@ -1,17 +1,52 @@
 package geometries;
 
-import primitives.ITransform;
+import primitives.Color;
+import primitives.Material;
 import primitives.Util;
 
 public abstract class RadialGeometry extends Geometry {
     protected double _radius;
 
     //Constructors
+
     public RadialGeometry(double radius){
         _radius = radius;
     }
 
+    public RadialGeometry(double radius, Color emission){
+        super(emission);
+        _radius = radius;
+    }
+
+    public RadialGeometry(double radius, Material material){
+        super(material);
+        _radius = radius;
+    }
+
+    public RadialGeometry(double radius, Color emission, Material material){
+        super(emission, material);
+        _radius = radius;
+    }
+
     public RadialGeometry(RadialGeometry radialGeometry){
+        _radius = radialGeometry._radius;
+    }
+
+    public RadialGeometry(RadialGeometry radialGeometry, Color emission){
+        super(emission);
+
+        _radius = radialGeometry._radius;
+    }
+
+    public RadialGeometry(RadialGeometry radialGeometry, Material material){
+        super(material);
+
+        _radius = radialGeometry._radius;
+    }
+
+    public RadialGeometry(RadialGeometry radialGeometry, Color emission, Material material){
+        super(emission, material);
+
         _radius = radialGeometry._radius;
     }
 

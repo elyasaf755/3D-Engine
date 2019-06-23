@@ -17,6 +17,11 @@ public class Tube extends Cylinder {
         _height = height;
     }
 
+    public Tube(double radius, Point3D point1, Point3D point2){
+        super(radius, new Ray(point1, point2.subtract(point1)));
+        _height = point2.subtract(point1).length();
+    }
+
     public Tube(RadialGeometry radialGeometry, Ray ray, double height){
         super(radialGeometry, ray);
 
@@ -181,6 +186,39 @@ public class Tube extends Cylinder {
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         //TODO: Implement
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean contains(Point3D point) {
+        Vector3D direction = _ray.get_direction();
+        Point3D pt1 = this._ray.get_point();
+        Point3D pt2 = pt1.add(direction.scale(_height));
+
+        Vector3D pt1p;
+
+        if (point.equals(pt1)){
+            pt1p = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            pt1p = point.subtract(pt1);
+        }
+
+        double dot = pt1p.dotProduct(direction);
+
+        if (Util.equals(dot, 0) || Util.equals(dot, _height)){
+            return super.contains(point);
+        }
+
+        if (dot < 0 || dot > _height){
+            return false;
+        }
+
+        return super.contains(point);
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point) {
         throw new NotImplementedException();
     }
 

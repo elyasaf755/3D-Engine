@@ -1,10 +1,8 @@
 package primitives;
 
-import javax.xml.bind.util.ValidationEventCollector;
-
 import static java.lang.Math.sqrt;
 
-public class Point3D extends Point2D implements ITransform{
+public class Point3D extends Point2D implements ITransformable {
     protected Coordinate _z;
 
     //Constructors

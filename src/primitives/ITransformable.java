@@ -1,6 +1,6 @@
 package primitives;
 
-public interface ITransform {
+public interface ITransformable {
     void translate(double x, double y, double z);
     void rotate(double x, double y, double z);
     void scale(double x, double y, double z);//TODO: Add "void scale(double facotr)" for cases when x = y = z = factor?

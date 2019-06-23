@@ -49,6 +49,47 @@ public class Cylinder extends RadialGeometry{
     }
 
     @Override
+    public boolean contains(Point3D point) {
+        Point3D a = this._ray.get_point();
+        Vector3D n = this._ray.get_direction();
+
+        Vector3D pa;
+        if (a.equals(point)){
+            pa = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            pa = a.subtract(point);
+        }
+
+        double dot = pa.dotProduct(n);
+
+        double d;
+
+        if (Util.equals(dot, 0)){
+            d = pa.length();
+        }
+        else{
+            Vector3D temp = n.scale(dot);
+
+            if (pa.equals(temp)){
+                return true;
+            }
+            else{
+                d = pa.subtract(temp).length();
+            }
+
+        }
+
+
+        return d <= _radius;
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point) {
+        throw new NotImplementedException();
+    }
+
+    @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         Vector3D Vc = this.get_ray().get_direction();
         Vector3D VcT = new Vector3D(0,0,1);
@@ -118,75 +159,6 @@ public class Cylinder extends RadialGeometry{
 
         return result;
     }
-
-    /*
-    private ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
-        Point3D Pc = this.get_ray().get_point();
-        Vector3D Vc = this.get_ray().get_direction();
-        double r = this.get_radius();
-
-        Point3D Pr = ray.get_point();
-        Vector3D Vr = ray.get_direction();
-
-        double VrVc = Vr.dotProduct(Vc);
-        Vector3D a;
-
-        if (Util.equals(VrVc, 0)){
-            a = new Vector3D(Vr);
-        }
-        else if (Vr.equals(Vc.scale(VrVc))){
-            a = new Vector3D(Vector3D.ZERO);
-        }
-        else{
-            a = Vr.subtract(Vc.scale(VrVc));
-        }
-
-        Vector3D deltaP;
-
-        if (Pr.equals(Pc)){
-            deltaP = new Vector3D(Vector3D.ZERO);
-        }
-        else{
-            deltaP = Pr.subtract(Pc);
-        }
-
-        double deltaPVc = deltaP.dotProduct(Vc);
-        Vector3D b;
-
-        if (Util.equals(deltaPVc, 0)){
-            b = new Vector3D(deltaP);
-        }
-        else if (deltaP.equals(Vc.scale(deltaPVc))){
-            b = new Vector3D(Vector3D.ZERO);
-        }
-        else{
-            b = deltaP.subtract(Vc.scale(deltaPVc));
-        }
-
-        double A = a.squared();
-        double B = Util.uscale(a.dotProduct(b), 2);
-        double C = Util.usubtract(b.squared(), Util.squared(r));
-
-        double[] roots = Util.quadraticRoots(A, B, C);
-
-        ArrayList<GeoPoint> result = new ArrayList<>();
-
-        for (double root : roots){
-            if (Double.isNaN(root))
-                continue;
-
-            if (Util.equals(root, 0)){
-                result.add(new GeoPoint(this, Pr));
-            }
-            else if (root > 0){
-                Point3D q = Pr.add(Vr.scale(root));
-                result.add(new GeoPoint(this, q));
-            }
-        }
-
-        return result;
-    }
-     */
 
     @Override
     public void translate(double x, double y, double z) {

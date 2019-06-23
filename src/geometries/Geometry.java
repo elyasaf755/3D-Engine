@@ -2,7 +2,7 @@ package geometries;
 
 import primitives.*;
 
-public abstract class Geometry implements Intersectable, ITransform {
+public abstract class Geometry implements Intersectable, ITransformable {
     protected Color _emission;
     protected Material _material;
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXIST).
@@ -56,6 +56,10 @@ public abstract class Geometry implements Intersectable, ITransform {
     //Methods
 
     public abstract Vector3D get_normal(Point3D point3D);
+
+    public abstract boolean contains(Point3D point);
+
+    public abstract boolean surfaceContains(Point3D point);
 
     //Overrides
 

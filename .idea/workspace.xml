@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/14thRenderTest - Set Operations.jpg" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,140 +30,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="e#12685#12686#0" expanded="true" />
-                <element signature="e#12728#12729#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding>
-                <element signature="method#Scene#0;class#Scene#0" />
-                <element signature="method#Scene#1;class#Scene#0" />
-                <element signature="e#1164#1165#0" expanded="true" />
-                <element signature="e#1200#1201#0" expanded="true" />
-                <element signature="method#addLights#0;class#Scene#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="206" selection-start-line="206" selection-end-line="206" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Camera#0;class#Camera#0" />
-                <element signature="e#413#640#1" />
-                <element signature="e#653#1003#1" />
-                <element signature="method#Camera#1;class#Camera#0" />
-                <element signature="e#1186#1407#1" />
-                <element signature="e#1420#1764#1" />
-                <element signature="method#Camera#2;class#Camera#0" />
-                <element signature="e#1883#2119#1" />
-                <element signature="e#2132#2503#1" />
-                <element signature="method#Camera#3;class#Camera#0" />
-                <element signature="e#2606#2836#1" />
-                <element signature="e#2849#3214#1" />
-                <element signature="method#Camera#4;class#Camera#0" />
-                <element signature="method#Camera#5;class#Camera#0" />
-                <element signature="n#!!block;n#get_origin#0;n#Camera#0" />
-                <element signature="e#6212#6221#0" expanded="true" />
-                <element signature="e#8070#8071#0" expanded="true" />
-                <element signature="method#scale#0;class#Camera#0" />
-                <element signature="method#transform#0;class#Camera#0" />
-                <element signature="method#transform#1;class#Camera#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="80" column="19" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
-              <folding>
-                <element signature="method#Point3D#0;class#Point3D#0" />
-                <element signature="method#Point3D#1;class#Point3D#0" />
-                <element signature="method#Point3D#2;class#Point3D#0" />
-                <element signature="method#Point3D#3;class#Point3D#0" />
-                <element signature="method#add#2;class#Point3D#0" />
-                <element signature="e#2877#2878#0" expanded="true" />
-                <element signature="e#2946#2947#0" expanded="true" />
-                <element signature="method#equals#0;class#Point3D#0" />
-                <element signature="method#translate#0;class#Point3D#0" />
-                <element signature="method#rotate#0;class#Point3D#0" />
-                <element signature="method#scale#0;class#Point3D#0" />
-                <element signature="method#transform#0;class#Point3D#0" />
-                <element signature="method#transform#1;class#Point3D#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/primitives/Color.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="164" column="33" lean-forward="true" selection-start-line="164" selection-start-column="33" selection-end-line="164" selection-end-column="33" />
-              <folding>
-                <element signature="docComment;class#Color#0" />
-                <element signature="docComment;field#_r#0;class#Color#0" />
-                <element signature="docComment;method#Color#0;class#Color#0" />
-                <element signature="method#Color#0;class#Color#0" />
-                <element signature="docComment;method#Color#1;class#Color#0" />
-                <element signature="method#Color#1;class#Color#0" />
-                <element signature="docComment;method#Color#2;class#Color#0" />
-                <element signature="method#Color#2;class#Color#0" />
-                <element signature="docComment;method#Color#3;class#Color#0" />
-                <element signature="docComment;method#getColor#0;class#Color#0" />
-                <element signature="method#getColor#0;class#Color#0" />
-                <element signature="docComment;method#setColor#0;class#Color#0" />
-                <element signature="method#setColor#0;class#Color#0" />
-                <element signature="docComment;method#setColor#1;class#Color#0" />
-                <element signature="method#setColor#1;class#Color#0" />
-                <element signature="docComment;method#setColor#2;class#Color#0" />
-                <element signature="method#setColor#2;class#Color#0" />
-                <element signature="docComment;method#setColor#3;class#Color#0" />
-                <element signature="method#setColor#3;class#Color#0" />
-                <element signature="docComment;method#add#0;class#Color#0" />
-                <element signature="docComment;method#scale#0;class#Color#0" />
-                <element signature="docComment;method#mult#0;class#Color#0" />
-                <element signature="method#mult#0;class#Color#0" />
-                <element signature="docComment;method#reduce#0;class#Color#0" />
-                <element signature="method#reduce#0;class#Color#0" />
-                <element signature="method#equals#0;class#Color#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1346">
-              <caret line="539" column="24" selection-start-line="539" selection-start-column="24" selection-end-line="539" selection-end-column="24" />
+            <state relative-caret-position="396">
+              <caret line="621" column="41" selection-start-line="621" selection-start-column="41" selection-end-line="621" selection-end-column="41" />
               <folding>
-                <element signature="method#renderImage1#0;class#RenderTest#0" />
                 <element signature="method#renderImage2#0;class#RenderTest#0" />
                 <element signature="method#renderImage3#0;class#RenderTest#0" />
                 <element signature="method#renderImage4#0;class#RenderTest#0" />
@@ -176,26 +43,178 @@
                 <element signature="method#renderImage6#0;class#RenderTest#0" />
                 <element signature="method#renderImage7#0;class#RenderTest#0" />
                 <element signature="method#renderImage8#0;class#RenderTest#0" />
+                <element signature="method#renderImage9#0;class#RenderTest#0" />
                 <element signature="method#renderImage10#0;class#RenderTest#0" />
                 <element signature="method#renderImage11#0;class#RenderTest#0" />
                 <element signature="method#renderImage12#0;class#RenderTest#0" />
                 <element signature="method#renderImage13#0;class#RenderTest#0" />
+                <element signature="method#renderImage15#0;class#RenderTest#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/geometries/GeometriesSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#GeometriesSet#0;class#GeometriesSet#0" />
+                <element signature="method#GeometriesSet#1;class#GeometriesSet#0" />
+                <element signature="method#removeDuplicates#0;class#GeometriesSet#0" />
+                <element signature="method#translate#0;class#GeometriesSet#0" />
+                <element signature="method#rotate#0;class#GeometriesSet#0" />
+                <element signature="method#scale#0;class#GeometriesSet#0" />
+                <element signature="method#transform#0;class#GeometriesSet#0" />
+                <element signature="method#transform#1;class#GeometriesSet#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometries/TriangleMesh.java">
+        <entry file="file://$PROJECT_DIR$/src/geometries/SetIntersection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" column="13" lean-forward="true" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+            <state relative-caret-position="476">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+              <folding>
+                <element signature="method#surfaceContains#0;class#SetIntersection#0" />
+                <element signature="method#contains#0;class#SetIntersection#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometries/SetUnion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="46" column="50" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
+              <folding>
+                <element signature="method#get_normal#0;class#SetUnion#0" />
+                <element signature="method#contains#0;class#SetUnion#0" />
+                <element signature="method#surfaceContains#0;class#SetUnion#0" />
+                <element signature="method#findIntersections#0;class#SetUnion#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometries/SetDifference.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#824#825#0" expanded="true" />
-                <element signature="e#872#873#0" expanded="true" />
-                <element signature="e#1112#1113#0" expanded="true" />
-                <element signature="e#1139#1140#0" expanded="true" />
+                <element signature="method#get_normal#0;class#SetDifference#0" />
+                <element signature="method#contains#0;class#SetDifference#0" />
+                <element signature="method#surfaceContains#0;class#SetDifference#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="107" column="44" lean-forward="true" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="44" />
+              <folding>
+                <element signature="docComment;method#Geometries#0;class#Geometries#0" />
+                <element signature="method#Geometries#1;class#Geometries#0" />
+                <element signature="e#591#645#1" />
+                <element signature="method#Geometries#2;class#Geometries#0" />
+                <element signature="method#Geometries#3;class#Geometries#0" />
+                <element signature="e#962#1016#1" />
+                <element signature="docComment;method#get_GeometriesList#0;class#Geometries#0" />
+                <element signature="method#get_GeometriesList#0;class#Geometries#0" />
+                <element signature="method#set_geometriesList#0;class#Geometries#0" />
+                <element signature="e#1413#1467#1" />
+                <element signature="method#set_geometriesList#1;class#Geometries#0" />
+                <element signature="e#1614#1668#1" />
+                <element signature="method#set_geometriesList#2;class#Geometries#0" />
+                <element signature="e#1835#1889#1" />
+                <element signature="docComment;method#add_geometries#0;class#Geometries#0" />
+                <element signature="method#add_geometries#0;class#Geometries#0" />
+                <element signature="e#2043#2097#1" />
+                <element signature="method#add_geometries#1;class#Geometries#0" />
+                <element signature="e#2205#2259#1" />
+                <element signature="method#rotate#0;class#Geometries#0" />
+                <element signature="e#2850#2899#1" />
+                <element signature="method#scale#0;class#Geometries#0" />
+                <element signature="e#3024#3072#1" />
+                <element signature="method#transform#0;class#Geometries#0" />
+                <element signature="e#3193#3248#1" />
+                <element signature="method#transform#1;class#Geometries#0" />
+                <element signature="e#3404#3477#1" />
+                <element signature="method#equals#0;class#Geometries#0" />
+                <element signature="e#4001#4115#1" />
+                <element signature="method#next#0;class#Geometries#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/primitives/ITransformable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/geometries/Sphere.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="170" selection-start-line="170" selection-end-line="170" />
+              <folding>
+                <element signature="method#Sphere#0;class#Sphere#0" />
+                <element signature="method#Sphere#1;class#Sphere#0" />
+                <element signature="method#Sphere#2;class#Sphere#0" />
+                <element signature="method#Sphere#3;class#Sphere#0" />
+                <element signature="method#Sphere#4;class#Sphere#0" />
+                <element signature="method#Sphere#5;class#Sphere#0" />
+                <element signature="method#Sphere#6;class#Sphere#0" />
+                <element signature="method#Sphere#7;class#Sphere#0" />
+                <element signature="method#Sphere#8;class#Sphere#0" />
+                <element signature="n#!!block;n#set_point#0;n#Sphere#0" />
+                <element signature="method#contains#0;class#Sphere#0" />
+                <element signature="method#surfaceContains#0;class#Sphere#0" />
+                <element signature="e#2750#2786#1" />
+                <element signature="method#findIntersections#0;class#Sphere#0" />
+                <element signature="e#2943#3203#1" />
+                <element signature="e#3887#4014#1" />
+                <element signature="e#4047#4092#1" />
+                <element signature="e#4260#4387#1" />
+                <element signature="method#getVolume#0;class#Sphere#0" />
+                <element signature="method#scaleVolume#0;class#Sphere#0" />
+                <element signature="e#4888#4889#0" expanded="true" />
+                <element signature="n#!!block;n#scale#0;n#Sphere#0" />
+                <element signature="method#transform#0;class#Sphere#0" />
+                <element signature="method#transform#1;class#Sphere#0" />
+                <element signature="method#equals#0;class#Sphere#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/14thRenderTest - Set Operations.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/geometries/SetIntersectionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -206,20 +225,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_position</find>
-      <find>new Point3D(0,0,0)</find>
-      <find>2 equal points</find>
-      <find>...</find>
-      <find>addGeometris</find>
-      <find>BLUE</find>
       <find>x++</find>
       <find>Overrides</find>
       <find>getColor</find>
@@ -244,7 +257,16 @@
       <find>det</find>
       <find>t(0,0,0) is not a vector</find>
       <find>transpa</find>
+      <find>Cylinder</find>
+      <find>add_geometry</find>
+      <find>Can't subtract 2 equal point. (0,0,0) is not a vector.</find>
+      <find>contains</find>
+      <find>con</find>
+      <find>extends RadialGeometry</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Cylinder2</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -258,38 +280,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Tests/geometries/RadialGeometryTest.java" />
-        <option value="$PROJECT_DIR$/src/scene/Scene.java" />
-        <option value="$PROJECT_DIR$/src/elements/Light.java" />
-        <option value="$PROJECT_DIR$/src/elements/AmbientLight.java" />
-        <option value="$PROJECT_DIR$/src/elements/SpotLight.java" />
-        <option value="$PROJECT_DIR$/src/primitives/Coordinate.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/SphereTest.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/MatrixTest.java" />
-        <option value="$PROJECT_DIR$/src/primitives/Matrix.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/Matrix4Test.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/Point3DTest.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/RayTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Ray.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Tube.java" />
-        <option value="$PROJECT_DIR$/src/geometries/RadialGeometry.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/TubeTest.java" />
-        <option value="$PROJECT_DIR$/src/primitives/ITransform.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/TriangleTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Matrix4.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/Vector3DTest.java" />
-        <option value="$PROJECT_DIR$/Tests/geometries/PlaneTest.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Geometries.java" />
         <option value="$PROJECT_DIR$/src/primitives/Util.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Sphere.java" />
         <option value="$PROJECT_DIR$/Tests/geometries/ConeTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Matrix3.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Cone.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Torus.java" />
         <option value="$PROJECT_DIR$/src/primitives/Point3D.java" />
         <option value="$PROJECT_DIR$/src/geometries/Intersectable.java" />
         <option value="$PROJECT_DIR$/src/geometries/Intersectable.java" />
@@ -298,17 +294,43 @@
         <option value="$PROJECT_DIR$/src/elements/PointLight.java" />
         <option value="$PROJECT_DIR$/src/primitives/Material.java" />
         <option value="$PROJECT_DIR$/src/primitives/Color.java" />
-        <option value="$PROJECT_DIR$/src/geometries/TriangleMesh.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Geometry.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Triangle.java" />
+        <option value="$PROJECT_DIR$/Tests/primitives/TransformTest.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Cylinder2.java" />
+        <option value="$PROJECT_DIR$/src/primitives/ITransform.java" />
+        <option value="$PROJECT_DIR$/src/primitives/ITransformable.java" />
+        <option value="$PROJECT_DIR$/src/geometries/SetIntersections.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" />
+        <option value="$PROJECT_DIR$/src/scene/Scene.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Geometries.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/ISetOperatable.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/PlaneTest.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/SphereTest.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/TubeTest.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/TriangleTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Vector3D.java" />
         <option value="$PROJECT_DIR$/src/primitives/Transform.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/TransformTest.java" />
-        <option value="$PROJECT_DIR$/Tests/renderer/RenderTest.java" />
-        <option value="$PROJECT_DIR$/src/elements/Camera.java" />
         <option value="$PROJECT_DIR$/src/renderer/Render.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Geometry.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Cone.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Plane.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Torus.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Triangle.java" />
+        <option value="$PROJECT_DIR$/src/geometries/TriangleMesh.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Tube.java" />
+        <option value="$PROJECT_DIR$/src/geometries/UnionIntersection.java" />
+        <option value="$PROJECT_DIR$/src/geometries/SetComplement.java" />
+        <option value="$PROJECT_DIR$/src/geometries/RadialGeometry.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Sphere.java" />
+        <option value="$PROJECT_DIR$/src/geometries/SetDifference.java" />
+        <option value="$PROJECT_DIR$/src/geometries/SetUnion.java" />
+        <option value="$PROJECT_DIR$/Tests/geometries/SetIntersectionTest.java" />
+        <option value="$PROJECT_DIR$/src/geometries/GeometriesSet.java" />
+        <option value="$PROJECT_DIR$/src/geometries/SetIntersection.java" />
+        <option value="$PROJECT_DIR$/Tests/renderer/RenderTest.java" />
       </list>
     </option>
   </component>
@@ -329,6 +351,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -336,46 +359,6 @@
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="renderer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
@@ -421,13 +404,13 @@
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
               <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
+              <item name="geometries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
               <item name="3D-Engine" type="462c0819:PsiDirectoryNode" />
               <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="geometries" type="462c0819:PsiDirectoryNode" />
+              <item name="primitives" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="3D-Engine" type="b2602c69:ProjectViewProjectNode" />
@@ -439,7 +422,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,7 +432,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561315983964" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560886957094" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -462,8 +444,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="primitives" />
       <recent name="geometries" />
+      <recent name="primitives" />
       <recent name="renderer" />
       <recent name="elements" />
     </key>
@@ -483,8 +465,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTest.renderImage9">
-    <configuration name="RenderTest.renderImage11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RenderTest.renderImage14">
+    <configuration name="RenderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
@@ -494,8 +476,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
       <option name="MAIN_CLASS_NAME" value="renderer.RenderTest" />
-      <option name="METHOD_NAME" value="renderImage11" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -516,7 +497,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RenderTest.renderImage13" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RenderTest.renderImage14" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
@@ -526,13 +507,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
       <option name="MAIN_CLASS_NAME" value="renderer.RenderTest" />
-      <option name="METHOD_NAME" value="renderImage13" />
+      <option name="METHOD_NAME" value="renderImage14" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RenderTest.renderImage9" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RenderTest.renderImage15" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
@@ -542,23 +523,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
       <option name="MAIN_CLASS_NAME" value="renderer.RenderTest" />
-      <option name="METHOD_NAME" value="renderImage9" />
+      <option name="METHOD_NAME" value="renderImage15" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransformTest.rotatedVectorAround" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SetIntersectionTest.findIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="primitives.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.TransformTest" />
-      <option name="METHOD_NAME" value="rotatedVectorAround" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.SetIntersectionTest" />
+      <option name="METHOD_NAME" value="findIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -566,11 +547,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RenderTest.renderImage9" />
-        <item itemvalue="JUnit.RenderTest.renderImage13" />
-        <item itemvalue="JUnit.TransformTest.rotatedVectorAround" />
+        <item itemvalue="JUnit.RenderTest.renderImage14" />
+        <item itemvalue="JUnit.SetIntersectionTest.findIntersections" />
         <item itemvalue="JUnit.RenderTest.renderImage12" />
-        <item itemvalue="JUnit.RenderTest.renderImage11" />
+        <item itemvalue="JUnit.RenderTest.renderImage15" />
+        <item itemvalue="JUnit.RenderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -747,43 +728,57 @@
       <option name="project" value="LOCAL" />
       <updated>1561117640887</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="we can now rotate a vector by an angle around any vector&#10;using Transform.rotatedVectorAround">
+      <created>1561241348418</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1561241348418</updated>
+    </task>
+    <task id="LOCAL-00025" summary="implemented set operations">
+      <created>1561317704121</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1561317704121</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TransformTest_rotatedVectorAround - 2019.06.23 at 00h 55m 53s.xml">
-      <configuration name="TransformTest.rotatedVectorAround" configurationId="JUnit" />
+    <history-entry file="SetIntersectionTest_findIntersections - 2019.06.23 at 22h 04m 51s.xml">
+      <configuration name="SetIntersectionTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TransformTest_rotatedVectorAround - 2019.06.23 at 00h 55m 58s.xml">
-      <configuration name="TransformTest.rotatedVectorAround" configurationId="JUnit" />
+    <history-entry file="SetIntersectionTest_findIntersections - 2019.06.23 at 22h 08m 45s.xml">
+      <configuration name="SetIntersectionTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TransformTest_rotatedVectorAround - 2019.06.23 at 00h 56m 08s.xml">
-      <configuration name="TransformTest.rotatedVectorAround" configurationId="JUnit" />
+    <history-entry file="SetIntersectionTest_findIntersections - 2019.06.23 at 22h 09m 11s.xml">
+      <configuration name="SetIntersectionTest.findIntersections" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TransformTest_rotatedVectorAround - 2019.06.23 at 00h 56m 59s.xml">
-      <configuration name="TransformTest.rotatedVectorAround" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 09m 31s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.23 at 17h 30m 22s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 09m 55s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.23 at 17h 32m 22s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 10m 13s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage13 - 2019.06.23 at 17h 33m 35s.xml">
-      <configuration name="RenderTest.renderImage13" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 10m 28s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.23 at 21h 46m 59s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 10m 50s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.23 at 21h 50m 01s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 18m 29s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.23 at 21h 51m 28s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 19m 13s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63661000" />
+    <option name="totallyTimeSpent" value="54329000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -795,10 +790,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.23071104" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.1359275" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -808,14 +803,14 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32502708" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.33006537" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34669557" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3336945" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3261105" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32502708" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50075644" side_tool="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3267974" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.31744313" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
@@ -939,7 +934,9 @@
     <MESSAGE value="Transparency implemented and tested!" />
     <MESSAGE value="Transparency implemented and tested!&#10;Transparency now can also returns the background's color" />
     <MESSAGE value="Mesh class created, not functional." />
-    <option name="LAST_COMMIT_MESSAGE" value="Mesh class created, not functional." />
+    <MESSAGE value="we can now rotate a vector by an angle around any vector&#10;using Transform.rotatedVectorAround" />
+    <MESSAGE value="implemented set operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented set operations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -958,25 +955,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/primitives/Vector3D.java</url>
-          <line>12</line>
+          <line>10</line>
           <properties />
           <option name="timeStamp" value="441" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/primitives/Vector3D.java</url>
-          <line>20</line>
+          <line>18</line>
           <properties />
           <option name="timeStamp" value="442" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/primitives/Vector3D.java</url>
-          <line>28</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="443" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/Render.java</url>
-          <line>143</line>
+          <line>99</line>
           <properties />
           <option name="timeStamp" value="448" />
         </line-breakpoint>
@@ -987,31 +984,72 @@
           <option name="timeStamp" value="453" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/geometries/Cone.java</url>
-          <line>83</line>
+          <url>file://$PROJECT_DIR$/Tests/renderer/RenderTest.java</url>
+          <line>513</line>
           <properties />
-          <option name="timeStamp" value="454" />
+          <option name="timeStamp" value="463" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/geometries/TriangleMesh.java</url>
-          <line>58</line>
+          <line>69</line>
           <properties />
           <option name="timeStamp" value="466" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/Render.java</url>
-          <line>53</line>
+          <url>file://$PROJECT_DIR$/src/geometries/TriangleMesh.java</url>
+          <line>41</line>
           <properties />
-          <option name="timeStamp" value="478" />
+          <option name="timeStamp" value="468" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/Render.java</url>
-          <line>36</line>
+          <url>file://$PROJECT_DIR$/src/geometries/TriangleMesh.java</url>
+          <line>14</line>
           <properties />
-          <option name="timeStamp" value="481" />
+          <option name="timeStamp" value="469" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Tests/renderer/RenderTest.java</url>
+          <line>562</line>
+          <properties />
+          <option name="timeStamp" value="472" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/primitives/Point3D.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="517" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Tests/geometries/TriangleTest.java</url>
+          <line>230</line>
+          <properties />
+          <option name="timeStamp" value="521" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/SetDifference.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="541" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Geometries.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="544" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Sphere.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="545" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="color.getColor()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1024,6 +1062,11 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>color.getColor()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>result.getColor()</expression-string>
         <language-id>JAVA</language-id>
@@ -1069,11 +1112,6 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>ray.get_direction()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
@@ -1084,49 +1122,96 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Tests/geometries/ConeTest.java">
+    <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="195">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#Point3D#0;class#Point3D#0" />
+            <element signature="method#Point3D#1;class#Point3D#0" />
+            <element signature="method#Point3D#2;class#Point3D#0" />
+            <element signature="method#Point3D#3;class#Point3D#0" />
+            <element signature="method#set_point#0;class#Point3D#0" />
+            <element signature="method#set_point#1;class#Point3D#0" />
+            <element signature="method#set_point#2;class#Point3D#0" />
+            <element signature="method#add#0;class#Point3D#0" />
+            <element signature="method#add#1;class#Point3D#0" />
+            <element signature="method#add#2;class#Point3D#0" />
+            <element signature="method#distanceSquared#0;class#Point3D#0" />
+            <element signature="n#!!block;n#distance#0;n#Point3D#0" />
+            <element signature="method#equals#0;class#Point3D#0" />
+            <element signature="method#translate#0;class#Point3D#0" />
+            <element signature="method#rotate#0;class#Point3D#0" />
+            <element signature="method#scale#0;class#Point3D#0" />
+            <element signature="method#transform#0;class#Point3D#0" />
+            <element signature="method#transform#1;class#Point3D#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Cylinder.java">
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/CylinderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="78" column="57" selection-start-line="78" selection-start-column="57" selection-end-line="78" selection-end-column="57" />
+        <state relative-caret-position="382">
+          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/TubeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
           <folding>
-            <element signature="method#Cylinder#0;class#Cylinder#0" />
-            <element signature="method#Cylinder#1;class#Cylinder#0" />
-            <element signature="method#Cylinder#2;class#Cylinder#0" />
-            <element signature="method#get_normal#0;class#Cylinder#0" />
-            <element signature="method#findIntersectionsInZDirection#0;class#Cylinder#0" />
-            <element signature="method#transform#0;class#Cylinder#0" />
-            <element signature="method#transform#1;class#Cylinder#0" />
-            <element signature="method#equals#0;class#Cylinder#0" />
+            <element signature="method#get_normal#0;class#TubeTest#0" />
+            <element signature="method#findIntersections#0;class#TubeTest#0" />
+            <element signature="method#equals1#0;class#TubeTest#0" />
+            <element signature="method#translate#0;class#TubeTest#0" />
+            <element signature="method#rotate#0;class#TubeTest#0" />
+            <element signature="method#scale#0;class#TubeTest#0" />
+            <element signature="method#transform#0;class#TubeTest#0" />
+            <element signature="method#transformTRS#0;class#TubeTest#0" />
+            <element signature="method#contains#0;class#TubeTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Cone.java">
+    <entry file="file://$PROJECT_DIR$/src/geometries/FlatGeometry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Intersectable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="class#GeoPoint#0;class#Intersectable#0" />
+            <element signature="method#GeoPoint#0;class#GeoPoint#0;class#Intersectable#0" />
+            <element signature="method#GeoPoint#1;class#GeoPoint#0;class#Intersectable#0" />
+            <element signature="method#equals#0;class#GeoPoint#0;class#Intersectable#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/11thRenderTest - Torus.jpg" />
-    <entry file="file://$PROJECT_DIR$/1stRenderTest - Scene Intersections.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2ndRenderTest - Colors.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/TriangleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="230" column="42" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
+          <folding>
+            <element signature="method#findIntersections#0;class#TriangleTest#0" />
+            <element signature="method#getCentroid#0;class#TriangleTest#0" />
+            <element signature="method#isTriangle#0;class#TriangleTest#0" />
+            <element signature="method#equals1#0;class#TriangleTest#0" />
+            <element signature="method#translate#0;class#TriangleTest#0" />
+            <element signature="method#rotate#0;class#TriangleTest#0" />
+            <element signature="method#scale#0;class#TriangleTest#0" />
+            <element signature="method#scaleInPlace#0;class#TriangleTest#0" />
+            <element signature="method#transform#0;class#TriangleTest#0" />
+            <element signature="method#transformTRS#0;class#TriangleTest#0" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/3rdRenderTest - Point Light.jpg">
       <provider selected="true" editor-type-id="images" />
@@ -1140,296 +1225,87 @@
     <entry file="file://$PROJECT_DIR$/6thRenderTest - Shadow Test.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/renderer/ImageWriterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/7thRenderTest - Sphere Scaling.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/10thRenderTest - Cone.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/11thRenderTest - Reflection and Refraction 2.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/8thRenderTest - Tube Test.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/7thRenderTest - Sphere Scaling.jpg">
+    <entry file="file://$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/AmbientLight.java">
+    <entry file="file://$PROJECT_DIR$/src/primitives/Coordinate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/PointLight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="95" column="37" selection-start-line="95" selection-start-column="37" selection-end-line="95" selection-end-column="37" />
+        <state relative-caret-position="439">
+          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
           <folding>
-            <element signature="e#323#351#0" />
-            <element signature="method#PointLight#0;class#PointLight#0" />
-            <element signature="method#PointLight#1;class#PointLight#0" />
-            <element signature="method#PointLight#2;class#PointLight#0" />
-            <element signature="method#PointLight#3;class#PointLight#0" />
-            <element signature="method#PointLight#4;class#PointLight#0" />
-            <element signature="method#PointLight#5;class#PointLight#0" />
-            <element signature="method#getIntensity#1;class#PointLight#0" />
-            <element signature="method#getLightDirectionTo#0;class#PointLight#0" />
-            <element signature="e#2059#2095#1" />
-            <element signature="e#2207#2208#0" expanded="true" />
-            <element signature="e#2252#2253#0" expanded="true" />
+            <element signature="e#774#775#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
+            <element signature="e#1633#1634#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/LightSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/1stRenderTest - Scene Intersections.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/DirectionalLight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
-          <folding>
-            <element signature="e#736#737#0" expanded="true" />
-            <element signature="e#773#774#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/2ndRenderTest - Colors.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Tube.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-332">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="method#Tube#0;class#Tube#0" />
-            <element signature="method#Tube#1;class#Tube#0" />
-            <element signature="method#Tube#2;class#Tube#0" />
-            <element signature="method#Tube#3;class#Tube#0" />
-            <element signature="method#get_normal#0;class#Tube#0" />
-            <element signature="e#937#999#1" />
-            <element signature="method#findIntersections#0;class#Tube#0" />
-            <element signature="e#1957#2191#1" />
-            <element signature="e#2124#2181#1" />
-            <element signature="e#2422#2736#1" />
-            <element signature="e#2661#2726#1" />
-            <element signature="e#2780#2975#1" />
-            <element signature="e#2900#2965#1" />
-            <element signature="e#3081#3900#1" />
-            <element signature="e#4028#4223#1" />
-            <element signature="e#4053#4158#1" />
-            <element signature="e#4175#4213#1" />
-            <element signature="method#scale#0;class#Tube#0" />
-            <element signature="method#scale#1;class#Tube#0" />
-            <element signature="method#transform#0;class#Tube#0" />
-            <element signature="method#transform#1;class#Tube#0" />
-            <element signature="method#equals#0;class#Tube#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Intersectable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="40" column="44" lean-forward="true" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
-          <folding>
-            <element signature="method#add_geometry#0;class#Geometries#0" />
-            <element signature="e#662#716#1" />
-            <element signature="n#!!block;n#getGeometriesIterator#0;n#Geometries#0" />
-            <element signature="method#equals#0;class#Geometries#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java" />
-    <entry file="file://$PROJECT_DIR$/src/primitives/Material.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding>
-            <element signature="e#350#426#0" />
-            <element signature="method#Material#0;class#Material#0" />
-            <element signature="method#Material#1;class#Material#0" />
-            <element signature="method#set_Kd#0;class#Material#0" />
-            <element signature="method#set_Ks#0;class#Material#0" />
-            <element signature="e#1858#1859#0" expanded="true" />
-            <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="method#set_Kr#0;class#Material#0" />
-            <element signature="method#set_Kt#0;class#Material#0" />
-            <element signature="method#equals#0;class#Material#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Geometry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <element signature="e#178#253#0" />
-            <element signature="method#Geometry#0;class#Geometry#0" />
-            <element signature="method#Geometry#1;class#Geometry#0" />
-            <element signature="method#Geometry#2;class#Geometry#0" />
-            <element signature="method#Geometry#3;class#Geometry#0" />
-            <element signature="e#1131#1132#0" expanded="true" />
-            <element signature="e#1184#1185#0" expanded="true" />
-            <element signature="method#equals#0;class#Geometry#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Plane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
-          <folding>
-            <element signature="method#Plane#0;class#Plane#0" />
-            <element signature="method#Plane#1;class#Plane#0" />
-            <element signature="method#Plane#2;class#Plane#0" />
-            <element signature="method#Plane#3;class#Plane#0" />
-            <element signature="method#Plane#3;class#Plane#0" />
-            <element signature="method#Plane#3;class#Plane#0" />
-            <element signature="method#Plane#5;class#Plane#0" />
-            <element signature="method#Plane#5;class#Plane#0" />
-            <element signature="method#Plane#2;class#Plane#0" />
-            <element signature="method#distance#0;class#Plane#0" />
-            <element signature="method#findIntersections#0;class#Plane#0" />
-            <element signature="e#2416#2952#1" />
-            <element signature="e#2692#2772#1" />
-            <element signature="e#2800#2914#1" />
-            <element signature="method#translate#0;class#Plane#0" />
-            <element signature="method#rotate#0;class#Plane#0" />
-            <element signature="method#transform#0;class#Plane#0" />
-            <element signature="method#transform#1;class#Plane#0" />
-            <element signature="method#equals#0;class#Plane#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Triangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-          <folding>
-            <element signature="method#Triangle#0;class#Triangle#0" />
-            <element signature="method#Triangle#1;class#Triangle#0" />
-            <element signature="method#Triangle#2;class#Triangle#0" />
-            <element signature="method#Triangle#2;class#Triangle#0" />
-            <element signature="method#Triangle#1;class#Triangle#0" />
-            <element signature="method#flipNormal#0;class#Triangle#0" />
-            <element signature="method#isTriangle#0;class#Triangle#0" />
-            <element signature="method#getCentroid#0;class#Triangle#0" />
-            <element signature="method#translate#0;class#Triangle#0" />
-            <element signature="method#rotate#0;class#Triangle#0" />
-            <element signature="method#scale#0;class#Triangle#0" />
-            <element signature="method#scaleInPlace#0;class#Triangle#0" />
-            <element signature="method#transform#0;class#Triangle#0" />
-            <element signature="method#transform#1;class#Triangle#0" />
-            <element signature="method#equals#0;class#Triangle#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/elements/CameraTest.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/reflect/Method.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <caret line="497" selection-start-line="497" selection-end-line="497" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Sphere.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="45" column="58" lean-forward="true" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
-          <folding>
-            <element signature="method#Sphere#0;class#Sphere#0" />
-            <element signature="method#Sphere#1;class#Sphere#0" />
-            <element signature="method#Sphere#2;class#Sphere#0" />
-            <element signature="n#!!block;n#set_point#0;n#Sphere#0" />
-            <element signature="method#findIntersections#0;class#Sphere#0" />
-            <element signature="method#getVolume#0;class#Sphere#0" />
-            <element signature="method#scaleVolume#0;class#Sphere#0" />
-            <element signature="n#!!block;n#scale#0;n#Sphere#0" />
-            <element signature="method#transform#0;class#Sphere#0" />
-            <element signature="method#transform#1;class#Sphere#0" />
-            <element signature="method#equals#0;class#Sphere#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Torus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="142" column="5" lean-forward="true" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
-          <folding>
-            <element signature="e#297#422#0" />
-            <element signature="method#Torus#0;class#Torus#0" />
-            <element signature="method#Torus#1;class#Torus#0" />
-            <element signature="method#Torus#2;class#Torus#0" />
-            <element signature="method#set_ray#0;class#Torus#0" />
-            <element signature="method#set_torus#0;class#Torus#0" />
-            <element signature="method#set_torus#1;class#Torus#0" />
-            <element signature="method#transformToDefault#0;class#Torus#0" />
-            <element signature="e#2219#2595#1" />
-            <element signature="e#2252#2321#1" />
-            <element signature="method#get_normal#0;class#Torus#0" />
-            <element signature="method#findIntersectionsInZDirection#0;class#Torus#0" />
-            <element signature="e#5844#6540#1" />
-            <element signature="e#5877#5956#1" />
-            <element signature="e#6359#6502#1" />
-            <element signature="method#translate#0;class#Torus#0" />
-            <element signature="method#rotate#0;class#Torus#0" />
-            <element signature="method#scale#0;class#Torus#0" />
-            <element signature="method#transform#0;class#Torus#0" />
-            <element signature="method#transform#1;class#Torus#0" />
-          </folding>
+        <state relative-caret-position="178">
+          <caret line="355" selection-start-line="355" selection-end-line="355" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/primitives/Vector3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
+        <state relative-caret-position="189">
+          <caret line="220" column="53" selection-start-line="220" selection-start-column="53" selection-end-line="220" selection-end-column="53" />
           <folding>
             <element signature="method#Vector3D#3;class#Vector3D#0" />
             <element signature="method#subtract#0;class#Vector3D#0" />
+            <element signature="e#4269#4270#0" expanded="true" />
+            <element signature="e#4323#4324#0" expanded="true" />
             <element signature="method#normalized#0;class#Vector3D#0" />
             <element signature="method#normalize#0;class#Vector3D#0" />
+            <element signature="e#5042#5043#0" expanded="true" />
+            <element signature="e#5086#5087#0" expanded="true" />
             <element signature="method#projection#0;class#Vector3D#0" />
+            <element signature="e#5873#5874#0" expanded="true" />
+            <element signature="e#5924#5925#0" expanded="true" />
             <element signature="method#rotate#0;class#Vector3D#0" />
             <element signature="method#scale#1;class#Vector3D#0" />
             <element signature="method#transform#0;class#Vector3D#0" />
             <element signature="method#transform#1;class#Vector3D#0" />
             <element signature="method#equals#0;class#Vector3D#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Coordinate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="e#1575#1576#0" expanded="true" />
-            <element signature="e#1633#1634#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7569#7570#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/primitives/Transform.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="149" column="87" selection-start-line="149" selection-start-column="87" selection-end-line="149" selection-end-column="87" />
+        <state relative-caret-position="205">
+          <caret line="69" column="73" lean-forward="true" selection-start-line="69" selection-start-column="73" selection-end-line="69" selection-end-column="73" />
           <folding>
             <element signature="method#Transform#0;class#Transform#0" />
             <element signature="method#Transform#1;class#Transform#0" />
@@ -1445,86 +1321,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Matrix3.java">
+    <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="179" column="27" selection-start-line="179" selection-start-column="27" selection-end-line="179" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!block;n#Matrix3#0;n#Matrix3#0" />
-            <element signature="method#Matrix3#1;class#Matrix3#0" />
-            <element signature="e#617#791#1" />
-            <element signature="e#658#781#1" />
-            <element signature="method#Matrix3#2;class#Matrix3#0" />
-            <element signature="e#989#1089#1" />
-            <element signature="e#1158#1263#1" />
-            <element signature="e#1199#1253#1" />
-            <element signature="method#getMatrix#0;class#Matrix3#0" />
-            <element signature="e#1404#1511#1" />
-            <element signature="e#1445#1501#1" />
-            <element signature="method#set_element#0;class#Matrix3#0" />
-            <element signature="method#add#0;class#Matrix3#0" />
-            <element signature="method#sub#0;class#Matrix3#0" />
-            <element signature="method#mult#0;class#Matrix3#0" />
-            <element signature="method#mult#1;class#Matrix3#0" />
-            <element signature="method#mult#2;class#Matrix3#0" />
-            <element signature="method#scale#0;class#Matrix3#0" />
-            <element signature="method#transpose#0;class#Matrix3#0" />
-            <element signature="method#equals#0;class#Matrix3#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Matrix4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!block;n#Matrix4#0;n#Matrix4#0" />
-            <element signature="method#Matrix4#1;class#Matrix4#0" />
-            <element signature="e#474#574#1" />
-            <element signature="e#643#817#1" />
-            <element signature="e#684#807#1" />
-            <element signature="method#Matrix4#2;class#Matrix4#0" />
-            <element signature="e#1015#1115#1" />
-            <element signature="e#1184#1289#1" />
-            <element signature="e#1225#1279#1" />
-            <element signature="method#getMatrix#0;class#Matrix4#0" />
-            <element signature="e#1430#1537#1" />
-            <element signature="e#1471#1527#1" />
-            <element signature="method#setMatrix#0;class#Matrix4#0" />
-            <element signature="e#1741#1841#1" />
-            <element signature="e#1878#1985#1" />
-            <element signature="e#1919#1975#1" />
-            <element signature="method#setMatrix#1;class#Matrix4#0" />
-            <element signature="e#2190#2290#1" />
-            <element signature="e#2327#2432#1" />
-            <element signature="e#2368#2422#1" />
-            <element signature="method#initIdentity#0;class#Matrix4#0" />
-            <element signature="method#initTranslation#0;class#Matrix4#0" />
-            <element signature="method#initTranslation#1;class#Matrix4#0" />
-            <element signature="method#initRotation#0;class#Matrix4#0" />
-            <element signature="method#initScale#0;class#Matrix4#0" />
-            <element signature="method#initScale#1;class#Matrix4#0" />
-            <element signature="method#initProjection#0;class#Matrix4#0" />
-            <element signature="method#setColumn#0;class#Matrix4#0" />
-            <element signature="method#setRow#0;class#Matrix4#0" />
-            <element signature="method#mult#0;class#Matrix4#0" />
-            <element signature="method#mult#1;class#Matrix4#0" />
-            <element signature="method#mult#2;class#Matrix4#0" />
-            <element signature="method#scale#0;class#Matrix4#0" />
-            <element signature="e#8456#8572#1" />
-            <element signature="e#8497#8562#1" />
-            <element signature="method#equals#0;class#Matrix4#0" />
-            <element signature="e#8919#9098#1" />
-            <element signature="e#8960#9088#1" />
-          </folding>
+        <state relative-caret-position="195">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/primitives/TransformTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+        <state relative-caret-position="556">
+          <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="102" selection-end-column="41" />
           <folding>
             <element signature="method#getTranslation#0;class#TransformTest#0" />
             <element signature="method#getRotation#0;class#TransformTest#0" />
@@ -1538,184 +1345,406 @@
             <element signature="method#getTransformation#0;class#TransformTest#0" />
             <element signature="method#getRodriguesRotation#0;class#TransformTest#0" />
             <element signature="method#getHouseholderMatrix#0;class#TransformTest#0" />
-            <element signature="method#rotatedVectorAround#0;class#TransformTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="365" column="67" selection-start-line="365" selection-start-column="67" selection-end-line="365" selection-end-column="67" />
-          <folding>
-            <element signature="e#48315#48319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/9rdRenderTest - reflection and refraction.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/11thRenderTest - Reflection and Refraction 2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/writeToImageTest.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/12thRenderTest - Torus.jpg">
+    <entry file="file://$PROJECT_DIR$/15thRenderTest - Avik.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/13thRenderTest - Mesh.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/TriangleMesh.java">
+    <entry file="file://$PROJECT_DIR$/12thRenderTest - Torus.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/SphereTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="13" lean-forward="true" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        <state relative-caret-position="496">
+          <caret line="125" column="20" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#1112#1113#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="method#contains#0;class#SphereTest#0" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Cone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="81" column="5" lean-forward="true" selection-start-line="78" selection-start-column="4" selection-end-line="81" selection-end-column="5" />
+          <folding>
+            <element signature="method#Cone#0;class#Cone#0" />
+            <element signature="method#Cone#1;class#Cone#0" />
+            <element signature="method#Cone#2;class#Cone#0" />
+            <element signature="method#Cone#3;class#Cone#0" />
+            <element signature="n#!!block;n#setInfinite#0;n#Cone#0" />
+            <element signature="method#get_normal#0;class#Cone#0" />
+            <element signature="method#findIntersections#0;class#Cone#0" />
+            <element signature="method#findIntersectionsInZDirection#0;class#Cone#0" />
+            <element signature="method#transform#1;class#Cone#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Cylinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+          <folding>
+            <element signature="method#Cylinder#0;class#Cylinder#0" />
+            <element signature="method#Cylinder#1;class#Cylinder#0" />
+            <element signature="method#Cylinder#2;class#Cylinder#0" />
+            <element signature="method#get_normal#0;class#Cylinder#0" />
+            <element signature="e#936#1015#1" />
+            <element signature="method#contains#0;class#Cylinder#0" />
+            <element signature="e#1651#1698#1" />
+            <element signature="method#findIntersections#0;class#Cylinder#0" />
+            <element signature="method#findIntersectionsInZDirection#0;class#Cylinder#0" />
+            <element signature="n#!!block;n#scale#0;n#Cylinder#0" />
+            <element signature="method#scale#1;class#Cylinder#0" />
+            <element signature="method#transform#0;class#Cylinder#0" />
+            <element signature="method#transform#1;class#Cylinder#0" />
+            <element signature="method#equals#0;class#Cylinder#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Plane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="147" column="36" selection-start-line="147" selection-start-column="36" selection-end-line="147" selection-end-column="36" />
+          <folding>
+            <element signature="method#Plane#0;class#Plane#0" />
+            <element signature="method#Plane#1;class#Plane#0" />
+            <element signature="method#Plane#2;class#Plane#0" />
+            <element signature="method#Plane#3;class#Plane#0" />
+            <element signature="method#Plane#4;class#Plane#0" />
+            <element signature="method#Plane#5;class#Plane#0" />
+            <element signature="method#Plane#6;class#Plane#0" />
+            <element signature="method#Plane#7;class#Plane#0" />
+            <element signature="method#Plane#8;class#Plane#0" />
+            <element signature="method#distance#0;class#Plane#0" />
+            <element signature="method#contains#0;class#Plane#0" />
+            <element signature="method#findIntersections#0;class#Plane#0" />
+            <element signature="method#translate#0;class#Plane#0" />
+            <element signature="method#rotate#0;class#Plane#0" />
+            <element signature="method#transform#0;class#Plane#0" />
+            <element signature="method#transform#1;class#Plane#0" />
+            <element signature="method#equals#0;class#Plane#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Torus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="153" column="5" selection-start-line="153" selection-start-column="5" selection-end-line="153" selection-end-column="5" />
+          <folding>
+            <element signature="method#Torus#0;class#Torus#0" />
+            <element signature="method#Torus#1;class#Torus#0" />
+            <element signature="method#Torus#2;class#Torus#0" />
+            <element signature="method#set_ray#0;class#Torus#0" />
+            <element signature="method#set_torus#0;class#Torus#0" />
+            <element signature="method#set_torus#1;class#Torus#0" />
+            <element signature="method#transformToDefault#0;class#Torus#0" />
+            <element signature="method#get_normal#0;class#Torus#0" />
+            <element signature="method#findIntersectionsInZDirection#0;class#Torus#0" />
+            <element signature="method#findIntersections#0;class#Torus#0" />
+            <element signature="method#translate#0;class#Torus#0" />
+            <element signature="method#rotate#0;class#Torus#0" />
+            <element signature="method#scale#0;class#Torus#0" />
+            <element signature="method#transform#0;class#Torus#0" />
+            <element signature="method#transform#1;class#Torus#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Triangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="350" column="36" selection-start-line="350" selection-start-column="36" selection-end-line="350" selection-end-column="36" />
+          <folding>
+            <element signature="method#Triangle#0;class#Triangle#0" />
+            <element signature="method#Triangle#1;class#Triangle#0" />
+            <element signature="method#Triangle#2;class#Triangle#0" />
+            <element signature="method#Triangle#3;class#Triangle#0" />
+            <element signature="method#Triangle#4;class#Triangle#0" />
+            <element signature="method#Triangle#5;class#Triangle#0" />
+            <element signature="method#flipNormal#0;class#Triangle#0" />
+            <element signature="method#isTriangle#0;class#Triangle#0" />
+            <element signature="method#getCentroid#0;class#Triangle#0" />
+            <element signature="e#3207#3608#0" />
+            <element signature="method#findIntersections#0;class#Triangle#0" />
+            <element signature="method#translate#0;class#Triangle#0" />
+            <element signature="method#rotate#0;class#Triangle#0" />
+            <element signature="method#scale#0;class#Triangle#0" />
+            <element signature="method#scaleInPlace#0;class#Triangle#0" />
+            <element signature="method#transform#0;class#Triangle#0" />
+            <element signature="method#transform#1;class#Triangle#0" />
+            <element signature="method#contains#0;class#Triangle#0" />
+            <element signature="method#equals#0;class#Triangle#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Tube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="222" column="5" selection-start-line="222" selection-start-column="5" selection-end-line="222" selection-end-column="5" />
+          <folding>
+            <element signature="method#Tube#1;class#Tube#0" />
+            <element signature="method#Tube#2;class#Tube#0" />
+            <element signature="method#Tube#3;class#Tube#0" />
+            <element signature="method#get_normal#0;class#Tube#0" />
+            <element signature="method#findIntersections#0;class#Tube#0" />
+            <element signature="method#scale#0;class#Tube#0" />
+            <element signature="method#scale#1;class#Tube#0" />
+            <element signature="method#transform#0;class#Tube#0" />
+            <element signature="method#transform#1;class#Tube#0" />
+            <element signature="method#contains#0;class#Tube#0" />
+            <element signature="method#equals#0;class#Tube#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/TriangleMesh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+          <folding>
+            <element signature="class#IndexedTriangle#0;class#TriangleMesh#0" />
+            <element signature="method#IndexedTriangle#0;class#IndexedTriangle#0;class#TriangleMesh#0" />
+            <element signature="method#IndexedTriangle#1;class#IndexedTriangle#0;class#TriangleMesh#0" />
+            <element signature="n#!!doc;n#pointList#0;n#TriangleMesh#0" />
+            <element signature="n#!!doc;n#triangleList#0;n#TriangleMesh#0" />
+            <element signature="n#!!block;n#TriangleMesh#0;n#TriangleMesh#0" />
+            <element signature="method#addTriangle#0;class#TriangleMesh#0" />
+            <element signature="method#findIntersections#0;class#TriangleMesh#0" />
+            <element signature="e#1432#1513#1" />
+            <element signature="e#1546#1597#1" />
+            <element signature="method#translate#0;class#TriangleMesh#0" />
+            <element signature="method#rotate#0;class#TriangleMesh#0" />
+            <element signature="method#scale#0;class#TriangleMesh#0" />
+            <element signature="method#transform#0;class#TriangleMesh#0" />
+            <element signature="method#transform#1;class#TriangleMesh#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Geometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding>
+            <element signature="method#Geometry#0;class#Geometry#0" />
+            <element signature="method#Geometry#1;class#Geometry#0" />
+            <element signature="method#Geometry#2;class#Geometry#0" />
+            <element signature="method#Geometry#3;class#Geometry#0" />
+            <element signature="method#equals#0;class#Geometry#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/SetComplement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-298">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#transform#1;class#SetComplement#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/14thRenderTest - Set Intersections.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="269">
+          <caret line="87" column="16" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
           <folding>
-            <element signature="method#Scene#0;class#Scene#0" />
-            <element signature="method#Scene#1;class#Scene#0" />
-            <element signature="e#1164#1165#0" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
-            <element signature="method#addLights#0;class#Scene#0" />
+            <element signature="e#2004#2005#0" expanded="true" />
+            <element signature="e#2058#2059#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Color.java">
+    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="164" column="33" lean-forward="true" selection-start-line="164" selection-start-column="33" selection-end-line="164" selection-end-column="33" />
+        <state relative-caret-position="323">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
           <folding>
-            <element signature="docComment;class#Color#0" />
-            <element signature="docComment;field#_r#0;class#Color#0" />
-            <element signature="docComment;method#Color#0;class#Color#0" />
-            <element signature="method#Color#0;class#Color#0" />
-            <element signature="docComment;method#Color#1;class#Color#0" />
-            <element signature="method#Color#1;class#Color#0" />
-            <element signature="docComment;method#Color#2;class#Color#0" />
-            <element signature="method#Color#2;class#Color#0" />
-            <element signature="docComment;method#Color#3;class#Color#0" />
-            <element signature="docComment;method#getColor#0;class#Color#0" />
-            <element signature="method#getColor#0;class#Color#0" />
-            <element signature="docComment;method#setColor#0;class#Color#0" />
-            <element signature="method#setColor#0;class#Color#0" />
-            <element signature="docComment;method#setColor#1;class#Color#0" />
-            <element signature="method#setColor#1;class#Color#0" />
-            <element signature="docComment;method#setColor#2;class#Color#0" />
-            <element signature="method#setColor#2;class#Color#0" />
-            <element signature="docComment;method#setColor#3;class#Color#0" />
-            <element signature="method#setColor#3;class#Color#0" />
-            <element signature="docComment;method#add#0;class#Color#0" />
-            <element signature="docComment;method#scale#0;class#Color#0" />
-            <element signature="docComment;method#mult#0;class#Color#0" />
-            <element signature="method#mult#0;class#Color#0" />
-            <element signature="docComment;method#reduce#0;class#Color#0" />
-            <element signature="method#reduce#0;class#Color#0" />
-            <element signature="method#equals#0;class#Color#0" />
+            <element signature="method#Render#0;class#Render#0" />
+            <element signature="method#getSceneRayIntersections#0;class#Render#0" />
+            <element signature="docComment;method#calcDiffusive#0;class#Render#0" />
+            <element signature="method#calcDiffusive#0;class#Render#0" />
+            <element signature="docComment;method#calcSpecular#0;class#Render#0" />
+            <element signature="method#calcSpecular#0;class#Render#0" />
+            <element signature="method#calcColor#0;class#Render#0" />
+            <element signature="method#calcColor#1;class#Render#0" />
+            <element signature="method#getClosestPoint#0;class#Render#0" />
+            <element signature="method#transparency#0;class#Render#0" />
+            <element signature="method#constructReflectedRay#0;class#Render#0" />
+            <element signature="method#constructRefractedRay#0;class#Render#0" />
+            <element signature="method#calcEpsilon#0;class#Render#0" />
+            <element signature="method#printGrid#0;class#Render#0" />
+            <element signature="method#printGrid#1;class#Render#0" />
+            <element signature="n#!!block;n#writeToImage#0;n#Render#0" />
+            <element signature="method#printAxises#0;class#Render#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/10thRenderTest - Cone.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/geometries/RadialGeometry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-          <folding>
-            <element signature="method#ImageWriter#0;class#ImageWriter#0" />
-            <element signature="method#ImageWriter#1;class#ImageWriter#0" />
-            <element signature="method#getWidth#0;class#ImageWriter#0" />
-            <element signature="method#getHeight#0;class#ImageWriter#0" />
-            <element signature="method#getNy#0;class#ImageWriter#0" />
-            <element signature="method#getNx#0;class#ImageWriter#0" />
-            <element signature="method#setNy#0;class#ImageWriter#0" />
-            <element signature="method#setNx#0;class#ImageWriter#0" />
-            <element signature="method#writeToimage#0;class#ImageWriter#0" />
-            <element signature="e#1530#2053#0" />
-            <element signature="e#2076#2120#0" />
-            <element signature="n#!!block;n#writePixel#0;n#ImageWriter#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="80" column="19" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
-          <folding>
-            <element signature="method#Point3D#0;class#Point3D#0" />
-            <element signature="method#Point3D#1;class#Point3D#0" />
-            <element signature="method#Point3D#2;class#Point3D#0" />
-            <element signature="method#Point3D#3;class#Point3D#0" />
-            <element signature="method#add#2;class#Point3D#0" />
-            <element signature="e#2877#2878#0" expanded="true" />
-            <element signature="e#2946#2947#0" expanded="true" />
-            <element signature="method#equals#0;class#Point3D#0" />
-            <element signature="method#translate#0;class#Point3D#0" />
-            <element signature="method#rotate#0;class#Point3D#0" />
-            <element signature="method#scale#0;class#Point3D#0" />
-            <element signature="method#transform#0;class#Point3D#0" />
-            <element signature="method#transform#1;class#Point3D#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="206" selection-start-line="206" selection-end-line="206" />
+        <state relative-caret-position="391">
+          <caret line="40" column="75" selection-start-line="40" selection-start-column="75" selection-end-line="40" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Camera#0;class#Camera#0" />
-            <element signature="e#413#640#1" />
-            <element signature="e#653#1003#1" />
-            <element signature="method#Camera#1;class#Camera#0" />
-            <element signature="e#1186#1407#1" />
-            <element signature="e#1420#1764#1" />
-            <element signature="method#Camera#2;class#Camera#0" />
-            <element signature="e#1883#2119#1" />
-            <element signature="e#2132#2503#1" />
-            <element signature="method#Camera#3;class#Camera#0" />
-            <element signature="e#2606#2836#1" />
-            <element signature="e#2849#3214#1" />
-            <element signature="method#Camera#4;class#Camera#0" />
-            <element signature="method#Camera#5;class#Camera#0" />
-            <element signature="n#!!block;n#get_origin#0;n#Camera#0" />
-            <element signature="e#6212#6221#0" expanded="true" />
-            <element signature="e#8070#8071#0" expanded="true" />
-            <element signature="method#scale#0;class#Camera#0" />
-            <element signature="method#transform#0;class#Camera#0" />
-            <element signature="method#transform#1;class#Camera#0" />
+            <element signature="method#RadialGeometry#1;class#RadialGeometry#0" />
+            <element signature="method#RadialGeometry#2;class#RadialGeometry#0" />
+            <element signature="method#RadialGeometry#2;class#RadialGeometry#0" />
+            <element signature="method#RadialGeometry#5;class#RadialGeometry#0" />
+            <element signature="method#RadialGeometry#6;class#RadialGeometry#0" />
+            <element signature="method#RadialGeometry#6;class#RadialGeometry#0" />
+            <element signature="method#equals#0;class#RadialGeometry#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/ITransformable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Sphere.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+          <folding>
+            <element signature="method#Sphere#0;class#Sphere#0" />
+            <element signature="method#Sphere#1;class#Sphere#0" />
+            <element signature="method#Sphere#2;class#Sphere#0" />
+            <element signature="method#Sphere#3;class#Sphere#0" />
+            <element signature="method#Sphere#4;class#Sphere#0" />
+            <element signature="method#Sphere#5;class#Sphere#0" />
+            <element signature="method#Sphere#6;class#Sphere#0" />
+            <element signature="method#Sphere#7;class#Sphere#0" />
+            <element signature="method#Sphere#8;class#Sphere#0" />
+            <element signature="n#!!block;n#set_point#0;n#Sphere#0" />
+            <element signature="method#contains#0;class#Sphere#0" />
+            <element signature="method#surfaceContains#0;class#Sphere#0" />
+            <element signature="e#2750#2786#1" />
+            <element signature="method#findIntersections#0;class#Sphere#0" />
+            <element signature="e#2943#3203#1" />
+            <element signature="e#3887#4014#1" />
+            <element signature="e#4047#4092#1" />
+            <element signature="e#4260#4387#1" />
+            <element signature="method#getVolume#0;class#Sphere#0" />
+            <element signature="method#scaleVolume#0;class#Sphere#0" />
+            <element signature="e#4888#4889#0" expanded="true" />
+            <element signature="n#!!block;n#scale#0;n#Sphere#0" />
+            <element signature="method#transform#0;class#Sphere#0" />
+            <element signature="method#transform#1;class#Sphere#0" />
+            <element signature="method#equals#0;class#Sphere#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Geometries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="107" column="44" lean-forward="true" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="44" />
+          <folding>
+            <element signature="docComment;method#Geometries#0;class#Geometries#0" />
+            <element signature="method#Geometries#1;class#Geometries#0" />
+            <element signature="e#591#645#1" />
+            <element signature="method#Geometries#2;class#Geometries#0" />
+            <element signature="method#Geometries#3;class#Geometries#0" />
+            <element signature="e#962#1016#1" />
+            <element signature="docComment;method#get_GeometriesList#0;class#Geometries#0" />
+            <element signature="method#get_GeometriesList#0;class#Geometries#0" />
+            <element signature="method#set_geometriesList#0;class#Geometries#0" />
+            <element signature="e#1413#1467#1" />
+            <element signature="method#set_geometriesList#1;class#Geometries#0" />
+            <element signature="e#1614#1668#1" />
+            <element signature="method#set_geometriesList#2;class#Geometries#0" />
+            <element signature="e#1835#1889#1" />
+            <element signature="docComment;method#add_geometries#0;class#Geometries#0" />
+            <element signature="method#add_geometries#0;class#Geometries#0" />
+            <element signature="e#2043#2097#1" />
+            <element signature="method#add_geometries#1;class#Geometries#0" />
+            <element signature="e#2205#2259#1" />
+            <element signature="method#rotate#0;class#Geometries#0" />
+            <element signature="e#2850#2899#1" />
+            <element signature="method#scale#0;class#Geometries#0" />
+            <element signature="e#3024#3072#1" />
+            <element signature="method#transform#0;class#Geometries#0" />
+            <element signature="e#3193#3248#1" />
+            <element signature="method#transform#1;class#Geometries#0" />
+            <element signature="e#3404#3477#1" />
+            <element signature="method#equals#0;class#Geometries#0" />
+            <element signature="e#4001#4115#1" />
+            <element signature="method#next#0;class#Geometries#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/SetDifference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#get_normal#0;class#SetDifference#0" />
+            <element signature="method#contains#0;class#SetDifference#0" />
+            <element signature="method#surfaceContains#0;class#SetDifference#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/SetUnion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="46" column="50" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
+          <folding>
+            <element signature="method#get_normal#0;class#SetUnion#0" />
+            <element signature="method#contains#0;class#SetUnion#0" />
+            <element signature="method#surfaceContains#0;class#SetUnion#0" />
+            <element signature="method#findIntersections#0;class#SetUnion#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/geometries/SetIntersectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/SetIntersection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="method#surfaceContains#0;class#SetIntersection#0" />
+            <element signature="method#contains#0;class#SetIntersection#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1346">
-          <caret line="539" column="24" selection-start-line="539" selection-start-column="24" selection-end-line="539" selection-end-column="24" />
+        <state relative-caret-position="396">
+          <caret line="621" column="41" selection-start-line="621" selection-start-column="41" selection-end-line="621" selection-end-column="41" />
           <folding>
-            <element signature="method#renderImage1#0;class#RenderTest#0" />
             <element signature="method#renderImage2#0;class#RenderTest#0" />
             <element signature="method#renderImage3#0;class#RenderTest#0" />
             <element signature="method#renderImage4#0;class#RenderTest#0" />
@@ -1723,21 +1752,33 @@
             <element signature="method#renderImage6#0;class#RenderTest#0" />
             <element signature="method#renderImage7#0;class#RenderTest#0" />
             <element signature="method#renderImage8#0;class#RenderTest#0" />
+            <element signature="method#renderImage9#0;class#RenderTest#0" />
             <element signature="method#renderImage10#0;class#RenderTest#0" />
             <element signature="method#renderImage11#0;class#RenderTest#0" />
             <element signature="method#renderImage12#0;class#RenderTest#0" />
             <element signature="method#renderImage13#0;class#RenderTest#0" />
+            <element signature="method#renderImage15#0;class#RenderTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
+    <entry file="file://$PROJECT_DIR$/14thRenderTest - Set Operations.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/GeometriesSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="399">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
-            <element signature="e#12685#12686#0" expanded="true" />
-            <element signature="e#12728#12729#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#GeometriesSet#0;class#GeometriesSet#0" />
+            <element signature="method#GeometriesSet#1;class#GeometriesSet#0" />
+            <element signature="method#removeDuplicates#0;class#GeometriesSet#0" />
+            <element signature="method#translate#0;class#GeometriesSet#0" />
+            <element signature="method#rotate#0;class#GeometriesSet#0" />
+            <element signature="method#scale#0;class#GeometriesSet#0" />
+            <element signature="method#transform#0;class#GeometriesSet#0" />
+            <element signature="method#transform#1;class#GeometriesSet#0" />
           </folding>
         </state>
       </provider>

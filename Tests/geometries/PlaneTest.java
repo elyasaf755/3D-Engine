@@ -127,4 +127,12 @@ class PlaneTest {
         Plane expected = new Plane(new Point3D(10,0,0), new Vector3D(0,0,1));
         assertEquals(expected, actual);
     }
+
+    @Test
+    void contains() {
+        Plane plane1 = new Plane(new Point3D(0,0,1), new Vector3D(0,0,1));
+        Point3D point1 = new Point3D(1,1,1);
+        assertEquals(true, plane1.contains(point1));
+        assertEquals(false, plane1.contains(new Point3D(0,0,0)));
+    }
 }

@@ -1,7 +1,6 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.Coordinate;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector3D;
@@ -22,9 +21,9 @@ class GeometriesTest {
     Sphere sphere3 = new Sphere(4, new Point3D(9,0,0));
 
     @Test
-    void add_geometry() {
+    void add_geometries() {
         Geometries geometries = new Geometries();
-        geometries.add_geometry(sphere1, sphere2);
+        geometries.add_geometries(sphere1, sphere2);
         assertEquals(2, geometries.get_GeometriesList().size());
         assertEquals(sphere1, geometries.get_GeometriesList().get(0));
         assertEquals(sphere2, geometries.get_GeometriesList().get(1));
@@ -36,7 +35,7 @@ class GeometriesTest {
 
         //the 2 geometries have a point of contact
         Geometries geometries1 = new Geometries();
-        geometries1.add_geometry(sphere1, sphere2);
+        geometries1.add_geometries(sphere1, sphere2);
         ArrayList<GeoPoint> expected1 = new ArrayList<>();
         expected1.add(new GeoPoint(sphere1, new Point3D(-4,0,0)));//sphere1
         expected1.add(new GeoPoint(sphere1, new Point3D(4,0,0)));//sphere1
@@ -48,7 +47,7 @@ class GeometriesTest {
 
         //the 2 geometries doesnt have a point of contact
         Geometries geometries2 = new Geometries();
-        geometries2.add_geometry(sphere1, sphere3);
+        geometries2.add_geometries(sphere1, sphere3);
         ArrayList<GeoPoint> expected2 = new ArrayList<>();
         expected2.add(new GeoPoint(sphere1, new Point3D(-4,0,0)));//sphere1
         expected2.add(new GeoPoint(sphere1, new Point3D(4,0,0)));//sphere1
@@ -61,13 +60,13 @@ class GeometriesTest {
     @Test
     void equals1() {
         Geometries geometries1 = new Geometries();
-        geometries1.add_geometry(sphere1, sphere2);
+        geometries1.add_geometries(sphere1, sphere2);
 
         Geometries geometries2 = new Geometries();
-        geometries2.add_geometry(sphere1,sphere2,sphere3);
+        geometries2.add_geometries(sphere1,sphere2,sphere3);
 
         Geometries geometries3 = new Geometries();
-        geometries3.add_geometry(
+        geometries3.add_geometries(
                 new Sphere(4, new Point3D(0,0,0)),
                 new Sphere(4, new Point3D(8,0,0))
         );
@@ -75,5 +74,15 @@ class GeometriesTest {
         assertEquals(true,  geometries1.equals(geometries1));
         assertEquals(false, geometries1.equals(geometries2));
         assertEquals(true,  geometries1.equals(geometries3));
+    }
+
+    @Test
+    void iterable(){
+        Geometries geometries = new Geometries(sphere1, sphere2, sphere3);
+
+        int i = 0;
+        for (Geometry geometry : geometries){
+            assertEquals(geometry, geometries.get_GeometriesList().get(i++));
+        }
     }
 }

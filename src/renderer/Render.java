@@ -10,6 +10,7 @@ import primitives.*;
 
 import scene.Scene;
 import sun.plugin2.gluegen.runtime.CPU;
+import sun.security.ssl.Debug;
 
 import java.util.ArrayList;
 
@@ -78,9 +79,6 @@ public class Render {
                         i, j, _scene.get_screenDistance(),
                         _imageWriter.getWidth(), _imageWriter.getHeight()
                 );
-                if (ray.get_direction().equals(new Vector3D(1,0,0))){
-                    int x =5;
-                }
 
                 ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
 
@@ -88,11 +86,6 @@ public class Render {
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
-
-                    if (closestPoint.geometry.getClass() == Sphere.class){
-                        int x = 5;
-                        ++x;
-                    }
 
                     Color color = new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin()))));
 

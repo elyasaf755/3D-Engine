@@ -11,16 +11,55 @@ public class Sphere extends RadialGeometry {
     //Constructors
     public Sphere(double radius, Point3D point) {
         super(radius);
+
+        this._point = new Point3D(point);
+    }
+
+    public Sphere(double radius, Point3D point, Color emission) {
+        super(radius, emission);
+
+        this._point = new Point3D(point);
+    }
+
+    public Sphere(double radius, Point3D point, Material material) {
+        super(radius, material);
+
+        this._point = new Point3D(point);
+    }
+
+    public Sphere(double radius, Point3D point, Color emission, Material material) {
+        super(radius, emission, material);
+
         this._point = new Point3D(point);
     }
 
     public Sphere(RadialGeometry radialGeometry, Point3D point) {
         super(radialGeometry);
+
+        this._point = new Point3D(point);
+    }
+
+    public Sphere(RadialGeometry radialGeometry, Point3D point, Color emission) {
+        super(radialGeometry, emission);
+
+        this._point = new Point3D(point);
+    }
+
+    public Sphere(RadialGeometry radialGeometry, Point3D point, Material material) {
+        super(radialGeometry, material);
+
+        this._point = new Point3D(point);
+    }
+
+    public Sphere(RadialGeometry radialGeometry, Point3D point, Color emission, Material material) {
+        super(radialGeometry, emission, material);
+
         this._point = new Point3D(point);
     }
 
     public Sphere(Sphere sphere){
-        super(sphere._radius);
+        super(sphere.get_radius(), sphere.get_emission(), sphere.get_material());
+
         _point = new Point3D(sphere._point);
     }
 
@@ -40,6 +79,38 @@ public class Sphere extends RadialGeometry {
     @Override
     public Vector3D get_normal(Point3D point3D) {
         return (point3D.subtract(_point)).normalized();
+    }
+
+    @Override
+    public boolean contains(Point3D point) {
+        double px = _point.getX().getCoord();
+        double py = _point.getY().getCoord();
+        double pz = _point.getZ().getCoord();
+
+        double x = point.getX().getCoord();
+        double y = point.getY().getCoord();
+        double z = point.getZ().getCoord();
+
+        double d = ( x-px )*( x-px ) + (y-py)*(y-py) + (z-pz)*(z-pz);
+
+        if (Util.equals(d, _radius*_radius))
+            return true;
+
+        if (d < _radius * _radius)
+            return true;
+
+        return false;
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point){
+        double d = point.distance(_point);
+
+        if (Util.equals(d, _radius)){
+            return true;
+        }
+
+        return false;
     }
 
     @Override

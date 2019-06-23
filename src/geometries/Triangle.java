@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,14 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1 = new Point3D(point1);
         _point2 = new Point3D(point2);
         _point3 = new Point3D(point3);
+    }
+
+    public Triangle(Point3D origin, Vector3D v1, Vector3D v2){
+        super(origin, origin.add(v1), origin.add(v2));
+
+        _point1 = new Point3D(origin);
+        _point2 = origin.add(v1);
+        _point3 = origin.add(v2);
     }
 
     public Triangle(Triangle triangle){
@@ -98,6 +107,22 @@ public class Triangle extends Plane implements FlatGeometry{
 
         return new Point3D((double)(x1 + x2 + x3)/3.0, (double)(y1 + y2 + y3)/3.0, (double)(z1 + z2 + z3)/3.0);
     }
+
+    /*
+    @Override
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        ArrayList<GeoPoint> intersections = super.findIntersections(ray);
+
+        ArrayList<GeoPoint> result = new ArrayList<>();
+
+        for (GeoPoint intersection : intersections){
+            if (this.contains(intersection.point))
+                result.add(intersection);
+        }
+
+        return result;
+    }
+    */
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
@@ -271,6 +296,59 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1.transform(translation, rotation, scale);
         _point2.transform(translation, rotation, scale);
         _point3.transform(translation, rotation, scale);
+    }
+
+    @Override
+    public boolean contains(Point3D point) {
+        if (_point1.equals(point) || _point2.equals(point) || _point3.equals(point))
+            return true;
+
+        Vector3D AB = _point2.subtract(_point1);
+        Vector3D AC = _point3.subtract(_point1);
+        //ABC area
+        double ABC = AB.crossProduct(AC).length() / 2;
+
+        Vector3D AP = point.subtract(_point1);
+
+        Vector3D ABn = AB.normalized();
+        Vector3D APn = AP.normalized();
+
+        double ABP;
+        if (ABn.equals(APn) || ABn.equals(APn.scale(-1))){
+            ABP = 0;
+        }
+        else{
+            ABP = AB.crossProduct(AP).length() / 2;
+        }
+
+        Vector3D ACn = AC.normalized();
+        double APC;
+        if (APn.equals(ACn) || APn.equals(ACn.scale(-1))){
+            APC = 0;
+        }
+        else{
+            APC = AP.crossProduct(AC).length() / 2;
+        }
+
+        Vector3D BP = point.subtract(_point2);
+        Vector3D BC = _point3.subtract(_point2);
+        Vector3D BPn = BP.normalized();
+        Vector3D BCn = BC.normalized();
+
+        double BPC;
+        if (BPn.equals(BCn) || BPn.equals(BCn.scale(-1))){
+            BPC = 0;
+        }
+        else{
+            BPC = BP.crossProduct(BC).length() / 2;
+        }
+
+        return Util.equals(ABC, ABP + APC + BPC);
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point) {
+        return this.contains(point);
     }
 
     //Overrides

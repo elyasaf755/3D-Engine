@@ -2,9 +2,7 @@ package elements;
 
 import primitives.*;
 
-import java.util.ArrayList;
-
-public class Camera implements ITransform{
+public class Camera implements ITransformable {
     private Point3D _origin;
     private Vector3D _direction;
     private Vector3D _up;
@@ -158,76 +156,6 @@ public class Camera implements ITransform{
         Vector3D v_ij = p_ij.subtract(p0);
 
         return new Ray(p0, v_ij.normalized());
-    }
-    public ArrayList<Ray> constructRaysThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
-        //Fix pixel locations
-
-        i = Nx - i - 1;
-        //j = Ny - j - 1;
-
-
-        Point3D p0 = get_origin();
-        Vector3D direction = get_direction();
-        Vector3D up = get_up();
-        Vector3D right = get_right();
-
-        //Image center point
-        Point3D Pc = p0.add(direction.scale(screenDistance));
-
-        ArrayList<Point3D> points=new ArrayList<Point3D>();
-
-        ArrayList<Ray> rays=new ArrayList<Ray>();
-
-
-        //Pixel ratios
-        double Rx = screenWidth / Nx; //Pixel width
-        double Ry = screenHeight / Ny; //Pixel height
-
-        //Center pixel
-        double Xi = (i - Nx / 2.0)*Rx + Rx / 2.0;
-        double Yj = (j - Ny / 2.0)*Ry + Ry / 2.0;
-
-        Point3D p_ij;
-        if (Xi == 0 && Yj == 0){
-            p_ij = new Point3D(Pc);
-        }
-        else if (Xi == 0){
-            p_ij = new Point3D(Pc.add(Vector3D.ZERO.subtract(up.scale(Yj))));
-        }
-        else if (Yj == 0){
-            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(Vector3D.ZERO)));
-        }
-        else{
-            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(up.scale(Yj))));
-        }
-        double quarter_Rx=Rx/4;
-        double quarter_Ry=Ry/4;
-
-        Point3D m_p_ij=new Point3D(p_ij.add(new Vector3D(up).scale(quarter_Ry)));
-        Point3D r_p_ij=new Point3D(m_p_ij.add(new Vector3D(right).scale(quarter_Rx)));
-        Point3D l_p_ij=new Point3D(m_p_ij.add(new Vector3D(right).scale(-quarter_Rx)));
-
-        rays.add(new Ray(p0,new Vector3D((m_p_ij.subtract(p0)).normalized())));
-        rays.add(new Ray(p0,new Vector3D((r_p_ij.subtract(p0)).normalized())));
-        rays.add(new Ray(p0,new Vector3D((l_p_ij.subtract(p0)).normalized())));
-
-        points.add(m_p_ij);
-        points.add(r_p_ij);
-        points.add(l_p_ij);
-
-        Point3D p=new Point3D();
-
-        for (Point3D point: points)
-        {
-            for(int k=1;k<3;k++)
-            {
-                p= (point.add(new Vector3D(up).scale(-quarter_Ry*k)));
-
-                rays.add(new Ray(p0,new Vector3D((p.subtract(p0)).normalized())));
-            }
-        }
-
-        return rays;
     }
 
     @Override
