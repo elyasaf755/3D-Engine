@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -121,6 +122,30 @@ public class Plane extends Geometry  implements FlatGeometry{
     @Override
     public Vector3D get_normal(Point3D point3D) {
         return get_normal();
+    }
+
+    @Override
+    public boolean contains(Point3D point) {
+        double A = _normal.getPoint().getX().getCoord();
+        double B = _normal.getPoint().getY().getCoord();
+        double C = _normal.getPoint().getZ().getCoord();
+
+        double x = _point.getX().getCoord();
+        double y = _point.getY().getCoord();
+        double z = _point.getZ().getCoord();
+
+        double D = A*x + B*y + C*z;
+
+        x = point.getX().getCoord();
+        y = point.getY().getCoord();
+        z = point.getZ().getCoord();
+
+        return A*x + B*y + C*z == D;
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point) {
+        return this.contains(point);
     }
 
     @Override

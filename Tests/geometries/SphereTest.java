@@ -121,4 +121,17 @@ class SphereTest {
     @Test
     void transform1() {
     }
+
+    @Test
+    void contains() {
+        Sphere sphere1 = new Sphere(4, new Point3D(0,0,0));
+        Point3D point1 = new Point3D(0,0,3);
+        assertEquals(true, sphere1.contains(point1));
+
+        Point3D point2 = new Point3D(0,0,4);
+        assertEquals(true, sphere1.contains(point2));
+
+        Point3D point3 = new Point3D(0,0,5);
+        assertEquals(false, sphere1.contains(point3));
+    }
 }

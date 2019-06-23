@@ -2,7 +2,6 @@ package scene;
 
 import elements.AmbientLight;
 import elements.Camera;
-import elements.Light;
 import elements.LightSource;
 import geometries.Geometries;
 import geometries.Geometry;
@@ -87,7 +86,11 @@ public class Scene {
     //Methods
 
     public void addGeometries(Geometry... geometries){
-        _geometries.add_geometry(geometries);
+        _geometries.add_geometries(geometries);
+    }
+
+    public void addGeometries(Geometries geometries) {
+        _geometries.add_geometries(geometries);
     }
 
     public void addLights(LightSource... lights){

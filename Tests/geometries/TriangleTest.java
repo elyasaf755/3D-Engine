@@ -215,5 +215,19 @@ class TriangleTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void contains() {
+        Triangle triangle1 = new Triangle(new Point3D(), new Point3D(0,0,3), new Point3D(3,0,0));
+        Point3D point1 = new Point3D(1,0,1);
+        assertEquals(true, triangle1.contains(point1));
 
+        Point3D point2 = new Point3D(0,0,0);
+        assertEquals(true, triangle1.contains(point2));
+
+        Point3D point3 = new Point3D(1,4,1);
+        assertEquals(false, triangle1.contains(point3));
+
+        Point3D point4 = new Point3D(-2,0,0);
+        assertEquals(false, triangle1.contains(point4));
+    }
 }

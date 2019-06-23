@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -68,6 +69,16 @@ public class Cone extends RadialGeometry {
         double c = point3D.getZ().getCoord();
 
         return new Vector3D(-2*a, -2*b, 2*c).normalized();
+    }
+
+    @Override
+    public boolean contains(Point3D point) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point) {
+        throw new NotImplementedException();
     }
 
     @Override

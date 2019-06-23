@@ -2,6 +2,7 @@ package geometries;
 
 import com.sun.org.apache.xpath.internal.objects.DTMXRTreeFrag;
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.rmi.MarshalException;
 import java.util.ArrayList;
@@ -140,6 +141,16 @@ public class Torus extends RadialGeometry{
         Vector3D N = P.subtract(Q).normalized();
 
         return RInv.mult(N);
+    }
+
+    @Override
+    public boolean contains(Point3D point) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point) {
+        throw new NotImplementedException();
     }
 
     public ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){

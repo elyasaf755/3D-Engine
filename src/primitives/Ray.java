@@ -2,7 +2,7 @@ package primitives;
 
 import java.math.BigDecimal;
 
-public class Ray implements ITransform{
+public class Ray implements ITransformable {
     private Point3D _point;
     private Vector3D _direction;
 

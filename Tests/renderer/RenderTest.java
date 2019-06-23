@@ -8,6 +8,8 @@ import primitives.*;
 import scene.Scene;
 import sun.print.SunPrinterJobService;
 
+import java.util.ArrayList;
+
 class RenderTest {
 
     @Test//TEST 1 - Scene Intersections
@@ -512,7 +514,7 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 12 - Torus - New Geometry
+    @Test//TEST 12 - Torus - New Geometry//TODO:FIX
     void renderImage12(){
         Scene scene = new Scene("Torus");
         scene.set_background(new Color(java.awt.Color.WHITE));
@@ -535,7 +537,7 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 13 - Triangle Mesh
+    @Test//TEST 13 - Triangle Mesh//TODO:FIX
     void renderImage13(){
         Scene scene = new Scene("renderTest");
         scene.set_background(new Color(75, 127,190));
@@ -576,5 +578,116 @@ class RenderTest {
 
     }
 
+    @Test//TEST 14 - Set Operations
+    void renderImage14(){
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(75, 127,190));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(5,15,0);
+
+        scene.set_background(new Color(53, 215, 255));
+
+        scene.addLights(
+                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0))
+        );
+
+        Sphere sphere1 = new Sphere(50, new Point3D());
+        Sphere sphere2 = new Sphere(50, new Point3D(50,0,0));
+        SetIntersection setIntersection = new SetIntersection(sphere1, sphere2);
+        setIntersection.translate(100,100,0);
+        scene.addGeometries(setIntersection);
+
+        sphere1.set_emission(java.awt.Color.MAGENTA);
+        sphere2.set_emission(java.awt.Color.GREEN);
+        scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
+
+        Sphere sphere3 = new Sphere(sphere1);
+        Sphere sphere4 = new Sphere(sphere2);
+        SetUnion setUnion = new SetUnion(sphere3, sphere4);
+        setUnion.translate(-150,0,0);
+        scene.addGeometries(setUnion);
+
+        Sphere sphere5 = new Sphere(50, new Point3D());
+        Sphere sphere6 = new Sphere(50, new Point3D(50, 0, 0));
+        sphere5.set_emission(java.awt.Color.MAGENTA);
+        sphere6.set_emission(java.awt.Color.GREEN);
+        SetDifference setDifference1 = new SetDifference(sphere5, sphere6);
+        setDifference1.translate(-200,100,0);
+        scene.addGeometries(setDifference1);
+
+        Triangle triangle1 = new Triangle(new Point3D(-40,0,0), new Point3D(0,80,0), new Point3D(40,0,0), new Color(java.awt.Color.red));
+        Sphere sphere7 = new Sphere(20, new Point3D());
+        SetDifference setDifference2 = new SetDifference(triangle1, sphere7);
+        setDifference2.translate(0,-100,0);
+        scene.addGeometries(setDifference2);
+
+
+
+        ImageWriter iw = new ImageWriter("14thRenderTest - Set Operations", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+
+    }
+
+    @Test//TEST 15 - Playing with triangles
+    void renderImage15(){
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(75, 127,190));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(5,15,0);
+        scene.get_camera().scale(2,2,2);
+
+        scene.set_background(new Color(53, 215, 255));
+
+        scene.addLights(
+                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0))
+        );
+
+        Vector3D xAxis = new Vector3D(50,0,0);
+        Vector3D rot = new Vector3D(xAxis);
+        double angle = 22.5;
+        rot.rotate(0,0,angle);
+        int size = (int)Math.floor(360 / 22.5);
+        Geometry[] geometries = new Geometry[size];
+        Triangle t1 = new Triangle(new Point3D(), xAxis, rot);
+        Color color = new Color(java.awt.Color.GREEN);
+        double sum = 0;
+        int i = 0;
+        while (sum < 360){
+            Triangle t2 = new Triangle(t1);
+            double c = 255 / (360/angle);
+            color = color.add(new Color(c, c, c));
+            t2.set_emission(color);
+            t2.rotate(0,0, sum + 0.001);
+            geometries[i] = t2;
+            sum += angle;
+            ++i;
+        }
+
+        Geometries geometries1 = new Geometries(geometries);
+        ArrayList<Geometry> list = geometries1.get_GeometriesList();
+        geometries1.translate(75,-45,-75);
+        geometries1.rotate(45,0,0);
+        for (int j = 0; j < size; ++j){
+            geometries[j] = list.get(j);
+        }
+
+        scene.addGeometries(geometries);
+        scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
+
+
+        ImageWriter iw = new ImageWriter("15thRenderTest - Avik", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+
+    }
 
 }

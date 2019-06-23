@@ -1,8 +1,6 @@
 package primitives;
 
-import javax.management.OperationsException;
-
-public class Vector3D implements ITransform{
+public class Vector3D implements ITransformable {
     protected Point3D _point;
 
     public static Vector3D ZERO = new Vector3D();
@@ -101,6 +99,23 @@ public class Vector3D implements ITransform{
 
         return point3D._x.multiply(_point._x).add(point3D._y.multiply(_point._y).add(point3D._z.multiply(_point._z))).getCoord();
     }
+
+    /*
+    public Vector3D crossProduct(Vector3D vector3D){
+        double x1 = this._point.getX().getCoord();
+        double y1 = this._point.getY().getCoord();
+        double z1 = this._point.getZ().getCoord();
+
+        double x2 = vector3D.getPoint().getX().getCoord();
+        double y2 = vector3D.getPoint().getY().getCoord();
+        double z2 = vector3D.getPoint().getZ().getCoord();
+
+        return new Vector3D((y1*z2)-(z1*y2),
+                (z1*x2)-(x1*z2),
+                (x1*y2)-(y1*x2));
+    }
+
+     */
 
     public Vector3D crossProduct(Vector3D vector3D){
         Point3D rhs = vector3D._point;
@@ -209,7 +224,7 @@ public class Vector3D implements ITransform{
 
         Point3D result = transform.getTransformation().mult(new Vector3D(this)).getPoint();
 
-        _point = new Point3D(result);
+        _point.set_point(result);
     }
 
     @Override

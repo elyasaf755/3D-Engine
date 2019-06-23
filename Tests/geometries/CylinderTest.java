@@ -110,4 +110,33 @@ class CylinderTest {
     @Test
     void transformTRS() {
     }
+
+    @Test
+    void contains() {
+        Cylinder cylinder1 = new Cylinder(4, new Ray(new Vector3D(0,0,1)));
+        Point3D point1 = new Point3D(3,0,0);
+        assertEquals(true, cylinder1.contains(point1));
+
+        Point3D point2 = new Point3D(4,0,0);
+        assertEquals(true, cylinder1.contains(point2));
+
+        Point3D point3 = new Point3D(5,0,0);
+        assertEquals(false, cylinder1.contains(point3));
+
+        Cylinder cylinder2 = new Cylinder(4, new Ray(new Point3D(1,0,-1), new Vector3D(0,1,0)));
+        Point3D point21 = new Point3D(1,-90,3);
+        assertEquals(true, cylinder2.contains(point21));
+
+        Point3D point22 = new Point3D(1,45,-1);
+        assertEquals(true, cylinder2.contains(point22));
+
+        Point3D point23 = new Point3D(1,0,4);
+        assertEquals(false, cylinder2.contains(point23));
+
+        Point3D point24 = new Point3D(-3,0,-1);
+        assertEquals(true, cylinder2.contains(point24));
+
+        Point3D point25 = new Point3D(-3,0,0);
+        assertEquals(false, cylinder2.contains(point25));
+    }
 }

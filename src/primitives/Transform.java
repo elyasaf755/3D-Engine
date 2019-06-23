@@ -67,6 +67,11 @@ public class Transform {
     }
 
     public void setRotation(double x, double y, double z) {
+        if (Util.equals(x, 0) && Util.equals(y, 0) && Util.equals(z, 0)){
+            this._rotation = new Vector3D(Vector3D.ZERO);
+            return;
+        }
+
         this._rotation = new Vector3D(x, y, z);
     }
 

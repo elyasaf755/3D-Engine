@@ -2,7 +2,7 @@ package elements;
 
 import primitives.*;
 
-public class Camera implements ITransform{
+public class Camera implements ITransformable {
     private Point3D _origin;
     private Vector3D _direction;
     private Vector3D _up;

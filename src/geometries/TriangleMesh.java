@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,16 @@ public class TriangleMesh extends Geometry{
     @Override
     public Vector3D get_normal(Point3D point3D) {
         return null;
+    }
+
+    @Override
+    public boolean contains(Point3D point) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean surfaceContains(Point3D point) {
+        throw new NotImplementedException();
     }
 
     @Override

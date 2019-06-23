@@ -112,4 +112,42 @@ class TubeTest {
     }
 
 
+    @Test
+    void contains() {
+        Tube tube1 = new Tube(4, new Ray(new Vector3D(0,0,1)), 4);
+        Point3D point1 = new Point3D(0,0,5);
+        assertEquals(false, tube1.contains(point1));
+
+        Point3D point2 = new Point3D(0,0,4);
+        assertEquals(true, tube1.contains(point2));
+
+        Point3D point3 = new Point3D(0,0,3);
+        assertEquals(true, tube1.contains(point3));
+
+        Point3D point4 = new Point3D(0,0,0);
+        assertEquals(true, tube1.contains(point3));
+
+        Point3D point5 = new Point3D(0,0,-1);
+        assertEquals(false, tube1.contains(point5));
+
+        Tube tube2 = new Tube(4, new Point3D(-6,-6,-2), new Point3D(-2,-2,0));
+        Point3D point20 = new Point3D(-7,-7,0);
+        assertEquals(false, tube2.contains(point20));
+
+        Point3D point21 = new Point3D(-7,-6,0);
+        assertEquals(true, tube2.contains(point21));
+
+        Point3D point22 = new Point3D(-6,-6,-2);
+        assertEquals(true, tube2.contains(point22));
+
+        Point3D point23 = new Point3D(-5,-5,0);
+        assertEquals(true, tube2.contains(point23));
+
+        Point3D point24 = new Point3D(-2,-2,0);
+        assertEquals(true, tube2.contains(point24));
+
+        Point3D point25 = new Point3D(0,-8,0);
+        assertEquals(false, tube2.contains(point25));
+
+    }
 }
