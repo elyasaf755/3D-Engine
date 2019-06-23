@@ -2,11 +2,12 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Vector3D;
 
 import java.util.ArrayList;
 
 public interface Intersectable {
-    static class GeoPoint{
+    static class GeoPoint{//TODO: Add normal field? Change name to Intersection?
         public Point3D point;
         public Geometry geometry;
 

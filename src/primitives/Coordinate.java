@@ -25,6 +25,16 @@ public class Coordinate {
         return _coord;
     }
 
+    //Setters
+
+    public void set_coord(double coord) {
+        this._coord = coord;
+    }
+
+    public void set_coord(Coordinate coord) {
+        this._coord = coord.getCoord();
+    }
+
     /*************** Overrides *****************/
     @Override
     public boolean equals(Object obj) {

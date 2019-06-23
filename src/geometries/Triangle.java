@@ -18,8 +18,32 @@ public class Triangle extends Plane implements FlatGeometry{
         _point3 = new Point3D(point3);
     }
 
+    public Triangle(Point3D point1, Point3D point2, Point3D point3, Color emission){
+        super(point1, point2, point3, emission);
+
+        _point1 = new Point3D(point1);
+        _point2 = new Point3D(point2);
+        _point3 = new Point3D(point3);
+    }
+
+    public Triangle(Point3D point1, Point3D point2, Point3D point3, Material material){
+        super(point1, point2, point3, material);
+
+        _point1 = new Point3D(point1);
+        _point2 = new Point3D(point2);
+        _point3 = new Point3D(point3);
+    }
+
+    public Triangle(Point3D point1, Point3D point2, Point3D point3, Color emission, Material material){
+        super(point1, point2, point3, emission, material);
+
+        _point1 = new Point3D(point1);
+        _point2 = new Point3D(point2);
+        _point3 = new Point3D(point3);
+    }
+
     public Triangle(Triangle triangle){
-        super(triangle._point1, triangle._point2, triangle._point3);
+        super(triangle._point1, triangle._point2, triangle._point3, triangle._emission, triangle._material);
 
         _point1 = new Point3D(triangle._point1);
         _point2 = new Point3D(triangle._point2);
@@ -40,6 +64,13 @@ public class Triangle extends Plane implements FlatGeometry{
     }
 
     //Methods
+
+    public void flipNormal(){
+        Vector3D v1 = new Vector3D(_point2.subtract(_point1));
+        Vector3D v2 = new Vector3D(_point3.subtract(_point1));
+
+        _normal = (v2.crossProduct(v1)).normalized();
+    }
 
     public static boolean isTriangle(Point3D p1, Point3D p2, Point3D p3){
         double d1 = p1.distance(p2);
@@ -78,18 +109,59 @@ public class Triangle extends Plane implements FlatGeometry{
             return planeIntersections;
         }
 
-        Vector3D v1 = _point1.subtract(Pr);
-        Vector3D v2 = _point2.subtract(Pr);
-        Vector3D v3 = _point3.subtract(Pr);
+        Vector3D v1;
+        Vector3D v2;
+        Vector3D v3;
 
-        Vector3D n1 = v1.crossProduct(v2).normalized();
-        Vector3D n2 = v2.crossProduct(v3).normalized();
+        if (_point1.equals(new Point3D())){
+            v1 = new Vector3D(Pr).scale(-1);
+        }
+        else{
+            v1 = _point1.subtract(Pr);
+        }
 
+        if (_point2.equals(new Point3D())){
+            v2 = new Vector3D(Pr).scale(-1);
+        }
+        else{
+            v2 = _point2.subtract(Pr);
+        }
+
+        if (_point3.equals(new Point3D())){
+            v3 = new Vector3D(Pr).scale(-1);
+        }
+        else{
+            v3 = _point3.subtract(Pr);
+        }
+
+        v1.normalize();
+        v2.normalize();
+        v3.normalize();
+
+        Vector3D n1;
+        Vector3D n2;
         Vector3D n3;
-        if (v3.normalized().equals(v1.normalized()))
+
+        if (v1.equals(v2)){
+            n1 = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            n1 = v1.crossProduct(v2).normalized();
+        }
+
+        if (v2.equals(v3)){
+            n2 = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            n2 = v2.crossProduct(v3).normalized();
+        }
+
+        if (v3.equals(v1)){
             n3 = new Vector3D(Vector3D.ZERO);
-        else
+        }
+        else{
             n3 = v3.crossProduct(v1).normalized();
+        }
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 

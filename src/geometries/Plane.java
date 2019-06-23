@@ -25,6 +25,60 @@ public class Plane extends Geometry  implements FlatGeometry{
         _normal = (v1.crossProduct(v2)).normalized();
     }
 
+    public Plane(Point3D point3D, Vector3D normal, Color emission){
+        super(emission);
+        _point = new Point3D(point3D);
+        _normal = (new Vector3D(normal)).normalized();
+    }
+
+    public Plane(Point3D point3D, Vector3D normal, Material material){
+        super(material);
+        _point = new Point3D(point3D);
+        _normal = (new Vector3D(normal)).normalized();
+    }
+
+    public Plane(Point3D point3D, Vector3D normal, Color emission, Material material){
+        super(emission, material);
+        _point = new Point3D(point3D);
+        _normal = (new Vector3D(normal)).normalized();
+    }
+
+    public Plane(Point3D p1, Point3D p2, Point3D p3, Color emission){
+        super(emission);
+        if (!Triangle.isTriangle(p1, p2, p3))
+            throw new IllegalArgumentException("These points can't form a triangle/plane!");
+
+        Vector3D v1 = new Vector3D(p2.subtract(p1));
+        Vector3D v2 = new Vector3D(p3.subtract(p1));
+
+        _point = new Point3D(p1);
+        _normal = (v1.crossProduct(v2)).normalized();
+    }
+
+    public Plane(Point3D p1, Point3D p2, Point3D p3, Material material){
+        super(material);
+        if (!Triangle.isTriangle(p1, p2, p3))
+            throw new IllegalArgumentException("These points can't form a triangle/plane!");
+
+        Vector3D v1 = new Vector3D(p2.subtract(p1));
+        Vector3D v2 = new Vector3D(p3.subtract(p1));
+
+        _point = new Point3D(p1);
+        _normal = (v1.crossProduct(v2)).normalized();
+    }
+
+    public Plane(Point3D p1, Point3D p2, Point3D p3, Color emission, Material material){
+        super(emission, material);
+        if (!Triangle.isTriangle(p1, p2, p3))
+            throw new IllegalArgumentException("These points can't form a triangle/plane!");
+
+        Vector3D v1 = new Vector3D(p2.subtract(p1));
+        Vector3D v2 = new Vector3D(p3.subtract(p1));
+
+        _point = new Point3D(p1);
+        _normal = (v1.crossProduct(v2)).normalized();
+    }
+
     public Plane(Plane plane){
         _point = new Point3D(plane._point);
         _normal = (new Vector3D(plane._normal)).normalized();

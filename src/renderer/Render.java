@@ -1,14 +1,15 @@
 package renderer;
 
+import elements.AmbientLight;
+import elements.Camera;
+import elements.Light;
 import elements.LightSource;
 
-import geometries.Cylinder;
-import geometries.FlatGeometry;
-import geometries.Geometry;
-import geometries.Triangle;
+import geometries.*;
 import primitives.*;
 
 import scene.Scene;
+import sun.plugin2.gluegen.runtime.CPU;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ import static geometries.Intersectable.GeoPoint;
 public class Render {
     private Scene _scene;
     private ImageWriter _imageWriter;
-    private static final int RECURSION_LEVEL=3;
+    private static final int RECURSION_LEVEL = 3;
     private static final double MIN_CALC_COLOR_K = 0.001;
 
 
@@ -31,13 +32,18 @@ public class Render {
     //Methods
 
     public void renderImage(){
+        Camera camera = _scene.get_camera();
+
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
-                Ray ray = _scene.get_camera().constructRayThroughPixel(
+                Ray ray = camera.constructRayThroughPixel(
                         _imageWriter.getNx(), _imageWriter.getNy(),
                         i, j, _scene.get_screenDistance(),
                         _imageWriter.getWidth(), _imageWriter.getHeight()
                 );
+                if (ray.get_direction().equals(new Vector3D(1,0,0))){
+                    int x =5;
+                }
 
                 ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
 
@@ -45,8 +51,15 @@ public class Render {
                     _imageWriter.writePixel(i, j,_scene.get_background().getColor());
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
-                    Color color = new Color(calcColor(closestPoint, new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
-                    _imageWriter.writePixel(i, j, calcColor(closestPoint,new Ray(_scene.get_camera().get_origin(),closestPoint.point.subtract(_scene.get_camera().get_origin()))));
+
+                    if (closestPoint.geometry.getClass() == Sphere.class){
+                        int x = 5;
+                        ++x;
+                    }
+
+                    Color color = new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin()))));
+
+                    _imageWriter.writePixel(i, j, color.getColor());
                 }
             }
         }
@@ -109,13 +122,17 @@ public class Render {
     private java.awt.Color calcColor(GeoPoint intersection, Ray ray) {
         return calcColor(intersection, ray, 0, 1.0).add(_scene.get_ambientLight().getIntensity()).getColor();
     }
+
     private Color calcColor(GeoPoint intersection, Ray ray, int level, double k){
-        if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K || intersection == null) {
-            return new Color(0, 0, 0);
+        if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K){
+            return new Color(java.awt.Color.BLACK);
         }
+
         Color emission = intersection.geometry.get_emission();
         double Kd = intersection.geometry.get_material().get_Kd();
         double Ks = intersection.geometry.get_material().get_Ks();
+        double Kr = intersection.geometry.get_material().get_Kr();
+        double Kt = intersection.geometry.get_material().get_Kt();
         int shininess = intersection.geometry.get_material().get_nShininess();
         Vector3D normal = intersection.geometry.get_normal(intersection.point);
         Vector3D cameraDirection = intersection.point.subtract(_scene.get_camera().get_origin());
@@ -123,59 +140,56 @@ public class Render {
         Color result = emission;
 
         for (LightSource light : _scene.get_lights()){
-                Vector3D lightDirection = light.getLightDirectionTo(intersection.point);
+            Vector3D lightDirection = light.getLightDirectionTo(intersection.point);
 
-                //TODO: If exception should be thrown at PointLight's "getLightDirectionTo" or Point3D's subtract functions - del this;
-                if (lightDirection == null || cameraDirection == null){
-                    continue;
+            //TODO: If exception should be thrown at PointLight's "getLightDirectionTo" or Point3D's subtract functions - del this;
+            if (lightDirection == null || cameraDirection == null){
+                continue;
+            }
+
+            if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
+                double ktr = transparency(light, intersection);
+                if (ktr * k > MIN_CALC_COLOR_K) {
+                    Color intensity = light.getIntensity(intersection.point).scale(ktr);
+
+                    //Diffusive & Specular
+                    result = result.add(calcDiffusive(Kd, normal, lightDirection, intensity));
+                    result = result.add(calcSpecular(Ks, normal, lightDirection, cameraDirection, shininess, intensity));
                 }
-
-                //Fixing wrong illumination when the camera direction is in the opposite direction of the light. when both dot products have same sign.
-               double z = normal.dotProduct(lightDirection);
-               double t = normal.dotProduct(cameraDirection);
-
-               if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
-                    //TODO: Add the following code into the if statement?
-                    double ktr = transparency(light, intersection);
-                    if (ktr * k > MIN_CALC_COLOR_K) {
-
-
-                        Color intensity = light.getIntensity(intersection.point).scale(ktr);
-
-                        result = result.add(calcDiffusive(Kd, normal, lightDirection, intensity));
-                        result = result.add(calcSpecular(Ks, normal, lightDirection, cameraDirection, shininess, intensity));
-                    }
-               }
-
-        }
-
-        double kr = intersection.geometry.get_material().get_Kr();
-        if (kr!=0) {
-            Vector3D epsVectorReflection = new Vector3D(intersection.geometry.get_normal(intersection.point));
-            epsVectorReflection = epsVectorReflection.scale(0.5);
-
-            intersection.point = intersection.point.add(epsVectorReflection);
-
-            Ray reflectedRay = constructReflectedRay(intersection, ray);
-            ArrayList<GeoPoint> reflectionPoints = _scene.get_geometries().findIntersections(reflectedRay);
-            if (!reflectionPoints.isEmpty()) {
-                GeoPoint closestReflectedPoint = getClosestPoint(reflectionPoints);
-                Color reflectedColor = new Color(calcColor(closestReflectedPoint, reflectedRay, level + 1, k * kr));
-                Color reflectedLight = new Color(reflectedColor.scale(kr));
-                result = result.add(reflectedLight);
             }
         }
-        double kt = intersection.geometry.get_material().get_Kt();
-        if (kt!=0) {
-            Ray refractedRay = constructRefractedRay(intersection, ray);
-            ArrayList<GeoPoint> refractionPoints = _scene.get_geometries().findIntersections(refractedRay);
-            if (!refractionPoints.isEmpty()) {
-                GeoPoint closestRefractedPoint = getClosestPoint(refractionPoints);
 
-                Color refractedColor = new Color(calcColor(closestRefractedPoint, refractedRay, level + 1, k * kt));
-                Color refractedLight = new Color(refractedColor.scale(kt));
-                result = result.add(refractedLight);
+        //Reflection
+        if (!Util.equals(Kr, 0)) {
+            Ray reflectedRay = this.constructReflectedRay(intersection, ray);
+
+            Color reflectedColor = new Color(java.awt.Color.BLACK);
+            ArrayList<GeoPoint> reflectedIntersections = this.getSceneRayIntersections(reflectedRay);
+
+            if (!reflectedIntersections.isEmpty()){
+                GeoPoint reflectedPoint = this.getClosestPoint(reflectedIntersections);
+                reflectedColor = this.calcColor(reflectedPoint, reflectedRay, level + 1, k * Kr).scale(Kr);
             }
+
+            result = result.add(reflectedColor);
+        }
+
+        //Refraction
+        if (!Util.equals(Kt, 0)) {
+            Ray refractedRay = this.constructRefractedRay(intersection, ray);
+
+            Color refractedColor = new Color(java.awt.Color.BLACK);
+            ArrayList<GeoPoint> refractedIntersections = this.getSceneRayIntersections(refractedRay);
+
+            if (!refractedIntersections.isEmpty()) {
+                GeoPoint refractedPoint = this.getClosestPoint(refractedIntersections);
+                refractedColor = this.calcColor(refractedPoint, refractedRay, level + 1, k * Kt).scale(Kt);
+            }
+            else{
+                refractedColor = _scene.get_background();
+            }
+
+            result = result.add(refractedColor);
         }
 
         return result;
@@ -210,16 +224,14 @@ public class Render {
     private double transparency(LightSource lightSource, GeoPoint intersection){
         Point3D intersectionPoint = new Point3D(intersection.point);
         Vector3D lightDirection = lightSource.getLightDirectionTo(intersectionPoint).scale(-1);
+        Vector3D normal = intersection.geometry.get_normal(intersectionPoint);
 
+        double epsilon = this.calcEpsilon(lightDirection, normal);
+        Point3D shiftedPoint = intersectionPoint.add(normal.scale(epsilon));
 
-        Vector3D epsVector = new Vector3D(intersection.geometry.get_normal(intersectionPoint));
-        epsVector = epsVector.scale(2);
+        Ray lightRay = new Ray(shiftedPoint, lightDirection);
 
-        intersectionPoint = intersectionPoint.add(epsVector);
-
-        Ray lightRay = new Ray(intersectionPoint, lightDirection);
-
-        ArrayList<GeoPoint> intersections = getSceneRayIntersections(lightRay);
+        ArrayList<GeoPoint> intersections = this.getSceneRayIntersections(lightRay);
 
         if (intersection.geometry instanceof FlatGeometry)
             intersections.remove(intersection);
@@ -231,35 +243,32 @@ public class Render {
         return ktr;
     }
 
-    private Ray constructReflectedRay(GeoPoint intersection, Ray ray)
-    {
-        Vector3D normal = new Vector3D(intersection.geometry.get_normal(intersection.point));
-        Point3D point = new Point3D(intersection.point);
-        Ray originRay = new Ray(ray);
+    private Ray constructReflectedRay(GeoPoint intersectionGeoPoint, Ray ray) {
+        Vector3D normal = new Vector3D(intersectionGeoPoint.geometry.get_normal(intersectionGeoPoint.point));
+        Point3D intersection = new Point3D(intersectionGeoPoint.point);
+        Vector3D Vr = ray.get_direction();
 
-       //todo: return null? if 'yes', to check if it is null in calcColor.
-        if (originRay.get_direction().dotProduct(normal) == 0){
-           return null;
+        double scalar = 2 * ray.get_direction().dotProduct(normal);
+        double epsilon = calcEpsilon(normal, normal);
+
+        if (scalar == 0){
+           return new Ray(intersection.add(normal.scale(epsilon)), ray.get_direction());
         }
 
-        Vector3D R = originRay.get_direction().subtract(normal.scale(2 * originRay.get_direction().dotProduct(normal)));
-        return new Ray(point,R);
+        return new Ray(intersection.add(normal.scale(epsilon)), ray.get_direction().subtract(normal.scale(scalar)));
     }
 
-    private Ray constructRefractedRay(GeoPoint intersection, Ray ray)
-    {
-        Vector3D normal = new Vector3D(intersection.geometry.get_normal(intersection.point));
-        Point3D point = new Point3D(intersection.point);
-        Ray originRay = new Ray(ray);
+    private Ray constructRefractedRay(GeoPoint intersectionGeoPoint, Ray ray) {
+        Point3D P = intersectionGeoPoint.point;
+        Vector3D normal = intersectionGeoPoint.geometry.get_normal(P);
+        Vector3D Vr = ray.get_direction();
 
-        //todo: return null? if 'yes', to check if it is null in calcColor.
-        if (originRay.get_direction().dotProduct(normal) == 0){
-            return null;
-        }
+        double epsilon = calcEpsilon(Vr, normal);
+        return new Ray(P.add(normal.scale(epsilon)), Vr);
+    }
 
-        //todo: implement calculating R
-        //Vector3D R = ;
-        return new Ray(originRay);
+    private double calcEpsilon(Vector3D direction, Vector3D normal){
+        return direction.dotProduct(normal) > 0 ? 0.001 : -0.001;
     }
 
     public void printGrid(int interval){

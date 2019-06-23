@@ -7,4 +7,5 @@ import primitives.Vector3D;
 public interface LightSource {
     Color getIntensity(Point3D point);
     Vector3D getLightDirectionTo(Point3D point);
+    double getDistanceFrom(Point3D point);
 }

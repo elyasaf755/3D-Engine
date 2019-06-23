@@ -87,4 +87,19 @@ class TransformTest {
     @Test
     void getHouseholderMatrix() {
     }
+
+    @Test
+    void rotatedVectorAround() {
+        Vector3D source1 = new Vector3D(1,0,0).normalized();
+        Vector3D axis1 = new Vector3D(0,0,1);
+        Vector3D actual1 = Transform.rotatedVectorAround(source1, axis1, Math.toRadians(90));
+        Vector3D expected1 = new Vector3D(0,1,0);
+        assertEquals(expected1, actual1);
+
+        Vector3D source2 = new Vector3D(1,1,0).normalized();
+        Vector3D axis2 = new Vector3D(0,0,1);
+        Vector3D actual2 = Transform.rotatedVectorAround(source2, axis2, Math.toRadians(45));
+        Vector3D expected2 = new Vector3D(0,1,0);
+        assertEquals(expected2, actual2);
+    }
 }

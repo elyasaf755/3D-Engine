@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class Cone extends RadialGeometry {
 
-    Ray _ray;
-    double _height;
+    private Ray _ray;
+    private double _height;
 
     //Constructors
 
@@ -115,7 +115,7 @@ public class Cone extends RadialGeometry {
         Vector3D Vr = ray.get_direction();
         Point3D q = R.mult(Pc);
 
-        Point3D PrT = R.mult(Pr).subtract(R.mult(q)).getPoint();
+        Point3D PrT = R.mult(Pr).subtract(q).getPoint();
         Vector3D VrT = R.mult(Vr).normalized();
         Ray RT = new Ray(PrT, VrT);
 

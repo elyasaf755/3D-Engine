@@ -31,6 +31,32 @@ public class Ray implements ITransform{
         return new Vector3D(_direction);
     }
 
+    //Setters
+
+    public void set_point(Point3D point) {
+        Coordinate x  = point.getX();
+        Coordinate y = point.getY();
+        Coordinate z = point.getZ();
+
+        this._point.set_x(x);
+        this._point.set_y(y);
+        this._point.set_z(z);
+    }
+
+    public void set_direction(Vector3D direction) {
+        this._direction.set_point(direction.getPoint());
+    }
+
+    public void set_ray(Point3D point, Vector3D direction){
+        _point.set_point(point);
+        _direction.set_vector(direction);
+    }
+
+    public void set_ray(Ray ray){
+        this._point.set_point(ray.get_point());
+        this._direction.set_vector(ray.get_direction());
+    }
+
     //Methods
     public double angleBetween_rad(Ray ray){
         BigDecimal numerator = new BigDecimal(this.get_direction().dotProduct(ray.get_direction()));

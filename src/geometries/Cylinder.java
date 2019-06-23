@@ -67,7 +67,7 @@ public class Cylinder extends RadialGeometry{
         Point3D Pr = ray.get_point();
         Vector3D Vr = ray.get_direction();
 
-        Point3D PrT = R.mult(Pr).subtract(R.mult(q)).getPoint();
+        Point3D PrT = R.mult(Pr).subtract(q).getPoint();
         Vector3D VrT = R.mult(Vr).normalized();
         Ray RT = new Ray(PrT, VrT);
 

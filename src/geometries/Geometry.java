@@ -3,8 +3,8 @@ package geometries;
 import primitives.*;
 
 public abstract class Geometry implements Intersectable, ITransform {
-    private Color _emission;
-    private Material _material;
+    protected Color _emission;
+    protected Material _material;
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXIST).
 
     //Constructors

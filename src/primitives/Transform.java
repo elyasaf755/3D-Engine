@@ -147,6 +147,55 @@ public class Transform {
         return I.sub(v.outterProduct(v).scale(2));
     }
 
+    public static Vector3D rotatedVectorAround(Vector3D v, Vector3D axis, double angle){
+        Vector3D k = axis.normalized();
+        Vector3D nV = v.normalized();
+        double cos = Math.cos(angle);
+        double sin = Math.sin(angle);
+
+        Vector3D vCos;
+
+        if (Util.equals(cos, 0)){
+            vCos = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            vCos = v.scale(cos);
+        }
+
+        Vector3D cross;
+
+        if (Util.equals(sin, 0)){
+            cross = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            if (k.equals(nV)){
+                cross = new Vector3D(Vector3D.ZERO);
+            }
+            else{
+                cross = k.crossProduct(v).scale(sin);
+            }
+        }
+
+        Vector3D K = new Vector3D(k);
+
+        if (Util.equals(1, cos)){
+            K = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            double dot = k.dotProduct(v);
+
+            if (Util.equals(dot, 0)){
+                K = new Vector3D(Vector3D.ZERO);
+            }
+            else{
+                K = k.scale(Util.uscale(dot, 1 - cos));
+            }
+        }
+
+        return vCos.add(cross).add(K);
+
+    }
+
     public Matrix4 getProjectedTransformation(){
 
         Matrix4 transformationMatrix = getTransformation();
