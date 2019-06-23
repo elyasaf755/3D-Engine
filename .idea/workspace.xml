@@ -2,51 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/13thRenderTest - Mesh.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/15thRenderTest - Avik.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/geometries/SetIntersectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/GeometriesSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/SetComplement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/SetDifference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/SetIntersection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/SetUnion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10thRenderTest - Cone.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/10thRenderTest - Cone.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1stRenderTest - Scene Intersections.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/1stRenderTest - Scene Intersections.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3rdRenderTest - Point Light.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/3rdRenderTest - Point Light.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/5thRenderTest - Spot Light.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/5thRenderTest - Spot Light.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/6thRenderTest - Shadow Test.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/6thRenderTest - Shadow Test.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/7thRenderTest - Sphere Scaling.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/7thRenderTest - Sphere Scaling.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/CylinderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/GeometriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/PlaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/TriangleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/TubeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Geometries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Geometries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Triangle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Torus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Torus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/TriangleMesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/TriangleMesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/ITransform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/ITransformable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Transform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Vector3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/14thRenderTest - Set Operations.jpg" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="621" column="42" selection-start-line="621" selection-start-column="42" selection-end-line="621" selection-end-column="42" />
+              <caret line="621" column="41" selection-start-line="621" selection-start-column="41" selection-end-line="621" selection-end-column="41" />
               <folding>
                 <element signature="method#renderImage2#0;class#RenderTest#0" />
                 <element signature="method#renderImage3#0;class#RenderTest#0" />
@@ -98,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/geometries/GeometriesSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="47" column="39" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="39" />
+            <state relative-caret-position="399">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GeometriesSet#0;class#GeometriesSet#0" />
@@ -779,16 +735,17 @@
       <option name="project" value="LOCAL" />
       <updated>1561241348418</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="implemented set operations">
+      <created>1561317704121</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1561317704121</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SetIntersectionTest_findIntersections - 2019.06.23 at 22h 03m 12s.xml">
-      <configuration name="SetIntersectionTest.findIntersections" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SetIntersectionTest_findIntersections - 2019.06.23 at 22h 04m 30s.xml">
-      <configuration name="SetIntersectionTest.findIntersections" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SetIntersectionTest_findIntersections - 2019.06.23 at 22h 04m 51s.xml">
       <configuration name="SetIntersectionTest.findIntersections" configurationId="JUnit" />
     </history-entry>
@@ -813,6 +770,12 @@
     <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 10m 50s.xml">
       <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 18m 29s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RenderTest_renderImage14 - 2019.06.23 at 22h 19m 13s.xml">
+      <configuration name="RenderTest.renderImage14" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="54329000" />
@@ -830,7 +793,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.1359275" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.1359275" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -840,7 +803,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32502708" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34669557" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34669557" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3336945" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -972,7 +935,8 @@
     <MESSAGE value="Transparency implemented and tested!&#10;Transparency now can also returns the background's color" />
     <MESSAGE value="Mesh class created, not functional." />
     <MESSAGE value="we can now rotate a vector by an angle around any vector&#10;using Transform.rotatedVectorAround" />
-    <option name="LAST_COMMIT_MESSAGE" value="we can now rotate a vector by an angle around any vector&#10;using Transform.rotatedVectorAround" />
+    <MESSAGE value="implemented set operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented set operations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1776,31 +1740,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/GeometriesSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="47" column="39" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GeometriesSet#0;class#GeometriesSet#0" />
-            <element signature="method#GeometriesSet#1;class#GeometriesSet#0" />
-            <element signature="method#removeDuplicates#0;class#GeometriesSet#0" />
-            <element signature="method#translate#0;class#GeometriesSet#0" />
-            <element signature="method#rotate#0;class#GeometriesSet#0" />
-            <element signature="method#scale#0;class#GeometriesSet#0" />
-            <element signature="method#transform#0;class#GeometriesSet#0" />
-            <element signature="method#transform#1;class#GeometriesSet#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/14thRenderTest - Set Operations.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="621" column="42" selection-start-line="621" selection-start-column="42" selection-end-line="621" selection-end-column="42" />
+          <caret line="621" column="41" selection-start-line="621" selection-start-column="41" selection-end-line="621" selection-end-column="41" />
           <folding>
             <element signature="method#renderImage2#0;class#RenderTest#0" />
             <element signature="method#renderImage3#0;class#RenderTest#0" />
@@ -1815,6 +1758,27 @@
             <element signature="method#renderImage12#0;class#RenderTest#0" />
             <element signature="method#renderImage13#0;class#RenderTest#0" />
             <element signature="method#renderImage15#0;class#RenderTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/14thRenderTest - Set Operations.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/GeometriesSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#GeometriesSet#0;class#GeometriesSet#0" />
+            <element signature="method#GeometriesSet#1;class#GeometriesSet#0" />
+            <element signature="method#removeDuplicates#0;class#GeometriesSet#0" />
+            <element signature="method#translate#0;class#GeometriesSet#0" />
+            <element signature="method#rotate#0;class#GeometriesSet#0" />
+            <element signature="method#scale#0;class#GeometriesSet#0" />
+            <element signature="method#transform#0;class#GeometriesSet#0" />
+            <element signature="method#transform#1;class#GeometriesSet#0" />
           </folding>
         </state>
       </provider>
