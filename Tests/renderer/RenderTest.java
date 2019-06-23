@@ -390,10 +390,11 @@ class RenderTest {
         Sphere sphere1 = new Sphere(30, new Point3D(50, -30, 30));//upper left sphere
         sphere1.set_emission(new Color(200,56,40));
         sphere1.get_material().set_Kr(1);
-        //sphere1.get_material().set_Kt(0.7);
+        sphere1.get_material().set_Kt(0.7);
 
         Sphere sphere2 = new Sphere(30, new Point3D(50, 30, -30));//lower right sphere
         sphere2.set_emission(new Color(32,200,24));
+        sphere2.get_material().set_Kt(1);
 
         //Upper right
         Triangle triangle1 = new Triangle(
