@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="156" column="30" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="30" />
+            <state relative-caret-position="1190">
+              <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
               <folding>
                 <element signature="e#11314#11315#0" expanded="true" />
                 <element signature="e#11357#11358#0" expanded="true" />
@@ -48,20 +45,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/9rdRenderTest - reflection and refraction.jpg">
+        <entry file="file://$PROJECT_DIR$/11thRenderTest - Reflection and Refraction 2.jpg">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="488" selection-end-column="8" />
+            <state relative-caret-position="187">
+              <caret line="487" column="36" selection-start-line="487" selection-start-column="36" selection-end-line="487" selection-end-column="36" />
               <folding>
                 <element signature="method#renderImage10#0;class#RenderTest#0" />
               </folding>
@@ -318,7 +310,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561010907630" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561299805875" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -579,43 +571,57 @@
       <option name="project" value="LOCAL" />
       <updated>1560389607073</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="TRS implemented and tested.">
+      <created>1561010924840</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1561010924841</updated>
+    </task>
+    <task id="LOCAL-00021" summary="reflection fixed">
+      <created>1561010950207</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1561010950207</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConeTest_findIntersections - 2019.06.19 at 22h 08m 45s.xml">
-      <configuration name="ConeTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 12h 59m 03s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConeTest_findIntersections - 2019.06.19 at 22h 09m 39s.xml">
-      <configuration name="ConeTest.findIntersections" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 00m 56s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_3D-Engine - 2019.06.19 at 22h 15m 26s.xml">
-      <configuration name="All in 3D-Engine" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 02m 28s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.20 at 08h 36m 04s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 04m 25s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.20 at 08h 41m 02s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 06m 04s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.20 at 08h 42m 09s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 07m 10s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.20 at 08h 43m 07s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 07m 56s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.20 at 08h 44m 36s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 09m 10s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.20 at 08h 55m 35s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 12m 04s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage9 - 2019.06.20 at 08h 56m 18s.xml">
-      <configuration name="RenderTest.renderImage9" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage11 - 2019.06.20 at 13h 14m 19s.xml">
+      <configuration name="RenderTest.renderImage11" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56793000" />
+    <option name="totallyTimeSpent" value="58523000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -628,7 +634,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.23071104" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
@@ -767,7 +772,8 @@
     <MESSAGE value="Render Tests passed (with colors).&#10;equals method edded.&#10;GeoPoint nested class (defined in Intersectable interface)" />
     <MESSAGE value="Lighting Tests (At RenderTest).&#10;Need bug fixing.&#10;Phong implemented.&#10;Occludded implemented." />
     <MESSAGE value="TRS implemented and tested." />
-    <option name="LAST_COMMIT_MESSAGE" value="TRS implemented and tested." />
+    <MESSAGE value="reflection fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="reflection fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -813,6 +819,12 @@
           <line>83</line>
           <properties />
           <option name="timeStamp" value="454" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/renderer/Render.java</url>
+          <line>167</line>
+          <properties />
+          <option name="timeStamp" value="455" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -893,7 +905,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/1stRenderTest.jpg" />
     <entry file="file://$PROJECT_DIR$/src/geometries/Intersectable.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1480,29 +1491,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/9rdRenderTest - reflection and refraction.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="156" column="30" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="30" />
-          <folding>
-            <element signature="e#11314#11315#0" expanded="true" />
-            <element signature="e#11357#11358#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/9thRenderTest - Reflection and Refraction.jpg">
+    <entry file="file://$PROJECT_DIR$/11thRenderTest - Reflection and Refraction 2.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="488" selection-end-column="8" />
+        <state relative-caret-position="187">
+          <caret line="487" column="36" selection-start-line="487" selection-start-column="36" selection-end-line="487" selection-end-column="36" />
           <folding>
             <element signature="method#renderImage10#0;class#RenderTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
+          <folding>
+            <element signature="e#11314#11315#0" expanded="true" />
+            <element signature="e#11357#11358#0" expanded="true" />
           </folding>
         </state>
       </provider>
