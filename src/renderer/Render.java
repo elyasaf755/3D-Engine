@@ -37,16 +37,13 @@ public class Render {
 
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
-                ArrayList<Ray> rays = camera.constructRaysThroughPixel(
+                ArrayList<Ray> rays =camera.constructRaysThroughPixel(
                         _imageWriter.getNx(), _imageWriter.getNy(),
                         i, j, _scene.get_screenDistance(),
                         _imageWriter.getWidth(), _imageWriter.getHeight()
                 );
                 Color color = new Color();
                 for (Ray ray: rays) {
-                    if (ray.get_direction().equals(new Vector3D(1, 0, 0))) {
-                        int x = 5;
-                    }
 
                     ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
 
@@ -55,16 +52,11 @@ public class Render {
                     else {
                         GeoPoint closestPoint = getClosestPoint(intersectionPoints);
 
-                        if (closestPoint.geometry.getClass() == Sphere.class) {
-                            int x = 5;
-                            ++x;
-                        }
-
-                        color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));
+                        color=color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));
                     }
                 }
                 int length= rays.size();
-                color= color.scale(1/length);
+                color= color.scale(1.0/length);
 
                 _imageWriter.writePixel(i, j, color.getColor());
 
