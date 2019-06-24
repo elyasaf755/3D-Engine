@@ -1,7 +1,6 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.Coordinate;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector3D;
@@ -29,11 +28,11 @@ class TubeTest {
         Point3D p4 = new Point3D(5,1,1);
         Point3D p5 = new Point3D(1,2,3);
 
-        //assertEquals(/p1.subtract(tube._ray.get_point()).normalized(),tube.get_normal(p1));
+        //assertEquals(/p1.sub(tube._ray.get_point()).normalized(),tube.get_normal(p1));
         assertEquals(p2.subtract(p20).normalized(),tube.get_normal(p2));
-        assertEquals(tube._ray.get_direction().scale(-1),tube.get_normal(p3));
+        assertEquals(tube._ray.get_direction().scaled(-1),tube.get_normal(p3));
         assertEquals(tube._ray.get_direction(),tube.get_normal(p4));
-        assertEquals(tube._ray.get_direction().scale(-1),tube.get_normal(p5));
+        assertEquals(tube._ray.get_direction().scaled(-1),tube.get_normal(p5));
     }
 
     @Test

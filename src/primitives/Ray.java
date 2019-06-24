@@ -95,7 +95,7 @@ public class Ray implements ITransformable {
         Point3D P2 = ray.get_point();
 
         //if true, the cross pruduct would be the 0 vector.
-        if (V1.equals(V2) || V1.equals(V2.scale(-1))){
+        if (V1.equals(V2) || V1.equals(V2.scaled(-1))){
             return null;
         }
 
@@ -116,7 +116,7 @@ public class Ray implements ITransformable {
 
         if (lhsR.isParallelTo(rhsR)){
             double t = Math.abs(lhs.length() / rhs.length());
-            return P1.add(V1.scale(t));
+            return P1.add(V1.scaled(t));
         }
 
         return null;
@@ -138,6 +138,13 @@ public class Ray implements ITransformable {
     public void scale(double x, double y, double z) {
         _point.scale(x, y, z);
         _direction.scale(x, y, z);
+        _direction.normalize();
+    }
+
+    @Override
+    public void scale(double scalar) {
+        _point.scale(scalar);
+        _direction.scale(scalar);
         _direction.normalize();
     }
 

@@ -84,6 +84,10 @@ public class Scene {
         this._screenDistance = screenDistance;
     }
 
+    public void set_distance(double distance){
+        _screenDistance = distance;
+    }
+
     //Methods
 
     public void addGeometries(Geometry... geometries){

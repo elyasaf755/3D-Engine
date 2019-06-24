@@ -376,7 +376,7 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 9 - reflection and refraction
+    @Test//TEST 9 - Reflection and Refraction
     void renderImage9() {
 
         Scene scene = new Scene("renderTest");
@@ -455,10 +455,11 @@ class RenderTest {
     @Test//TEST 10 - Cone - New Geometry
     void renderImage10(){
         Scene scene = new Scene("Cone");
-        scene.set_background(new Color(java.awt.Color.WHITE));
+        scene.set_background(new Color(java.awt.Color.cyan));
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1100);
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
         scene.get_camera().rotate(5,15,0);
+        scene.get_camera().setAa(1);
 
         Cone cone = new Cone(4, new Ray(new Point3D(0,0,0), new Vector3D(1,0,0)), 60);
         cone.set_emission(java.awt.Color.CYAN);
@@ -474,14 +475,16 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 11 - reflection and refraction 2
+    @Test//TEST 11 - Reflection and Refraction 2
     void renderImage11() {
 
         Scene scene = new Scene("renderTest");
         scene.set_background(new Color(75, 127,190));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
-        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
-        scene.get_camera().rotate(5,15,0);
+        Camera camera = new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0));
+        scene.set_camera(camera, 1000);
+        camera.rotate(5,15,0);
+        camera.setAa(1);
 
         scene.set_background(new Color(53, 215, 255));
 
@@ -523,9 +526,9 @@ class RenderTest {
         scene.set_background(new Color(java.awt.Color.WHITE));
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(1,0,0), new Vector3D(0,0,1)), 1000);
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
-        //scene.get_camera().rotate(5,15,0);
+        scene.get_camera().rotate(5,15,0);
 
-        Torus torus = new Torus(3, 1, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
+        Torus torus = new Torus(3333, 33, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
         torus.set_emission(java.awt.Color.BLUE);
 
         scene.addGeometries(torus);
@@ -636,7 +639,7 @@ class RenderTest {
 
     }
 
-    @Test//TEST 15 - Playing with triangles
+    @Test//TEST 15 - Playing With Triangles
     void renderImage15(){
         Scene scene = new Scene("renderTest");
         scene.set_background(new Color(75, 127,190));
@@ -684,7 +687,7 @@ class RenderTest {
         scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
 
 
-        ImageWriter iw = new ImageWriter("15thRenderTest - Avik", 500, 500, 500, 500);
+        ImageWriter iw = new ImageWriter("15thRenderTest - Playing With Triangles", 500, 500, 500, 500);
         Render render = new Render(scene, iw);
         render.printAxises();
 
@@ -700,6 +703,8 @@ class RenderTest {
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
         scene.get_camera().rotate(45,15,0);
+        //scene.get_camera().setAa(2);
+
 
         scene.set_background(new Color(53, 215, 255));
 
@@ -731,4 +736,101 @@ class RenderTest {
 
     }
 
+    @Test//TEST 17 - Aquarium
+    void renderImage17(){
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(45,15,0);
+        scene.get_camera().setAa(1);
+
+        Sphere lhsSphere = new Sphere(50, new Point3D(40,0,-40), new Color(Color.GLASS), new Material(Material.GLASS));
+        Sphere rhsSphere = new Sphere(50, new Point3D(40,50,-40));
+        SetDifference aquarium = new SetDifference(lhsSphere, rhsSphere);
+
+
+        scene.addGeometries(aquarium);
+        PointLight pLight = new PointLight(new Color(java.awt.Color.YELLOW), new Point3D(0, 0, 35), 1, 0.0, 0.0);
+        DirectionalLight dLight = new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0));
+
+        scene.addLights(
+                dLight
+        );
+
+
+        ImageWriter iw = new ImageWriter("17thRenderTest - Aquarium", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+
+    }
+
+    @Test//TEST 18 - Pyramid
+    void renderImage18(){
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(5,25,0);
+        scene.get_camera().setAa(1);
+
+        Plane p1 = new Plane(new Point3D(0,0,0), new Vector3D(0,1,0), new Color(java.awt.Color.darkGray));
+        Triangle t1 = new Triangle(new Point3D(-20,0,-20), new Point3D(0,50,0), new Point3D(20,0,-20), new Color(java.awt.Color.RED));
+        Triangle t2 = new Triangle(t1);
+        t2.rotate(0,0,0);
+        t2.set_emission(java.awt.Color.GREEN);
+
+        Triangle t3 = new Triangle(t2);
+        t3.rotate(0,90,0);
+        t3.set_emission(java.awt.Color.BLUE);
+
+        Triangle t4 = new Triangle(t3);
+        t4.rotate(0,90,0);
+        t4.set_emission(java.awt.Color.MAGENTA);
+
+        SetUnion u1 = new SetUnion(t1, t2);
+        SetUnion u2 = new SetUnion(u1, t3);
+        SetUnion u3 = new SetUnion(u2, t4);
+
+        Cuboid cuboid = new Cuboid(40,40,40, new Color(java.awt.Color.darkGray));
+
+        SetIntersection floor = new SetIntersection(cuboid, p1);
+
+        SetUnion pyramid = new SetUnion(floor, u3);
+
+        t1.scale(2,2,2);
+        t2.scale(2,2,2);
+        t3.scale(2,2,2);
+        t4.scale(2,2,2);
+        floor.scale(2,2,2);
+
+        pyramid.rotate(180,0,0);
+        pyramid.scale(2, 2, 2);
+
+        scene.addGeometries(pyramid);
+
+        PointLight pLight = new PointLight(new Color(java.awt.Color.YELLOW), new Point3D(0, 0, 35), 1, 0.0, 0.0);
+        DirectionalLight dLight = new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0));
+
+        scene.addLights(
+                dLight
+        );
+
+
+        ImageWriter iw = new ImageWriter("18thRenderTest - Pyramid", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+
+    }
+
+    @Test//TEST 19 - Table
+    void renderImage19(){
+        Tube tube = new Tube(4,new Ray(new Vector3D(0,1,0)), 16, new Color(java.awt.Color.BLUE));
+    }
 }

@@ -15,7 +15,8 @@ public class Color {
      */
     double _r = 0.0, _g = 0.0, _b = 0.0;
 
-    final static Color BLACK = new Color();
+    public final static Color BLACK = new Color();
+    public final static Color GLASS = new Color(32,56,240);
 
     //Constructors
 
@@ -158,15 +159,15 @@ public class Color {
     }
 
     /**
-     * scale the color by a scalar
+     * scaled the color by a scalar
      *
-     * @param k scale factor
+     * @param k scaled factor
      * @return new Color object which is the result of the operation
      */
     public Color scale(double k) {
         if (k < 0)
             throw new IllegalArgumentException(
-                    "Can't scale a color by a negative number");
+                    "Can't scaled a color by a negative number");
         double r = _r * k;
         double g = _g * k;
         double b = _b * k;
@@ -187,7 +188,7 @@ public class Color {
     }
 
     /**
-     * scale the color by (1 / reduction factor)
+     * scaled the color by (1 / reduction factor)
      *
      * @param k reduction factor
      * @return new Color object which is the result of the operation
@@ -195,7 +196,7 @@ public class Color {
     public Color reduce(double k) {
         if (k < 1)
             throw new IllegalArgumentException(
-                    "Can't scale a color by a negative number or by a number that is less than 1");
+                    "Can't scaled a color by a negative number or by a number that is less than 1");
         double r = _r / k;
         double g = _g / k;
         double b = _b / k;

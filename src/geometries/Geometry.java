@@ -29,6 +29,11 @@ public abstract class Geometry implements Intersectable, ITransformable {
         _material = new Material(material);
     }
 
+    public Geometry(Geometry geometry){
+        _emission = new Color(geometry.get_emission());
+        _material = new Material(geometry.get_material());
+    }
+
     //Getters
 
     public Color get_emission() {

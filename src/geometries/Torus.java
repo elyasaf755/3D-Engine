@@ -1,10 +1,9 @@
 package geometries;
 
-import com.sun.org.apache.xpath.internal.objects.DTMXRTreeFrag;
 import primitives.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.rmi.MarshalException;
+import javax.xml.ws.soap.Addressing;
 import java.util.ArrayList;
 
 public class Torus extends RadialGeometry{
@@ -21,14 +20,50 @@ public class Torus extends RadialGeometry{
         _ray = new Ray(new Vector3D(0,0,1));
     }
 
+    public Torus(double radiusTor, double radiusTube, Color emission){
+        super(radiusTor, emission);
+        _radiusTube = radiusTube;
+        _ray = new Ray(new Vector3D(0,0,1));
+    }
+
+    public Torus(double radiusTor, double radiusTube, Material material){
+        super(radiusTor, material);
+        _radiusTube = radiusTube;
+        _ray = new Ray(new Vector3D(0,0,1));
+    }
+
+    public Torus(double radiusTor, double radiusTube, Color emission, Material material){
+        super(radiusTor, emission, material);
+        _radiusTube = radiusTube;
+        _ray = new Ray(new Vector3D(0,0,1));
+    }
+
     public Torus(double radiusTor, double radiusTube, Ray direction){
         super(radiusTor);
         _radiusTube = radiusTube;
         _ray = new Ray(direction);
     }
 
+    public Torus(double radiusTor, double radiusTube, Ray direction, Color emission){
+        super(radiusTor, emission);
+        _radiusTube = radiusTube;
+        _ray = new Ray(direction);
+    }
+
+    public Torus(double radiusTor, double radiusTube, Ray direction, Material material){
+        super(radiusTor, material);
+        _radiusTube = radiusTube;
+        _ray = new Ray(direction);
+    }
+
+    public Torus(double radiusTor, double radiusTube, Ray direction, Color emission, Material material){
+        super(radiusTor, emission, material);
+        _radiusTube = radiusTube;
+        _ray = new Ray(direction);
+    }
+
     public Torus(Torus torus){
-        super(torus.get_radius());
+        super(torus.get_radius(), torus.get_emission(), torus.get_material());
         _radiusTube = torus.get_radiusTube();
         _ray = new Ray(torus.get_ray());
     }
@@ -137,7 +172,7 @@ public class Torus extends RadialGeometry{
         Point3D O = TT.get_ray().get_point();
         Point3D P = R.mult(point).subtract(q).getPoint();
         Vector3D PT = new Vector3D(new Point3D(P.getX(), P.getY(), Coordinate.ZERO)).normalized();
-        Point3D Q = PT.scale(radiusTor).getPoint();
+        Point3D Q = PT.scaled(radiusTor).getPoint();
         Vector3D N = P.subtract(Q).normalized();
 
         return RInv.mult(N);
@@ -153,6 +188,7 @@ public class Torus extends RadialGeometry{
         throw new NotImplementedException();
     }
 
+    /*
     public ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
         Point3D Pr = ray.get_point();
         Vector3D Vr = ray.get_direction();
@@ -178,7 +214,15 @@ public class Torus extends RadialGeometry{
         double D = 2*K*L - H;
         double E = L*L - I;
 
-        double[] roots = Util.quarticRoots(A, B, C, D, E);
+        double[] roots = Complex.getRealNumbers(
+                Util.quarticRoots(
+                new Complex(A, 0),
+                new Complex(B, 0),
+                new Complex(C, 0),
+                new Complex(D, 0),
+                new Complex(E, 0)
+                )
+        );
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
@@ -190,8 +234,51 @@ public class Torus extends RadialGeometry{
                 result.add(0, new GeoPoint(this, Pr));
             }
             else {
-                result.add(0, new GeoPoint(this, Pr.add(Vr.scale(root))));
+                result.add(0, new GeoPoint(this, Pr.add(Vr.scaled(root))));
             }
+        }
+
+        return result;
+    }
+     */
+
+    public ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
+        double R = this._radius;
+        double S = this._radiusTube;
+        
+        Point3D Pr = ray.get_point();
+        Vector3D Vr = ray.get_direction();
+        Vector3D Prv = new Vector3D(Pr);
+        
+        double dx = Vr.getPoint().getX().getCoord();
+        double dy = Vr.getPoint().getY().getCoord();
+        double dz = Vr.getPoint().getZ().getCoord();
+
+        double ex = Pr.getX().getCoord();
+        double ey = Pr.getY().getCoord();
+        double ez = Pr.getZ().getCoord();
+        
+        double T = 4.0 * R * R;
+        double G = T * (dx*dx + dy*dy);
+        double H = 2.0 * T * (ex*dx + ey*dy);
+        double I = T * (ex*ex + ey*ey);
+        double J = Vr.lengthSquared();
+        double K = 2.0 * Prv.dotProduct(Vr);
+        double L = Prv.lengthSquared() + R*R - S*S;
+
+        double[] roots = Util.realQuarticRoots(
+                J*J,
+                2.0*J*K,
+                2.0*J*L + K*K - G,
+                2.0*K*L - H,
+                L*L - I
+        );
+
+        ArrayList<GeoPoint> result = new ArrayList<>();
+
+        for (double root : roots)
+        {
+            result.add(new GeoPoint(this, Pr.add(Vr.scaled(root))));
         }
 
         return result;
@@ -218,10 +305,9 @@ public class Torus extends RadialGeometry{
             }
 
             Point3D PrT = Pr.subtract(Pt).getPoint();
-            Vector3D VrT = Vr;
-            Ray RT = new Ray(PrT, VrT);
+            Ray RT = new Ray(PrT, Vr);
 
-            Torus torusT = new Torus(radiusTor, radiusTube, RtT);
+            Torus torusT = new Torus(radiusTor, radiusTube, RtT, this._emission, this._material);
 
             ArrayList<GeoPoint> intersectionsT = torusT.findIntersectionsInZDirection(RT);
 
@@ -233,6 +319,7 @@ public class Torus extends RadialGeometry{
             }
 
             return result;
+
         }
 
         Matrix3 R = Transform.getRodriguesRotation(Vt, VtT);
@@ -245,7 +332,7 @@ public class Torus extends RadialGeometry{
 
         Ray RT = new Ray(PrT, VrT);
 
-        Torus TT = new Torus(radiusTor, radiusTube, RtT);
+        Torus TT = new Torus(radiusTor, radiusTube, RtT, this._emission, this._material);
 
         ArrayList<GeoPoint> intersectionsT = TT.findIntersectionsInZDirection(RT);
 
@@ -272,6 +359,11 @@ public class Torus extends RadialGeometry{
 
     @Override
     public void scale(double x, double y, double z) {
+
+    }
+
+    @Override
+    public void scale(double scalar) {
 
     }
 

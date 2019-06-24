@@ -1,10 +1,5 @@
 package primitives;
 
-import sun.security.ssl.Debug;
-
-import java.time.Duration;
-import java.time.Instant;
-
 //TODO: Make sure Points can be TRS, but Vectors can only be RS but bot translated.
 public class Transform {
     private static double _zNear;
@@ -86,6 +81,10 @@ public class Transform {
         this._scale = new Vector3D(x, y, z);
     }
 
+    public void setScale(double scalar) {
+        this._scale = new Vector3D(scalar, scalar, scalar);
+    }
+
     public void setProjection(double fov, double width, double height, double zFar, double zNear){
         Transform._fov = fov;
         Transform._width = width;
@@ -124,7 +123,19 @@ public class Transform {
 
         Vector3D v = new Vector3D(source);
         Vector3D u = new Vector3D(destination);
-        Vector3D k = v.crossProduct(u).normalized();
+
+        Vector3D vn = v.normalized();
+        Vector3D un = u.normalized();
+
+        Vector3D k;
+
+        if (vn.equals(un) || vn.equals(un.scaled(-1))){
+            k = new Vector3D(Vector3D.ZERO);
+        }
+        else{
+            k = v.crossProduct(u).normalized();
+        }
+
 
         double angle = u.angleBetween_rad(v);
 
@@ -167,7 +178,7 @@ public class Transform {
             vCos = new Vector3D(Vector3D.ZERO);
         }
         else{
-            vCos = v.scale(cos);
+            vCos = v.scaled(cos);
         }
 
         Vector3D cross;
@@ -180,7 +191,7 @@ public class Transform {
                 cross = new Vector3D(Vector3D.ZERO);
             }
             else{
-                cross = k.crossProduct(v).scale(sin);
+                cross = k.crossProduct(v).scaled(sin);
             }
         }
 
@@ -196,7 +207,7 @@ public class Transform {
                 K = new Vector3D(Vector3D.ZERO);
             }
             else{
-                K = k.scale(Util.uscale(dot, 1 - cos));
+                K = k.scaled(Util.uscale(dot, 1 - cos));
             }
         }
 

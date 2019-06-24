@@ -1,16 +1,12 @@
 package renderer;
 
-import elements.AmbientLight;
 import elements.Camera;
-import elements.Light;
 import elements.LightSource;
 
 import geometries.*;
 import primitives.*;
 
 import scene.Scene;
-import sun.plugin2.gluegen.runtime.CPU;
-import sun.security.ssl.Debug;
 
 import java.util.ArrayList;
 
@@ -37,26 +33,29 @@ public class Render {
 
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
-                ArrayList<Ray> rays =camera.constructRaysThroughPixel(
+                ArrayList<Ray> rays = camera.constructRaysThroughPixel(
                         _imageWriter.getNx(), _imageWriter.getNy(),
                         i, j, _scene.get_screenDistance(),
                         _imageWriter.getWidth(), _imageWriter.getHeight()
                 );
+
                 Color color = new Color();
                 for (Ray ray: rays) {
 
                     ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
 
-                    if (intersectionPoints.isEmpty() == true)
-                        _imageWriter.writePixel(i, j, _scene.get_background().getColor());
+                    if (intersectionPoints.isEmpty() == true) {
+                        color = color.add(_scene.get_background());
+                    }
                     else {
                         GeoPoint closestPoint = getClosestPoint(intersectionPoints);
 
-                        color=color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));
+                        color = color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));
                     }
                 }
-                int length= rays.size();
-                color= color.scale(1.0/length);
+
+                int length = rays.size();
+                color = color.scale(1.0/length);
 
                 _imageWriter.writePixel(i, j, color.getColor());
 
@@ -79,7 +78,7 @@ public class Render {
                 else{
                     GeoPoint closestPoint = getClosestPoint(intersectionPoints);
 
-                    Color color = new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin()))));
+                    Color color = new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.sub(camera.get_origin()))));
 
                     _imageWriter.writePixel(i, j, color.getColor());
                 }
@@ -116,7 +115,7 @@ public class Render {
      * @return
      */
     private Color calcSpecular(double Ks, Vector3D normal, Vector3D lightDirection, Vector3D cameraDirection, int nShininess, Color lightColor){
-        Vector3D V = cameraDirection.scale(-1).normalized();
+        Vector3D V = cameraDirection.scaled(-1).normalized();
         Vector3D N = normal.normalized();
         Vector3D L = lightDirection.normalized();
 
@@ -127,9 +126,9 @@ public class Render {
         }
 
         //Reflectance vector
-        Vector3D R = L.subtract(N.scale(2 * L.dotProduct(N)));
+        Vector3D R = L.subtract(N.scaled(2 * L.dotProduct(N)));
 
-        //TODO: If exception should be thrown at Vector3D's "subtract" function - del this;
+        //TODO: If exception should be thrown at Vector3D's "sub" function - del this;
         if (R == null){
             return lightColor.scale(0);
         }
@@ -155,7 +154,7 @@ public class Render {
         double Ks = intersection.geometry.get_material().get_Ks();
         double Kr = intersection.geometry.get_material().get_Kr();
         double Kt = intersection.geometry.get_material().get_Kt();
-        int shininess = intersection.geometry.get_material().get_nShininess();
+        int shininess = intersection.geometry.get_material().get_shininess();
         Vector3D normal = intersection.geometry.get_normal(intersection.point);
         Vector3D cameraDirection = intersection.point.subtract(_scene.get_camera().get_origin());
 
@@ -164,7 +163,7 @@ public class Render {
         for (LightSource light : _scene.get_lights()){
             Vector3D lightDirection = light.getLightDirectionTo(intersection.point);
 
-            //TODO: If exception should be thrown at PointLight's "getLightDirectionTo" or Point3D's subtract functions - del this;
+            //TODO: If exception should be thrown at PointLight's "getLightDirectionTo" or Point3D's sub functions - del this;
             if (lightDirection == null || cameraDirection == null){
                 continue;
             }
@@ -245,11 +244,11 @@ public class Render {
 
     private double transparency(LightSource lightSource, GeoPoint intersection){
         Point3D intersectionPoint = new Point3D(intersection.point);
-        Vector3D lightDirection = lightSource.getLightDirectionTo(intersectionPoint).scale(-1);
+        Vector3D lightDirection = lightSource.getLightDirectionTo(intersectionPoint).scaled(-1);
         Vector3D normal = intersection.geometry.get_normal(intersectionPoint);
 
         double epsilon = this.calcEpsilon(lightDirection, normal);
-        Point3D shiftedPoint = intersectionPoint.add(normal.scale(epsilon));
+        Point3D shiftedPoint = intersectionPoint.add(normal.scaled(epsilon));
 
         Ray lightRay = new Ray(shiftedPoint, lightDirection);
 
@@ -274,10 +273,10 @@ public class Render {
         double epsilon = calcEpsilon(normal, normal);
 
         if (scalar == 0){
-           return new Ray(intersection.add(normal.scale(epsilon)), ray.get_direction());
+           return new Ray(intersection.add(normal.scaled(epsilon)), ray.get_direction());
         }
 
-        return new Ray(intersection.add(normal.scale(epsilon)), ray.get_direction().subtract(normal.scale(scalar)));
+        return new Ray(intersection.add(normal.scaled(epsilon)), ray.get_direction().subtract(normal.scaled(scalar)));
     }
 
     private Ray constructRefractedRay(GeoPoint intersectionGeoPoint, Ray ray) {
@@ -286,7 +285,7 @@ public class Render {
         Vector3D Vr = ray.get_direction();
 
         double epsilon = calcEpsilon(Vr, normal);
-        return new Ray(P.add(normal.scale(epsilon)), Vr);
+        return new Ray(P.add(normal.scaled(epsilon)), Vr);
     }
 
     private double calcEpsilon(Vector3D direction, Vector3D normal){

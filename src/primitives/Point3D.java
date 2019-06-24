@@ -68,7 +68,7 @@ public class Point3D extends Point2D implements ITransformable {
     //Methods
     public Vector3D subtract(Point3D point) {
         if (this.equals(point))
-            throw new IllegalArgumentException("Can't subtract 2 equal point. (0,0,0) is not a vector.");
+            throw new IllegalArgumentException("Can't sub 2 equal point. (0,0,0) is not a vector.");
 
         Point2D point2d = this.subtract(new Point2D(point._x, point._y));
         Coordinate z = this._z.subtract(point._z);
@@ -164,6 +164,18 @@ public class Point3D extends Point2D implements ITransformable {
         transform.setScale(x, y, z);
 
         Point3D result = transform.getTransformation().mult(this);
+        _x = result.getX();
+        _y = result.getY();
+        _z = result.getZ();
+    }
+
+    @Override
+    public void scale(double scalar) {
+        Transform transform = new Transform();
+        transform.setScale(scalar);
+
+        Point3D result = transform.getTransformation().mult(this);
+
         _x = result.getX();
         _y = result.getY();
         _z = result.getZ();

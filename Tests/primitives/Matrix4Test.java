@@ -69,7 +69,7 @@ class Matrix4Test {
 
     @Test
     void initScale() {
-        //scale Vector
+        //scaled Vector
 
         Matrix4 matrix = new Matrix4();
 
@@ -82,7 +82,7 @@ class Matrix4Test {
         assertEquals(new Vector3D(10,2,0), result);
 
         /*
-        //scale Trianle
+        //scaled Trianle
 
         Point3D p1 = new Point3D(-125, -225, -260);
         Point3D p2 = new Point3D(-225, -125, -260);
@@ -101,7 +101,7 @@ class Matrix4Test {
         Point3D centroidScaled = triangledScaled.getCentroid();
 
         matrix = new Matrix4();
-        matrix.initTranslation(centroid.subtract(centroidScaled));
+        matrix.initTranslation(centroid.sub(centroidScaled));
 
         result1 = matrix.mult(result1);
         result2 = matrix.mult(result2);

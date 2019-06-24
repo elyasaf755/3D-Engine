@@ -44,7 +44,7 @@ class Vector3DTest {
 
     @Test
     void scale() {
-        assertEquals(new Vector3D(2,0,0), _v1.scale(2));
+        assertEquals(new Vector3D(2,0,0), _v1.scaled(2));
     }
 
     @Test

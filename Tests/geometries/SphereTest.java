@@ -38,7 +38,11 @@ class SphereTest {
 
         assertEquals(intercestions, sphere2.findIntersections(ray));//from center to outter shell
 
-        assertEquals(new ArrayList<Point3D>(), sphere2.findIntersections(ray2));//from outter shell towards out
+        ArrayList<GeoPoint> actual1 = sphere2.findIntersections(ray2);
+        ArrayList<GeoPoint> expected1 = new ArrayList<>();
+        expected1.add(new GeoPoint(sphere2, new Point3D()));
+
+        assertEquals(new ArrayList<Point3D>(), actual1);//from outter shell towards out
 
         assertEquals(intercestions, sphere2.findIntersections(ray3));//from outter shell towards in through center
 

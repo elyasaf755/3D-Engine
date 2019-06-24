@@ -17,13 +17,64 @@ public class Tube extends Cylinder {
         _height = height;
     }
 
+    public Tube(double radius, Ray ray, double height, Color emission){
+        super(radius, ray, emission);
+
+        _height = height;
+    }
+
+    public Tube(double radius, Ray ray, double height, Material material){
+        super(radius, ray, material);
+
+        _height = height;
+    }
+
+    public Tube(double radius, Ray ray, double height, Color emission, Material material){
+        super(radius, ray, emission, material);
+
+        _height = height;
+    }
+
     public Tube(double radius, Point3D point1, Point3D point2){
         super(radius, new Ray(point1, point2.subtract(point1)));
         _height = point2.subtract(point1).length();
     }
 
+    public Tube(double radius, Point3D point1, Point3D point2, Color emission){
+        super(radius, new Ray(point1, point2.subtract(point1)), emission);
+        _height = point2.subtract(point1).length();
+    }
+
+    public Tube(double radius, Point3D point1, Point3D point2, Material material){
+        super(radius, new Ray(point1, point2.subtract(point1)), material);
+        _height = point2.subtract(point1).length();
+    }
+
+    public Tube(double radius, Point3D point1, Point3D point2, Color emission, Material material){
+        super(radius, new Ray(point1, point2.subtract(point1)), emission, material);
+        _height = point2.subtract(point1).length();
+    }
+
     public Tube(RadialGeometry radialGeometry, Ray ray, double height){
         super(radialGeometry, ray);
+
+        _height = height;
+    }
+
+    public Tube(RadialGeometry radialGeometry, Ray ray, double height, Color emission){
+        super(radialGeometry, ray, emission);
+
+        _height = height;
+    }
+
+    public Tube(RadialGeometry radialGeometry, Ray ray, double height, Material material){
+        super(radialGeometry, ray, material);
+
+        _height = height;
+    }
+
+    public Tube(RadialGeometry radialGeometry, Ray ray, double height, Color emission, Material material){
+        super(radialGeometry, ray, emission, material);
 
         _height = height;
     }
@@ -35,7 +86,7 @@ public class Tube extends Cylinder {
     }
 
     public Tube(Tube tube){
-        super(tube._radius, tube._ray);
+        super(tube._radius, tube._ray, tube._emission, tube._material);
 
         _height = tube._height;
     }
@@ -51,14 +102,14 @@ public class Tube extends Cylinder {
     @Override
     public Vector3D get_normal(Point3D point3D) {
         if (point3D.equals(_ray.get_point())){
-            return _ray.get_direction().scale(-1);
+            return _ray.get_direction().scaled(-1);
         }
         double height = _ray.get_direction().dotProduct(point3D.subtract(_ray.get_point()));
         if (height == _height)
             return _ray.get_direction();
 
         if (height == 0)
-            return _ray.get_direction().scale(-1);
+            return _ray.get_direction().scaled(-1);
 
         return super.get_normal(point3D);
     }
@@ -74,7 +125,7 @@ public class Tube extends Cylinder {
         Vector3D Vt = this.get_ray().get_direction();
         double r = this.get_radius();
         double h = this.get_height();
-        Point3D PtUp = PtLow.add(Vt.scale(h));
+        Point3D PtUp = PtLow.add(Vt.scaled(h));
 
         Plane upperCap = new Plane(PtUp, Vt);
         Plane lowerCap = new Plane(PtLow, Vt);
@@ -144,7 +195,7 @@ public class Tube extends Cylinder {
         int i = 0;
         for (double d : t){
             if ( i < 2){
-                result.add(new GeoPoint(this, Pr.add(Vr.scale(d))));
+                result.add(new GeoPoint(this, Pr.add(Vr.scaled(d))));
                 ++i;
             }
             else{
@@ -165,6 +216,7 @@ public class Tube extends Cylinder {
         _ray.rotate(x, y, z);
     }
 
+    @Override
     public void scale(double factor){
         _radius = Util.uscale(_radius, factor);
         _height = Util.uscale(_height, factor);
@@ -193,7 +245,7 @@ public class Tube extends Cylinder {
     public boolean contains(Point3D point) {
         Vector3D direction = _ray.get_direction();
         Point3D pt1 = this._ray.get_point();
-        Point3D pt2 = pt1.add(direction.scale(_height));
+        Point3D pt2 = pt1.add(direction.scaled(_height));
 
         Vector3D pt1p;
 

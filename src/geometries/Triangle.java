@@ -1,7 +1,6 @@
 package geometries;
 
 import primitives.*;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -139,21 +138,21 @@ public class Triangle extends Plane implements FlatGeometry{
         Vector3D v3;
 
         if (_point1.equals(new Point3D())){
-            v1 = new Vector3D(Pr).scale(-1);
+            v1 = new Vector3D(Pr).scaled(-1);
         }
         else{
             v1 = _point1.subtract(Pr);
         }
 
         if (_point2.equals(new Point3D())){
-            v2 = new Vector3D(Pr).scale(-1);
+            v2 = new Vector3D(Pr).scaled(-1);
         }
         else{
             v2 = _point2.subtract(Pr);
         }
 
         if (_point3.equals(new Point3D())){
-            v3 = new Vector3D(Pr).scale(-1);
+            v3 = new Vector3D(Pr).scaled(-1);
         }
         else{
             v3 = _point3.subtract(Pr);
@@ -264,6 +263,15 @@ public class Triangle extends Plane implements FlatGeometry{
         _point3.scale(x, y, z);
     }
 
+    @Override
+    public void scale(double scalar) {
+        super.scale(scalar);
+
+        _point1.scale(scalar);
+        _point2.scale(scalar);
+        _point3.scale(scalar);
+    }
+
     public void scaleInPlace(double x, double y, double z){
         Point3D oldCentroid = this.getCentroid();
 
@@ -314,7 +322,7 @@ public class Triangle extends Plane implements FlatGeometry{
         Vector3D APn = AP.normalized();
 
         double ABP;
-        if (ABn.equals(APn) || ABn.equals(APn.scale(-1))){
+        if (ABn.equals(APn) || ABn.equals(APn.scaled(-1))){
             ABP = 0;
         }
         else{
@@ -323,7 +331,7 @@ public class Triangle extends Plane implements FlatGeometry{
 
         Vector3D ACn = AC.normalized();
         double APC;
-        if (APn.equals(ACn) || APn.equals(ACn.scale(-1))){
+        if (APn.equals(ACn) || APn.equals(ACn.scaled(-1))){
             APC = 0;
         }
         else{
@@ -336,7 +344,7 @@ public class Triangle extends Plane implements FlatGeometry{
         Vector3D BCn = BC.normalized();
 
         double BPC;
-        if (BPn.equals(BCn) || BPn.equals(BCn.scale(-1))){
+        if (BPn.equals(BCn) || BPn.equals(BCn.scaled(-1))){
             BPC = 0;
         }
         else{

@@ -1,7 +1,6 @@
 package geometries;
 
 import primitives.*;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -164,7 +163,7 @@ public class Plane extends Geometry  implements FlatGeometry{
                 result.add(new GeoPoint(this, ray.get_point()));
             }
             else if (t > 0){
-                result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scale(t))));
+                result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scaled(t))));
             }
 
             return result;
@@ -189,7 +188,12 @@ public class Plane extends Geometry  implements FlatGeometry{
 
     @Override
     public void scale(double x, double y, double z) {
-        return;
+        _point.scale(x,y,z);
+    }
+
+    @Override
+    public void scale(double scalar) {
+        _point.scale(scalar);
     }
 
     @Override

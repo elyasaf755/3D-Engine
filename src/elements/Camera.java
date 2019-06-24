@@ -19,6 +19,7 @@ public class Camera implements ITransformable {
             _direction = (new Vector3D(direction)).normalized();
             _up = (new Vector3D(up)).normalized();
             _right = (new Vector3D(right)).normalized();
+            _aa = 1;
         }
         else{
             Matrix orthonormalBase = (new Matrix(direction, up, right)).orthonormalized();
@@ -26,16 +27,17 @@ public class Camera implements ITransformable {
             _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
             _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
             _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
-            _aa=1;
+            _aa = 1;
         }
     }
 
-    public Camera(Point3D origin, Vector3D direction, Vector3D up, Vector3D right,int aa){
+    public Camera(Point3D origin, Vector3D direction, Vector3D up, Vector3D right, int aa){
         if (direction.dotProduct(up) == 0 && direction.dotProduct(right) == 0 && up.dotProduct(right) == 0){
             _origin = new Point3D(origin);
             _direction = (new Vector3D(direction)).normalized();
             _up = (new Vector3D(up)).normalized();
             _right = (new Vector3D(right)).normalized();
+            _aa = aa;
         }
         else{
             Matrix orthonormalBase = (new Matrix(direction, up, right)).orthonormalized();
@@ -43,7 +45,7 @@ public class Camera implements ITransformable {
             _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
             _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
             _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
-            _aa=aa;
+            _aa = aa;
         }
     }
 
@@ -53,6 +55,7 @@ public class Camera implements ITransformable {
             _direction = (new Vector3D(direction)).normalized();
             _up = (new Vector3D(up)).normalized();
             _right = (new Vector3D(right)).normalized();
+            _aa = 1;
         }
         else{
             Matrix orthonormalBase = (new Matrix(direction, up, right)).orthonormalized();
@@ -60,7 +63,7 @@ public class Camera implements ITransformable {
             _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
             _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
             _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
-            _aa=1;
+            _aa = 1;
         }
     }
 
@@ -71,6 +74,7 @@ public class Camera implements ITransformable {
             _direction = (new Vector3D(direction)).normalized();
             _up = (new Vector3D(up)).normalized();
             _right = (_direction.crossProduct(_up)).normalized();
+            _aa = 1;
         }
         else{
             Matrix orthonormalBase = (new Matrix(direction, up, direction.crossProduct(up))).orthonormalized();
@@ -78,7 +82,7 @@ public class Camera implements ITransformable {
             _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
             _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
             _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
-            _aa=1;
+            _aa = 1;
         }
     }
 
@@ -89,6 +93,7 @@ public class Camera implements ITransformable {
             _direction = (new Vector3D(direction)).normalized();
             _up = (new Vector3D(up)).normalized();
             _right = (_direction.crossProduct(_up)).normalized();
+            _aa = 1;
         }
         else{
             Matrix orthonormalBase = (new Matrix(direction, up, direction.crossProduct(up))).orthonormalized();
@@ -96,7 +101,7 @@ public class Camera implements ITransformable {
             _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
             _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
             _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
-            _aa=1;
+            _aa = 1;
         }
     }
 
@@ -106,7 +111,7 @@ public class Camera implements ITransformable {
         _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
         _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
         _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
-        _aa=1;
+        _aa = 1;
     }
 
     public Camera(Vector3D direction){
@@ -115,7 +120,7 @@ public class Camera implements ITransformable {
         _direction = Matrix.getColumnAsVector3(orthonormalBase, 0);
         _up = Matrix.getColumnAsVector3(orthonormalBase, 1);
         _right = Matrix.getColumnAsVector3(orthonormalBase, 2);
-        _aa=1;
+        _aa = 1;
     }
 
     //Getters
@@ -135,8 +140,15 @@ public class Camera implements ITransformable {
     public Vector3D get_right() {
         return new Vector3D(_right);
     }
+
     public int getAa() {
         return _aa;
+    }
+
+    //Setters
+
+    public void setAa(int aa) {
+        this._aa = aa;
     }
 
     //Methods
@@ -158,7 +170,7 @@ public class Camera implements ITransformable {
         Vector3D right = get_right();
 
         //Image center point
-        Point3D Pc = p0.add(direction.scale(screenDistance));
+        Point3D Pc = p0.add(direction.scaled(screenDistance));
 
         //Pixel ratios
         double Rx = screenWidth / Nx; //Pixel width
@@ -173,13 +185,13 @@ public class Camera implements ITransformable {
             p_ij = new Point3D(Pc);
         }
         else if (Xi == 0){
-            p_ij = new Point3D(Pc.add(Vector3D.ZERO.subtract(up.scale(Yj))));
+            p_ij = new Point3D(Pc.add(Vector3D.ZERO.subtract(up.scaled(Yj))));
         }
         else if (Yj == 0){
-            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(Vector3D.ZERO)));
+            p_ij = new Point3D(Pc.add((right.scaled(Xi)).subtract(Vector3D.ZERO)));
         }
         else{
-            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(up.scale(Yj))));
+            p_ij = new Point3D(Pc.add((right.scaled(Xi)).subtract(up.scaled(Yj))));
         }
 
         Vector3D v_ij = p_ij.subtract(p0);
@@ -199,7 +211,7 @@ public class Camera implements ITransformable {
         Vector3D right = get_right();
 
         //Image center point
-        Point3D Pc = p0.add(direction.scale(screenDistance));
+        Point3D Pc = p0.add(direction.scaled(screenDistance));
 
         //Pixel ratios
         double Rx = screenWidth / Nx; //Pixel width
@@ -214,30 +226,30 @@ public class Camera implements ITransformable {
             p_ij = new Point3D(Pc);
         }
         else if (Xi == 0){
-            p_ij = new Point3D(Pc.add(Vector3D.ZERO.subtract(up.scale(Yj))));
+            p_ij = new Point3D(Pc.add(Vector3D.ZERO.subtract(up.scaled(Yj))));
         }
         else if (Yj == 0){
-            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(Vector3D.ZERO)));
+            p_ij = new Point3D(Pc.add((right.scaled(Xi)).subtract(Vector3D.ZERO)));
         }
         else{
-            p_ij = new Point3D(Pc.add((right.scale(Xi)).subtract(up.scale(Yj))));
+            p_ij = new Point3D(Pc.add((right.scaled(Xi)).subtract(up.scaled(Yj))));
         }
 
-        p_ij= p_ij.add((right.scale(-Rx / 2.0)).subtract(up.scale(-Ry / 2.0)));
+        p_ij= p_ij.add((right.scaled(-Rx / 2.0)).subtract(up.scaled(-Ry / 2.0)));
 
         ArrayList<Ray> rays=new ArrayList<Ray>();
 
-        int aa=this.getAa();
-        int numOfRowsColumns=aa+1;
-        double heightOfRow= Ry/numOfRowsColumns;
-        double widthOfColumns= Rx/numOfRowsColumns;
+        int aa = this.getAa();
+        int numOfRowsColumns = aa+1;
+        double heightOfRow = Ry / numOfRowsColumns;
+        double widthOfColumns = Rx / numOfRowsColumns;
 
         Point3D p= new Point3D();
-        for (int k=1; k<=aa;k++)
+        for (int k = 1; k <= aa; k++)
         {
-            for( int t=1; t<=aa;t++)
+            for( int t = 1; t <= aa; t++)
             {
-                p=p_ij.add((right.scale(widthOfColumns*k)).subtract(up.scale(heightOfRow*t)));
+                p = p_ij.add((right.scaled(widthOfColumns*k)).subtract(up.scaled(heightOfRow*t)));
                 rays.add(new Ray(p0,p.subtract(p0).normalized()));
             }
 
@@ -273,6 +285,18 @@ public class Camera implements ITransformable {
     }
 
     @Override
+    public void scale(double scalar) {
+        scalar = 1.0 / scalar;
+        scalar = 1.0 / scalar;
+        scalar = 1.0 / scalar;
+
+        _origin.scale(scalar);
+        _direction.scale(scalar);
+        _up.scale(scalar);
+        _right.scale(scalar);
+    }
+
+    @Override
     public void transform(Transform _transform) {
         _origin.transform(_transform);
         _direction.transform(_transform);
@@ -289,8 +313,5 @@ public class Camera implements ITransformable {
     }
 
 
-//setters
-    public void setAa(int aa) {
-        this._aa = aa;
-    }
+
 }

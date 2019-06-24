@@ -74,6 +74,12 @@ public abstract class GeometriesSet extends Geometry {
     }
 
     @Override
+    public void scale(double scalar) {
+        _lhs.scale(scalar);
+        _rhs.scale(scalar);
+    }
+
+    @Override
     public void transform(Transform _transform) {
         _lhs.transform(_transform);
         _rhs.transform(_transform);

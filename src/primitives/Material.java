@@ -3,11 +3,14 @@ package primitives;
 public class Material {
     protected double _Kd;
     protected double _Ks;
-    protected int _nShininess;//Shininess factor. higher values - higher shininess. range from 0 and on.
     protected double _Kr;//reflection constant: 0->matt, 1->mirror.
     protected double _Kt;//refraction constant: 0->opaque, 1->translucent.
+    protected int _shininess;//Shininess factor. higher values - higher shininess. range from 0 and on.
+
 
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXISTS).
+
+    public static final Material GLASS = new Material(0.3, 0.3, 0.2, 0.3, 3);
 
 
     //Constructors
@@ -16,15 +19,23 @@ public class Material {
         //TODO: change to good values.
         _Kd = 0.3;
         _Ks = 0.3;
-        _nShininess = 3;
+        _shininess = 3;
         _Kr = 0;
         _Kt = 0;
+    }
+
+    public Material(double kd, double ks, double kr, double kt, int shininess){
+        _Kd = kd;
+        _Ks = ks;
+        _Kr = kr;
+        _Kt = kt;
+        _shininess = shininess;
     }
 
     public Material(Material material){
         _Kd = material.get_Kd();
         _Ks = material.get_Ks();
-        _nShininess = material.get_nShininess();
+        _shininess = material.get_shininess();
         _Kr = material.get_Kr();
         _Kt = material.get_Kt();
     }
@@ -39,8 +50,8 @@ public class Material {
         return _Ks;
     }
 
-    public int get_nShininess() {
-        return _nShininess;
+    public int get_shininess() {
+        return _shininess;
     }
 
     public double get_Kr() {
@@ -81,8 +92,8 @@ public class Material {
         }
     }
 
-    public void set_nShininess(int _nShininess) {
-        this._nShininess = _nShininess;
+    public void set_shininess(int _shininess) {
+        this._shininess = _shininess;
     }
 
     public void set_Kr(double Kr) {
@@ -130,7 +141,7 @@ public class Material {
 
         return  Util.equals(_Kd, material.get_Kd()) &&
                 Util.equals(_Ks, material.get_Ks()) &&
-                Util.equals(_nShininess, material.get_nShininess()) &&
+                Util.equals(_shininess, material.get_shininess()) &&
                 Util.equals(_Kr, material.get_Kr()) &&
                 Util.equals(_Kt, material.get_Kt());
     }

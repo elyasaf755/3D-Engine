@@ -269,12 +269,12 @@ public class Cuboid extends Geometry {
         Vector3D yAxis = new Vector3D(0,1,0);
         Vector3D zAxis = new Vector3D(0,0,1);
 
-        Vector3D n1 = xAxis.scale(a);
-        Vector3D n2 = n1.scale(-1);
-        Vector3D n3 = yAxis.scale(b);
-        Vector3D n4 = n3.scale(-1);
-        Vector3D n5 = zAxis.scale(c);
-        Vector3D n6 = n5.scale(-1);
+        Vector3D n1 = xAxis.scaled(a);
+        Vector3D n2 = n1.scaled(-1);
+        Vector3D n3 = yAxis.scaled(b);
+        Vector3D n4 = n3.scaled(-1);
+        Vector3D n5 = zAxis.scaled(c);
+        Vector3D n6 = n5.scaled(-1);
 
         Plane p1 = new Plane(n1.getPoint(), n1, _colors[0]);//Right face
         Plane p2 = new Plane(n2.getPoint(), n2, _colors[1]);//Left face
@@ -388,12 +388,12 @@ public class Cuboid extends Geometry {
         Vector3D yAxis = new Vector3D(0,1,0);
         Vector3D zAxis = new Vector3D(0,0,1);
 
-        Vector3D n1 = xAxis.scale(a);
-        Vector3D n2 = n1.scale(-1);
-        Vector3D n3 = yAxis.scale(b);
-        Vector3D n4 = n3.scale(-1);
-        Vector3D n5 = zAxis.scale(c);
-        Vector3D n6 = n5.scale(-1);
+        Vector3D n1 = xAxis.scaled(a);
+        Vector3D n2 = n1.scaled(-1);
+        Vector3D n3 = yAxis.scaled(b);
+        Vector3D n4 = n3.scaled(-1);
+        Vector3D n5 = zAxis.scaled(c);
+        Vector3D n6 = n5.scaled(-1);
 
         Plane p1 = new Plane(n1.getPoint(), n1, _colors[0]);//Right face
         Plane p2 = new Plane(n2.getPoint(), n2, _colors[1]);//Left face
@@ -479,12 +479,12 @@ public class Cuboid extends Geometry {
         Vector3D yAxis = new Vector3D(0,1,0);
         Vector3D zAxis = new Vector3D(0,0,1);
 
-        Vector3D n1 = xAxis.scale(a);
-        Vector3D n2 = xAxis.scale(-a);
-        Vector3D n3 = yAxis.scale(b);
-        Vector3D n4 = yAxis.scale(-b);
-        Vector3D n5 = zAxis.scale(c);
-        Vector3D n6 = zAxis.scale(-c);
+        Vector3D n1 = xAxis.scaled(a);
+        Vector3D n2 = xAxis.scaled(-a);
+        Vector3D n3 = yAxis.scaled(b);
+        Vector3D n4 = yAxis.scaled(-b);
+        Vector3D n5 = zAxis.scaled(c);
+        Vector3D n6 = zAxis.scaled(-c);
 
         Plane p1 = new Plane(n1.getPoint(), xAxis, _colors[0]);//Right face
         Plane p2 = new Plane(n2.getPoint(), xAxis, _colors[1]);//Left face
@@ -522,6 +522,19 @@ public class Cuboid extends Geometry {
     @Override
     public void scale(double x, double y, double z) {
         this._ray.scale(x, y, z);
+
+        _width = _width * x;
+        _length = _length * y;
+        _height = _height * z;
+    }
+
+    @Override
+    public void scale(double scalar) {
+        this._ray.scale(scalar);
+
+        _width = _width * scalar;
+        _length = _length * scalar;
+        _height = _height * scalar;
     }
 
     @Override

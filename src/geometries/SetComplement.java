@@ -63,6 +63,11 @@ public class SetComplement extends Geometry {
     }
 
     @Override
+    public void scale(double scalar) {
+        _geometry.scale(scalar);
+    }
+
+    @Override
     public void transform(Transform _transform) {
         _geometry.transform(_transform);
     }

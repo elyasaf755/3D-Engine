@@ -177,7 +177,7 @@ public class Cone extends RadialGeometry {
                 result.add(new GeoPoint(this, point));
             }
             else if (root > 0){
-                Point3D point = Pr.add(Vr.scale(root));
+                Point3D point = Pr.add(Vr.scaled(root));
 
                 if (h != Double.POSITIVE_INFINITY){
                     double z = point.getZ().getCoord();
@@ -208,6 +208,11 @@ public class Cone extends RadialGeometry {
     @Override
     public void scale(double x, double y, double z) {
         _ray.scale(x, y, z);
+    }
+
+    @Override
+    public void scale(double scalar) {
+        _ray.scale(scalar);
     }
 
     @Override

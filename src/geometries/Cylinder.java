@@ -14,13 +14,43 @@ public class Cylinder extends RadialGeometry{
         _ray = new Ray(ray);
     }
 
+    public Cylinder(double radius, Ray ray, Color emission) {
+        super(radius, emission);
+        _ray = new Ray(ray);
+    }
+
+    public Cylinder(double radius, Ray ray, Material material) {
+        super(radius, material);
+        _ray = new Ray(ray);
+    }
+
+    public Cylinder(double radius, Ray ray, Color emission, Material material) {
+        super(radius, emission, material);
+        _ray = new Ray(ray);
+    }
+
     public Cylinder(RadialGeometry radialGeometry, Ray ray) {
         super(radialGeometry);
         _ray = new Ray(ray);
     }
 
+    public Cylinder(RadialGeometry radialGeometry, Ray ray, Color emission) {
+        super(radialGeometry, emission);
+        _ray = new Ray(ray);
+    }
+
+    public Cylinder(RadialGeometry radialGeometry, Ray ray, Material material) {
+        super(radialGeometry, material);
+        _ray = new Ray(ray);
+    }
+
+    public Cylinder(RadialGeometry radialGeometry, Ray ray, Color emission, Material material) {
+        super(radialGeometry, emission, material);
+        _ray = new Ray(ray);
+    }
+
     public Cylinder(Cylinder cylinder){
-        super(cylinder._radius);
+        super(cylinder._radius, cylinder.get_emission(), cylinder.get_material());
 
         _ray = new Ray(cylinder._ray);
     }
@@ -31,6 +61,7 @@ public class Cylinder extends RadialGeometry{
     }
 
     //Methods
+
     @Override
     public Vector3D get_normal(Point3D point3D) {
         Vector3D subPoints = point3D.subtract(_ray.get_point());
@@ -40,12 +71,12 @@ public class Cylinder extends RadialGeometry{
             return point3D.subtract(_ray.get_point()).normalized();
         }
 
-        Vector3D v = _ray.get_direction().scale(projection);
+        Vector3D v = _ray.get_direction().scaled(projection);
         Point3D p = _ray.get_point().add(v);
         Vector3D result = point3D.subtract(p).normalized();
 
         return result;
-        //return point3D.subtract(_ray.get_point().add(_ray.get_direction().scale(_ray.get_direction().dotProduct(point3D.subtract(_ray.get_point()))))).normalized();
+        //return point3D.sub(_ray.get_point().add(_ray.get_direction().scaled(_ray.get_direction().dotProduct(point3D.sub(_ray.get_point()))))).normalized();
     }
 
     @Override
@@ -69,7 +100,7 @@ public class Cylinder extends RadialGeometry{
             d = pa.length();
         }
         else{
-            Vector3D temp = n.scale(dot);
+            Vector3D temp = n.scaled(dot);
 
             if (pa.equals(temp)){
                 return true;
@@ -151,7 +182,7 @@ public class Cylinder extends RadialGeometry{
                 result.add(new GeoPoint(this, eye));
             }
             else if (root > 0){
-                result.add(new GeoPoint(this, eye.add(direction.scale(root))));
+                result.add(new GeoPoint(this, eye.add(direction.scaled(root))));
             }
 
 
@@ -170,8 +201,10 @@ public class Cylinder extends RadialGeometry{
         _ray.rotate(x, y, z);
     }
 
-    public void scale(double factor){
-        _radius = Util.uscale(_radius, factor);
+    @Override
+    public void scale(double scalar){
+        _radius = Util.uscale(_radius, scalar);
+        _ray.scale(scalar);//TODO:TEST
     }
 
     @Override

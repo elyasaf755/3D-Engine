@@ -90,6 +90,11 @@ public class TriangleMesh extends Geometry{
     }
 
     @Override
+    public void scale(double scalar) {
+
+    }
+
+    @Override
     public void transform(Transform _transform) {
 
     }

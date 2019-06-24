@@ -31,7 +31,7 @@ public class Vector3D implements ITransformable {
 
     public Vector3D(Point3D start, Point3D end) {
         if (start.equals(end))
-            throw new IllegalArgumentException("Can't subtract 2 equal points. t(0,0,0) is not a vector");
+            throw new IllegalArgumentException("Can't sub 2 equal points. t(0,0,0) is not a vector");
 
         Vector3D result = end.subtract(start);
 
@@ -77,7 +77,7 @@ public class Vector3D implements ITransformable {
 
     public Vector3D subtract(Vector3D vector){
         if (this.equals(vector)){
-            throw new IllegalArgumentException("Cant subtract 2 equal vectors. t(0,0,0) is not a vector");
+            throw new IllegalArgumentException("Cant sub 2 equal vectors. t(0,0,0) is not a vector");
         }
 
         return new Vector3D(_point.subtract(vector._point));
@@ -88,7 +88,7 @@ public class Vector3D implements ITransformable {
             return new Vector3D(vector);
         }
 
-        if (this.scale(-1).equals(vector))
+        if (this.scaled(-1).equals(vector))
             throw new IllegalArgumentException("Can't add vectors with the negative directions. t(0,0,0) is not a vector");
 
         return new Vector3D(_point.add(vector));
@@ -119,6 +119,7 @@ public class Vector3D implements ITransformable {
 
     public Vector3D crossProduct(Vector3D vector3D){
         Point3D rhs = vector3D._point;
+
         return new Vector3D(_point._y.multiply(rhs._z).subtract(_point._z.multiply(rhs._y)),
                 _point._z.multiply(rhs._x).subtract(_point._x.multiply(rhs._z)),
                 _point._x.multiply(rhs._y).subtract(_point._y.multiply(rhs._x)));
@@ -158,7 +159,7 @@ public class Vector3D implements ITransformable {
         return Util.uscale(length(), length());
     }
 
-    public Vector3D scale(double scalar){
+    public Vector3D scaled(double scalar){
         return new Vector3D(_point._x.scale(scalar),
                 _point._y.scale(scalar),
                 _point._z.scale(scalar));
@@ -171,6 +172,7 @@ public class Vector3D implements ITransformable {
 
         return vector3;
     }
+
 
     public void normalize(){
         double length = length();
@@ -209,7 +211,7 @@ public class Vector3D implements ITransformable {
             return new Vector3D(Vector3D.ZERO);
         }
 
-        return new Vector3D(this.scale(Util.udiv(lhs, rhs)));
+        return new Vector3D(this.scaled(Util.udiv(lhs, rhs)));
     }
 
     @Override
@@ -231,6 +233,16 @@ public class Vector3D implements ITransformable {
     public void scale(double x, double y, double z) {
         Transform transform = new Transform();
         transform.setScale(x, y, z);
+
+        Point3D result = transform.getTransformation().mult(new Vector3D(this)).getPoint();
+
+        _point = new Point3D(result);
+    }
+
+    @Override
+    public void scale(double scalar) {
+        Transform transform = new Transform();
+        transform.setScale(scalar);
 
         Point3D result = transform.getTransformation().mult(new Vector3D(this)).getPoint();
 

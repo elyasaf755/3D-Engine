@@ -86,7 +86,8 @@ class CuboidTest {
         ArrayList<GeoPoint> expected1 = new ArrayList<>();
         expected1.add(new GeoPoint(cuboid1, new Point3D(2,0,0)));
         expected1.add(new GeoPoint(cuboid1, new Point3D(-2,0,0)));
-        assertEquals(expected1, actual1);
+        assertEquals(expected1.get(0).point, actual1.get(0).point);
+        assertEquals(expected1.get(1).point, actual1.get(1).point);
     }
 
     @Test

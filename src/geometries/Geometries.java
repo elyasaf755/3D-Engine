@@ -125,6 +125,13 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
     }
 
     @Override
+    public void scale(double scalar) {
+        for (Geometry geometry : _geometriesList){
+            geometry.scale(scalar);
+        }
+    }
+
+    @Override
     public void transform(Transform _transform) {
         for (Geometry geometry : _geometriesList){
             geometry.transform(_transform);
