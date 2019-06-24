@@ -37,6 +37,35 @@ public class Render {
 
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
+                ArrayList<Ray> rays =camera.constructRaysThroughPixel(
+                        _imageWriter.getNx(), _imageWriter.getNy(),
+                        i, j, _scene.get_screenDistance(),
+                        _imageWriter.getWidth(), _imageWriter.getHeight()
+                );
+                Color color = new Color();
+                for (Ray ray: rays) {
+
+                    ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
+
+                    if (intersectionPoints.isEmpty() == true)
+                        _imageWriter.writePixel(i, j, _scene.get_background().getColor());
+                    else {
+                        GeoPoint closestPoint = getClosestPoint(intersectionPoints);
+
+                        color=color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));
+                    }
+                }
+                int length= rays.size();
+                color= color.scale(1.0/length);
+
+                _imageWriter.writePixel(i, j, color.getColor());
+
+            }
+        }
+        /*Camera camera = _scene.get_camera();
+
+        for (int i = 0; i < _imageWriter.getWidth(); ++i){
+            for (int j = 0; j < _imageWriter.getHeight(); ++j){
                 Ray ray = camera.constructRayThroughPixel(
                         _imageWriter.getNx(), _imageWriter.getNy(),
                         i, j, _scene.get_screenDistance(),
@@ -55,7 +84,7 @@ public class Render {
                     _imageWriter.writePixel(i, j, color.getColor());
                 }
             }
-        }
+        }*/
     }
 
     public ArrayList<GeoPoint> getSceneRayIntersections(Ray ray){
