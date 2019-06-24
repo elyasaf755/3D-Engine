@@ -23,6 +23,7 @@ public class Color {
      * Default constructor - to generate Black Color
      */
     public Color() {
+
     }
 
     /**

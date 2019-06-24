@@ -8,6 +8,8 @@ import primitives.*;
 import scene.Scene;
 import sun.print.SunPrinterJobService;
 
+import static geometries.Intersectable.GeoPoint;
+
 import java.util.ArrayList;
 
 class RenderTest {
@@ -682,6 +684,44 @@ class RenderTest {
 
 
         ImageWriter iw = new ImageWriter("15thRenderTest - Avik", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+
+    }
+
+    @Test//TEST 16 - Cuboid - base for AABB
+    void renderImage16(){
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(75, 127,190));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(45,15,0);
+
+        scene.set_background(new Color(53, 215, 255));
+
+        scene.addLights(
+                new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0))
+        );
+
+        //Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(50,50,-50), new Vector3D(1,0,0)), new Color(java.awt.Color.white));
+        Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)), new Color(java.awt.Color.white));
+        cuboid1.setBackFaceColor(new Color(java.awt.Color.green));
+        cuboid1.setUpFaceColor(new Color(java.awt.Color.red));
+        cuboid1.setFrontFaceColor(new Color(java.awt.Color.blue));
+        cuboid1.setRightFaceColor(new Color(java.awt.Color.magenta));
+        cuboid1.setDownFaceColor(new Color(java.awt.Color.yellow));
+        cuboid1.setLeftFaceColor(new Color(java.awt.Color.cyan));
+
+        cuboid1.translate(0,0,0);
+
+        scene.addGeometries(cuboid1);
+        scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
+
+
+        ImageWriter iw = new ImageWriter("16thRenderTest - Cuboid", 500, 500, 500, 500);
         Render render = new Render(scene, iw);
         render.printAxises();
 

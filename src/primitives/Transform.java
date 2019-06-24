@@ -59,7 +59,10 @@ public class Transform {
     }
 
     public void setTranslation(double x, double y, double z) {
-        this._translation = new Vector3D(x, y, z);
+        if (Util.equals(x, 0) && Util.equals(y, 0) && Util.equals(z, 0))
+            this._translation = new Vector3D(Vector3D.ZERO);
+        else
+            this._translation = new Vector3D(x, y, z);
     }
 
     public void setRotation(Vector3D rotation) {

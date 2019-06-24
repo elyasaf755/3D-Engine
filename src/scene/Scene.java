@@ -5,6 +5,7 @@ import elements.Camera;
 import elements.LightSource;
 import geometries.Geometries;
 import geometries.Geometry;
+import geometries.Intersectable;
 import primitives.Color;
 import primitives.Vector3D;
 

@@ -189,7 +189,7 @@ public class Torus extends RadialGeometry{
             if (Util.equals(root, 0)){
                 result.add(0, new GeoPoint(this, Pr));
             }
-            else{
+            else {
                 result.add(0, new GeoPoint(this, Pr.add(Vr.scale(root))));
             }
         }
