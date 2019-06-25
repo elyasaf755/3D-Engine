@@ -521,7 +521,7 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 12 - Torus - New Geometry//TODO:FIX
+    @Test//TEST 12 - Torus - New Geometry
     void renderImage12(){
         Camera camera = new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0));
 
@@ -530,23 +530,19 @@ class RenderTest {
         scene.set_camera(camera, 1000);
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
         camera.rotate(5,15,0);
-        camera.setAa(2);
+        camera.setAa(1);
 
         Torus torus = new Torus(40, 20, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
         torus.set_emission(java.awt.Color.BLUE);
-        torus.set_material(new Material(1,1,0,0.5,6));
-
-        Sphere sphere = new Sphere(50, new Point3D(50,0,-50));
-        sphere.set_emission(new Color(java.awt.Color.green));
-        sphere.set_material(new Material(0.5,0.5,0.5,0.3,2));
+        torus.set_material(new Material(1,1,1,0.1,2));
 
         scene.addGeometries(torus);
-        scene.addLights(new DirectionalLight(new Vector3D(-1,0,1)));
+        scene.addLights(new DirectionalLight(new Vector3D(0,0,1)));
 
 
         ImageWriter iw = new ImageWriter("12thRenderTest - Torus", 500, 500, 500, 500);
         Render render = new Render(scene, iw);
-        //render.printAxises();
+        render.printAxises();
 
         render.renderImage();
         render.writeToImage();

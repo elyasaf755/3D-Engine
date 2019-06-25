@@ -85,13 +85,6 @@ public class Transform {
         this._scale = new Vector3D(scalar, scalar, scalar);
     }
 
-    public void setProjection(double fov, double width, double height, double zFar, double zNear){
-        Transform._fov = fov;
-        Transform._width = width;
-        Transform._height = height;
-        Transform._zFar = zFar;
-        Transform._zNear = zNear;
-    }
     //Methods
 
     public Matrix4 getTransformation(){

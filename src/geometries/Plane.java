@@ -80,6 +80,8 @@ public class Plane extends Geometry  implements FlatGeometry{
     }
 
     public Plane(Plane plane){
+        super(plane.get_emission(), plane.get_material());
+
         _point = new Point3D(plane._point);
         _normal = (new Vector3D(plane._normal)).normalized();
     }
@@ -139,7 +141,7 @@ public class Plane extends Geometry  implements FlatGeometry{
         y = point.getY().getCoord();
         z = point.getZ().getCoord();
 
-        return A*x + B*y + C*z == D;
+        return Util.equals(A*x + B*y + C*z, D);
     }
 
     @Override

@@ -37,7 +37,7 @@ public abstract class Geometry implements Intersectable, ITransformable {
     //Getters
 
     public Color get_emission() {
-        return _emission;
+        return new Color(_emission);
     }
 
     public Material get_material() {
@@ -46,16 +46,16 @@ public abstract class Geometry implements Intersectable, ITransformable {
 
     //Setters
 
-    public void set_emission(Color _emission) {
-        this._emission = new Color(_emission);
+    public void set_emission(Color emission) {
+        this._emission = new Color(emission);
     }
 
-    public void set_emission(java.awt.Color _emission) {
-        this._emission = new Color(_emission);
+    public void set_emission(java.awt.Color emission) {
+        this._emission = new Color(emission);
     }
 
-    public void set_material(Material _material) {
-        this._material = _material;
+    public void set_material(Material material) {
+        this._material = material;
     }
 
     //Methods

@@ -5,7 +5,7 @@ public class Material {
     protected double _Ks;//specular
     protected double _Kr;//reflection constant: 0->matt, 1->mirror.
     protected double _Kt;//refraction constant: 0->opaque, 1->translucent.
-    protected int _shininess;//Shininess factor. higher values - higher shininess. range from 0 and on.
+    protected int _shininess;//Shininess factor. lower values - higher shininess. range from 0 and on.
 
 
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXISTS).
