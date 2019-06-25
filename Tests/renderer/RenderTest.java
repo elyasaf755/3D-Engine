@@ -528,7 +528,7 @@ class RenderTest {
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
         scene.get_camera().rotate(5,15,0);
 
-        Torus torus = new Torus(3333, 33, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
+        Torus torus = new Torus(40, 20, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
         torus.set_emission(java.awt.Color.BLUE);
 
         scene.addGeometries(torus);

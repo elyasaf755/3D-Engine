@@ -116,6 +116,13 @@ class ComplexTest {
                 -13.128783081462158,
             -15.200784463067954);//Wolfarm's result
         assertEquals(expected1, actual1);
+
+        Complex z2 = new Complex(0,1);
+        Complex actual2 = z2.exp();
+        Complex expected2 = new Complex(
+                0.54030230586813971740093660744297660373231042061792222767,
+                0.84147098480789650665250232163029899962256306079837106567);
+        assertEquals(expected2, actual2);
     }
 
     @Test
@@ -170,6 +177,16 @@ class ComplexTest {
         Complex actual1 = z1.sqrt();
         Complex expected1 = new Complex(2,1);
         assertEquals(expected1, actual1);
+
+        Complex z2 = new Complex(-1, -1);
+        Complex actual2 = z2.sqrt();
+        Complex expected2 = new Complex(0.45508986056223, -1.098684113467810);
+        assertEquals(expected2, actual2);
+
+        Complex z3 = new Complex(-1 ,0);
+        Complex actual3 = z3.sqrt(0);
+        Complex expected3 = new Complex(0, 1);
+        assertEquals(expected3, actual3);
     }
 
     @Test
@@ -251,6 +268,10 @@ class ComplexTest {
         Complex actual3 = z1.pow(1.0 / 2);
         Complex expected3 = z1.sqrt();
         assertEquals(expected3, actual3);
+
+        Complex actual4 = z1.pow(3);
+        Complex expected4 = z1.mult(z1).mult(z1);
+        assertEquals(expected3, actual3);
     }
 
     @Test
@@ -301,6 +322,7 @@ class ComplexTest {
 
     @Test
     void cis() {
+
     }
 
     @Test

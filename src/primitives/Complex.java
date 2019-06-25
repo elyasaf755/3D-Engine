@@ -148,27 +148,32 @@ public class Complex {
 
     //sqrt(z) = sqrt(|r|)*(z+r)/|z+r|
     public Complex sqrt(){
-        return this.sqrt(0);
-        /*
         double re = this._real;
         double im = this._imaginary;
 
         if (Util.equals(im, 0)){
-            return new Complex(Math.sqrt(re), 0);
+
+            if (Util.equals(re, 0) || re > 0){
+                return new Complex(Math.sqrt(re), 0);
+            }
+
+            return new Complex(0, Math.sqrt(Math.abs(re)));
         }
 
         double r = this.length();
         Complex temp = (this.add(r));
 
-        return temp.div(temp.length()).mult(Math.sqrt(r));*/
+        return temp.div(temp.length()).mult(Math.sqrt(r));
     }
 
     public Complex sqrt(int index){
+        double n = 0.5;
+
         double r = this.length();
-        double rn = Math.pow(r, 1.0 / 2.0);
-        double twoPi = 2*Math.PI;
+        double rn = Math.pow(r, n);
         double angle = this.angle();
-        double theta = ((twoPi*index) + angle) / 2;
+        double twoPi = 2*Math.PI;
+        double theta = (angle + twoPi*index)*n;
 
         return Complex.cis(theta).mult(rn);
     }
@@ -190,9 +195,15 @@ public class Complex {
 
     //tan(angle) = imaginary / real => angle = arctan(imaginary / real)
     public double angle(){
-        double tan = this._imaginary / this._real;
+        double re = this._real;
+        double im = this._imaginary;
 
-        return Math.atan(tan);
+        double tan = im / re;
+
+        if (re >= 0)
+            return Math.atan(tan);
+        else
+            return Math.atan(tan)+Math.PI;
     }
 
     public static Complex cis(double angle){

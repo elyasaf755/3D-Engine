@@ -172,7 +172,7 @@ public class Util {
         }
     }
 
-    public static double[] cubicRoots(double a, double b, double c, double d){
+    /*public static double[] cubicRoots(double a, double b, double c, double d){
 
         double f = ((3*c / a) - (b*b)/(a*a)) / 3;
         double g = ((2*b*b*b) / (a*a*a) - ((9*b*c) / (a*a)) + ((27*d) / a)) / 27;
@@ -216,6 +216,57 @@ public class Util {
         }
 
         return new double[]{};
+    }*/
+
+    public static Complex[] cubicRoots(double a, double b, double c, double d){
+
+        double f = ((3.0*c)/a - (b*b / (a*a)))/3.0;
+        double g = (2*b*b*b / (a*a*a) - (9*b*c / (a*a)) +(27*d / a)) / 27.0;
+        double h = (g*g / 4.0) + (f*f*f / 27.0);
+
+        //All 3 roots are real & equal
+        if (Util.equals(h, 0) && Util.equals(h, 0) && Util.equals(h, 0)){
+            Complex[] result = {
+                    new Complex(new Coordinate(-Math.cbrt(d/a)).getCoord(), 0),
+                    new Complex(new Coordinate(-Math.cbrt(d/a)).getCoord(), 0),
+                    new Complex(new Coordinate(-Math.cbrt(d/a)).getCoord(), 0)
+            };
+
+            return result;
+        }
+        else if (Util.equals(h, 0) || h < 0){//All 3 roots are real
+            double i = Math.sqrt((g*g)/4.0 - h);
+            double j = Math.cbrt(i);
+            double k = Math.acos(-(g / (2.0 * i)));
+            double L = -j;
+            double M = Math.cos(k / 3.0);
+            double N = Math.sqrt(3.0)*Math.sin(k / 3.0);
+            double P = -(b / (3.0*a));
+
+            Complex[] result = {
+                    new Complex(new Coordinate(2*j*Math.cos(k / 3.0) - (b / (3.0*a))).getCoord(), 0),
+                    new Complex(new Coordinate(L*(M+N)+P).getCoord(), 0),
+                    new Complex(new Coordinate(L*(M-N)+P).getCoord(), 0)
+            };
+
+            return result;
+        }
+        else if (h > 0){//Only 1 real root. //TODO: if not working, change from double to complex
+            double R = -g/2.0 + Math.sqrt(h);
+            double S = Math.cbrt(R);
+            double T = -g/2.0 - Math.sqrt(h);
+            double U = Math.cbrt(T);
+
+            Complex[] result = {
+                    new Complex(new Coordinate(S+U-b/(3.0*a)).getCoord(), 0),
+                    new Complex(new Coordinate(-(S+U)/2.0 - (b / (3.0*a))).getCoord(), new Coordinate((S-U)*Math.sqrt(3)/2.0).getCoord()),
+                    new Complex(new Coordinate(-(S+U)/2.0 - (b / (3.0*a))).getCoord(), new Coordinate(-(S-U)*Math.sqrt(3)/2.0).getCoord())
+            };
+
+            return result;
+        }
+
+        return new Complex[]{};
     }
 
     public static Complex[] cubicRoots(Complex a, Complex b, Complex c, Complex d){
@@ -252,7 +303,7 @@ public class Util {
         return roots;
     }
 
-    public static double[] quarticRoots(double a, double b, double c, double d, double e) {
+    /*public static double[] quarticRoots(double a, double b, double c, double d, double e) {
         if (a != 0){
             b = b / a;
             c = c / a;
@@ -294,6 +345,90 @@ public class Util {
                 p - q - r - s,
                 -p + q - r - s,
                 -p - q + r -s
+        };
+
+        return result;
+    }*/
+
+    public static Complex[] quarticRoots(double a, double b, double c, double d, double e) {
+        if (a == 0){
+            return Util.cubicRoots(b,c,d,e);
+        }
+
+        Complex zero = new Complex();
+
+        b = b/a;
+        c = c/a;
+        d = d/a;
+        e = e/a;
+        a = 1;
+
+        double f = c - (3*b*b)/8.0;
+        double g = d + (b*b*b) / 8.0 - (b*c) / 2.0;
+        double h = e - (3*b*b*b*b / 256.0) + (b*b*c / 16.0) - (b*d)/4.0;
+
+        Complex[] cubicRoots = Util.cubicRoots(
+                1,
+                f / 2.0,
+                (f*f-4.0*h)/16.0,
+                -g*g/64.0
+        );
+
+        Complex p = null, q = null;
+        int imCount = 0;
+        int reCount = 0;
+        ArrayList<Complex> cRoots = new ArrayList<>();
+        ArrayList<Complex> rRoots = new ArrayList<>();
+
+        for (Complex root : cubicRoots){
+            if (Util.equals(root.get_imaginary(), 0)){
+                reCount++;
+                rRoots.add(root.sqrt());
+            }
+            else
+            {
+                imCount++;
+                cRoots.add(root.sqrt());
+            }
+        }
+
+        if (imCount == 3 || imCount == 2){
+            p = new Complex(cRoots.get(0));
+            q = new Complex(cRoots.get(1));
+        }
+        else if (imCount == 1){
+            p = new Complex(cRoots.get(0));
+
+            for (Complex root : rRoots){
+                if (!root.equals(zero)){
+                    q = new Complex(root);
+                    break;
+                }
+            }
+        }
+        else{
+            for (int i = 0; i < 3; ++i){
+                Complex root = rRoots.get(i);
+                if (!root.equals(zero)){
+                    if (p == null){
+                        p = new Complex(root);
+                    }
+                    else if (q == null){
+                        q = new Complex(root);
+                        break;
+                    }
+                }
+            }
+        }
+
+        Complex r = p.mult(q).mult(8).reciprocal().mult(-g);
+        double s = b / (4.0*a);
+
+        Complex[] result = {
+                p.add(q).add(r).sub(s),
+                p.sub(q).sub(r).sub(s),
+                q.sub(p).sub(r).sub(s),
+                r.sub(p).sub(q).sub(s)
         };
 
         return result;

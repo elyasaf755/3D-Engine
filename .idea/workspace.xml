@@ -2,55 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/16thRenderTest - Cuboid.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/17thRenderTest - Aquarium.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/18thRenderTest - Pyramid.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/primitives/ComplexTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/primitives/Complex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10thRenderTest - Cone.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/10thRenderTest - Cone.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/12thRenderTest - Torus.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/12thRenderTest - Torus.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/14thRenderTest - Set Operations.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/14thRenderTest - Set Operations.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/15thRenderTest - Avik.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/15thRenderTest - Playing With Triangles.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1stRenderTest.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/7thRenderTest - check.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/9rdRenderTest - reflection and refraction.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/CuboidTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/CuboidTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/geometries/TubeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/primitives/Matrix4Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/primitives/Matrix4Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/primitives/ComplexTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/primitives/ComplexTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/primitives/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/primitives/UtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/primitives/Vector3DTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/primitives/Vector3DTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/renderer/RenderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Cylinder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Geometries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Geometries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/geometries/Triangle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3D-Engine/primitives/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cuboid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cuboid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/GeometriesSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/GeometriesSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/SetComplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/SetComplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Torus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Torus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/TriangleMesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/TriangleMesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/ITransformable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/ITransformable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Complex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Complex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Vector3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,48 +39,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometries/Torus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="244" column="69" selection-start-line="244" selection-start-column="69" selection-end-line="244" selection-end-column="69" />
-              <folding>
-                <element signature="method#Torus#0;class#Torus#0" />
-                <element signature="method#Torus#1;class#Torus#0" />
-                <element signature="method#Torus#2;class#Torus#0" />
-                <element signature="method#Torus#3;class#Torus#0" />
-                <element signature="method#Torus#4;class#Torus#0" />
-                <element signature="method#Torus#5;class#Torus#0" />
-                <element signature="method#Torus#6;class#Torus#0" />
-                <element signature="method#Torus#7;class#Torus#0" />
-                <element signature="method#Torus#8;class#Torus#0" />
-                <element signature="method#set_ray#0;class#Torus#0" />
-                <element signature="method#set_torus#0;class#Torus#0" />
-                <element signature="method#set_torus#1;class#Torus#0" />
-                <element signature="method#transformToDefault#0;class#Torus#0" />
-                <element signature="method#get_normal#0;class#Torus#0" />
-                <element signature="e#5436#7073#0" />
-                <element signature="method#findIntersectionsInZDirection#0;class#Torus#0" />
-                <element signature="method#translate#0;class#Torus#0" />
-                <element signature="method#rotate#0;class#Torus#0" />
-                <element signature="method#scale#0;class#Torus#0" />
-                <element signature="method#scale#1;class#Torus#0" />
-                <element signature="method#transform#0;class#Torus#0" />
-                <element signature="method#transform#1;class#Torus#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/12thRenderTest - Torus.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="530" column="40" selection-start-line="530" selection-start-column="40" selection-end-line="530" selection-end-column="40" />
+            <state relative-caret-position="279">
+              <caret line="530" column="12" selection-start-line="530" selection-start-column="12" selection-end-line="530" selection-end-column="12" />
               <folding>
                 <element signature="method#renderImage1#0;class#RenderTest#0" />
                 <element signature="method#renderImage2#0;class#RenderTest#0" />
@@ -148,11 +70,43 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/geometries/Torus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="276" selection-start-line="276" selection-end-line="276" />
+              <folding>
+                <element signature="method#Torus#0;class#Torus#0" />
+                <element signature="method#Torus#1;class#Torus#0" />
+                <element signature="method#Torus#2;class#Torus#0" />
+                <element signature="method#Torus#3;class#Torus#0" />
+                <element signature="method#Torus#4;class#Torus#0" />
+                <element signature="method#Torus#5;class#Torus#0" />
+                <element signature="method#Torus#6;class#Torus#0" />
+                <element signature="method#Torus#7;class#Torus#0" />
+                <element signature="method#Torus#8;class#Torus#0" />
+                <element signature="method#set_ray#0;class#Torus#0" />
+                <element signature="method#set_torus#0;class#Torus#0" />
+                <element signature="method#set_torus#1;class#Torus#0" />
+                <element signature="method#transformToDefault#0;class#Torus#0" />
+                <element signature="method#get_normal#0;class#Torus#0" />
+                <element signature="e#5473#7105#0" />
+                <element signature="method#translate#0;class#Torus#0" />
+                <element signature="method#rotate#0;class#Torus#0" />
+                <element signature="method#scale#0;class#Torus#0" />
+                <element signature="method#scale#1;class#Torus#0" />
+                <element signature="method#transform#0;class#Torus#0" />
+                <element signature="method#transform#1;class#Torus#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/primitives/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="272" column="57" selection-start-line="272" selection-start-column="57" selection-end-line="272" selection-end-column="57" />
+            <state relative-caret-position="298">
+              <caret line="352" column="91" selection-start-line="352" selection-start-column="91" selection-end-line="352" selection-end-column="91" />
               <folding>
                 <element signature="n#!!doc;n#getExp#0;n#Util#0" />
                 <element signature="method#getExp#0;class#Util#0" />
@@ -174,13 +128,44 @@
                 <element signature="method#quadraticRoots#0;class#Util#0" />
                 <element signature="e#4085#4162#1" />
                 <element signature="method#quadraticRoots#1;class#Util#0" />
+                <element signature="e#4376#4724#1" />
+                <element signature="e#4455#4510#1" />
+                <element signature="e#4580#4714#1" />
+                <element signature="e#4746#5427#1" />
+                <element signature="e#4892#5001#1" />
+                <element signature="e#5044#5417#1" />
+                <element signature="e#5439#6937#0" />
                 <element signature="method#cubicRoots#0;class#Util#0" />
+                <element signature="e#7310#7636#1" />
+                <element signature="e#7681#8343#1" />
+                <element signature="e#8367#9050#1" />
                 <element signature="method#cubicRoots#1;class#Util#0" />
+                <element signature="e#9295#9350#1" />
+                <element signature="e#9686#9727#1" />
+                <element signature="e#9814#9907#1" />
+                <element signature="e#9942#11135#0" />
+                <element signature="method#quarticRoots#0;class#Util#0" />
+                <element signature="e#11249#11305#1" />
+                <element signature="e#11992#12253#1" />
+                <element signature="e#12047#12130#1" />
+                <element signature="e#12160#12243#1" />
+                <element signature="e#12296#12395#1" />
+                <element signature="e#12426#12666#1" />
+                <element signature="e#12512#12656#1" />
+                <element signature="e#12553#12642#1" />
+                <element signature="e#12679#13096#1" />
+                <element signature="e#12720#13086#1" />
+                <element signature="e#12807#13072#1" />
+                <element signature="e#12843#12913#1" />
+                <element signature="e#12953#13054#1" />
                 <element signature="method#realQuarticRoots#0;class#Util#0" />
                 <element signature="method#quarticRoots#1;class#Util#0" />
-                <element signature="e#14502#14503#0" expanded="true" />
+                <element signature="e#14021#14075#1" />
+                <element signature="e#14701#15097#1" />
+                <element signature="e#15119#16247#1" />
+                <element signature="e#15556#15609#1" />
+                <element signature="e#15639#15699#1" />
                 <element signature="n#!!block;n#sign#0;n#Util#0" />
-                <element signature="e#14554#14555#0" expanded="true" />
                 <element signature="method#equals#0;class#Util#0" />
               </folding>
             </state>
@@ -190,8 +175,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/primitives/ComplexTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="256" column="20" selection-start-line="256" selection-start-column="20" selection-end-line="256" selection-end-column="20" />
+            <state relative-caret-position="414">
+              <caret line="188" column="37" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="37" />
               <folding>
                 <element signature="method#get_real#0;class#ComplexTest#0" />
                 <element signature="method#get_imaginary#0;class#ComplexTest#0" />
@@ -213,12 +198,10 @@
                 <element signature="method#tan#0;class#ComplexTest#0" />
                 <element signature="method#lengthSquared#0;class#ComplexTest#0" />
                 <element signature="method#length#0;class#ComplexTest#0" />
-                <element signature="method#sqrt#0;class#ComplexTest#0" />
                 <element signature="method#sqrtIndex#0;class#ComplexTest#0" />
                 <element signature="method#cbrt#0;class#ComplexTest#0" />
                 <element signature="method#cbrtIndex#0;class#ComplexTest#0" />
                 <element signature="method#angle#0;class#ComplexTest#0" />
-                <element signature="method#pow#0;class#ComplexTest#0" />
                 <element signature="method#powIndex#0;class#ComplexTest#0" />
                 <element signature="method#equals1#0;class#ComplexTest#0" />
                 <element signature="method#toString1#0;class#ComplexTest#0" />
@@ -227,22 +210,9 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Tests/primitives/UtilTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="356" selection-start-line="356" selection-end-line="356" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/12thRenderTest - Torus.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -352,12 +322,12 @@
         <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
         <option value="$PROJECT_DIR$/src/geometries/Cylinder.java" />
         <option value="$PROJECT_DIR$/src/geometries/Tube.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/ComplexTest.java" />
-        <option value="$PROJECT_DIR$/src/geometries/Torus.java" />
         <option value="$PROJECT_DIR$/src/primitives/Complex.java" />
-        <option value="$PROJECT_DIR$/Tests/renderer/RenderTest.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/UtilTest.java" />
+        <option value="$PROJECT_DIR$/Tests/primitives/ComplexTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Util.java" />
+        <option value="$PROJECT_DIR$/Tests/primitives/UtilTest.java" />
+        <option value="$PROJECT_DIR$/Tests/renderer/RenderTest.java" />
+        <option value="$PROJECT_DIR$/src/geometries/Torus.java" />
       </list>
     </option>
   </component>
@@ -367,7 +337,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -475,7 +445,7 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.RenderTest.renderImage12">
-    <configuration name="ComplexTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ComplexTest.exp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
@@ -485,7 +455,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="primitives" />
       <option name="MAIN_CLASS_NAME" value="primitives.ComplexTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="exp" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -506,7 +477,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ComplexTest.powIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ComplexTest.sqrt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="3D-Engine" />
       <extension name="coverage">
         <pattern>
@@ -516,7 +487,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="primitives" />
       <option name="MAIN_CLASS_NAME" value="primitives.ComplexTest" />
-      <option name="METHOD_NAME" value="powIndex" />
+      <option name="METHOD_NAME" value="sqrt" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -558,9 +529,9 @@
       <list>
         <item itemvalue="JUnit.RenderTest.renderImage12" />
         <item itemvalue="JUnit.UtilTest.quarticRoots" />
-        <item itemvalue="JUnit.ComplexTest" />
-        <item itemvalue="JUnit.ComplexTest.powIndex" />
+        <item itemvalue="JUnit.ComplexTest.sqrt" />
         <item itemvalue="JUnit.ComplexTest.pow" />
+        <item itemvalue="JUnit.ComplexTest.exp" />
       </list>
     </recent_temporary>
   </component>
@@ -765,39 +736,46 @@
       <option name="project" value="LOCAL" />
       <updated>1561338452114</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Complex numbers">
+      <created>1561420079373</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1561420079374</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RenderTest_renderImage12 - 2019.06.25 at 01h 43m 12s.xml">
+    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 05h 43m 13s.xml">
+      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 05h 43m 16s.xml">
+      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 05h 43m 38s.xml">
+      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 05h 46m 47s.xml">
+      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 05h 49m 02s.xml">
+      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 05h 49m 05s.xml">
+      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RenderTest_renderImage12 - 2019.06.25 at 05h 49m 22s.xml">
       <configuration name="RenderTest.renderImage12" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage12 - 2019.06.25 at 01h 43m 32s.xml">
+    <history-entry file="RenderTest_renderImage12 - 2019.06.25 at 05h 49m 46s.xml">
       <configuration name="RenderTest.renderImage12" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTest_renderImage12 - 2019.06.25 at 01h 44m 12s.xml">
+    <history-entry file="RenderTest_renderImage12 - 2019.06.25 at 05h 49m 56s.xml">
       <configuration name="RenderTest.renderImage12" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 01h 45m 53s.xml">
-      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 01h 46m 33s.xml">
-      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 02h 03m 46s.xml">
-      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 02h 05m 18s.xml">
-      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 02h 31m 56s.xml">
-      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 02h 41m 02s.xml">
-      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UtilTest_quarticRoots - 2019.06.25 at 02h 44m 14s.xml">
-      <configuration name="UtilTest.quarticRoots" configurationId="JUnit" />
+    <history-entry file="RenderTest_renderImage12 - 2019.06.25 at 05h 51m 05s.xml">
+      <configuration name="RenderTest.renderImage12" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -813,10 +791,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.082056895" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.1130064" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -826,8 +804,8 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.1744312" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3501094" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32719395" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34573305" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3261105" />
@@ -846,7 +824,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" weight="0.32980332" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.047045954" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.02292111" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.14901665" />
@@ -960,7 +938,8 @@
     <MESSAGE value="we can now rotate a vector by an angle around any vector&#10;using Transform.rotatedVectorAround" />
     <MESSAGE value="implemented set operations" />
     <MESSAGE value="Cuboid implemented and tested.&#10;This is a preperation for bounding box optimizations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cuboid implemented and tested.&#10;This is a preperation for bounding box optimizations" />
+    <MESSAGE value="Complex numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complex numbers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1068,16 +1047,22 @@
           <option name="timeStamp" value="600" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Tests/primitives/UtilTest.java</url>
-          <line>44</line>
+          <url>file://$PROJECT_DIR$/Tests/primitives/ComplexTest.java</url>
+          <line>186</line>
           <properties />
-          <option name="timeStamp" value="615" />
+          <option name="timeStamp" value="652" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Tests/primitives/UtilTest.java</url>
-          <line>29</line>
+          <url>file://$PROJECT_DIR$/src/primitives/Util.java</url>
+          <line>424</line>
           <properties />
-          <option name="timeStamp" value="616" />
+          <option name="timeStamp" value="665" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Torus.java</url>
+          <line>277</line>
+          <properties />
+          <option name="timeStamp" value="671" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1788,44 +1773,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Torus.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="244" column="69" selection-start-line="244" selection-start-column="69" selection-end-line="244" selection-end-column="69" />
+        <state relative-caret-position="188">
+          <caret line="356" selection-start-line="356" selection-end-line="356" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/primitives/UtilTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="57" column="36" lean-forward="true" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
           <folding>
-            <element signature="method#Torus#0;class#Torus#0" />
-            <element signature="method#Torus#1;class#Torus#0" />
-            <element signature="method#Torus#2;class#Torus#0" />
-            <element signature="method#Torus#3;class#Torus#0" />
-            <element signature="method#Torus#4;class#Torus#0" />
-            <element signature="method#Torus#5;class#Torus#0" />
-            <element signature="method#Torus#6;class#Torus#0" />
-            <element signature="method#Torus#7;class#Torus#0" />
-            <element signature="method#Torus#8;class#Torus#0" />
-            <element signature="method#set_ray#0;class#Torus#0" />
-            <element signature="method#set_torus#0;class#Torus#0" />
-            <element signature="method#set_torus#1;class#Torus#0" />
-            <element signature="method#transformToDefault#0;class#Torus#0" />
-            <element signature="method#get_normal#0;class#Torus#0" />
-            <element signature="e#5436#7073#0" />
-            <element signature="method#findIntersectionsInZDirection#0;class#Torus#0" />
-            <element signature="method#translate#0;class#Torus#0" />
-            <element signature="method#rotate#0;class#Torus#0" />
-            <element signature="method#scale#0;class#Torus#0" />
-            <element signature="method#scale#1;class#Torus#0" />
-            <element signature="method#transform#0;class#Torus#0" />
-            <element signature="method#transform#1;class#Torus#0" />
+            <element signature="method#cubicRoots#0;class#UtilTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/12thRenderTest - Torus.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/src/primitives/Complex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="method#Complex#0;class#Complex#0" />
+            <element signature="method#Complex#1;class#Complex#0" />
+            <element signature="method#add#0;class#Complex#0" />
+            <element signature="method#add#1;class#Complex#0" />
+            <element signature="method#sub#0;class#Complex#0" />
+            <element signature="method#sub#1;class#Complex#0" />
+            <element signature="method#mult#0;class#Complex#0" />
+            <element signature="n#!!block;n#mult#1;n#Complex#0" />
+            <element signature="n#!!block;n#squared#0;n#Complex#0" />
+            <element signature="n#!!block;n#conjugate#0;n#Complex#0" />
+            <element signature="method#reciprocal#0;class#Complex#0" />
+            <element signature="n#!!block;n#div#0;n#Complex#0" />
+            <element signature="n#!!block;n#div#1;n#Complex#0" />
+            <element signature="method#exp#0;class#Complex#0" />
+            <element signature="method#sin#0;class#Complex#0" />
+            <element signature="method#cos#0;class#Complex#0" />
+            <element signature="n#!!block;n#tan#0;n#Complex#0" />
+            <element signature="n#!!block;n#lengthSquared#0;n#Complex#0" />
+            <element signature="n#!!block;n#length#0;n#Complex#0" />
+            <element signature="n#!!block;n#cbrt#0;n#Complex#0" />
+            <element signature="method#cbrt#1;class#Complex#0" />
+            <element signature="method#pow#0;class#Complex#0" />
+            <element signature="method#pow#1;class#Complex#0" />
+            <element signature="method#getRealNumbers#0;class#Complex#0" />
+            <element signature="method#equals#0;class#Complex#0" />
+            <element signature="method#toString#0;class#Complex#0" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/renderer/RenderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="530" column="40" selection-start-line="530" selection-start-column="40" selection-end-line="530" selection-end-column="40" />
+        <state relative-caret-position="279">
+          <caret line="530" column="12" selection-start-line="530" selection-start-column="12" selection-end-line="530" selection-end-column="12" />
           <folding>
             <element signature="method#renderImage1#0;class#RenderTest#0" />
             <element signature="method#renderImage2#0;class#RenderTest#0" />
@@ -1852,93 +1855,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Complex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
-          <folding>
-            <element signature="method#Complex#0;class#Complex#0" />
-            <element signature="method#Complex#1;class#Complex#0" />
-            <element signature="method#Complex#2;class#Complex#0" />
-            <element signature="method#add#0;class#Complex#0" />
-            <element signature="method#add#1;class#Complex#0" />
-            <element signature="method#sub#0;class#Complex#0" />
-            <element signature="method#sub#1;class#Complex#0" />
-            <element signature="method#mult#0;class#Complex#0" />
-            <element signature="e#1766#1767#0" expanded="true" />
-            <element signature="e#1843#1844#0" expanded="true" />
-            <element signature="e#1874#1875#0" expanded="true" />
-            <element signature="e#1912#1913#0" expanded="true" />
-            <element signature="n#!!block;n#conjugate#0;n#Complex#0" />
-            <element signature="method#reciprocal#0;class#Complex#0" />
-            <element signature="n#!!block;n#div#0;n#Complex#0" />
-            <element signature="n#!!block;n#div#1;n#Complex#0" />
-            <element signature="method#exp#0;class#Complex#0" />
-            <element signature="method#sin#0;class#Complex#0" />
-            <element signature="method#cos#0;class#Complex#0" />
-            <element signature="n#!!block;n#tan#0;n#Complex#0" />
-            <element signature="n#!!block;n#lengthSquared#0;n#Complex#0" />
-            <element signature="n#!!block;n#length#0;n#Complex#0" />
-            <element signature="method#sqrt#1;class#Complex#0" />
-            <element signature="method#cbrt#1;class#Complex#0" />
-            <element signature="method#angle#0;class#Complex#0" />
-            <element signature="n#!!block;n#cis#0;n#Complex#0" />
-            <element signature="method#pow#0;class#Complex#0" />
-            <element signature="method#pow#1;class#Complex#0" />
-            <element signature="method#equals#0;class#Complex#0" />
-            <element signature="method#toString#0;class#Complex#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.0-M1/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="356" selection-start-line="356" selection-end-line="356" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="272" column="57" selection-start-line="272" selection-start-column="57" selection-end-line="272" selection-end-column="57" />
-          <folding>
-            <element signature="n#!!doc;n#getExp#0;n#Util#0" />
-            <element signature="method#getExp#0;class#Util#0" />
-            <element signature="e#516#585#0" />
-            <element signature="method#usubtract#0;class#Util#0" />
-            <element signature="e#994#1047#0" />
-            <element signature="e#1151#1204#0" />
-            <element signature="method#uadd#0;class#Util#0" />
-            <element signature="e#1650#1703#0" />
-            <element signature="e#1807#1860#0" />
-            <element signature="method#uscale#0;class#Util#0" />
-            <element signature="method#isNegative#0;class#Util#0" />
-            <element signature="e#2860#2897#1" />
-            <element signature="e#2937#2973#1" />
-            <element signature="method#removeDuplicates#0;class#Util#0" />
-            <element signature="e#3223#3332#1" />
-            <element signature="e#3269#3322#1" />
-            <element signature="e#3391#3433#1" />
-            <element signature="method#quadraticRoots#0;class#Util#0" />
-            <element signature="e#4085#4162#1" />
-            <element signature="method#quadraticRoots#1;class#Util#0" />
-            <element signature="method#cubicRoots#0;class#Util#0" />
-            <element signature="method#cubicRoots#1;class#Util#0" />
-            <element signature="method#realQuarticRoots#0;class#Util#0" />
-            <element signature="method#quarticRoots#1;class#Util#0" />
-            <element signature="e#14502#14503#0" expanded="true" />
-            <element signature="n#!!block;n#sign#0;n#Util#0" />
-            <element signature="e#14554#14555#0" expanded="true" />
-            <element signature="method#equals#0;class#Util#0" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/12thRenderTest - Torus.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/primitives/ComplexTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="256" column="20" selection-start-line="256" selection-start-column="20" selection-end-line="256" selection-end-column="20" />
+        <state relative-caret-position="414">
+          <caret line="188" column="37" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="37" />
           <folding>
             <element signature="method#get_real#0;class#ComplexTest#0" />
             <element signature="method#get_imaginary#0;class#ComplexTest#0" />
@@ -1960,12 +1883,10 @@
             <element signature="method#tan#0;class#ComplexTest#0" />
             <element signature="method#lengthSquared#0;class#ComplexTest#0" />
             <element signature="method#length#0;class#ComplexTest#0" />
-            <element signature="method#sqrt#0;class#ComplexTest#0" />
             <element signature="method#sqrtIndex#0;class#ComplexTest#0" />
             <element signature="method#cbrt#0;class#ComplexTest#0" />
             <element signature="method#cbrtIndex#0;class#ComplexTest#0" />
             <element signature="method#angle#0;class#ComplexTest#0" />
-            <element signature="method#pow#0;class#ComplexTest#0" />
             <element signature="method#powIndex#0;class#ComplexTest#0" />
             <element signature="method#equals1#0;class#ComplexTest#0" />
             <element signature="method#toString1#0;class#ComplexTest#0" />
@@ -1973,10 +1894,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/primitives/UtilTest.java">
+    <entry file="file://$PROJECT_DIR$/src/primitives/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="298">
+          <caret line="352" column="91" selection-start-line="352" selection-start-column="91" selection-end-line="352" selection-end-column="91" />
+          <folding>
+            <element signature="n#!!doc;n#getExp#0;n#Util#0" />
+            <element signature="method#getExp#0;class#Util#0" />
+            <element signature="e#516#585#0" />
+            <element signature="method#usubtract#0;class#Util#0" />
+            <element signature="e#994#1047#0" />
+            <element signature="e#1151#1204#0" />
+            <element signature="method#uadd#0;class#Util#0" />
+            <element signature="e#1650#1703#0" />
+            <element signature="e#1807#1860#0" />
+            <element signature="method#uscale#0;class#Util#0" />
+            <element signature="method#isNegative#0;class#Util#0" />
+            <element signature="e#2860#2897#1" />
+            <element signature="e#2937#2973#1" />
+            <element signature="method#removeDuplicates#0;class#Util#0" />
+            <element signature="e#3223#3332#1" />
+            <element signature="e#3269#3322#1" />
+            <element signature="e#3391#3433#1" />
+            <element signature="method#quadraticRoots#0;class#Util#0" />
+            <element signature="e#4085#4162#1" />
+            <element signature="method#quadraticRoots#1;class#Util#0" />
+            <element signature="e#4376#4724#1" />
+            <element signature="e#4455#4510#1" />
+            <element signature="e#4580#4714#1" />
+            <element signature="e#4746#5427#1" />
+            <element signature="e#4892#5001#1" />
+            <element signature="e#5044#5417#1" />
+            <element signature="e#5439#6937#0" />
+            <element signature="method#cubicRoots#0;class#Util#0" />
+            <element signature="e#7310#7636#1" />
+            <element signature="e#7681#8343#1" />
+            <element signature="e#8367#9050#1" />
+            <element signature="method#cubicRoots#1;class#Util#0" />
+            <element signature="e#9295#9350#1" />
+            <element signature="e#9686#9727#1" />
+            <element signature="e#9814#9907#1" />
+            <element signature="e#9942#11135#0" />
+            <element signature="method#quarticRoots#0;class#Util#0" />
+            <element signature="e#11249#11305#1" />
+            <element signature="e#11992#12253#1" />
+            <element signature="e#12047#12130#1" />
+            <element signature="e#12160#12243#1" />
+            <element signature="e#12296#12395#1" />
+            <element signature="e#12426#12666#1" />
+            <element signature="e#12512#12656#1" />
+            <element signature="e#12553#12642#1" />
+            <element signature="e#12679#13096#1" />
+            <element signature="e#12720#13086#1" />
+            <element signature="e#12807#13072#1" />
+            <element signature="e#12843#12913#1" />
+            <element signature="e#12953#13054#1" />
+            <element signature="method#realQuarticRoots#0;class#Util#0" />
+            <element signature="method#quarticRoots#1;class#Util#0" />
+            <element signature="e#14021#14075#1" />
+            <element signature="e#14701#15097#1" />
+            <element signature="e#15119#16247#1" />
+            <element signature="e#15556#15609#1" />
+            <element signature="e#15639#15699#1" />
+            <element signature="n#!!block;n#sign#0;n#Util#0" />
+            <element signature="method#equals#0;class#Util#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/geometries/Torus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="276" selection-start-line="276" selection-end-line="276" />
+          <folding>
+            <element signature="method#Torus#0;class#Torus#0" />
+            <element signature="method#Torus#1;class#Torus#0" />
+            <element signature="method#Torus#2;class#Torus#0" />
+            <element signature="method#Torus#3;class#Torus#0" />
+            <element signature="method#Torus#4;class#Torus#0" />
+            <element signature="method#Torus#5;class#Torus#0" />
+            <element signature="method#Torus#6;class#Torus#0" />
+            <element signature="method#Torus#7;class#Torus#0" />
+            <element signature="method#Torus#8;class#Torus#0" />
+            <element signature="method#set_ray#0;class#Torus#0" />
+            <element signature="method#set_torus#0;class#Torus#0" />
+            <element signature="method#set_torus#1;class#Torus#0" />
+            <element signature="method#transformToDefault#0;class#Torus#0" />
+            <element signature="method#get_normal#0;class#Torus#0" />
+            <element signature="e#5473#7105#0" />
+            <element signature="method#translate#0;class#Torus#0" />
+            <element signature="method#rotate#0;class#Torus#0" />
+            <element signature="method#scale#0;class#Torus#0" />
+            <element signature="method#scale#1;class#Torus#0" />
+            <element signature="method#transform#0;class#Torus#0" />
+            <element signature="method#transform#1;class#Torus#0" />
+          </folding>
         </state>
       </provider>
     </entry>

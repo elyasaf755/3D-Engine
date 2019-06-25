@@ -266,13 +266,18 @@ public class Torus extends RadialGeometry{
         double K = 2.0 * Prv.dotProduct(Vr);
         double L = Prv.lengthSquared() + R*R - S*S;
 
-        double[] roots = Util.realQuarticRoots(
+        double[] roots = Complex.getRealNumbers(Util.quarticRoots(
                 J*J,
                 2.0*J*K,
                 2.0*J*L + K*K - G,
                 2.0*K*L - H,
                 L*L - I
-        );
+        ));
+
+        if (roots.length > 0){
+            int x= 5;
+            ++x;
+        }
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
