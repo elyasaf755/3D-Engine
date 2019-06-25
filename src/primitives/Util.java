@@ -303,53 +303,6 @@ public class Util {
         return roots;
     }
 
-    /*public static double[] quarticRoots(double a, double b, double c, double d, double e) {
-        if (a != 0){
-            b = b / a;
-            c = c / a;
-            d = d / a;
-            e = e / a;
-            a = a / a;
-        }
-
-        double f = c - (3*b*b / 8);
-        double g = d + (b*b*b / 8) - (b*c / 2);
-        double h = e - (3*b*b*b*b / 256) + (b*b*c/16) - (b*d / 4);
-
-        double A = 1;
-        double B = f / 2;
-        double C = ((f*f - 4*h) / 16);
-        double D = -g*g / 64;
-
-        double[] cubicRoots = Util.cubicRoots(A, B, C, D);
-
-        double p = Double.NaN;
-        double q = Double.NaN;
-
-        for (double root : cubicRoots){
-            if (!Util.equals(root, 0)){
-                if (Double.isNaN(p)){
-                    p = Math.sqrt(root);
-                }
-                else if (Double.isNaN(q)) {
-                    q = Math.sqrt(root);
-                }
-            }
-        }
-
-        double r = -g / (8*p*q);
-        double s = b / (4*a);
-
-        double[] result = {
-                p + q + r - s,
-                p - q - r - s,
-                -p + q - r - s,
-                -p - q + r -s
-        };
-
-        return result;
-    }*/
-
     public static Complex[] quarticRoots(double a, double b, double c, double d, double e) {
         if (a == 0){
             return Util.cubicRoots(b,c,d,e);
@@ -375,8 +328,10 @@ public class Util {
         );
 
         Complex p = null, q = null;
+
         int imCount = 0;
         int reCount = 0;
+        int zeroCount = 0;
         ArrayList<Complex> cRoots = new ArrayList<>();
         ArrayList<Complex> rRoots = new ArrayList<>();
 
@@ -389,6 +344,10 @@ public class Util {
             {
                 imCount++;
                 cRoots.add(root.sqrt());
+            }
+
+            if (root.equals(zero)){
+                ++zeroCount;
             }
         }
 
@@ -421,7 +380,15 @@ public class Util {
             }
         }
 
+        //TODO:
+        if (zeroCount == 3 || zeroCount ==2){
+            return new Complex[]{
+
+            };
+        }
+
         Complex r = p.mult(q).mult(8).reciprocal().mult(-g);
+
         double s = b / (4.0*a);
 
         Complex[] result = {
@@ -436,13 +403,7 @@ public class Util {
 
     public static double[] realQuarticRoots(double a, double b, double c, double d, double e){
         return Complex.getRealNumbers(
-                Util.quarticRoots(
-                        new Complex(a, 0),
-                        new Complex(b, 0),
-                        new Complex(c, 0),
-                        new Complex(d, 0),
-                        new Complex(e, 0)
-                        )
+                Util.quarticRoots(a, b, c, d, e)
         );
     }
 

@@ -80,7 +80,6 @@ public class Torus extends RadialGeometry{
 
     //Setters
 
-
     public void set_radiusTube(double radiusTube) {
         this._radiusTube = radiusTube;
     }
@@ -154,28 +153,25 @@ public class Torus extends RadialGeometry{
 
     @Override
     public Vector3D get_normal(Point3D point) {
-        Ray Rt = this.get_ray();
-        Point3D Pt = Rt.get_point();
-        Vector3D Vt = Rt.get_direction();
-        double radiusTor = this.get_radius();
-        double radiusTube = this.get_radiusTube();
+        Point3D Pt = this.get_ray().get_point();
+        Vector3D Vt = this.get_ray().get_direction();
+        double R = this._radius;
+        double r = this._radiusTube;
 
-        Point3D PtT = new Point3D();
-        Vector3D VtT = new Vector3D(0,0,1);
-        Ray RtT = new Ray(PtT, VtT);
-        Torus TT = new Torus(radiusTor, radiusTube, RtT);
+        Matrix3 Rot = Transform.getRodriguesRotation(Vt, new Vector3D(0,0,1));
+        Matrix3 RotInv = Rot.inversed();
 
-        Matrix3 R = Transform.getRodriguesRotation(Vt, VtT);
-        Matrix3 RInv = R.inversed();
-        Point3D q = R.mult(Pt);
+        Point3D q = Rot.mult(Pt);
 
-        Point3D O = TT.get_ray().get_point();
-        Point3D P = R.mult(point).subtract(q).getPoint();
-        Vector3D PT = new Vector3D(new Point3D(P.getX(), P.getY(), Coordinate.ZERO)).normalized();
-        Point3D Q = PT.scaled(radiusTor).getPoint();
-        Vector3D N = P.subtract(Q).normalized();
+        Point3D pointT = Rot.mult(point).subtract(q).getPoint();
+        double x = pointT.getX().getCoord();
+        double y = pointT.getY().getCoord();
+        double z = pointT.getZ().getCoord();
 
-        return RInv.mult(N);
+        double a = 1.0 - (R / Math.sqrt(x*x + y*y));
+        Vector3D NT = new Vector3D(a*x, a*y, z);
+
+        return RotInv.mult(NT);
     }
 
     @Override
@@ -187,60 +183,6 @@ public class Torus extends RadialGeometry{
     public boolean surfaceContains(Point3D point) {
         throw new NotImplementedException();
     }
-
-    /*
-    public ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
-        Point3D Pr = ray.get_point();
-        Vector3D Vr = ray.get_direction();
-
-        double xe = Vr.getPoint().getX().getCoord();
-        double ye = Vr.getPoint().getY().getCoord();
-        double ze = Vr.getPoint().getZ().getCoord();
-
-        double xd = Pr.getX().getCoord();
-        double yd = Pr.getY().getCoord();
-        double zd = Pr.getZ().getCoord();
-
-        double G = 4*_radius*_radius*(xe*xe + ye*ye);
-        double H = 8*_radius*_radius*(xd*xe + yd*ye);
-        double I = 4*_radius*_radius*(xd*xd + yd*yd);
-        double J = xe*xe + ye*ye + ze*ze;
-        double K = 2*(xd*xe + yd*ye + zd*ze);
-        double L = xd*xd + yd*yd + zd*zd + _radius*_radius - _radiusTube*_radiusTube;
-
-        double A = J*J;
-        double B = 2*J*K;
-        double C = 2*J*L + K*K - G;
-        double D = 2*K*L - H;
-        double E = L*L - I;
-
-        double[] roots = Complex.getRealNumbers(
-                Util.quarticRoots(
-                new Complex(A, 0),
-                new Complex(B, 0),
-                new Complex(C, 0),
-                new Complex(D, 0),
-                new Complex(E, 0)
-                )
-        );
-
-        ArrayList<GeoPoint> result = new ArrayList<>();
-
-        for (double root : roots){
-            if (Double.isNaN(root))
-                continue;
-
-            if (Util.equals(root, 0)){
-                result.add(0, new GeoPoint(this, Pr));
-            }
-            else {
-                result.add(0, new GeoPoint(this, Pr.add(Vr.scaled(root))));
-            }
-        }
-
-        return result;
-    }
-     */
 
     public ArrayList<GeoPoint> findIntersectionsInZDirection(Ray ray){
         double R = this._radius;
@@ -266,18 +208,13 @@ public class Torus extends RadialGeometry{
         double K = 2.0 * Prv.dotProduct(Vr);
         double L = Prv.lengthSquared() + R*R - S*S;
 
-        double[] roots = Complex.getRealNumbers(Util.quarticRoots(
+        double[] roots = Util.realQuarticRoots(
                 J*J,
                 2.0*J*K,
                 2.0*J*L + K*K - G,
                 2.0*K*L - H,
                 L*L - I
-        ));
-
-        if (roots.length > 0){
-            int x= 5;
-            ++x;
-        }
+        );
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
@@ -354,31 +291,35 @@ public class Torus extends RadialGeometry{
 
     @Override
     public void translate(double x, double y, double z) {
-
+        _ray.translate(x, y, z);
     }
 
     @Override
     public void rotate(double x, double y, double z) {
-
+        _ray.rotate(x, y, z);
     }
 
     @Override
     public void scale(double x, double y, double z) {
+        _ray.scale(x, y, z);
 
     }
 
     @Override
     public void scale(double scalar) {
+        _ray.scale(scalar, scalar, scalar);
 
     }
 
     @Override
     public void transform(Transform _transform) {
+        _ray.transform(_transform);
 
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
+        _ray.transform(translation, rotation, scale);
 
     }
 }

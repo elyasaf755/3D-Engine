@@ -217,7 +217,7 @@ public class Render {
     }
 
     private GeoPoint getClosestPoint(ArrayList<GeoPoint> geoPoints){
-        //TODO: implement for map
+
         if (geoPoints.size() == 0)
             return null;
 

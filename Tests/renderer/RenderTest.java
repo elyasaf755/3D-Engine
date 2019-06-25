@@ -10,6 +10,7 @@ import sun.print.SunPrinterJobService;
 
 import static geometries.Intersectable.GeoPoint;
 
+import java.text.ParsePosition;
 import java.util.ArrayList;
 
 class RenderTest {
@@ -522,17 +523,25 @@ class RenderTest {
 
     @Test//TEST 12 - Torus - New Geometry//TODO:FIX
     void renderImage12(){
+        Camera camera = new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0));
+
         Scene scene = new Scene("Torus");
         scene.set_background(new Color(java.awt.Color.WHITE));
-        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(1,0,0), new Vector3D(0,0,1)), 1000);
-        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
-        scene.get_camera().rotate(5,15,0);
+        scene.set_camera(camera, 1000);
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        camera.rotate(5,15,0);
+        camera.setAa(2);
 
         Torus torus = new Torus(40, 20, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
         torus.set_emission(java.awt.Color.BLUE);
+        torus.set_material(new Material(1,1,0,0.5,6));
+
+        Sphere sphere = new Sphere(50, new Point3D(50,0,-50));
+        sphere.set_emission(new Color(java.awt.Color.green));
+        sphere.set_material(new Material(0.5,0.5,0.5,0.3,2));
 
         scene.addGeometries(torus);
-        scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
+        scene.addLights(new DirectionalLight(new Vector3D(-1,0,1)));
 
 
         ImageWriter iw = new ImageWriter("12thRenderTest - Torus", 500, 500, 500, 500);
