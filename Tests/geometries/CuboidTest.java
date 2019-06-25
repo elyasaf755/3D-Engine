@@ -79,7 +79,7 @@ class CuboidTest {
 
         //Arbitary orientation
         Cuboid cuboid2 = new Cuboid(4, 5, 7, new Ray(new Point3D(-2,-2,-2), new Vector3D(1,1,1)));
-        Point3D point21 = new Point3D(0,0,0);
+        Point3D point21 = new Point3D(-1,-1,-1);
         assertEquals(true, cuboid2.contains(point21));
 
         Cuboid cuboid3 = new Cuboid(4, 5, 6, new Ray(new Point3D(-2,-2,-2), new Vector3D(1,1,1)));
