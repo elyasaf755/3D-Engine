@@ -139,4 +139,16 @@ class CylinderTest {
         Point3D point25 = new Point3D(-3,0,0);
         assertEquals(false, cylinder2.contains(point25));
     }
+
+    @Test
+    void surfaceContains() {
+        Cylinder cylinder1 = new Cylinder(4, new Ray(new Vector3D(1,0,0)));
+        Point3D point1 = new Point3D(0,4,0);
+        assertTrue(cylinder1.surfaceContains(point1));
+
+        Cylinder cylinder2 = new Cylinder(4, new Ray(new Point3D(), new Vector3D(0,0,1)));
+        Point3D point2 = new Point3D(0, -4,5);
+        assertTrue(cylinder2.surfaceContains(point2));
+
+    }
 }

@@ -153,7 +153,8 @@ public class Plane extends Geometry  implements FlatGeometry{
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         double denom = _normal.dotProduct(ray.get_direction());
         //if denom approaches 0
-        if (Math.abs(denom) > 1e-6){
+        //Math.abs(denom) > 1e-6
+        if (!Util.isZero(Math.abs(denom))){
             if (_point.equals(ray.get_point()))
                 return new ArrayList<>();
 

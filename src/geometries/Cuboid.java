@@ -317,6 +317,13 @@ public class Cuboid extends Geometry {
         _faces[5].set_emission(color);
     }
 
+    @Override
+    public void set_emission(Color emission) {
+        for(Plane face : _faces){
+            face.set_emission(emission);
+        }
+    }
+
     //Methods
 
     @Override

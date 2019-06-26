@@ -176,52 +176,7 @@ public class Util {
         }
     }
 
-    /*public static double[] cubicRoots(double a, double b, double c, double d){
-
-        double f = ((3*c / a) - (b*b)/(a*a)) / 3;
-        double g = ((2*b*b*b) / (a*a*a) - ((9*b*c) / (a*a)) + ((27*d) / a)) / 27;
-        double h = ((g*g) / 4) + ((f*f*f) / 27);
-
-        if (Util.equals(f, 0) && Util.equals(g, 0) && Util.equals(h, 0)){
-            double[] result = {
-                    Math.pow(d / a, 1.0 / 3.0)*(-1),
-                    Math.pow(d / a, 1.0 / 3.0)*(-1),
-                    Math.pow(d / a, 1.0 / 3.0)*(-1)
-            };
-        }
-        else if (h > 0){
-            double R = -(g / 2) + Math.sqrt(h);
-            double S = Math.pow(R, 1D / 3.0);
-            double T = -(g / 2) - Math.sqrt(h);
-            double U = Math.pow(T, 1D / 3.0);
-
-            double[] result = {
-                    (S + U) - (b / (3*a))
-            };
-
-            return result;
-        }
-        else if (Util.equals(h, 0) || h < 0){
-            double i = Math.sqrt((g*g) / 4 - h);
-            double j = Math.pow(i, 1.0 / 3.0);
-            double k = Math.acos(-(g / (2*i)));
-            double L = j * (-1);
-            double M = Math.cos(k / 3);
-            double N = (Math.sqrt(3)*Math.sin(k / 3));
-            double P = (b / (3*a))*(-1);
-
-            double[] result = {
-                    2*j*Math.cos(k / 3) - (b / (3*a)),
-                    L*(M + N) + P,
-                    L*(M - N) + P
-            };
-
-            return result;
-        }
-
-        return new double[]{};
-    }*/
-
+    //solves ax^3 + bx^2 + cx + d = 0
     public static Complex[] cubicRoots(double a, double b, double c, double d){
 
         double f = ((3.0*c)/a - (b*b / (a*a)))/3.0;
@@ -307,6 +262,7 @@ public class Util {
         return roots;
     }
 
+    //solves ax^4 + bx^3 + cx^2 + dx + e = 0
     public static Complex[] quarticRoots(double a, double b, double c, double d, double e) {
         if (a == 0){
             return Util.cubicRoots(b,c,d,e);

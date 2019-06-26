@@ -3,7 +3,10 @@ package primitives;
 public class Vector3D implements ITransformable {
     protected Point3D _point;
 
-    public static Vector3D ZERO = new Vector3D();
+    public final static Vector3D ZERO = new Vector3D();
+    public final static Vector3D xAxis = new Vector3D(1,0,0);
+    public final static Vector3D yAxis = new Vector3D(0,1,0);
+    public final static Vector3D zAxis = new Vector3D(0,0,1);
 
     //Constructors
     public Vector3D(Coordinate x, Coordinate y, Coordinate z) {

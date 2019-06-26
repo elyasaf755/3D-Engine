@@ -10,7 +10,7 @@ public class Material {
 
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXISTS).
 
-    public static final Material GLASS = new Material(0.3, 0.3, 0.2, 0.3, 3);
+    public static final Material GLASS = new Material(0.3, 0.3, 0.2, 0.35, 3);
 
 
     //Constructors

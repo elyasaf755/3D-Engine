@@ -1,5 +1,6 @@
 package renderer;
 
+import com.sun.jmx.snmp.tasks.Task;
 import elements.Camera;
 import elements.LightSource;
 
@@ -8,7 +9,9 @@ import primitives.*;
 
 import scene.Scene;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.concurrent.*;
 
 import static geometries.Intersectable.GeoPoint;
 
@@ -17,7 +20,6 @@ public class Render {
     private ImageWriter _imageWriter;
     private static final int RECURSION_LEVEL = 3;
     private static final double MIN_CALC_COLOR_K = 0.001;
-
 
     //Constructors
 
@@ -28,7 +30,7 @@ public class Render {
 
     //Methods
 
-    public void renderImage(){
+    /*public void renderImage(){
         Camera camera = _scene.get_camera();
 
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
@@ -58,32 +60,60 @@ public class Render {
                 color = color.scale(1.0/length);
 
                 _imageWriter.writePixel(i, j, color.getColor());
-
             }
         }
-        /*Camera camera = _scene.get_camera();
+
+
+    }
+*/
+    public void renderImage(){
+        Camera camera = _scene.get_camera();
+
+        int cores = Runtime.getRuntime().availableProcessors();
+        ExecutorService pool = Executors.newFixedThreadPool(cores);
 
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
-            for (int j = 0; j < _imageWriter.getHeight(); ++j){
-                Ray ray = camera.constructRayThroughPixel(
-                        _imageWriter.getNx(), _imageWriter.getNy(),
-                        i, j, _scene.get_screenDistance(),
-                        _imageWriter.getWidth(), _imageWriter.getHeight()
-                );
+            final int iFinal = i;
 
-                ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
+            Runnable task = () -> {
 
-                if (intersectionPoints.isEmpty() == true)
-                    _imageWriter.writePixel(i, j,_scene.get_background().getColor());
-                else{
-                    GeoPoint closestPoint = getClosestPoint(intersectionPoints);
+                for (int j = 0; j < _imageWriter.getHeight(); ++j){
+                    ArrayList<Ray> rays = camera.constructRaysThroughPixel(
+                            _imageWriter.getNx(), _imageWriter.getNy(),
+                            iFinal, j, _scene.get_screenDistance(),
+                            _imageWriter.getWidth(), _imageWriter.getHeight()
+                    );
 
-                    Color color = new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.sub(camera.get_origin()))));
+                    Color color = new Color();
+                    for (Ray ray: rays) {
 
-                    _imageWriter.writePixel(i, j, color.getColor());
+                        ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
+
+                        if (intersectionPoints.isEmpty() == true) {
+                            color = color.add(_scene.get_background());
+                        }
+                        else {
+                            GeoPoint closestPoint = getClosestPoint(intersectionPoints);
+
+                            color = color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));
+                        }
+                    }
+
+                    int length = rays.size();
+                    color = color.scale(1.0/length);
+
+                    _imageWriter.writePixel(iFinal, j, color.getColor());
                 }
-            }
-        }*/
+
+            };
+
+            pool.execute(task);
+        }
+
+        pool.shutdown();
+        try {
+            while (!pool.awaitTermination(1, TimeUnit.HOURS));
+        } catch (Exception ignored) {}
     }
 
     public ArrayList<GeoPoint> getSceneRayIntersections(Ray ray){
@@ -189,7 +219,11 @@ public class Render {
 
             if (!reflectedIntersections.isEmpty()){
                 GeoPoint reflectedPoint = this.getClosestPoint(reflectedIntersections);
-                reflectedColor = this.calcColor(reflectedPoint, reflectedRay, level + 1, k * Kr).scale(Kr);
+
+                if (intersection.geometry != reflectedPoint.geometry){
+                    reflectedColor = this.calcColor(reflectedPoint, reflectedRay, level + 1, k * Kr).scale(Kr);
+                }
+
             }
 
             result = result.add(reflectedColor);
@@ -204,6 +238,7 @@ public class Render {
 
             if (!refractedIntersections.isEmpty()) {
                 GeoPoint refractedPoint = this.getClosestPoint(refractedIntersections);
+
                 refractedColor = this.calcColor(refractedPoint, refractedRay, level + 1, k * Kt).scale(Kt);
             }
             else{
@@ -232,6 +267,7 @@ public class Render {
             }
             else{
                 double distance = origin.distance(geoPoint.point);
+
                 if (distance < shortestDistance){
                     shortestDistance = distance;
                     closestPoint = geoPoint;
@@ -254,13 +290,15 @@ public class Render {
 
         ArrayList<GeoPoint> intersections = this.getSceneRayIntersections(lightRay);
 
+
+
         if (intersection.geometry instanceof FlatGeometry)
             intersections.remove(intersection);
-
 
         double ktr = 1;
         for (GeoPoint gp : intersections)
             ktr *= gp.geometry.get_material().get_Kt();
+
         return ktr;
     }
 
