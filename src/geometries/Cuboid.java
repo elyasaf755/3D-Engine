@@ -20,15 +20,20 @@ public class Cuboid extends Geometry {
     private void initPlanes(double width, double length, double height){
         _faces = new Plane[6];
 
-        double a = width / 2.0;
-        double b = length / 2.0;
-        double c = height / 2.0;
+        //when cube direction is Z
+        double x = width / 2.0;//X Axis - Width: +Right, -Left
+        double y = height / 2.0;//Y Axis - Height: +Up, -Down
+        double z = length / 2.0;//Z Axis - Length: +Front, -Back
 
-        Vector3D front = new Vector3D(0,0,-1).scaled(b);
+        Vector3D xAxis = new Vector3D(1,0,0);//Width: +Right, -Left
+        Vector3D yAxis = new Vector3D(0,1,0);//Height: +Up, -Down
+        Vector3D zAxis = new Vector3D(0,0,1);//Length: +Front, -Back
+
+        Vector3D front = zAxis.scaled(z);
         Vector3D back = front.scaled(-1);
-        Vector3D right = new Vector3D(1,0,0).scaled(a);
+        Vector3D right = xAxis.scaled(x);
         Vector3D left = right.scaled(-1);
-        Vector3D up = new Vector3D(0,1,0).scaled(c);
+        Vector3D up = yAxis.scaled(y);
         Vector3D down = up.scaled(-1);
 
         _faces[0] = new Plane(front.getPoint(), front);
@@ -42,43 +47,34 @@ public class Cuboid extends Geometry {
     private void initPlanes(double width, double length, double height, Ray ray){
         _faces = new Plane[6];
 
-        double a = width / 2.0;//x Axis when cube aligned with Y
-        double b = length / 2.0;//z Axis
-        double c = height / 2.0;//y Axis
+        //when cube direction is Z
+        double x = width / 2.0;//X Axis - Width: +Right, -Left
+        double y = height / 2.0;//Y Axis - Height: +Up, -Down
+        double z = length / 2.0;//Z Axis - Length: +Front, -Back
 
-        Vector3D frontNormalT = new Vector3D(0,0,-1).scaled(b);
-        Vector3D rightNormalT = new Vector3D(1,0,0).scaled(a);
-        Vector3D upNormalT    = new Vector3D(0,1,0).scaled(c);
-
-        Point3D frontOriginT  = frontNormalT.scaled(-1).getPoint();
-        Point3D backOriginT = frontNormalT.getPoint();
-        Point3D rightOriginT = rightNormalT.getPoint();
-        Point3D leftOriginT  = rightNormalT.scaled(-1).getPoint();
-        Point3D upOriginT    = upNormalT.getPoint();
-        Point3D downOriginT  = upNormalT.scaled(-1).getPoint();
+        Vector3D xAxis = new Vector3D(1,0,0);//Width: +Right, -Left
+        Vector3D yAxis = new Vector3D(0,1,0);//Height: +Up, -Down
+        Vector3D zAxis = new Vector3D(0,0,1);//Length: +Front, -Back
 
         Point3D Pc = ray.get_point();
         Vector3D Vc = ray.get_direction();
-        Vector3D VcT = new Vector3D(0,0,1);
 
-        Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
+        Matrix3 R = Transform.getRodriguesRotation(Vc, zAxis);
         Matrix3 RInv = R.inversed();
 
-        Point3D q = R.mult(Pc);
-
-        Point3D frontOrigin = RInv.mult(frontOriginT.add(q));
-        Point3D backOrigin = RInv.mult(backOriginT.add(q));
-        Point3D rightOrigin = RInv.mult(rightOriginT.add(q));
-        Point3D leftOrigin = RInv.mult(leftOriginT.add(q));
-        Point3D upOrigin = RInv.mult(upOriginT.add(q));
-        Point3D downOrigin = RInv.mult(downOriginT.add(q));
-
-        Vector3D frontNormal = RInv.mult(frontNormalT);
+        Vector3D frontNormal = RInv.mult(zAxis);
         Vector3D backNormal = frontNormal.scaled(-1);
-        Vector3D rightNormal = RInv.mult(rightNormalT);
+        Vector3D rightNormal = RInv.mult(xAxis);
         Vector3D leftNormal = rightNormal.scaled(-1);
-        Vector3D upNormal = RInv.mult(upNormalT);
+        Vector3D upNormal = RInv.mult(yAxis);
         Vector3D downNormal = upNormal.scaled(-1);
+
+        Point3D frontOrigin = Pc.add(frontNormal.scaled(z));
+        Point3D backOrigin = Pc.add(frontNormal.scaled(-z));
+        Point3D rightOrigin = Pc.add(rightNormal.scaled(x));
+        Point3D leftOrigin = Pc.add(rightNormal.scaled(-x));
+        Point3D upOrigin = Pc.add(upNormal.scaled(y));
+        Point3D downOrigin = Pc.add(upNormal.scaled(-y));
 
         _faces[0] = new Plane(frontOrigin, frontNormal);
         _faces[1] = new Plane(backOrigin, backNormal);
@@ -86,6 +82,8 @@ public class Cuboid extends Geometry {
         _faces[3] = new Plane(leftOrigin, leftNormal);
         _faces[4] = new Plane(upOrigin, upNormal);
         _faces[5] = new Plane(downOrigin, downNormal);
+
+        return;
     }
 
     private void initEmission(Color emission){
@@ -323,56 +321,11 @@ public class Cuboid extends Geometry {
 
     //Methods
 
-    //frontOrigin
-    //backOrigin
-
-    //backOriginT
-    //frontOriginT
-
-
     @Override
     public Vector3D get_normal(Point3D point) {
-        double a = _width / 2.0;
-        double b = _length / 2.0;
-        double c = _height / 2.0;
-
-        Vector3D frontNormalT = new Vector3D(0,0,-1).scaled(b);
-        Vector3D backNormalT = frontNormalT.scaled(-1);
-        Vector3D rightNormalT = new Vector3D(1,0,0).scaled(a);
-        Vector3D leftNormalT = rightNormalT.scaled(-1);
-        Vector3D upNormalT    = new Vector3D(0,1,0).scaled(c);
-        Vector3D downNormalT = upNormalT.scaled(-1);
-
-        Point3D frontOriginT = frontNormalT.getPoint();
-        Point3D backOriginT  = frontNormalT.scaled(-1).getPoint();
-        Point3D rightOriginT = rightNormalT.getPoint();
-        Point3D leftOriginT  = rightNormalT.scaled(-1).getPoint();
-        Point3D upOriginT    = upNormalT.getPoint();
-        Point3D downOriginT  = upNormalT.scaled(-1).getPoint();
-
-        Plane[] planesT = {
-                new Plane(frontOriginT, frontNormalT, _faces[0].get_emission(), _faces[0].get_material()),
-                new Plane(backOriginT, backNormalT, _faces[1].get_emission(), _faces[1].get_material()),
-                new Plane(rightOriginT, rightNormalT, _faces[2].get_emission(), _faces[2].get_material()),
-                new Plane(leftOriginT, leftNormalT, _faces[3].get_emission(), _faces[3].get_material()),
-                new Plane(upOriginT, upNormalT, _faces[4].get_emission(), _faces[4].get_material()),
-                new Plane(downOriginT, downNormalT, _faces[5].get_emission(), _faces[5].get_material()),
-        };
-
-        Point3D Pc = this._ray.get_point();
-        Vector3D Vc = this._ray.get_direction();
-        Vector3D VcT = new Vector3D(0,0,1);
-
-        Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
-        Matrix3 RInv = R.inversed();
-
-        Point3D q = R.mult(Pc);
-
-        Point3D pointT = R.mult(point).subtract(q).getPoint();
-
-        for (Plane planeT : planesT){
-            if (planeT.surfaceContains(pointT)){
-                return RInv.mult(planeT.get_normal());
+        for (Plane face : this._faces){
+            if (face.surfaceContains(point)){
+                return face.get_normal();
             }
         }
 
@@ -382,9 +335,10 @@ public class Cuboid extends Geometry {
     @Override
     public boolean contains(Point3D point) {
 
-        double a = _width / 2.0;//x axis when cuboid aligned with Y axis
-        double b = _length / 2.0;//z axis
-        double c = _height / 2.0;//y axis
+        //when cube direction is Z
+        double x = _width / 2.0;//X Axis - Width: +Right, -Left
+        double y = _height / 2.0;//Y Axis - Height: +Up, -Down
+        double z = _length / 2.0;//Z Axis - Length: +Front, -Back
 
         Point3D Pc = this._ray.get_point();
         Vector3D Vc = this._ray.get_direction();
@@ -397,35 +351,49 @@ public class Cuboid extends Geometry {
                 double py = Math.abs(point.getY().getCoord());
                 double pz = Math.abs(point.getZ().getCoord());
 
-                return  (Util.equals(px, a) || px < a) &&
-                        (Util.equals(py, c) || py < c) &&
-                        (Util.equals(pz, b) || pz < b);
+                return  (Util.equals(px, x) || px < x) &&
+                        (Util.equals(py, y) || py < y) &&
+                        (Util.equals(pz, z) || pz < z);
             }
 
-            Point3D pointT = point.subtract(Pc).getPoint();
+            Point3D pointT;
+
+            if (point.equals(Pc)){
+                pointT = new Point3D();
+            }
+            else{
+                pointT = point.subtract(Pc).getPoint();
+            }
 
             double px = Math.abs(pointT.getX().getCoord());
             double py = Math.abs(pointT.getY().getCoord());
             double pz = Math.abs(pointT.getZ().getCoord());
 
-            return  (Util.equals(px, a) || px < a) &&
-                    (Util.equals(py, c) || py < c) &&
-                    (Util.equals(pz, b) || pz < b);
+            return  (Util.equals(px, x) || px < x) &&
+                    (Util.equals(py, y) || py < y) &&
+                    (Util.equals(pz, z) || pz < z);
         }
 
         Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
 
         Point3D q = R.mult(Pc);
 
-        Point3D pointT = R.mult(point).subtract(q).getPoint();
+        Point3D pointT = R.mult(point);
+
+        if (pointT.equals(q)){
+            pointT = new Point3D();
+        }
+        else{
+            pointT = pointT.subtract(q).getPoint();
+        }
 
         double px = Math.abs(pointT.getX().getCoord());
         double py = Math.abs(pointT.getY().getCoord());
         double pz = Math.abs(pointT.getZ().getCoord());
 
-        return  (Util.equals(px, a) || px < a) &&
-                (Util.equals(py, c) || py < c) &&
-                (Util.equals(pz, b) || pz < b);
+        return  (Util.equals(px, x) || px < x) &&
+                (Util.equals(py, y) || py < y) &&
+                (Util.equals(pz, z) || pz < z);
     }
 
     private boolean containsInYDirection(Point3D point){
@@ -436,17 +404,18 @@ public class Cuboid extends Geometry {
             throw new IllegalArgumentException("cuboid not aligned with Y axis");
         }
 
-        double a = _width / 2.0;
-        double b = _length / 2.0;
-        double c = _height / 2.0;
+        //when cube direction is Z
+        double x = _width / 2.0;//X Axis - Width: +Right, -Left
+        double y = _height / 2.0;//Y Axis - Height: +Up, -Down
+        double z = _length / 2.0;//Z Axis - Length: +Front, -Back
 
         double px = Math.abs(point.getX().getCoord());
         double py = Math.abs(point.getY().getCoord());
         double pz = Math.abs(point.getZ().getCoord());
 
-        return  (Util.equals(px, a) || px < a) &&
-                (Util.equals(py, c) || py < c) &&
-                (Util.equals(pz, b) || pz < b);
+        return  (Util.equals(px, x) || px < x) &&
+                (Util.equals(py, y) || py < y) &&
+                (Util.equals(pz, z) || pz < z);
     }
 
     @Override

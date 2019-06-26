@@ -239,4 +239,8 @@ public class Plane extends Geometry  implements FlatGeometry{
                 _normal.equals(plane.get_normal());
     }
 
+    @Override
+    public String toString() {
+        return "Origin: " + _point.toString() + " Normal: " + _normal.toString();
+    }
 }

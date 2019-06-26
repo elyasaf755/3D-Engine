@@ -40,7 +40,7 @@ class CuboidTest {
 
         Cuboid cuboid2 = new Cuboid(4, 4, 4, new Ray(new Vector3D(0,1,0)));
         Point3D point2 = new Point3D(0,2,0);
-        Vector3D actual2 = cuboid2.get_normal(point1);
+        Vector3D actual2 = cuboid2.get_normal(point2);
         Vector3D expected2 = new Vector3D(0,1,0);
         assertEquals(expected2, actual2);
     }
@@ -85,6 +85,14 @@ class CuboidTest {
         Cuboid cuboid3 = new Cuboid(4, 5, 6, new Ray(new Point3D(-2,-2,-2), new Vector3D(1,1,1)));
         Point3D point31 = new Point3D(0,0,0);
         assertEquals(false, cuboid3.contains(point31));
+
+        Cuboid cuboid4 = new Cuboid(4, 5, 6, new Ray(new Point3D(0,0,0), new Vector3D(1,1,1)));
+        Point3D point41 = new Point3D(2.5,2.5,2.5);
+        assertEquals(false, cuboid4.contains(point41));
+
+        Cuboid cuboid5 = new Cuboid(4, 5, 6, new Ray(new Point3D(-2,-2,-2), new Vector3D(0,0,1)));
+        Point3D point51 = new Point3D(-2,-2,3.5);
+        assertEquals(false, cuboid5.contains(point51));
     }
 
     @Test
@@ -111,11 +119,11 @@ class CuboidTest {
         expected2.add(new GeoPoint(cuboid1, new Point3D(0,2,0)));
         assertEquals(expected2.get(0).point, actual2.get(0).point);
 
-        Cuboid cuboid3 = new Cuboid(2,3,4, new Ray(new Point3D(1,1,1), new Vector3D(1,0,0)));
+        Cuboid cuboid3 = new Cuboid(2,3,4, new Ray(new Point3D(1,1,1), new Vector3D(0,0,1)));
         Ray ray3 = new Ray(new Point3D(0,100,0), new Vector3D(0,-1,0));
         ArrayList<GeoPoint> actual3 = cuboid3.findIntersections(ray3);
         ArrayList<GeoPoint> expected3 = new ArrayList<>();
-        expected3.add(new GeoPoint(cuboid1, new Point3D(0,2,0)));
+        expected3.add(new GeoPoint(cuboid1, new Point3D(0,3,0)));
         assertEquals(expected3.get(0).point, actual3.get(0).point);
     }
 
