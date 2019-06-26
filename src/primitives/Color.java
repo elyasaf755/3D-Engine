@@ -18,6 +18,7 @@ public class Color {
     public final static Color BLACK = new Color();
     public final static Color GLASS = new Color(32,56,240);
     public final static Color WHITE_CREAM = new Color(255,250,250);
+    public final static Color BLUE_WATER = new Color(64, 164, 223);
 
     //Constructors
 

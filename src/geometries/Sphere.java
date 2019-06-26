@@ -9,6 +9,7 @@ public class Sphere extends RadialGeometry {
     protected Point3D _point;
 
     //Constructors
+
     public Sphere(double radius, Point3D point) {
         super(radius);
 
@@ -232,6 +233,7 @@ public class Sphere extends RadialGeometry {
     @Override
     public void scale(double factor){
         _radius = Util.uscale(_radius, factor);
+        _point.scale(factor);
     }
 
     @Override

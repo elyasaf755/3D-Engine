@@ -93,6 +93,7 @@ public class Render {
                             color = color.add(_scene.get_background());
                         }
                         else {
+
                             GeoPoint closestPoint = getClosestPoint(intersectionPoints);
 
                             color = color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));

@@ -4,6 +4,8 @@ import com.sun.org.apache.regexp.internal.RE;
 import elements.*;
 import geometries.*;
 import org.junit.jupiter.api.Test;
+import prefabs.Aquarium;
+import prefabs.Bubble;
 import prefabs.JCTLogo;
 import primitives.*;
 import scene.Scene;
@@ -748,16 +750,19 @@ class RenderTest {
         scene.set_background(new Color(53, 215, 255));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
-        scene.get_camera().rotate(45,15,0);
-        scene.get_camera().setAa(2);
+        scene.get_camera().rotate(0,0,0);
+        scene.get_camera().setAa(1);
 
-        Sphere lhsSphere = new Sphere(50, new Point3D(40,0,-40), new Color(Color.GLASS), new Material(Material.GLASS));
-        Sphere rhsSphere = new Sphere(50, new Point3D(40,50,-40));
-        SetDifference aquarium = new SetDifference(lhsSphere, rhsSphere);
+        Aquarium aquarium = new Aquarium();
+        aquarium.scale(1);
 
         scene.addGeometries(aquarium);
+
+
+
         PointLight pLight = new PointLight(new Color(java.awt.Color.YELLOW), new Point3D(0, 0, 35), 1, 0.0, 0.0);
-        DirectionalLight dLight = new DirectionalLight(new Color(java.awt.Color.WHITE), new Vector3D(0,-1,0));
+        DirectionalLight dLight = new DirectionalLight(new Color(100,100,100), new Vector3D(0,0,1));
+        DirectionalLight dLight2 = new DirectionalLight(new Color(130,130,130), new Vector3D(0,0,-1));
 
         scene.addLights(
                 dLight

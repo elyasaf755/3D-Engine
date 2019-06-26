@@ -276,11 +276,15 @@ public class Matrix4 {
         //TODO: del division by Z?
         double Z = result.get_element(3,0);
 
-        return new Vector3D(
-                (double)result.get_element(0,0) / Z,
-                (double)result.get_element(1,0) / Z,
-                (double)result.get_element(2,0) / Z
-        );
+        double x = (double)result.get_element(0,0) / Z;
+        double y = (double)result.get_element(1,0) / Z;
+        double z = (double)result.get_element(2,0) / Z;
+
+        if (Util.isZero(x) && Util.isZero(y) && Util.isZero(z)){
+            return new Vector3D(Vector3D.ZERO);
+        }
+
+        return new Vector3D(x,y,z);
     }
 
     public Point3D mult(Point3D point3D){
