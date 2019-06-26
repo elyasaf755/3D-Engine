@@ -3,6 +3,7 @@ package geometries;
 import org.junit.jupiter.api.Test;
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector3D;
 
 import static geometries.Intersectable.GeoPoint;
@@ -38,7 +39,7 @@ class TorusTest {
         expected1.add(new GeoPoint(torus1, new Point3D(2,0,0)));
         expected1.add(new GeoPoint(torus1, new Point3D(4,0,0)));
 
-        assertEquals(expected1, actual1);
+        assertTrue(Util.intersectionsEqual(expected1, actual1));
 
         Torus torus2 = new Torus(3, 1, new Ray(new Point3D(1,0,0), new Vector3D(1,0,0)));
         Ray ray2 = new Ray(new Point3D(1,0,6), new Vector3D(0,0,-1));
@@ -49,7 +50,7 @@ class TorusTest {
         expected2.add(new GeoPoint(torus2, new Point3D(1,0,-2)));
         expected2.add(new GeoPoint(torus2, new Point3D(1,0,-4)));
 
-        assertEquals(expected2, actual2);
+        assertTrue(Util.intersectionsEqual(expected2, actual2));
     }
 
     @Test

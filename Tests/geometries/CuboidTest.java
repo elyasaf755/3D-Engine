@@ -112,14 +112,14 @@ class CuboidTest {
         assertEquals(expected1.get(1).point, actual1.get(1).point);
 
         //Aligned with Y axis but have different dimensions
-        Cuboid cuboid2 = new Cuboid(2,3,4);
+        Cuboid cuboid2 = new Cuboid(2,4,3);
         Ray ray2 = new Ray(new Point3D(0,100,0), new Vector3D(0,-1,0));
         ArrayList<GeoPoint> actual2 = cuboid2.findIntersections(ray2);
         ArrayList<GeoPoint> expected2 = new ArrayList<>();
         expected2.add(new GeoPoint(cuboid1, new Point3D(0,2,0)));
         assertEquals(expected2.get(0).point, actual2.get(0).point);
 
-        Cuboid cuboid3 = new Cuboid(2,3,4, new Ray(new Point3D(1,1,1), new Vector3D(0,0,1)));
+        Cuboid cuboid3 = new Cuboid(2,4,3, new Ray(new Point3D(1,1,1), new Vector3D(0,0,1)));
         Ray ray3 = new Ray(new Point3D(0,100,0), new Vector3D(0,-1,0));
         ArrayList<GeoPoint> actual3 = cuboid3.findIntersections(ray3);
         ArrayList<GeoPoint> expected3 = new ArrayList<>();

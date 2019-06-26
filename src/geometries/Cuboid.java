@@ -8,16 +8,14 @@ public class Cuboid extends Geometry {
 
     private Ray _ray;
 
-    private double _width;//a - half width
-    private double _length;//b - half length
-    private double _height;//c - half height
+    private double _width;//X Axis - Width: +Right, -Left
+    private double _height;//Y Axis - Height: +Up, -Down
+    private double _length;//Z Axis - Length: +Front, -Back
 
     Plane[] _faces;
 
-    //DEFAULT : Z = LENGTH, Y = HEIGHT, X  = WIDTH
-
     //Initializers
-    private void initPlanes(double width, double length, double height){
+    private void initPlanes(double width, double height, double length){
         _faces = new Plane[6];
 
         //when cube direction is Z
@@ -44,7 +42,7 @@ public class Cuboid extends Geometry {
         _faces[5] = new Plane(down.getPoint(), down);
     }
 
-    private void initPlanes(double width, double length, double height, Ray ray){
+    private void initPlanes(double width, double height, double length, Ray ray){
         _faces = new Plane[6];
 
         //when cube direction is Z
@@ -98,101 +96,101 @@ public class Cuboid extends Geometry {
         }
     }
 
-    private void initFaces(double width, double length, double height){
+    private void initFaces(double width, double height, double length){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height);
+        initPlanes(width, height, length);
     }
 
-    private void initFaces(double width, double length, double height, Color emission){
+    private void initFaces(double width, double height, double length, Color emission){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height);
+        initPlanes(width, height, length);
         initEmission(emission);
     }
 
-    private void initFaces(double width, double length, double height, Material material){
+    private void initFaces(double width, double height, double length, Material material){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height);
+        initPlanes(width, height, length);
         initMaterial(material);
     }
 
-    private void initFaces(double width, double length, double height, Color emission, Material material){
+    private void initFaces(double width, double height, double length, Color emission, Material material){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height);
+        initPlanes(width, height, length);
         initEmission(emission);
         initMaterial(material);
     }
 
-    private void initFaces(double width, double length, double height, Ray ray){
+    private void initFaces(double width, double height, double length, Ray ray){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height, ray);
+        initPlanes(width, height, length, ray);
     }
 
-    private void initFaces(double width, double length, double height, Ray ray, Color emission){
+    private void initFaces(double width, double height, double length, Ray ray, Color emission){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height, ray);
+        initPlanes(width, height, length, ray);
         initEmission(emission);
     }
 
-    private void initFaces(double width, double length, double height, Ray ray, Material material){
+    private void initFaces(double width, double height, double length, Ray ray, Material material){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height, ray);
+        initPlanes(width, height, length, ray);
         initMaterial(material);
     }
 
-    private void initFaces(double width, double length, double height, Ray ray, Color emission, Material material){
+    private void initFaces(double width, double height, double length, Ray ray, Color emission, Material material){
         if (width < 0 || length < 0 || height < 0){
             throw new IllegalArgumentException("Cubod's dimensions can't be negative");
         }
 
-        initPlanes(width, length, height, ray);
+        initPlanes(width, height, length, ray);
         initEmission(emission);
         initMaterial(material);
     }
 
     //Constructors
 
-    public Cuboid(double width, double length, double height){
+    public Cuboid(double width, double height, double length){
         _ray = new Ray(new Vector3D(0,0,1));
 
         _width = width;
         _length = length;
         _height = height;
 
-        initFaces(width, length, height);
+        initFaces(width, height, length);
     }
 
-    public Cuboid(double width, double length, double height, Ray ray){
+    public Cuboid(double width, double height, double length, Ray ray){
         _ray = new Ray(ray);
 
         _width = width;
         _length = length;
         _height = height;
 
-        initFaces(width, length, height, ray);
+        initFaces(width, height, length, ray);
     }
 
-    public Cuboid(double width, double length, double height, Color emission){
+    public Cuboid(double width, double height, double length, Color emission){
         super(emission);
 
         _ray = new Ray(new Vector3D(0,0,1));
@@ -201,10 +199,10 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
-        initFaces(width, length, height, emission);
+        initFaces(width, height, length, emission);
     }
 
-    public Cuboid(double width, double length, double height, Ray ray, Color emission){
+    public Cuboid(double width, double height, double length, Ray ray, Color emission){
         super(emission);
 
         _ray = new Ray(ray);
@@ -212,10 +210,10 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
-        initFaces(width, length, height, ray, emission);
+        initFaces(width, height, length, ray, emission);
     }
 
-    public Cuboid(double width, double length, double height, Material material){
+    public Cuboid(double width, double height, double length, Material material){
         super(material);
 
         _ray = new Ray(new Vector3D(0,0,1));
@@ -223,10 +221,10 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
-        initFaces(width, length, height, material);
+        initFaces(width, height, length, material);
     }
 
-    public Cuboid(double width, double length, double height, Ray ray, Material material){
+    public Cuboid(double width, double height, double length, Ray ray, Material material){
         super(material);
 
         _ray = new Ray(ray);
@@ -234,10 +232,10 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
-        initFaces(width, length, height, ray, material);
+        initFaces(width, height, length, ray, material);
     }
 
-    public Cuboid(double width, double length, double height, Color emission, Material material){
+    public Cuboid(double width, double height, double length, Color emission, Material material){
         super(emission, material);
 
         _ray = new Ray(new Vector3D(0,0,1));
@@ -245,10 +243,10 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
-        initFaces(width, length, height, emission, material);
+        initFaces(width, height, length, emission, material);
     }
 
-    public Cuboid(double width, double length, double height, Ray ray, Color emission, Material material){
+    public Cuboid(double width, double height, double length, Ray ray, Color emission, Material material){
         super(emission, material);
 
         _ray = new Ray(ray);
@@ -256,7 +254,7 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
-        initFaces(width, length, height, ray, emission, material);
+        initFaces(width, height, length, ray, emission, material);
     }
 
     //Getters
@@ -396,52 +394,9 @@ public class Cuboid extends Geometry {
                 (Util.equals(pz, z) || pz < z);
     }
 
-    private boolean containsInYDirection(Point3D point){
-
-        if (!this._ray.get_direction().equals(new Vector3D(0,0,1)) ||
-                !this._ray.get_point().equals(new Point3D()))
-        {
-            throw new IllegalArgumentException("cuboid not aligned with Y axis");
-        }
-
-        //when cube direction is Z
-        double x = _width / 2.0;//X Axis - Width: +Right, -Left
-        double y = _height / 2.0;//Y Axis - Height: +Up, -Down
-        double z = _length / 2.0;//Z Axis - Length: +Front, -Back
-
-        double px = Math.abs(point.getX().getCoord());
-        double py = Math.abs(point.getY().getCoord());
-        double pz = Math.abs(point.getZ().getCoord());
-
-        return  (Util.equals(px, x) || px < x) &&
-                (Util.equals(py, y) || py < y) &&
-                (Util.equals(pz, z) || pz < z);
-    }
-
     @Override
     public boolean surfaceContains(Point3D point) {
         if (!this.contains(point)){
-            return false;
-        }
-
-        for (Plane face : this._faces){
-            if (face.surfaceContains(point)){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public boolean surfaceContainsInYDirection(Point3D point) {
-
-        if (!this._ray.get_direction().equals(new Vector3D(0,0,1)) ||
-                !this._ray.get_point().equals(new Point3D()))
-        {
-            throw new IllegalArgumentException("cuboid not aligned with Y axis");
-        }
-
-        if (!this.containsInYDirection(point)){
             return false;
         }
 
@@ -473,29 +428,22 @@ public class Cuboid extends Geometry {
         return result;
     }
 
-    private ArrayList<GeoPoint> findIntersectionsInYDirection(Ray ray){
-
-        ArrayList<GeoPoint> result = new ArrayList<>();
-
-        for (Plane face : this._faces){
-            GeoPoint intersection = face.findIntersections(ray).get(0);//Ray can intersect plane at maximum 1 point.
-
-            if (this.surfaceContains(intersection.point)){
-                result.add(intersection);
-            }
-        }
-
-        return result;
-    }
-
     @Override
     public void translate(double x, double y, double z) {
         this._ray.translate(x, y, z);
+
+        for (Plane face : this._faces){
+            face.translate(x, y, z);
+        }
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         this._ray.rotate(x, y, z);
+
+        for (Plane face : this._faces){
+            face.rotate(x, y, z);
+        }
     }
 
     @Override
@@ -505,6 +453,10 @@ public class Cuboid extends Geometry {
         _width = _width * x;
         _length = _length * y;
         _height = _height * z;
+
+        for (Plane face : this._faces){
+            face.scale(x, y, z);
+        }
     }
 
     @Override
@@ -514,15 +466,27 @@ public class Cuboid extends Geometry {
         _width = _width * scalar;
         _length = _length * scalar;
         _height = _height * scalar;
+
+        for (Plane face : this._faces){
+            face.scale(scalar);
+        }
     }
 
     @Override
     public void transform(Transform _transform) {
         this._ray.transform(_transform);
+
+        for (Plane face : this._faces){
+            face.transform(_transform);
+        }
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         this._ray.transform(translation, rotation, scale);
+
+        for (Plane face : this._faces){
+            face.transform(translation, rotation, scale);
+        }
     }
 }

@@ -1,5 +1,9 @@
 package primitives;
 
+import geometries.Intersectable;
+
+import static geometries.Intersectable.GeoPoint;
+
 import java.util.ArrayList;
 
 public class Util {
@@ -487,5 +491,24 @@ public class Util {
 
     public static boolean equals(double lhs, double rhs) {
         return new Coordinate(lhs).subtract(new Coordinate(rhs)).getCoord() == 0.0;
+    }
+
+    public static boolean intersectionsEqual(ArrayList<GeoPoint> lhs, ArrayList<GeoPoint> rhs){
+        for (GeoPoint lhsPoin : lhs){
+            boolean flag = false;
+
+            for (GeoPoint rhsPoint : rhs){
+                if (lhsPoin.equals(rhsPoint)){
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (flag == false){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
