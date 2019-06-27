@@ -178,8 +178,6 @@ public class Plane extends Geometry  implements FlatGeometry{
     @Override
     public void translate(double x, double y, double z) {
         _point.translate(x, y, z);
-        _normal.translate(x, y, z);
-        _normal.normalize();
     }
 
     @Override

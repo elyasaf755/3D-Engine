@@ -97,6 +97,12 @@ public class Tube extends Cylinder {
         return _height;
     }
 
+    //Setters
+
+    public void set_height(double _height) {
+        this._height = _height;
+    }
+
     //Methods
 
     @Override
@@ -104,7 +110,9 @@ public class Tube extends Cylinder {
         if (point3D.equals(_ray.get_point())){
             return _ray.get_direction().scaled(-1);
         }
+
         double height = _ray.get_direction().dotProduct(point3D.subtract(_ray.get_point()));
+
         if (height == _height)
             return _ray.get_direction();
 
@@ -217,9 +225,9 @@ public class Tube extends Cylinder {
     }
 
     @Override
-    public void scale(double factor){
-        _radius = Util.uscale(_radius, factor);
-        _height = Util.uscale(_height, factor);
+    public void scale(double scalar){
+        super.scale(scalar);
+        _height = Util.uscale(_height, scalar);
     }
 
     @Override

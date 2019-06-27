@@ -227,7 +227,7 @@ public class Sphere extends RadialGeometry {
 
     @Override
     public void rotate(double x, double y, double z) {
-        return;//Spheres are not rotated
+        _point.rotate(x, y, z);
     }
 
     @Override

@@ -61,7 +61,7 @@ public class Cylinder extends RadialGeometry{
     }
 
     //Methods
-
+/*//DO NOT DELETE
     @Override
     public Vector3D get_normal(Point3D point3D) {
         Vector3D subPoints = point3D.subtract(_ray.get_point());
@@ -76,6 +76,25 @@ public class Cylinder extends RadialGeometry{
         Vector3D result = point3D.subtract(p).normalized();
 
         return result;
+    }*/
+
+    @Override
+    public Vector3D get_normal(Point3D point) {
+        Point3D Pc = this._ray.get_point();
+        Vector3D Vc = this._ray.get_direction();
+
+        Matrix3 R = Transform.getRodriguesRotation(Vc, Vector3D.zAxis);
+        Matrix3 RInv = R.inversed();
+
+        Point3D q = R.mult(Pc);
+
+        Point3D pointT = R.mult(point).subtract(q).getPoint();
+
+        Point3D Q = new Point3D().add(Vector3D.zAxis.scaled(pointT.getZ().getCoord()));
+
+        Vector3D normalT = pointT.subtract(Q);
+
+        return RInv.mult(normalT).normalized();
     }
 
     @Override
@@ -131,6 +150,7 @@ public class Cylinder extends RadialGeometry{
         return Util.equals(Util.uadd(xe*xe,ye*ye), r*r);
     }
 
+
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         Vector3D Vc = this.get_ray().get_direction();
@@ -176,7 +196,8 @@ public class Cylinder extends RadialGeometry{
         return result;
     }
 
-/*
+//DO NOT DELETE THIS COMMENTED CODE!
+    /*
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {

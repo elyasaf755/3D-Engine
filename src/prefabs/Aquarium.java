@@ -11,14 +11,17 @@ public class Aquarium extends Geometry {
     SetUnion _aquarium;
 
     public Aquarium(){
+        _orientation = new Ray(new Vector3D(0,1,0));
+
         Sphere lhsSphere = new Sphere(50, new Point3D(0,0,0), new Color(Color.GLASS), new Material(Material.GLASS));
         Sphere rhsSphere = new Sphere(50, new Point3D(0,50,0));
         SetDifference glassBowl = new SetDifference(lhsSphere, rhsSphere);
 
+        Sphere waterSpherer = new Sphere(lhsSphere);
         Plane waterPlane = new Plane(new Point3D(0,0,0), new Vector3D(0,1,0));
         waterPlane.set_emission(Color.BLUE_WATER);
         waterPlane.set_material(new Material(0,0,0.1,0.7,0));
-        SetIntersection water = new SetIntersection(lhsSphere, waterPlane);
+        SetIntersection water = new SetIntersection(waterSpherer, waterPlane);
 
         _aquarium = new SetUnion(glassBowl, water);
 
@@ -33,10 +36,11 @@ public class Aquarium extends Geometry {
         bubble3.scale(0.7);
         bubble3.translate(-10,-10,10);
 
-
         SetUnion bubbles = new SetUnion(bubble, bubble1);
         bubbles = new SetUnion(bubbles, bubble2);
         bubbles = new SetUnion(bubbles, bubble3);
+
+        bubbles.translate(0,-10,0);
 
         _aquarium = new SetUnion(_aquarium, bubbles);
     }

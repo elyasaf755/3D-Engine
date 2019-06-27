@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.ITransformable;
-import primitives.Point3D;
-import primitives.Transform;
-import primitives.Vector3D;
+import primitives.*;
 
 import java.util.ArrayList;
 
@@ -43,7 +40,34 @@ public abstract class GeometriesSet extends Geometry {
         _rhs = rhs;
     }
 
+    @Override
+    public void set_emission(Color emission) {
+        _lhs.set_emission(emission);
+        _rhs.set_emission(emission);
+    }
+
+    @Override
+    public void set_emission(java.awt.Color emission) {
+        _lhs.set_emission(emission);
+        _rhs.set_emission(emission);
+    }
+
+    @Override
+    public void set_material(Material material) {
+        _lhs.set_material(material);
+        _rhs.set_material(material);
+    }
+
     //Methods
+
+
+    @Override
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        ArrayList<GeoPoint> result = _lhs.findIntersections(ray);
+        result.addAll(_rhs.findIntersections(ray));
+
+        return result;
+    }
 
     public static void removeDuplicates(ArrayList<GeoPoint> intersections){
         for(int i = 0; i < intersections.size(); ++i){
