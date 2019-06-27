@@ -20,7 +20,7 @@ public class SetUnion extends GeometriesSet {
         SetIntersection setIntersection = new SetIntersection(_lhs, _rhs);
 
         if (setIntersection.contains(point)){
-            throw new IllegalArgumentException("This point is contained in the intersection, therefore is not on the union's surface");
+            throw new IllegalArgumentException("This point is contained in the mergeWith, therefore is not on the union's surface");
         }
 
         if (this._lhs.surfaceContains(point)){
@@ -48,7 +48,7 @@ public class SetUnion extends GeometriesSet {
         SetIntersection setIntersection = new SetIntersection(_lhs, _rhs);
 
         if (setIntersection.contains(point)){
-            throw new IllegalArgumentException("This point is contained in the intersection, therefore is not on the union's surface");
+            throw new IllegalArgumentException("This point is contained in the mergeWith, therefore is not on the union's surface");
         }
 
         if (this._lhs.surfaceContains(point)){

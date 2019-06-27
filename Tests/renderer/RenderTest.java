@@ -966,10 +966,15 @@ class RenderTest {
         table.translate(0,0,0);
         table.set_material(new Material(0.5,0.5,0.1,0,3));
 
+        //Cuboid cuboid = new Cuboid();
 
 
-        scene.addGeometries(aquarium, table);
 
+        //scene.addGeometries(aquarium, table);
+
+        for (int i = 0; i < 20; ++i){
+
+        }
 
 
         //Lights

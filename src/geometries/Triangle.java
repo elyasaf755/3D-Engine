@@ -114,9 +114,9 @@ public class Triangle extends Plane implements FlatGeometry{
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
-        for (GeoPoint intersection : intersections){
-            if (this.contains(intersection.point))
-                result.add(intersection);
+        for (GeoPoint mergeWith : intersections){
+            if (this.contains(mergeWith.point))
+                result.add(mergeWith);
         }
 
         return result;
