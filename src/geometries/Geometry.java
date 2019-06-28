@@ -60,7 +60,7 @@ public abstract class Geometry implements Intersectable, ITransformable {
 
     //Methods
 
-    public abstract Vector3D get_normal(Point3D point3D);
+    public abstract Vector3D get_normal(Point3D point);
 
     public abstract boolean contains(Point3D point);
 

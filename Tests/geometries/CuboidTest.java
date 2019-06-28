@@ -125,6 +125,9 @@ class CuboidTest {
         ArrayList<GeoPoint> expected3 = new ArrayList<>();
         expected3.add(new GeoPoint(cuboid1, new Point3D(0,3,0)));
         assertEquals(expected3.get(0).point, actual3.get(0).point);
+
+        Ray ray = new Ray(new Point3D(0,0,-200), Vector3D.zAxis);
+        ArrayList<GeoPoint> interesections = cuboid1.findIntersections(ray);
     }
 
     @Test

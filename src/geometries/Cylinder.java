@@ -61,7 +61,7 @@ public class Cylinder extends RadialGeometry{
     }
 
     //Methods
-
+/*//DO NOT DELETE
     @Override
     public Vector3D get_normal(Point3D point3D) {
         Vector3D subPoints = point3D.subtract(_ray.get_point());
@@ -76,7 +76,25 @@ public class Cylinder extends RadialGeometry{
         Vector3D result = point3D.subtract(p).normalized();
 
         return result;
-        //return point3D.sub(_ray.get_point().add(_ray.get_direction().scaled(_ray.get_direction().dotProduct(point3D.sub(_ray.get_point()))))).normalized();
+    }*/
+
+    @Override
+    public Vector3D get_normal(Point3D point) {
+        Point3D Pc = this._ray.get_point();
+        Vector3D Vc = this._ray.get_direction();
+
+        Matrix3 R = Transform.getRodriguesRotation(Vc, Vector3D.zAxis);
+        Matrix3 RInv = R.inversed();
+
+        Point3D q = R.mult(Pc);
+
+        Point3D pointT = R.mult(point).subtract(q).getPoint();
+
+        Point3D Q = new Point3D().add(Vector3D.zAxis.scaled(pointT.getZ().getCoord()));
+
+        Vector3D normalT = pointT.subtract(Q);
+
+        return RInv.mult(normalT).normalized();
     }
 
     @Override
@@ -117,8 +135,69 @@ public class Cylinder extends RadialGeometry{
 
     @Override
     public boolean surfaceContains(Point3D point) {
-        throw new NotImplementedException();
+        Vector3D Vc = this.get_ray().get_direction();
+        double r = this._radius;
+
+        Matrix3 R = Transform.getRodriguesRotation(Vc, Vector3D.zAxis);
+
+        Point3D q = R.mult(this.get_ray().get_point());
+
+        Point3D pointT = R.mult(point).subtract(q).getPoint();
+
+        double xe = pointT.getX().getCoord();
+        double ye = pointT.getY().getCoord();
+
+        return Util.equals(Util.uadd(xe*xe,ye*ye), r*r);
     }
+
+
+    @Override
+    public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        Vector3D Vc = this.get_ray().get_direction();
+        double r = this._radius;
+
+        Matrix3 R = Transform.getRodriguesRotation(Vc, Vector3D.zAxis);
+
+        Point3D q = R.mult(this.get_ray().get_point());
+
+        Point3D Pr = ray.get_point();
+        Vector3D Vr = ray.get_direction();
+
+        Point3D PrT = R.mult(Pr).subtract(q).getPoint();
+        Vector3D VrT = R.mult(Vr).normalized();
+
+        double xe = PrT.getX().getCoord();
+        double ye = PrT.getY().getCoord();
+
+        double xd = VrT.getPoint().getX().getCoord();
+        double yd = VrT.getPoint().getY().getCoord();
+
+        double A = xd*xd + yd*yd;
+        double B = 2*(xe*xd + ye*yd);
+        double C = xe*xe + ye*ye - r*r;
+
+        double delta = B*B-4*A*C;
+
+        if (delta < 0 && !Util.equals(delta, 0)){
+            return new ArrayList<>();
+        }
+
+        double[] roots = Util.quadraticRoots(A, B, C);
+
+        ArrayList<GeoPoint> result = new ArrayList<>();
+
+        for(double root : roots){
+            if (!Util.equals(root, 0) && root > 0){
+                Point3D point = Pr.add(Vr.scaled(root));
+                result.add(new GeoPoint(this, point));
+            }
+        }
+
+        return result;
+    }
+
+//DO NOT DELETE THIS COMMENTED CODE!
+    /*
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
@@ -190,6 +269,7 @@ public class Cylinder extends RadialGeometry{
 
         return result;
     }
+*/
 
     @Override
     public void translate(double x, double y, double z) {

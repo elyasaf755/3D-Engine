@@ -3,7 +3,12 @@ package renderer;
 import com.sun.org.apache.regexp.internal.RE;
 import elements.*;
 import geometries.*;
+import javafx.scene.control.Tab;
 import org.junit.jupiter.api.Test;
+import prefabs.Aquarium;
+import prefabs.Bubble;
+import prefabs.JCTLogo;
+import prefabs.Table;
 import primitives.*;
 import scene.Scene;
 import sun.print.SunPrinterJobService;
@@ -512,7 +517,7 @@ class RenderTest {
         );
 
         scene.addGeometries(sphere1, sphere2 ,plane);
-        ImageWriter imageWriter = new ImageWriter("11thRenderTest - Reflection and Refraction 2", 500, 500, 500, 500);
+        ImageWriter imageWriter = new ImageWriter("11thRenderTest - Reflection and Refraction 2", 1000, 1000, 1000, 1000);
 
         Render render = new Render(scene, imageWriter);
         render.printAxises();
@@ -534,7 +539,7 @@ class RenderTest {
 
         Torus torus = new Torus(40, 20, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
         torus.set_emission(java.awt.Color.BLUE);
-        torus.set_material(new Material(1,1,1,0.1,2));
+        torus.set_material(new Material(1,1,0.3,0.4,2));
 
         scene.addGeometries(torus);
         scene.addLights(new DirectionalLight(new Vector3D(0,0,1)));
@@ -742,29 +747,31 @@ class RenderTest {
     }
 
     @Test//TEST 17 - Aquarium
-    void renderImage17(){
+    void renderImage17() {
         Scene scene = new Scene("renderTest");
         scene.set_background(new Color(53, 215, 255));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
-        scene.get_camera().rotate(45,15,0);
+        scene.get_camera().rotate(0,0,0);
         scene.get_camera().setAa(1);
 
-        Sphere lhsSphere = new Sphere(50, new Point3D(40,0,-40), new Color(Color.GLASS), new Material(Material.GLASS));
-        Sphere rhsSphere = new Sphere(50, new Point3D(40,50,-40));
-        SetDifference aquarium = new SetDifference(lhsSphere, rhsSphere);
-
+        Aquarium aquarium = new Aquarium();
+        aquarium.scale(3);
 
         scene.addGeometries(aquarium);
+
+
+
         PointLight pLight = new PointLight(new Color(java.awt.Color.YELLOW), new Point3D(0, 0, 35), 1, 0.0, 0.0);
-        DirectionalLight dLight = new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(0,-1,0));
+        DirectionalLight dLight = new DirectionalLight(new Color(100,100,100), new Vector3D(0,0,1));
+        DirectionalLight dLight2 = new DirectionalLight(new Color(130,130,130), new Vector3D(0,0,-1));
 
         scene.addLights(
                 dLight
         );
 
 
-        ImageWriter iw = new ImageWriter("17thRenderTest - Aquarium", 500, 500, 500, 500);
+        ImageWriter iw = new ImageWriter("17thRenderTest - Aquarium", 1000, 1000, 1000, 1000);
         Render render = new Render(scene, iw);
         //render.printAxises();
 
@@ -774,7 +781,7 @@ class RenderTest {
     }
 
     @Test//TEST 18 - Pyramid
-    void renderImage18(){
+    void renderImage18()throws InterruptedException{
         Scene scene = new Scene("renderTest");
         scene.set_background(new Color(53, 215, 255));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
@@ -836,6 +843,161 @@ class RenderTest {
 
     @Test//TEST 19 - Table
     void renderImage19(){
-        Tube tube = new Tube(4,new Ray(new Vector3D(0,1,0)), 16, new Color(java.awt.Color.BLUE));
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        Camera camera = new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0));
+        scene.set_camera(camera, 1000);
+        camera.rotate(5,25,0);
+        camera.setAa(1);
+
+        Table table = new Table();
+        table.scale(3);
+
+        scene.addGeometries(table);
+
+        DirectionalLight dLight = new DirectionalLight(new Color(200,200,200), new Vector3D(0,0,1));
+
+        scene.addLights(
+            dLight
+        );
+
+
+        ImageWriter iw = new ImageWriter("19thRenderTest - Table", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test//TEST 20 - JCT Logo
+    void renderImage20(){
+        //from left to right
+        //R: 27 G: 126 B: 169    Left Most triangle
+        //R: 35 G: 43 B: 106
+        //R: 68 G: 39 B: 105
+        //R: 109 G: 43 B: 91   Right Most
+
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.2));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        //scene.get_camera().rotate(5,15,0);
+        scene.get_camera().setAa(1);
+
+        JCTLogo logo = new JCTLogo();
+        scene.addGeometries(logo);
+
+        PointLight pLight = new PointLight(new Color(java.awt.Color.white), new Point3D(0, 0, -20), 1, 0.0, 0.0);
+        DirectionalLight dLight = new DirectionalLight(new Color(java.awt.Color.WHITE), new Vector3D(0,0,1));
+        SpotLight sLight = new SpotLight(java.awt.Color.white, new Point3D(0,0,-100), new Vector3D(0,0,1), 1,0.01,0);
+
+        scene.addLights(
+            sLight
+        );
+
+
+        ImageWriter iw = new ImageWriter("20thRenderTest - JCT Logo", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test//TEST 21 - Rectangle
+    void renderImage21(){
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.2));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        //scene.get_camera().rotate(5,15,0);
+        scene.get_camera().setAa(2);
+
+        Rectangle rectangle = new Rectangle(40, 80, new Ray(new Vector3D(0,0,1)));
+        rectangle.set_emission(java.awt.Color.green);
+
+        scene.addGeometries(rectangle);
+
+        PointLight pLight = new PointLight(new Color(java.awt.Color.white), new Point3D(0, 0, -7.5), 1, 0.0, 0.0);
+        DirectionalLight dLight = new DirectionalLight(new Color(java.awt.Color.WHITE), new Vector3D(0,0,1));
+
+        scene.addLights(
+                pLight
+        );
+
+
+        ImageWriter iw = new ImageWriter("21thRenderTest - Rectangle", 500, 500, 500, 500);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test//TEST 22 - Final Scene
+    void renderImage22(){
+
+        //Scene definitions
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(45,0,0);
+        scene.get_camera().setAa(1);
+
+
+
+        //Geometries
+
+        Aquarium aquarium = new Aquarium();
+        aquarium.scale(0.8);
+        aquarium.rotate(0,0,0);
+        aquarium.translate(0,100,0);
+
+
+        Table table = new Table();
+        table.scale(2);
+        table.rotate(0,0,0);
+        table.translate(0,0,0);
+        table.set_material(new Material(0.5,0.5,0.1,0,3));
+
+        //Cuboid cuboid = new Cuboid();
+
+
+
+        //scene.addGeometries(aquarium, table);
+
+        for (int i = 0; i < 20; ++i){
+
+        }
+
+
+        //Lights
+
+        PointLight pLight = new PointLight(new Color(java.awt.Color.YELLOW), new Point3D(0, 0, 35), 1, 0.0, 0.0);
+        DirectionalLight dLight = new DirectionalLight(new Color(100,100,100), new Vector3D(0,0,1));
+        DirectionalLight dLight2 = new DirectionalLight(new Color(130,130,130), new Vector3D(0,0,-1));
+
+
+
+        scene.addLights(
+                dLight
+        );
+
+
+
+        //Render
+
+        ImageWriter iw = new ImageWriter("22ndRenderTest - Final Scene", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
     }
 }

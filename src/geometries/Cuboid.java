@@ -317,6 +317,27 @@ public class Cuboid extends Geometry {
         _faces[5].set_emission(color);
     }
 
+    @Override
+    public void set_emission(Color emission) {
+        for(Plane face : _faces){
+            face.set_emission(emission);
+        }
+    }
+
+    @Override
+    public void set_emission(java.awt.Color emission) {
+        for(Plane face : _faces){
+            face.set_emission(emission);
+        }
+    }
+
+    @Override
+    public void set_material(Material material) {
+        for(Plane face : _faces){
+            face.set_material(material);
+        }
+    }
+
     //Methods
 
     @Override
@@ -451,8 +472,8 @@ public class Cuboid extends Geometry {
         this._ray.scale(x, y, z);
 
         _width = _width * x;
-        _length = _length * y;
-        _height = _height * z;
+        _height = _height * y;
+        _length = _length * z;
 
         for (Plane face : this._faces){
             face.scale(x, y, z);

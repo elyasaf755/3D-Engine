@@ -17,6 +17,8 @@ public class Color {
 
     public final static Color BLACK = new Color();
     public final static Color GLASS = new Color(32,56,240);
+    public final static Color WHITE_CREAM = new Color(255,250,250);
+    public final static Color BLUE_WATER = new Color(64, 164, 223);
 
     //Constructors
 
@@ -197,6 +199,7 @@ public class Color {
         if (k < 1)
             throw new IllegalArgumentException(
                     "Can't scaled a color by a negative number or by a number that is less than 1");
+
         double r = _r / k;
         double g = _g / k;
         double b = _b / k;
