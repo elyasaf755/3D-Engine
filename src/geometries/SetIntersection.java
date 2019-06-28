@@ -17,6 +17,10 @@ public class SetIntersection extends GeometriesSet {
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
         ArrayList<GeoPoint> intersections = new ArrayList<>();
 
         intersections.addAll(this._lhs.findIntersections(ray));

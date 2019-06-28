@@ -10,30 +10,48 @@ public class Cone extends RadialGeometry {
     private Ray _ray;
     private double _height;
 
+    private Matrix3 _R;//Default = Z axis
+    private Matrix3 _RInv;
+    private Point3D _q;
+
+    private void initTransformFields(){
+        _R = new Matrix3(Transform.getRodriguesRotation(_ray.get_direction(), Vector3D.zAxis));
+        _RInv = new Matrix3(_R.inversed());
+        _q = new Point3D(_R.mult(_ray.get_point()));
+    }
+
     //Constructors
 
     public Cone(double radius){
         super(radius);
         _ray = new Ray(new Vector3D(0,0,1));
         _height = 30;
+
+        initTransformFields();
     }
 
     public Cone(double radius, double height){
         super(radius);
         _ray = new Ray(new Vector3D(0,0,1));
         _height = height;
+
+        initTransformFields();
     }
 
     public Cone(double radius, Ray ray){
         super(radius);
         _ray = new Ray(ray);
         _height = 30;
+
+        initTransformFields();
     }
 
     public Cone(double radius, Ray ray, double height){
         super(radius);
         _ray = new Ray(ray);
         _height = height;
+
+        initTransformFields();
     }
 
     //Getters
@@ -50,6 +68,8 @@ public class Cone extends RadialGeometry {
 
     public void set_ray(Ray ray) {
         this._ray = new Ray(ray);
+
+        initTransformFields();
     }
 
     public void set_height(double height) {
@@ -78,6 +98,11 @@ public class Cone extends RadialGeometry {
 
     @Override
     public boolean surfaceContains(Point3D point) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void updateAABB() {
         throw new NotImplementedException();
     }
 
@@ -119,15 +144,11 @@ public class Cone extends RadialGeometry {
 
         Cone CT = new Cone(r, new Ray(PcT, VcT), h);
 
-        Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
-        Matrix3 RInv = R.inversed();
-
         Point3D Pr = ray.get_point();
         Vector3D Vr = ray.get_direction();
-        Point3D q = R.mult(Pc);
 
-        Point3D PrT = R.mult(Pr).subtract(q).getPoint();
-        Vector3D VrT = R.mult(Vr).normalized();
+        Point3D PrT = _R.mult(Pr).subtract(_q).getPoint();
+        Vector3D VrT = _R.mult(Vr).normalized();
         Ray RT = new Ray(PrT, VrT);
 
         ArrayList<GeoPoint> intersectionsT = CT.findIntersectionsInZDirection(RT);
@@ -135,7 +156,7 @@ public class Cone extends RadialGeometry {
         ArrayList<GeoPoint> result = new ArrayList<>();
         for(GeoPoint geoPointT : intersectionsT){
             Point3D point = new Point3D(geoPointT.point);
-            GeoPoint geoPoint = new GeoPoint(this, RInv.mult(point.add(q)));
+            GeoPoint geoPoint = new GeoPoint(this, _RInv.mult(point.add(_q)));
             result.add(geoPoint);
         }
 
@@ -198,30 +219,42 @@ public class Cone extends RadialGeometry {
     @Override
     public void translate(double x, double y, double z) {
         _ray.translate(x, y, z);
+
+        initTransformFields();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _ray.rotate(x, y, z);
+
+        initTransformFields();
     }
 
     @Override
     public void scale(double x, double y, double z) {
         _ray.scale(x, y, z);
+
+        initTransformFields();
     }
 
     @Override
     public void scale(double scalar) {
         _ray.scale(scalar);
+
+        initTransformFields();
     }
 
     @Override
     public void transform(Transform _transform) {
         _ray.transform(_transform);
+
+        initTransformFields();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         _ray.transform(translation, rotation, scale);
+
+        initTransformFields();
     }
 }

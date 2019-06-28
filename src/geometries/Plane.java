@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,8 @@ public class Plane extends Geometry  implements FlatGeometry{
     public Plane(Point3D point3D, Vector3D normal){
         _point = new Point3D(point3D);
         _normal = (new Vector3D(normal)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Point3D p1, Point3D p2, Point3D p3){
@@ -23,24 +26,32 @@ public class Plane extends Geometry  implements FlatGeometry{
 
         _point = new Point3D(p1);
         _normal = (v1.crossProduct(v2)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Point3D point3D, Vector3D normal, Color emission){
         super(emission);
         _point = new Point3D(point3D);
         _normal = (new Vector3D(normal)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Point3D point3D, Vector3D normal, Material material){
         super(material);
         _point = new Point3D(point3D);
         _normal = (new Vector3D(normal)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Point3D point3D, Vector3D normal, Color emission, Material material){
         super(emission, material);
         _point = new Point3D(point3D);
         _normal = (new Vector3D(normal)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Point3D p1, Point3D p2, Point3D p3, Color emission){
@@ -53,6 +64,8 @@ public class Plane extends Geometry  implements FlatGeometry{
 
         _point = new Point3D(p1);
         _normal = (v1.crossProduct(v2)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Point3D p1, Point3D p2, Point3D p3, Material material){
@@ -65,6 +78,8 @@ public class Plane extends Geometry  implements FlatGeometry{
 
         _point = new Point3D(p1);
         _normal = (v1.crossProduct(v2)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Point3D p1, Point3D p2, Point3D p3, Color emission, Material material){
@@ -77,6 +92,8 @@ public class Plane extends Geometry  implements FlatGeometry{
 
         _point = new Point3D(p1);
         _normal = (v1.crossProduct(v2)).normalized();
+
+        updateAABB();
     }
 
     public Plane(Plane plane){
@@ -84,6 +101,8 @@ public class Plane extends Geometry  implements FlatGeometry{
 
         _point = new Point3D(plane._point);
         _normal = (new Vector3D(plane._normal)).normalized();
+
+        updateAABB();
     }
 
     //Getters
@@ -149,24 +168,34 @@ public class Plane extends Geometry  implements FlatGeometry{
         return this.contains(point);
     }
 
+    //TODO:TEST
+    @Override
+    public void updateAABB() {
+        setInfi();
+
+        return;
+    }
+
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-        double denom = _normal.dotProduct(ray.get_direction());
-        //if denom approaches 0
-        //Math.abs(denom) > 1e-6
+        Point3D Pr = ray.get_point();
+        Vector3D Vr = ray.get_direction();
+
+        double denom = _normal.dotProduct(Vr);
+
         if (!Util.isZero(Math.abs(denom))){
-            if (_point.equals(ray.get_point()))
+            if (_point.equals(Pr))
                 return new ArrayList<>();
 
-            double t = (_point.subtract(ray.get_point()).dotProduct(_normal)) / denom;
+            double t = (_point.subtract(Pr).dotProduct(_normal)) / denom;
 
             ArrayList<GeoPoint> result = new ArrayList<>();
 
             if (Util.equals(t, 0)){
-                result.add(new GeoPoint(this, ray.get_point()));
+                result.add(new GeoPoint(this, Pr));
             }
             else if (t > 0){
-                result.add(new GeoPoint(this, ray.get_point().add(ray.get_direction().scaled(t))));
+                result.add(new GeoPoint(this, Pr.add(Vr.scaled(t))));
             }
 
             return result;

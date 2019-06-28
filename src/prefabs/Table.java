@@ -36,12 +36,17 @@ public class Table extends Geometry {
 
 
         Cuboid tablePlate = new Cuboid(80,5,40, new Ray(new Vector3D(0,0,1)));
-        tablePlate.scale(2);
         tablePlate.set_emission(new Color(133,94,66));
+        tablePlate.scale(2);
+
+
 
         _table = new SetUnion(tablePlate, tableLegs);
         _table.rotate(180,0,0);
         _table.translate(0,30,0);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     //Setters
@@ -103,37 +108,68 @@ public class Table extends Geometry {
     }
 
     @Override
+    public void updateAABB() {
+        _table.updateAABB();
+
+        set_min(_table.get_min());
+        set_max(_table.get_max());
+    }
+
+    @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
+
         return _table.findIntersections(ray);
     }
 
     @Override
     public void translate(double x, double y, double z) {
         _table.translate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _table.rotate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double x, double y, double z) {
         _table.scale(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double scalar) {
         _table.scale(scalar);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Transform _transform) {
         _table.transform(_transform);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         _table.transform(translation, rotation, scale);
+
+        //TODO: TEST
+        updateAABB();
     }
 }

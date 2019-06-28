@@ -10,6 +10,7 @@ public class SetDifference extends GeometriesSet {
 
     public SetDifference(Geometry lhs, Geometry rhs){
         super(lhs, rhs);
+        //TODO: DEL BELOW?
         _lhs = lhs;
         _rhs = rhs;
     }
@@ -43,6 +44,10 @@ public class SetDifference extends GeometriesSet {
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
         ArrayList<GeoPoint> intersections = new ArrayList<>();
         intersections.addAll(_lhs.findIntersections(ray));
         intersections.addAll(_rhs.findIntersections(ray));

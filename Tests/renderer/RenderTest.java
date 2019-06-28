@@ -356,7 +356,7 @@ class RenderTest {
         render.writeToImage();
     }
 
-    @Test//TEST 8 - Render Tube
+    @Test//TEST 8 - Cylinders
     void renderImage8(){
 
         Scene scene = new Scene("tubeScene");
@@ -368,14 +368,9 @@ class RenderTest {
         scene.set_background(new Color(java.awt.Color.CYAN));
         scene.get_camera().rotate(5, 15, 0);
 
-        Sphere sphere = new Sphere(5, new Point3D(0,0,0));
-        sphere.set_emission(java.awt.Color.GREEN);
-
-        scene.addGeometries(sphere);
-
         scene.addLights(new DirectionalLight(new Vector3D(0,0,1)));
 
-        ImageWriter imageWriter = new ImageWriter("8thRenderTest - Tube Test", 500, 500, 500, 500);
+        ImageWriter imageWriter = new ImageWriter("8thRenderTest - Cylinders Test", 500, 500, 500, 500);
         Render render = new Render(scene, imageWriter);
         render.printAxises();
         render.renderImage();
@@ -516,7 +511,9 @@ class RenderTest {
                 new DirectionalLight(new Color(java.awt.Color.YELLOW), new Vector3D(-1,0,0))
         );
 
-        scene.addGeometries(sphere1, sphere2 ,plane);
+        SetUnion union = new SetUnion(sphere1, sphere2);
+
+        scene.addGeometries(union, plane);
         ImageWriter imageWriter = new ImageWriter("11thRenderTest - Reflection and Refraction 2", 1000, 1000, 1000, 1000);
 
         Render render = new Render(scene, imageWriter);
@@ -540,6 +537,7 @@ class RenderTest {
         Torus torus = new Torus(40, 20, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)));
         torus.set_emission(java.awt.Color.BLUE);
         torus.set_material(new Material(1,1,0.3,0.4,2));
+        torus.rotate(45,45,45);
 
         scene.addGeometries(torus);
         scene.addLights(new DirectionalLight(new Vector3D(0,0,1)));
@@ -757,6 +755,7 @@ class RenderTest {
 
         Aquarium aquarium = new Aquarium();
         aquarium.scale(3);
+        aquarium.rotate(45,45,45);
 
         scene.addGeometries(aquarium);
 
@@ -848,7 +847,7 @@ class RenderTest {
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
         Camera camera = new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0));
         scene.set_camera(camera, 1000);
-        camera.rotate(5,25,0);
+        camera.rotate(45,25,0);
         camera.setAa(1);
 
         Table table = new Table();
@@ -888,6 +887,10 @@ class RenderTest {
         scene.get_camera().setAa(1);
 
         JCTLogo logo = new JCTLogo();
+        logo.scale(2);
+        logo.rotate(45,45,45);
+        logo.translate(45,45,45);
+
         scene.addGeometries(logo);
 
         PointLight pLight = new PointLight(new Color(java.awt.Color.white), new Point3D(0, 0, -20), 1, 0.0, 0.0);
@@ -966,15 +969,7 @@ class RenderTest {
         table.translate(0,0,0);
         table.set_material(new Material(0.5,0.5,0.1,0,3));
 
-        //Cuboid cuboid = new Cuboid();
-
-
-
-        //scene.addGeometries(aquarium, table);
-
-        for (int i = 0; i < 20; ++i){
-
-        }
+        scene.addGeometries(table, aquarium);
 
 
         //Lights
@@ -994,6 +989,158 @@ class RenderTest {
         //Render
 
         ImageWriter iw = new ImageWriter("22ndRenderTest - Final Scene", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test//TEST 23 - AABB TEST
+    void renderImage23(){
+
+        //Scene definitions
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(0,0,0);
+        scene.get_camera().setAa(1);
+
+
+
+        //Geometries
+
+
+        //Triangle - working
+
+        Triangle t1 = new Triangle(new Point3D(50,0,0), new Point3D(-50,0,0), new Point3D(0,50,0));
+        t1.scale(2);
+        t1.rotate(0,0,45);
+        t1.translate(-400,400,0);
+        t1.set_emission(java.awt.Color.GREEN);
+
+        //SPHERES - working
+
+        //REGULAR - 3.26 s
+        //AABB: 2.7 s
+        //AABB with unions: 2.374
+        Sphere temp = new Sphere(50, new Point3D(-400,0,0));
+        temp.set_emission(java.awt.Color.green);
+        Sphere temp2 = new Sphere(temp);
+        temp2.scale(1.1);
+        temp.translate(100,0,0);
+        SetUnion spheres = new SetUnion(temp, temp2);
+        for (int i = 0; i < 10; ++i){
+
+            Sphere sphere = new Sphere(temp);
+            sphere.set_emission(java.awt.Color.green);
+            sphere.scale(1.1);
+            sphere.translate(100, 0, 0);
+
+            spheres = new SetUnion(spheres, sphere);
+
+            temp = new Sphere(sphere);
+        }
+
+
+        //****NOT WORKING****(base rotation not working also
+        //CUBOID
+        Cuboid cuboid = new Cuboid(40,40,40);
+        cuboid.set_emission(java.awt.Color.green);
+        cuboid.scale(4);
+        cuboid.rotate(0,0,0);
+
+
+        //TORUS - WORKING
+
+        //REGULAR - 5.86
+        //AABB - 2.42
+        Torus torus = new Torus(50,20);
+        torus.set_emission(java.awt.Color.green);
+        torus.rotate(45,0,0);//min: -70,-70,-63.6  max - 170,205,63
+        torus.translate(100,100,100);//min - same, max - 170,205,63
+        torus.scale(3);//min - same, max - 370,487,63
+        torus.scale(0.3);
+
+        //Working, AABB not suitable for infinite geometries
+        Cylinder cylinder = new Cylinder(20, new Ray(new Vector3D(0,0,1)));
+        cylinder.set_emission(java.awt.Color.green);
+        cylinder.rotate(45,0,0);
+
+        //TUBE
+
+        //REGULAR - 3.707 s
+        //WITH AABB - 2.36 s
+        Tube tube = new Tube(20, new Ray(new Vector3D(0,1,0)), 20);
+        tube.set_emission(java.awt.Color.green);
+        tube.rotate(45,45,0);
+        tube.scale(4);
+
+        //Rectangle - WORKING
+
+        //Regular - 3.294
+        //AABB - 1.591 s
+        Rectangle rectangle = new Rectangle(60, 20, new Ray(new Vector3D(0,0,1)));
+        rectangle.set_emission(java.awt.Color.green);
+        rectangle.scale(3);
+        rectangle.rotate(0,0,0);
+        rectangle.translate(50,50,50);
+
+        //Aquarium - WORKING
+        //From pure regular to PURE AABB: nothing 2.8 s --> spheres 2.753 s --> GeoSet 2.524 s --> SetInt --> 2.407 s --> Aquarium 2.216 s
+
+        Aquarium aquarium = new Aquarium();
+        aquarium.scale(0.1);
+        aquarium.rotate(45,0,45);
+        aquarium.translate(100,100,100);
+
+        //Table - not working. see at camera rotation (45,0,0)
+        //Table wont rotate correctly
+        Table table = new Table();
+        table.scale(3);
+        table.rotate(0,45,0);
+
+        //JCT - working
+        //regular and aabb are the same.
+
+        JCTLogo jctLogo = new JCTLogo();
+        jctLogo.scale(2);
+        jctLogo.rotate(45,45,45);
+        jctLogo.translate(100,100,100);
+
+        Plane plane= new Plane(new Point3D(0,-50,0),new Vector3D(0,1,0));
+        plane.set_emission(new Color(java.awt.Color.BLACK));
+        plane.get_material().set_Kr(0.2);
+        plane.get_material().set_Kt(0.2);
+
+
+        SetUnion union = new SetUnion(plane, torus);
+
+        scene.addGeometries(union);
+
+
+
+        //scene.addGeometries(aquarium, table);
+
+
+
+        //Lights
+
+        DirectionalLight dLight = new DirectionalLight(new Color(255,255,255), new Vector3D(0,0,1));
+
+
+
+        scene.addLights(
+                dLight
+        );
+
+
+
+        //Render
+
+        ImageWriter iw = new ImageWriter("23rdRenderTest - AABB TEST", 1000, 1000, 1000, 1000);
         Render render = new Render(scene, iw);
         //render.printAxises();
 

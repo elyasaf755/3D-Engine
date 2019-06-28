@@ -58,6 +58,12 @@ public class TriangleMesh extends Geometry{
         throw new NotImplementedException();
     }
 
+    //TODO:
+    @Override
+    public void updateAABB() {
+        throw new NotImplementedException();
+    }
+
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         ArrayList<GeoPoint> result = new ArrayList<>();

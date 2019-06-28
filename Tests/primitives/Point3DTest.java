@@ -117,4 +117,25 @@ class Point3DTest {
     @Test
     void addPV() {
     }
+
+    @Test
+    void max() {
+        Point3D p1 = new Point3D(2,3,4);
+        Point3D p2 = new Point3D(1,1,5);
+        Point3D p3 = new Point3D(5,0,1);
+        Point3D actual = p1.max(p2,p3);
+        Point3D expected = new Point3D(5,3,5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void min() {
+        Point3D p1 = new Point3D(2,3,4);
+        Point3D p2 = new Point3D(1,1,5);
+        Point3D p3 = new Point3D(5,0,1);
+        Point3D actual = p1.min(p2,p3);
+        Point3D expected = new Point3D(1,0,1);
+        assertEquals(expected, actual);
+    }
+
 }

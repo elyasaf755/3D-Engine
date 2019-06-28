@@ -1,15 +1,20 @@
 package geometries;
 
 import primitives.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public abstract class Geometry implements Intersectable, ITransformable {
+//TODO: TEST AABB
+public abstract class Geometry extends AABB implements Intersectable, ITransformable {
     protected Color _emission;
     protected Material _material;
+
     //ADDED NEW FIELDS? UPDATE "EQUALS" AND "TOSTRING" METHODS (IF THEY EXIST).
 
     //Constructors
 
     public Geometry(){
+        super(new Point3D(-2,-2,-2), new Point3D(2,2,2));
+
         _emission = new Color(java.awt.Color.WHITE);
         _material = new Material();
     }
@@ -65,6 +70,9 @@ public abstract class Geometry implements Intersectable, ITransformable {
     public abstract boolean contains(Point3D point);
 
     public abstract boolean surfaceContains(Point3D point);
+
+    //TODO:TEST
+    public abstract void updateAABB();
 
     //Overrides
 

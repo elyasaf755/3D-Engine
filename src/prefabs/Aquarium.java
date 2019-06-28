@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Aquarium extends Geometry {
     private Ray _orientation;
 
-    SetUnion _aquarium;
+    private SetUnion _aquarium;
 
     public Aquarium(){
         _orientation = new Ray(new Vector3D(0,1,0));
@@ -43,6 +43,9 @@ public class Aquarium extends Geometry {
         bubbles.translate(0,-10,0);
 
         _aquarium = new SetUnion(_aquarium, bubbles);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
@@ -60,38 +63,69 @@ public class Aquarium extends Geometry {
         return _aquarium.surfaceContains(point);
     }
 
+    //TODO: TEST
+    @Override
+    public void updateAABB() {
+        _aquarium.updateAABB();
+
+        set_min(_aquarium.get_min());
+        set_max(_aquarium.get_max());
+    }
+
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
         return _aquarium.findIntersections(ray);
     }
 
     @Override
     public void translate(double x, double y, double z) {
         _aquarium.translate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _aquarium.rotate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double x, double y, double z) {
         _aquarium.scale(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double scalar) {
         _aquarium.scale(scalar);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Transform _transform) {
         _aquarium.transform(_transform);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         _aquarium.transform(translation, rotation, scale);
+
+        //TODO: TEST
+        updateAABB();
     }
 }

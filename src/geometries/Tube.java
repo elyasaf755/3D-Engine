@@ -9,86 +9,135 @@ import java.util.Arrays;
 public class Tube extends Cylinder {
     protected double _height;
 
+    private Matrix3 _R;//Default = Z axis
+    private Matrix3 _RInv;
+    private Point3D _q;
+
+    private void initTransformFields(){
+        _R = new Matrix3(Transform.getRodriguesRotation(_ray.get_direction(), Vector3D.zAxis));
+        _RInv = new Matrix3(_R.inversed());
+        _q = new Point3D(_R.mult(_ray.get_point()));
+    }
+
+    private void init(){
+        initTransformFields();
+
+        //TODO: TEST
+        updateAABB();
+    }
+
     //Constructors
 
     public Tube(double radius, Ray ray, double height){
         super(radius, ray);
 
         _height = height;
+
+        init();
     }
 
     public Tube(double radius, Ray ray, double height, Color emission){
         super(radius, ray, emission);
 
         _height = height;
+
+        init();
     }
 
     public Tube(double radius, Ray ray, double height, Material material){
         super(radius, ray, material);
 
         _height = height;
+
+        init();
     }
 
     public Tube(double radius, Ray ray, double height, Color emission, Material material){
         super(radius, ray, emission, material);
 
         _height = height;
+
+        init();
     }
 
     public Tube(double radius, Point3D point1, Point3D point2){
         super(radius, new Ray(point1, point2.subtract(point1)));
+
         _height = point2.subtract(point1).length();
+
+        init();
     }
 
     public Tube(double radius, Point3D point1, Point3D point2, Color emission){
         super(radius, new Ray(point1, point2.subtract(point1)), emission);
+
         _height = point2.subtract(point1).length();
+
+        init();
     }
 
     public Tube(double radius, Point3D point1, Point3D point2, Material material){
         super(radius, new Ray(point1, point2.subtract(point1)), material);
+
         _height = point2.subtract(point1).length();
+
+        init();
     }
 
     public Tube(double radius, Point3D point1, Point3D point2, Color emission, Material material){
         super(radius, new Ray(point1, point2.subtract(point1)), emission, material);
+
         _height = point2.subtract(point1).length();
+
+        init();
     }
 
     public Tube(RadialGeometry radialGeometry, Ray ray, double height){
         super(radialGeometry, ray);
 
         _height = height;
+
+        init();
     }
 
     public Tube(RadialGeometry radialGeometry, Ray ray, double height, Color emission){
         super(radialGeometry, ray, emission);
 
         _height = height;
+
+        init();
     }
 
     public Tube(RadialGeometry radialGeometry, Ray ray, double height, Material material){
         super(radialGeometry, ray, material);
 
         _height = height;
+
+        init();
     }
 
     public Tube(RadialGeometry radialGeometry, Ray ray, double height, Color emission, Material material){
         super(radialGeometry, ray, emission, material);
 
         _height = height;
+
+        init();
     }
 
     public Tube(Cylinder cylinder, double height){
         super(cylinder);
 
         _height = height;
+
+        init();
     }
 
     public Tube(Tube tube){
         super(tube._radius, tube._ray, tube._emission, tube._material);
 
         _height = tube._height;
+
+        init();
     }
 
     //Getters
@@ -101,6 +150,8 @@ public class Tube extends Cylinder {
 
     public void set_height(double _height) {
         this._height = _height;
+
+        init();
     }
 
     //Methods
@@ -124,6 +175,11 @@ public class Tube extends Cylinder {
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO:TEST
+        if(!intersects(ray)){
+            return new ArrayList<>();
+        }
+
         ArrayList<GeoPoint> cIntersections = super.findIntersections(ray);
 
         Point3D Pr = ray.get_point();
@@ -217,17 +273,23 @@ public class Tube extends Cylinder {
     @Override
     public void translate(double x, double y, double z) {
         _ray.translate(x, y, z);
+
+        init();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _ray.rotate(x, y, z);
+
+        init();
     }
 
     @Override
     public void scale(double scalar){
         super.scale(scalar);
         _height = Util.uscale(_height, scalar);
+
+        init();
     }
 
     @Override
@@ -280,6 +342,23 @@ public class Tube extends Cylinder {
     @Override
     public boolean surfaceContains(Point3D point) {
         throw new NotImplementedException();
+    }
+
+    //TODO:
+    @Override
+    public void updateAABB() {
+        Point3D Pt = _ray.get_point();
+        Vector3D Vt = _ray.get_direction();
+
+        Sphere down = new Sphere(_radius, Pt);
+        Sphere up = new Sphere(_radius, Pt.add(Vt.scaled(_height)));
+
+        AABB temp = down.mergeWith(up);
+        set_min(temp.get_min());
+        set_max(temp.get_max());
+
+        _min = temp.get_min();
+        _max = temp.get_max();
     }
 
     //Overrides

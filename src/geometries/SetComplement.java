@@ -11,6 +11,9 @@ public class SetComplement extends Geometry {
 
     public SetComplement(Geometry geometry){
         _geometry = geometry;
+
+        //TODO:TEST
+        updateAABB();
     }
 
     //Getters
@@ -23,6 +26,9 @@ public class SetComplement extends Geometry {
 
     public void set_geometry(Geometry _geometry) {
         this._geometry = _geometry;
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
@@ -47,33 +53,57 @@ public class SetComplement extends Geometry {
         return !_geometry.surfaceContains(point);
     }
 
+    //TODO: TEST
+    @Override
+    public void updateAABB() {
+        _geometry.updateAABB();
+    }
+
     @Override
     public void translate(double x, double y, double z) {
         _geometry.translate(x, y, z);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _geometry.rotate(x, y, z);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double x, double y, double z) {
         _geometry.scale(x, y, z);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double scalar) {
         _geometry.scale(scalar);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Transform _transform) {
         _geometry.transform(_transform);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         _geometry.transform(translation, rotation, scale);
+
+        //TODO:TEST
+        updateAABB();
     }
 }
