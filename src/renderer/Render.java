@@ -30,42 +30,7 @@ public class Render {
 
     //Methods
 
-    /*public void renderImage(){
-        Camera camera = _scene.get_camera();
 
-        for (int i = 0; i < _imageWriter.getWidth(); ++i){
-            for (int j = 0; j < _imageWriter.getHeight(); ++j){
-                ArrayList<Ray> rays = camera.constructRaysThroughPixel(
-                        _imageWriter.getNx(), _imageWriter.getNy(),
-                        i, j, _scene.get_screenDistance(),
-                        _imageWriter.getWidth(), _imageWriter.getHeight()
-                );
-
-                Color color = new Color();
-                for (Ray ray: rays) {
-
-                    ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
-
-                    if (intersectionPoints.isEmpty() == true) {
-                        color = color.add(_scene.get_background());
-                    }
-                    else {
-                        GeoPoint closestPoint = getClosestPoint(intersectionPoints);
-
-                        color = color.add(new Color(calcColor(closestPoint, new Ray(camera.get_origin(), closestPoint.point.subtract(camera.get_origin())))));
-                    }
-                }
-
-                int length = rays.size();
-                color = color.scale(1.0/length);
-
-                _imageWriter.writePixel(i, j, color.getColor());
-            }
-        }
-
-
-    }
-*/
     public void renderImage(){
         Camera camera = _scene.get_camera();
 
@@ -77,6 +42,7 @@ public class Render {
 
             Runnable task = () -> {
 
+                /*going over every pixel and construct rays through it*/
                 for (int j = 0; j < _imageWriter.getHeight(); ++j){
                     ArrayList<Ray> rays = camera.constructRaysThroughPixel(
                             _imageWriter.getNx(), _imageWriter.getNy(),
@@ -85,6 +51,8 @@ public class Render {
                     );
 
                     Color color = new Color();
+
+                    /*calculate the color of every intersection point of every ray*/
                     for (Ray ray: rays) {
 
                         ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
@@ -101,6 +69,8 @@ public class Render {
                     }
 
                     int length = rays.size();
+
+                    /*the color of the pixel will be the average of all rays*/
                     color = color.scale(1.0/length);
 
                     _imageWriter.writePixel(iFinal, j, color.getColor());
@@ -116,7 +86,7 @@ public class Render {
             while (!pool.awaitTermination(1, TimeUnit.HOURS));
         } catch (Exception ignored) {}
     }
-
+//get intersections of the ray  Scene
     public ArrayList<GeoPoint> getSceneRayIntersections(Ray ray){
         return _scene.get_geometries().findIntersections(ray);
     }
@@ -159,7 +129,6 @@ public class Render {
         //Reflectance vector
         Vector3D R = L.subtract(N.scaled(2 * L.dotProduct(N)));
 
-        //TODO: If exception should be thrown at Vector3D's "sub" function - del this;
         if (R == null){
             return lightColor.scale(0);
         }
@@ -168,13 +137,16 @@ public class Render {
 
         double k = Ks *  Math.pow(V.dotProduct(R), nShininess);
 
-        return lightColor.scale(Math.abs(k));
+        return lightColor.scale(Math.abs(k));//return the specular color ratio to the whole color
     }
 
+    /*this is the calcolor which called by the renderImage,
+    and it calls the recorsive calcolor*/
     private java.awt.Color calcColor(GeoPoint intersection, Ray ray) {
         return calcColor(intersection, ray, 0, 1.0).add(_scene.get_ambientLight().getIntensity()).getColor();
     }
 
+    /*calculate the color of the intersection point of the ray*/
     private Color calcColor(GeoPoint intersection, Ray ray, int level, double k){
         if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K){
             return new Color(java.awt.Color.BLACK);
@@ -191,15 +163,15 @@ public class Render {
 
         Color result = emission;
 
+        /*calculate the color from every light source*/
         for (LightSource light : _scene.get_lights()){
             Vector3D lightDirection = light.getLightDirectionTo(intersection.point);
 
-            //TODO: If exception should be thrown at PointLight's "getLightDirectionTo" or Point3D's sub functions - del this;
             if (lightDirection == null || cameraDirection == null){
                 continue;
             }
 
-            if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){
+            if (normal.dotProduct(lightDirection) * normal.dotProduct(cameraDirection) > 0){//if the light is not from behind the geometry
                 double ktr = transparency(light, intersection);
                 if (ktr * k > MIN_CALC_COLOR_K) {
                     Color intensity = light.getIntensity(intersection.point).scale(ktr);
