@@ -5,7 +5,6 @@ import primitives.*;
 import java.util.ArrayList;
 
 public class Cuboid extends Geometry {
-
     private Ray _ray;//Defining length
 
     private double _width;//X Axis - Width: +Right, -Left
@@ -552,7 +551,7 @@ public class Cuboid extends Geometry {
         updateAABB();
     }
 
-    @Override
+    @Override//TODO: FIX, REFACTOR TO 8 VERTICES IN ADDITION TO 6 PLANES
     public void rotate(double x, double y, double z) {
         this._ray.rotate(x, y, z);
 

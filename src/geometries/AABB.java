@@ -2,6 +2,10 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Util;
+import primitives.Vector3D;
+
+import java.util.ArrayList;
 
 public class AABB {
     protected Point3D _min;
@@ -162,6 +166,118 @@ public class AABB {
 
     }
 
+    protected ArrayList<Point3D> AABBintersections(Ray ray){
+        double minx = _min.getX().getCoord();
+        double miny = _min.getY().getCoord();
+        double minz = _min.getZ().getCoord();
+
+        double maxx = _max.getX().getCoord();
+        double maxy = _max.getY().getCoord();
+        double maxz = _max.getZ().getCoord();
+
+        Point3D Pr = ray.get_point();
+        Vector3D Vr = ray.get_direction();
+
+        double Prx = Pr.getX().getCoord();
+        double Pry = Pr.getY().getCoord();
+        double Prz = Pr.getZ().getCoord();
+
+        double Vrx = Vr.getPoint().getX().getCoord();
+        double Vry = Vr.getPoint().getY().getCoord();
+        double Vrz = Vr.getPoint().getZ().getCoord();
+
+        double tmin = (minx - Prx) / Vrx;
+        double tmax = (maxx - Prx) / Vrx;
+
+        if (tmin > tmax) {
+            double temp = tmin;
+            tmin = tmax;
+            tmax = temp;
+        }
+
+        double tymin = (miny - Pry) / Vry;
+        double tymax = (maxy - Pry) / Vry;
+
+        if (tymin > tymax) {
+            double temp = tymin;
+            tymin = tymax;
+            tymax = temp;
+        }
+
+        if ((tmin > tymax) || (tymin > tmax))
+            return new ArrayList<>();
+
+        if (tymin > tmin)
+            tmin = tymin;
+
+        if (tymax < tmax)
+            tmax = tymax;
+
+        double tzmin = (minz - Prz) / Vrz;
+        double tzmax = (maxz - Prz) / Vrz;
+
+        if (tzmin > tzmax) {
+            double temp = tzmin;
+            tzmin = tzmax;
+            tzmax = temp;
+        }
+
+        if ((tmin > tzmax) || (tzmin > tmax))
+            return new ArrayList<>();
+
+        if (tzmin > tmin)
+            tmin = tzmin;
+
+        if (tzmax < tmax)
+            tmax = tzmax;
+
+        ArrayList<Point3D> result = new ArrayList<>();
+
+        if (Util.isZero(tmin)){
+            result.add(Pr);
+        }
+        else{
+            result.add(Pr.add(Vr.scaled(tmin)));
+        }
+
+        if (Util.isZero(tmax)){
+            result.add(Pr);
+        }
+        else{
+            result.add(Pr.add(Vr.scaled(tmax)));
+        }
+
+
+        return result;
+    }
+
+    protected Vector3D AABBgetNormal(Point3D point){
+        double x = point.getX().getCoord();
+        double y = point.getY().getCoord();
+        double z = point.getZ().getCoord();
+
+        double w = getWidth() / 2;
+        double h = getWidth() / 2;
+        double l = getLength() / 2;
+
+        Plane[] faces = {
+                new Plane(new Point3D(w,0,0), Vector3D.xAxis),
+                new Plane(new Point3D(-w,0,0), Vector3D.xAxis.scaled(-1)),
+                new Plane(new Point3D(0,h,0), Vector3D.yAxis),
+                new Plane(new Point3D(0,-h,0), Vector3D.yAxis.scaled(-1)),
+                new Plane(new Point3D(0,0,z), Vector3D.zAxis),
+                new Plane(new Point3D(0,0,-z), Vector3D.zAxis.scaled(-1))
+        };
+
+        for (Plane face : faces){
+            if (face.surfaceContains(point)){
+                return face.get_normal();
+            }
+        }
+
+        throw new IllegalArgumentException("This point is not on the AABB's surface");
+    }
+
     /*public boolean intersects(Ray ray){
         double minx = _min.getX().getCoord();
         double miny = _min.getY().getCoord();
@@ -217,10 +333,10 @@ public class AABB {
 
     public double getWidth() { return _max.getX().subtract(_min.getX()).getCoord(); }
     public double getHeight() { return _max.getY().subtract(_min.getY()).getCoord(); }
-    public double getDepth() { return _max.getZ().subtract(_min.getZ()).getCoord(); }
+    public double getLength() { return _max.getZ().subtract(_min.getZ()).getCoord(); }
 
     protected double calculateSurfaceArea() {
-        return 2.0f * (getWidth() * getHeight() + getWidth()*getDepth() + getHeight()*getDepth());
+        return 2.0f * (getWidth() * getHeight() + getWidth()* getLength() + getHeight()* getLength());
     }
 
     protected void setInfi(){

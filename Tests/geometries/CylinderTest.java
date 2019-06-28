@@ -44,7 +44,7 @@ class CylinderTest {
 
     @Test
     void findIntersections() {
-        //ray in x direction with intersections from outside of the cylinder
+        //ray in x direction with AABBintersections from outside of the cylinder
         ArrayList<GeoPoint> expected1 = new ArrayList<>();
         expected1.add(new GeoPoint(cylinder1, new Point3D(-4,0,0)));
         expected1.add(new GeoPoint(cylinder1, new Point3D(4,0,0)));
@@ -52,7 +52,7 @@ class CylinderTest {
         ArrayList<GeoPoint> actual1 = cylinder1.findIntersections(r1);
         assertEquals(expected1, actual1);
 
-        //ray in -x direction with intersections from outside of the cylinder
+        //ray in -x direction with AABBintersections from outside of the cylinder
         ArrayList<GeoPoint> expected2 = new ArrayList<>();
         expected2.add(new GeoPoint(cylinder1, new Point3D(4,0,0)));
         expected2.add(new GeoPoint(cylinder1, new Point3D(-4,0,0)));
@@ -60,7 +60,7 @@ class CylinderTest {
         ArrayList<GeoPoint> actual2 = cylinder1.findIntersections(r2);
         assertEquals(expected2, actual2);
 
-        //ray in x direction without intersections from inside of the cylinder
+        //ray in x direction without AABBintersections from inside of the cylinder
         Ray r3 = new Ray(new Point3D(5,0,0), new Vector3D(1,0,0));
         ArrayList<GeoPoint> actual3 = cylinder2.findIntersections(r3);
         assertEquals(new ArrayList<>(), actual3);

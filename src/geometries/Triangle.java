@@ -139,11 +139,11 @@ public class Triangle extends Plane implements FlatGeometry{
     /*
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-        ArrayList<GeoPoint> intersections = super.findIntersections(ray);
+        ArrayList<GeoPoint> AABBintersections = super.findIntersections(ray);
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
-        for (GeoPoint mergeWith : intersections){
+        for (GeoPoint mergeWith : AABBintersections){
             if (this.contains(mergeWith.point))
                 result.add(mergeWith);
         }

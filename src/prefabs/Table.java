@@ -39,8 +39,6 @@ public class Table extends Geometry {
         tablePlate.set_emission(new Color(133,94,66));
         tablePlate.scale(2);
 
-
-
         _table = new SetUnion(tablePlate, tableLegs);
         _table.rotate(180,0,0);
         _table.translate(0,30,0);
@@ -117,10 +115,10 @@ public class Table extends Geometry {
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-        //TODO: TEST
+       /* //TODO: TEST
         if (!intersects(ray)){
             return new ArrayList<>();
-        }
+        }*/
 
         return _table.findIntersections(ray);
     }

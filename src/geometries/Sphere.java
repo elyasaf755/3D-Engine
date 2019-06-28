@@ -181,7 +181,7 @@ public class Sphere extends RadialGeometry {
         ArrayList<GeoPoint> intersections = new ArrayList<>();
 
         if (Util.equals(t1, 0)){
-            //intersections.add(new GeoPoint(this, new Point3D(ray.get_point())));//TODO: uncomment?
+            //AABBintersections.add(new GeoPoint(this, new Point3D(ray.get_point())));//TODO: uncomment?
         }
         else if (t1 > 0){
             intersections.add(new GeoPoint(this, new Point3D(ray.get_point().add(ray.get_direction().scaled(t1)))));
@@ -191,7 +191,7 @@ public class Sphere extends RadialGeometry {
         }
 
         if (Util.equals(t2, 0)){
-            //intersections.add(new GeoPoint(this, new Point3D(ray.get_point())));//TODO: uncomment?
+            //AABBintersections.add(new GeoPoint(this, new Point3D(ray.get_point())));//TODO: uncomment?
         }
         else if (t2 > 0){
             intersections.add(new GeoPoint(this, new Point3D(ray.get_point().add(ray.get_direction().scaled(t2)))));

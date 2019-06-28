@@ -721,13 +721,16 @@ class RenderTest {
         );
 
         //Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(50,50,-50), new Vector3D(1,0,0)), new Color(java.awt.Color.white));
-        Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)), new Color(java.awt.Color.white));
+        /*Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)), new Color(java.awt.Color.white));
         cuboid1.setBackFaceColor(new Color(java.awt.Color.green));
         cuboid1.setUpFaceColor(new Color(java.awt.Color.red));
         cuboid1.setFrontFaceColor(new Color(java.awt.Color.blue));
         cuboid1.setRightFaceColor(new Color(java.awt.Color.magenta));
         cuboid1.setDownFaceColor(new Color(java.awt.Color.yellow));
-        cuboid1.setLeftFaceColor(new Color(java.awt.Color.cyan));
+        cuboid1.setLeftFaceColor(new Color(java.awt.Color.cyan));*/
+
+        Cuboid cuboid1 = new Cuboid(25, 25, 25);
+        cuboid1.set_emission(java.awt.Color.green);
 
         cuboid1.translate(0,0,0);
 
@@ -806,7 +809,8 @@ class RenderTest {
         SetUnion u2 = new SetUnion(u1, t3);
         SetUnion u3 = new SetUnion(u2, t4);
 
-        Cuboid cuboid = new Cuboid(40,40,40, new Color(java.awt.Color.darkGray));
+        Cuboid cuboid = new Cuboid(40,40,40);
+        cuboid.set_emission(java.awt.Color.darkGray);
 
         SetIntersection floor = new SetIntersection(cuboid, p1);
 
@@ -847,11 +851,12 @@ class RenderTest {
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
         Camera camera = new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0));
         scene.set_camera(camera, 1000);
-        camera.rotate(45,25,0);
+        camera.rotate(0,0,0);
         camera.setAa(1);
 
         Table table = new Table();
         table.scale(3);
+        table.rotate(45,0,0);
 
         scene.addGeometries(table);
 
