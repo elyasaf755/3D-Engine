@@ -30,7 +30,7 @@ public class Render {
 
     //Methods
 
-
+    /*construct rays through every pixel and calculate its color*/
     public void renderImage(){
         Camera camera = _scene.get_camera();
 
@@ -57,6 +57,7 @@ public class Render {
 
                         ArrayList<GeoPoint> intersectionPoints = _scene.get_geometries().findIntersections(ray);
 
+                        //if there is no intersections for this ray
                         if (intersectionPoints.isEmpty() == true) {
                             color = color.add(_scene.get_background());
                         }
@@ -64,7 +65,7 @@ public class Render {
 
                             GeoPoint closestPoint = getClosestPoint(intersectionPoints);
 
-                            if (closestPoint.point.equals(camera.get_origin())){
+                            if (closestPoint.point.equals(camera.get_origin())){//if the point is "on" the camera
                                 continue;
                             }
 
@@ -151,6 +152,15 @@ public class Render {
     }
 
     /*calculate the color of the intersection point of the ray*/
+
+    /**
+     *
+     * @param intersection the intersection point
+     * @param ray the ray which intersect the geometry
+     * @param level -of the recorsive calls (in reflection and refraction)
+     * @param k- the percent of "weight" of this color on the final color
+     * @return the color of the intersection point
+     */
     private Color calcColor(GeoPoint intersection, Ray ray, int level, double k){
         if (level == RECURSION_LEVEL || k < MIN_CALC_COLOR_K){
             return new Color(java.awt.Color.BLACK);
@@ -228,6 +238,11 @@ public class Render {
         return result;
     }
 
+    /**
+     *
+     * @param geoPoints list of all intersection (of specific ray)
+     * @return the closest point to the camera
+     */
     private GeoPoint getClosestPoint(ArrayList<GeoPoint> geoPoints){
 
         if (geoPoints.size() == 0)
@@ -237,11 +252,14 @@ public class Render {
         double shortestDistance = 0;
         GeoPoint closestPoint = null;
 
+
         for(GeoPoint geoPoint : geoPoints){
+            //take the first point
             if (closestPoint == null && shortestDistance == 0){
                 closestPoint = geoPoint;
                 shortestDistance = origin.distance(geoPoint.point);
             }
+            //take the point if its distance is shorter than closestPoint
             else{
                 double distance = origin.distance(geoPoint.point);
 
@@ -255,15 +273,23 @@ public class Render {
         return closestPoint;
     }
 
+    /**
+     * calculate the percent of the light which arrive to the intersection point from a light source
+     * (check if the light is not hidden by another geometry (or partly hidden)
+     * @param lightSource
+     * @param intersection
+     * @return the percents of the light which arrive to the intersection point
+     */
     private double transparency(LightSource lightSource, GeoPoint intersection){
         Point3D intersectionPoint = new Point3D(intersection.point);
         Vector3D lightDirection = lightSource.getLightDirectionTo(intersectionPoint).scaled(-1);
         Vector3D normal = intersection.geometry.get_normal(intersectionPoint);
 
+        //distance the origin of the ray (to the light source)  "epsilon' from the original intersection point
         double epsilon = this.calcEpsilon(lightDirection, normal);
         Point3D shiftedPoint = intersectionPoint.add(normal.scaled(epsilon));
 
-        Ray lightRay = new Ray(shiftedPoint, lightDirection);
+        Ray lightRay = new Ray(shiftedPoint, lightDirection);// construct the ray
 
         ArrayList<GeoPoint> intersections = this.getSceneRayIntersections(lightRay);
 
@@ -273,12 +299,19 @@ public class Render {
             intersections.remove(intersection);
 
         double ktr = 1;
+        /*check for every geometry in the way of the ray if its transparent and how much*/
         for (GeoPoint gp : intersections)
             ktr *= gp.geometry.get_material().get_Kt();
 
         return ktr;
     }
 
+    /**
+     *  construct Reflected Ray from point
+     * @param intersectionGeoPoint the point
+     * @param ray the origin ray of the light
+     * @return the reflection ray
+     */
     private Ray constructReflectedRay(GeoPoint intersectionGeoPoint, Ray ray) {
         Vector3D normal = new Vector3D(intersectionGeoPoint.geometry.get_normal(intersectionGeoPoint.point));
         Point3D intersection = new Point3D(intersectionGeoPoint.point);
