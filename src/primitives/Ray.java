@@ -6,29 +6,62 @@ public class Ray implements ITransformable {
     private Point3D _point;
     private Vector3D _direction;
 
+    //Optimizing AABB
+    private Vector3D _invDirection;
+    private int[] sign;
+
+    private void initPrivates(){
+        this._invDirection = new Vector3D(
+                1 / _direction.getPoint().getX().getCoord(),
+                1 / _direction.getPoint().getY().getCoord(),
+                1 / _direction.getPoint().getZ().getCoord()
+        );
+
+        sign = new int[3];
+
+        sign[0] = _invDirection.getPoint().getX().getCoord() < 0 ? 1 : 0;
+        sign[1] = _invDirection.getPoint().getY().getCoord() < 0 ? 1 : 0;
+        sign[2] = _invDirection.getPoint().getZ().getCoord() < 0 ? 1 : 0;
+    }
+
     //Constructors
     public Ray(Point3D point, Vector3D direction){
         this._point = new Point3D(point);
         this._direction = (new Vector3D(direction)).normalized();
+
+        initPrivates();
     }
 
     public Ray(Vector3D direction){
         _point = new Point3D();
         _direction = new Vector3D(direction);
+
+        initPrivates();
     }
 
     public Ray(Ray ray){
         _point = new Point3D(ray.get_point());
         _direction = (new Vector3D(ray.get_direction())).normalized();
+
+        initPrivates();
     }
 
     //Getters
+
     public Point3D get_point() {
         return new Point3D(_point);
     }
 
     public Vector3D get_direction() {
         return new Vector3D(_direction);
+    }
+
+    public Vector3D get_invDirection() {
+        return new Vector3D(_invDirection);
+    }
+
+    public int[] getSign() {
+        return sign;
     }
 
     //Setters
@@ -45,16 +78,22 @@ public class Ray implements ITransformable {
 
     public void set_direction(Vector3D direction) {
         this._direction.set_point(direction.getPoint());
+
+        initPrivates();
     }
 
     public void set_ray(Point3D point, Vector3D direction){
         _point.set_point(point);
         _direction.set_vector(direction);
+
+        initPrivates();
     }
 
     public void set_ray(Ray ray){
         this._point.set_point(ray.get_point());
         this._direction.set_vector(ray.get_direction());
+
+        initPrivates();
     }
 
     //Methods

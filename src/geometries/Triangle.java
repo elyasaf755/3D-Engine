@@ -16,6 +16,9 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1 = new Point3D(point1);
         _point2 = new Point3D(point2);
         _point3 = new Point3D(point3);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public Triangle(Point3D point1, Point3D point2, Point3D point3, Color emission){
@@ -24,6 +27,9 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1 = new Point3D(point1);
         _point2 = new Point3D(point2);
         _point3 = new Point3D(point3);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public Triangle(Point3D point1, Point3D point2, Point3D point3, Material material){
@@ -32,6 +38,9 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1 = new Point3D(point1);
         _point2 = new Point3D(point2);
         _point3 = new Point3D(point3);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public Triangle(Point3D point1, Point3D point2, Point3D point3, Color emission, Material material){
@@ -40,6 +49,9 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1 = new Point3D(point1);
         _point2 = new Point3D(point2);
         _point3 = new Point3D(point3);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public Triangle(Point3D origin, Vector3D v1, Vector3D v2){
@@ -48,6 +60,9 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1 = new Point3D(origin);
         _point2 = origin.add(v1);
         _point3 = origin.add(v2);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public Triangle(Triangle triangle){
@@ -56,6 +71,9 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1 = new Point3D(triangle._point1);
         _point2 = new Point3D(triangle._point2);
         _point3 = new Point3D(triangle._point3);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     //Getters
@@ -72,6 +90,17 @@ public class Triangle extends Plane implements FlatGeometry{
     }
 
     //Methods
+
+    //TODO: TEST
+    @Override
+    public void updateAABB(){
+        if (_point1 == null || _point2 == null || _point3 == null){
+            return;
+        }
+
+        set_min(_point1.min(_point2, _point3));
+        set_max(_point1.max(_point2, _point3));
+    }
 
     public void flipNormal(){
         Vector3D v1 = new Vector3D(_point2.subtract(_point1));
@@ -110,11 +139,11 @@ public class Triangle extends Plane implements FlatGeometry{
     /*
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-        ArrayList<GeoPoint> intersections = super.findIntersections(ray);
+        ArrayList<GeoPoint> AABBintersections = super.findIntersections(ray);
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
-        for (GeoPoint mergeWith : intersections){
+        for (GeoPoint mergeWith : AABBintersections){
             if (this.contains(mergeWith.point))
                 result.add(mergeWith);
         }
@@ -125,6 +154,11 @@ public class Triangle extends Plane implements FlatGeometry{
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
+
         ArrayList<GeoPoint> planeIntersections = super.findIntersections(ray);
 
         Point3D Pr = ray.get_point();
@@ -235,7 +269,7 @@ public class Triangle extends Plane implements FlatGeometry{
 
         return result;
     }
-
+    //TODO: TEST
     @Override
     public void translate(double x, double y, double z) {
         super.translate(x, y, z);
@@ -243,8 +277,10 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1.translate(x, y, z);
         _point2.translate(x, y, z);
         _point3.translate(x, y, z);
-    }
 
+        updateAABB();
+    }
+    //TODO: TEST
     @Override
     public void rotate(double x, double y, double z) {
         super.rotate(x, y, z);
@@ -252,8 +288,10 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1.rotate(x, y, z);
         _point2.rotate(x, y, z);
         _point3.rotate(x, y, z);
-    }
 
+        updateAABB();
+    }
+    //TODO: TEST
     @Override
     public void scale(double x, double y, double z) {
         super.scale(x, y, z);
@@ -261,8 +299,10 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1.scale(x, y, z);
         _point2.scale(x, y, z);
         _point3.scale(x, y, z);
-    }
 
+        updateAABB();
+    }
+    //TODO: TEST
     @Override
     public void scale(double scalar) {
         super.scale(scalar);
@@ -270,8 +310,10 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1.scale(scalar);
         _point2.scale(scalar);
         _point3.scale(scalar);
-    }
 
+        updateAABB();
+    }
+    //TODO: TEST
     public void scaleInPlace(double x, double y, double z){
         Point3D oldCentroid = this.getCentroid();
 
@@ -286,8 +328,10 @@ public class Triangle extends Plane implements FlatGeometry{
                 direction.getPoint().getY().getCoord(),
                 direction.getPoint().getZ().getCoord()
         );
-    }
 
+        updateAABB();
+    }
+    //TODO: TEST
     @Override
     public void transform(Transform _transform) {
         super.transform(_transform);
@@ -295,8 +339,11 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1.transform(_transform);
         _point2.transform(_transform);
         _point3.transform(_transform);
+
+        updateAABB();
     }
 
+    //TODO: TEST
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         super.transform(translation, rotation, scale);
@@ -304,6 +351,8 @@ public class Triangle extends Plane implements FlatGeometry{
         _point1.transform(translation, rotation, scale);
         _point2.transform(translation, rotation, scale);
         _point3.transform(translation, rotation, scale);
+
+        updateAABB();
     }
 
     @Override

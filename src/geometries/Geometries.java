@@ -97,6 +97,7 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
         ArrayList<GeoPoint> result = new ArrayList<>();;
 
         for (Geometry geometry : _geometriesList){
+
             result.addAll(geometry.findIntersections(ray));
         }
 
@@ -107,6 +108,9 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
     public void translate(double x, double y, double z) {
         for (Geometry geometry : _geometriesList){
             geometry.translate(x, y, z);
+
+            //TODO: TEST
+            geometry.updateAABB();
         }
     }
 
@@ -114,6 +118,9 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
     public void rotate(double x, double y, double z) {
         for (Geometry geometry : _geometriesList){
             geometry.rotate(x, y, z);
+
+            //TODO: TEST
+            geometry.updateAABB();
         }
     }
 
@@ -121,6 +128,9 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
     public void scale(double x, double y, double z) {
         for (Geometry geometry : _geometriesList){
             geometry.scale(x, y, z);
+
+            //TODO: TEST
+            geometry.updateAABB();
         }
     }
 
@@ -128,6 +138,9 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
     public void scale(double scalar) {
         for (Geometry geometry : _geometriesList){
             geometry.scale(scalar);
+
+            //TODO: TEST
+            geometry.updateAABB();
         }
     }
 
@@ -135,6 +148,9 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
     public void transform(Transform _transform) {
         for (Geometry geometry : _geometriesList){
             geometry.transform(_transform);
+
+            //TODO: TEST
+            geometry.updateAABB();
         }
     }
 
@@ -142,6 +158,9 @@ public class Geometries implements Intersectable, ITransformable, Iterable<Geome
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         for (Geometry geometry : _geometriesList){
             geometry.transform(translation, rotation, scale);
+
+            //TODO: TEST
+            geometry.updateAABB();
         }
     }
 

@@ -19,6 +19,9 @@ public class Bubble extends Geometry {
         _sphere.set_material(Material.GLASS);
         _sphere.get_material().set_Kt(0.4);
         _sphere.get_material().set_Kr(0.2);
+
+        //TODO:
+        updateAABB();
     }
 
     public Bubble(double radius, Point3D origin){
@@ -28,10 +31,16 @@ public class Bubble extends Geometry {
         _sphere.set_material(Material.GLASS);
         _sphere.get_material().set_Kt(0.4);
         _sphere.get_material().set_Kr(0.2);
+
+        //TODO:
+        updateAABB();
     }
 
     public Bubble(Bubble bubble){
         _sphere = new Sphere(bubble.get_sphere());
+
+        //TODO:
+        updateAABB();
     }
 
     //Getters
@@ -61,38 +70,69 @@ public class Bubble extends Geometry {
         return _sphere.surfaceContains(point);
     }
 
+    //TODOL TEST
+    @Override
+    public void updateAABB() {
+        _sphere.updateAABB();
+
+        set_min(_sphere.get_min());
+        set_max(_sphere.get_max());
+    }
+
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO:
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
         return _sphere.findIntersections(ray);
     }
 
     @Override
     public void translate(double x, double y, double z) {
         _sphere.translate(x, y, z);
+
+        //TODO:
+        updateAABB();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _sphere.rotate(x, y, z);
+
+        //TODO:
+        updateAABB();
     }
 
     @Override
     public void scale(double x, double y, double z) {
         _sphere.scale(x, y, z);
+
+        //TODO:
+        updateAABB();
     }
 
     @Override
     public void scale(double scalar) {
         _sphere.scale(scalar);
+
+        //TODO:
+        updateAABB();
     }
 
     @Override
     public void transform(Transform _transform) {
         _sphere.transform(_transform);
+
+        //TODO:
+        updateAABB();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         _sphere.transform(translation, rotation, scale);
+
+        //TODO:
+        updateAABB();
     }
 }

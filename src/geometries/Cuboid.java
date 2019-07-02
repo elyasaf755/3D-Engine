@@ -5,20 +5,29 @@ import primitives.*;
 import java.util.ArrayList;
 
 public class Cuboid extends Geometry {
-
-    private Ray _ray;
+    private Ray _ray;//Defining length
 
     private double _width;//X Axis - Width: +Right, -Left
     private double _height;//Y Axis - Height: +Up, -Down
     private double _length;//Z Axis - Length: +Front, -Back
 
-    Plane[] _faces;
+    private Plane[] _faces;
+
+    private Matrix3 _R;//Default = Z axis
+    private Matrix3 _RInv;
+    private Point3D _q;
+
+    private void initTransformFields(){
+        _R = new Matrix3(Transform.getRodriguesRotation(_ray.get_direction(), Vector3D.zAxis));
+        _RInv = new Matrix3(_R.inversed());
+        _q = new Point3D(_R.mult(_ray.get_point()));
+    }
 
     //Initializers
     private void initPlanes(double width, double height, double length){
         _faces = new Plane[6];
 
-        //when cube direction is Z
+        //when cube direction is Z (length)
         double x = width / 2.0;//X Axis - Width: +Right, -Left
         double y = height / 2.0;//Y Axis - Height: +Up, -Down
         double z = length / 2.0;//Z Axis - Length: +Front, -Back
@@ -55,16 +64,12 @@ public class Cuboid extends Geometry {
         Vector3D zAxis = new Vector3D(0,0,1);//Length: +Front, -Back
 
         Point3D Pc = ray.get_point();
-        Vector3D Vc = ray.get_direction();
 
-        Matrix3 R = Transform.getRodriguesRotation(Vc, zAxis);
-        Matrix3 RInv = R.inversed();
-
-        Vector3D frontNormal = RInv.mult(zAxis);
+        Vector3D frontNormal = _RInv.mult(zAxis);
         Vector3D backNormal = frontNormal.scaled(-1);
-        Vector3D rightNormal = RInv.mult(xAxis);
+        Vector3D rightNormal = _RInv.mult(xAxis);
         Vector3D leftNormal = rightNormal.scaled(-1);
-        Vector3D upNormal = RInv.mult(yAxis);
+        Vector3D upNormal = _RInv.mult(yAxis);
         Vector3D downNormal = upNormal.scaled(-1);
 
         Point3D frontOrigin = Pc.add(frontNormal.scaled(z));
@@ -177,7 +182,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length);
+
+        //TODO:
+        updateAABB();
     }
 
     public Cuboid(double width, double height, double length, Ray ray){
@@ -187,7 +197,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length, ray);
+
+        //TODO:
+        updateAABB();
     }
 
     public Cuboid(double width, double height, double length, Color emission){
@@ -199,7 +214,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length, emission);
+
+        //TODO:
+        updateAABB();
     }
 
     public Cuboid(double width, double height, double length, Ray ray, Color emission){
@@ -210,7 +230,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length, ray, emission);
+
+        //TODO:
+        updateAABB();
     }
 
     public Cuboid(double width, double height, double length, Material material){
@@ -221,7 +246,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length, material);
+
+        //TODO:
+        updateAABB();
     }
 
     public Cuboid(double width, double height, double length, Ray ray, Material material){
@@ -232,7 +262,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length, ray, material);
+
+        //TODO:
+        updateAABB();
     }
 
     public Cuboid(double width, double height, double length, Color emission, Material material){
@@ -243,7 +278,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length, emission, material);
+
+        //TODO:
+        updateAABB();
     }
 
     public Cuboid(double width, double height, double length, Ray ray, Color emission, Material material){
@@ -254,7 +294,12 @@ public class Cuboid extends Geometry {
         _length = length;
         _height = height;
 
+        initTransformFields();
+
         initFaces(width, height, length, ray, emission, material);
+
+        //TODO:
+        updateAABB();
     }
 
     //Getters
@@ -279,18 +324,32 @@ public class Cuboid extends Geometry {
 
     public void set_ray(Ray ray) {
         this._ray = new Ray(ray);
+
+        initTransformFields();
+
+        //TODO:
+        updateAABB();
     }
 
     public void set_width(double _width) {
         this._width = _width;
+
+        //TODO:
+        updateAABB();
     }
 
     public void set_length(double _length) {
         this._length = _length;
+
+        //TODO:
+        updateAABB();
     }
 
     public void set_height(double _height) {
         this._height = _height;
+
+        //TODO:
+        updateAABB();
     }
 
     public void setRightFaceColor(Color color){
@@ -393,17 +452,13 @@ public class Cuboid extends Geometry {
                     (Util.equals(pz, z) || pz < z);
         }
 
-        Matrix3 R = Transform.getRodriguesRotation(Vc, VcT);
+        Point3D pointT = _R.mult(point);
 
-        Point3D q = R.mult(Pc);
-
-        Point3D pointT = R.mult(point);
-
-        if (pointT.equals(q)){
+        if (pointT.equals(_q)){
             pointT = new Point3D();
         }
         else{
-            pointT = pointT.subtract(q).getPoint();
+            pointT = pointT.subtract(_q).getPoint();
         }
 
         double px = Math.abs(pointT.getX().getCoord());
@@ -430,8 +485,43 @@ public class Cuboid extends Geometry {
         return false;
     }
 
+    //TODO: TEST
+    @Override
+    public void updateAABB() {
+        //when cube direction is Z
+        double x = _width / 2.0;//X Axis - Width: +Right, -Left
+        double y = _height / 2.0;//Y Axis - Height: +Up, -Down
+        double z = _length / 2.0;//Z Axis - Length: +Front, -Back
+
+        Point3D rufT = new Point3D(x,y,z);
+        Point3D lufT = new Point3D(-x,y,z);
+        Point3D rdfT = new Point3D(x,-y,z);
+        Point3D ldfT = new Point3D(-x,-y,z);
+        Point3D rubT = new Point3D(x,y,-z);
+        Point3D lubT = new Point3D(-x,y,-z);
+        Point3D rdbT = new Point3D(x,-y,-z);
+        Point3D ldbT = new Point3D(-x,-y,-z);
+
+        Point3D ruf = _RInv.mult(rufT).add(_q);
+        Point3D luf = _RInv.mult(lufT).add(_q);
+        Point3D rdf = _RInv.mult(rdfT).add(_q);
+        Point3D ldf = _RInv.mult(ldfT).add(_q);
+        Point3D rub = _RInv.mult(rubT).add(_q);
+        Point3D lub = _RInv.mult(lubT).add(_q);
+        Point3D rdb = _RInv.mult(rdbT).add(_q);
+        Point3D ldb = _RInv.mult(ldbT).add(_q);
+
+        set_min(ruf.min(luf, rdf,ldf,rub,lub,rdb,ldb));
+        set_max(ruf.max(luf, rdf,ldf,rub,lub,rdb,ldb));
+    }
+
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+       /* //TODO:TEST
+        if(!intersects(ray)){
+            return new ArrayList<>();
+        }*/
+
         ArrayList<GeoPoint> result = new ArrayList<>();
 
         for (Plane face : this._faces){
@@ -456,15 +546,21 @@ public class Cuboid extends Geometry {
         for (Plane face : this._faces){
             face.translate(x, y, z);
         }
+
+        //TODO: TEST
+        updateAABB();
     }
 
-    @Override
+    @Override//TODO: FIX, REFACTOR TO 8 VERTICES IN ADDITION TO 6 PLANES
     public void rotate(double x, double y, double z) {
         this._ray.rotate(x, y, z);
 
         for (Plane face : this._faces){
             face.rotate(x, y, z);
         }
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
@@ -478,6 +574,9 @@ public class Cuboid extends Geometry {
         for (Plane face : this._faces){
             face.scale(x, y, z);
         }
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
@@ -491,6 +590,9 @@ public class Cuboid extends Geometry {
         for (Plane face : this._faces){
             face.scale(scalar);
         }
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
@@ -500,6 +602,9 @@ public class Cuboid extends Geometry {
         for (Plane face : this._faces){
             face.transform(_transform);
         }
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
@@ -509,5 +614,8 @@ public class Cuboid extends Geometry {
         for (Plane face : this._faces){
             face.transform(translation, rotation, scale);
         }
+
+        //TODO: TEST
+        updateAABB();
     }
 }

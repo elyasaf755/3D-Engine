@@ -13,11 +13,17 @@ public abstract class GeometriesSet extends Geometry {
     public GeometriesSet(Geometry lhs, Geometry rhs){
         _lhs = lhs;
         _rhs = rhs;
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public GeometriesSet(GeometriesSet geometriesSet){
         _lhs = geometriesSet.get_lhs();
         _rhs = geometriesSet.get_rhs();
+
+        //TODO: TEST
+        updateAABB();
     }
 
     //Getters
@@ -34,10 +40,16 @@ public abstract class GeometriesSet extends Geometry {
 
     public void set_lhs(Geometry lhs) {
         _lhs = lhs;
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public void set_rhs(Geometry rhs) {
         _rhs = rhs;
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
@@ -60,9 +72,23 @@ public abstract class GeometriesSet extends Geometry {
 
     //Methods
 
+    //TODO:TEST
+    @Override
+    public void updateAABB() {
+        _lhs.updateAABB();
+        _rhs.updateAABB();
+
+        AABB merged = _lhs.mergeWith(_rhs);
+        set_min(merged.get_min());
+        set_max(merged.get_max());
+    }
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
         ArrayList<GeoPoint> result = _lhs.findIntersections(ray);
         result.addAll(_rhs.findIntersections(ray));
 
@@ -83,35 +109,53 @@ public abstract class GeometriesSet extends Geometry {
     public void translate(double x, double y, double z) {
         _lhs.translate(x, y, z);
         _rhs.translate(x, y, z);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _lhs.rotate(x, y, z);
         _rhs.rotate(x, y, z);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double x, double y, double z) {
         _lhs.scale(x, y, z);
         _rhs.scale(x, y, z);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double scalar) {
         _lhs.scale(scalar);
         _rhs.scale(scalar);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Transform _transform) {
         _lhs.transform(_transform);
         _rhs.transform(_transform);
+
+        //TODO:TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         _lhs.transform(translation, rotation, scale);
         _rhs.transform(translation, rotation, scale);
+
+        //TODO:TEST
+        updateAABB();
     }
 }

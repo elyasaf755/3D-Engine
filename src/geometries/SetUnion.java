@@ -6,6 +6,9 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.ArrayList;
 
 public class SetUnion extends GeometriesSet {
+    static int counterIn = 0;
+    static int counterOut = 0;
+    static int total = 0;
 
     //Constructors
 
@@ -64,6 +67,11 @@ public class SetUnion extends GeometriesSet {
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
+
         ArrayList<GeoPoint> intersections = new ArrayList<>();
 
         intersections.addAll(this._lhs.findIntersections(ray));
@@ -71,5 +79,4 @@ public class SetUnion extends GeometriesSet {
 
         return intersections;
     }
-
 }

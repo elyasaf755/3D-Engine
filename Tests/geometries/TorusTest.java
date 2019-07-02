@@ -72,12 +72,4 @@ class TorusTest {
     @Test
     void transform1() {
     }
-
-    @Test
-    void transformToDefault() {
-        Torus torus = new Torus(3, 1, new Ray(new Point3D(5,10,15), new Vector3D(0,0,1)));
-        Ray ray = new Ray(new Point3D(10,20,30), new Vector3D(0,1,0));
-        Torus.transformToDefault(torus, ray);
-        assertEquals(true, true);
-    }
 }

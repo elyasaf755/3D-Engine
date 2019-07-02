@@ -12,7 +12,7 @@ public class JCTLogo extends Geometry {
     private Ray _orientation;
 
     private SetUnion _triangles;
-    private Plane _surface;
+    private Plane _surface;//TODO: DEL?
 
     //Triangles RGB from left to right
     //R: 27 G: 126 B: 169    Left Most triangle
@@ -21,7 +21,7 @@ public class JCTLogo extends Geometry {
     //R: 109 G: 43 B: 91   Right Most
 
     public JCTLogo(){
-        _orientation = new Ray(new Vector3D(0,0,1));
+        _orientation = new Ray(Vector3D.zAxis);
 
         Vector3D zAxis = new Vector3D(0,0,1);
 
@@ -52,6 +52,9 @@ public class JCTLogo extends Geometry {
         _triangles = new SetUnion(_triangles, t4);
 
         _surface = new Plane(_orientation.get_point(), _orientation.get_direction());
+
+        //TODO: TEST
+        updateAABB();
     }
 
     public JCTLogo(Ray orientation, double scale){
@@ -95,12 +98,11 @@ public class JCTLogo extends Geometry {
         Vector3D Vr = orientation.get_direction();
 
         Matrix3 R = Transform.getRodriguesRotation(Vr, zAxis);
-        Matrix3 RInv = R.inversed();
 
         Point3D q = R.mult(Pr);
-        double qx = q.getX().getCoord();
-        double qy = q.getY().getCoord();
-        double qz = q.getZ().getCoord();
+
+        //TODO: TEST
+        updateAABB();
 
     }
 
@@ -120,7 +122,19 @@ public class JCTLogo extends Geometry {
     }
 
     @Override
+    public void updateAABB() {
+        _triangles.updateAABB();
+
+        _min = _triangles.get_min();
+        _max = _triangles.get_max();
+    }
+
+    @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
+        //TODO: TEST
+        if (!intersects(ray)){
+            return new ArrayList<>();
+        }
 
         return _triangles.findIntersections(ray);
     }
@@ -128,30 +142,48 @@ public class JCTLogo extends Geometry {
     @Override
     public void translate(double x, double y, double z) {
         _triangles.translate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _triangles.rotate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double x, double y, double z) {
         _triangles.scale(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double scalar) {
         _triangles.scale(scalar);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Transform _transform) {
         _triangles.transform(_transform);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
         _triangles.transform(translation, rotation, scale);
+
+        //TODO: TEST
+        updateAABB();
     }
 }

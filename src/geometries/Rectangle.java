@@ -9,7 +9,24 @@ public class Rectangle extends Geometry {
     private double _width;//X Axis - Width: +Right, -Left
     private double _height;//Y Axis - Height: +Up, -Down
 
-    private Ray _orientation;
+    private Ray _ray;
+
+    private Matrix3 _R;//Default = Z axis
+    private Matrix3 _RInv;
+    private Point3D _q;
+
+    private void initTransformFields(){
+        _R = new Matrix3(Transform.getRodriguesRotation(_ray.get_direction(), Vector3D.zAxis));
+        _RInv = new Matrix3(_R.inversed());
+        _q = new Point3D(_R.mult(_ray.get_point()));
+    }
+
+    private void init(){
+        initTransformFields();
+
+        //TODO: TEST
+        updateAABB();
+    }
 
     //Constructors
 
@@ -17,19 +34,23 @@ public class Rectangle extends Geometry {
         _width = 40;
         _height = 80;
 
-        _orientation = new Ray(new Vector3D(0,0,1));
+        _ray = new Ray(new Vector3D(0,0,1));
+
+        init();
     }
 
     public Rectangle(double width, double height, Ray orientation){
         _width = width;
         _height = height;
 
-        _orientation = new Ray(orientation);
+        _ray = new Ray(orientation);
+
+        init();
     }
 
     @Override
     public Vector3D get_normal(Point3D point) {
-        return _orientation.get_direction();
+        return _ray.get_direction();
     }
 
     @Override
@@ -43,21 +64,16 @@ public class Rectangle extends Geometry {
         double x = _width / 2.0;//X Axis - Width: +Right, -Left
         double y = _height / 2.0;//Y Axis - Height: +Up, -Down
 
-        Point3D Prec = this._orientation.get_point();
-        Vector3D Vrec = this._orientation.get_direction();
+        Point3D Prec = this._ray.get_point();
+        Vector3D Vrec = this._ray.get_direction();
 
-        Matrix3 R = Transform.getRodriguesRotation(Vrec, Vector3D.zAxis);
-        Matrix3 RInv = R.inversed();
+        Point3D pointT = _R.mult(point);
 
-        Point3D q = R.mult(Prec);
-
-        Point3D pointT = R.mult(point);
-
-        if (pointT.equals(q)){
+        if (pointT.equals(_q)){
             pointT = new Point3D();
         }
         else{
-            pointT = pointT.subtract(q).getPoint();
+            pointT = pointT.subtract(_q).getPoint();
         }
 
         double px = Math.abs(pointT.getX().getCoord());
@@ -69,9 +85,35 @@ public class Rectangle extends Geometry {
                 Util.equals(pz, 0);
     }
 
+    //TODO:
+    @Override
+    public void updateAABB() {
+        //when rectangle direction is Z
+        double x = _width / 2.0;//X Axis - Width: +Right, -Left
+        double y = _height / 2.0;//Y Axis - Height: +Up, -Down
+
+        Point3D ruT = new Point3D(x,y,0);
+        Point3D luT = new Point3D(-x,y,0);
+        Point3D rdT = new Point3D(x,-y,0);
+        Point3D ldT = new Point3D(-x,-y,0);
+
+        Point3D ru = _RInv.mult(ruT).add(_q);
+        Point3D lu = _RInv.mult(luT).add(_q);
+        Point3D rd = _RInv.mult(rdT).add(_q);
+        Point3D ld = _RInv.mult(ldT).add(_q);
+
+        set_min(ru.min(lu,rd,ld));
+        set_max(ru.max(lu,rd,ld));
+    }
+
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-        Plane plane = new Plane(_orientation.get_point(), _orientation.get_direction());
+        //TODO:TEST
+        if(!intersects(ray)){
+            return new ArrayList<>();
+        }
+
+        Plane plane = new Plane(_ray.get_point(), _ray.get_direction());
 
         ArrayList<GeoPoint> intersections = plane.findIntersections(ray);
 
@@ -88,39 +130,57 @@ public class Rectangle extends Geometry {
 
     @Override
     public void translate(double x, double y, double z) {
-        _orientation.translate(x, y, z);
+        _ray.translate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
-        _orientation.rotate(x, y, z);
+        _ray.rotate(x, y, z);
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double x, double y, double z) {
-        _orientation.scale(x, y, z);
+        _ray.scale(x, y, z);
         _width = _width * x;
         _height = _height * y;
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void scale(double scalar) {
-        _orientation.scale(scalar);
+        _ray.scale(scalar);
         _width = _width * scalar;
         _height = _height * scalar;
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Transform _transform) {
-        _orientation.transform(_transform);
+        _ray.transform(_transform);
         _width = _width * _transform.getScale().getPoint().getX().getCoord();
         _height = _height * _transform.getScale().getPoint().getY().getCoord();
+
+        //TODO: TEST
+        updateAABB();
     }
 
     @Override
     public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
-        _orientation.transform(translation, rotation, scale);
+        _ray.transform(translation, rotation, scale);
         _width = _width * scale.getPoint().getX().getCoord();
         _height = _height * scale.getPoint().getY().getCoord();
+
+        //TODO: TEST
+        updateAABB();
     }
 }

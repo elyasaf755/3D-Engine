@@ -3,6 +3,7 @@ package geometries;
 import org.junit.jupiter.api.Test;
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector3D;
 
 import static geometries.Intersectable.GeoPoint;
@@ -108,8 +109,8 @@ class CuboidTest {
         ArrayList<GeoPoint> expected1 = new ArrayList<>();
         expected1.add(new GeoPoint(cuboid1, new Point3D(2,0,0)));
         expected1.add(new GeoPoint(cuboid1, new Point3D(-2,0,0)));
-        assertEquals(expected1.get(0).point, actual1.get(0).point);
-        assertEquals(expected1.get(1).point, actual1.get(1).point);
+
+        assertTrue(Util.intersectionsEqual(expected1, actual1));
 
         //Aligned with Y axis but have different dimensions
         Cuboid cuboid2 = new Cuboid(2,4,3);

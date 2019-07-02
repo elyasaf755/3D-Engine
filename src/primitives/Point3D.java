@@ -110,6 +110,34 @@ public class Point3D extends Point2D implements ITransformable {
         return Util.alignZero(sqrt(distanceSquared(point3D)));
     }
 
+    public Point3D max(Point3D... others){
+        Point3D result = new Point3D(this);
+
+        for (Point3D other : others){
+            result = new Point3D(
+                    result.getX().getCoord() >= other.getX().getCoord()? result.getX() : other.getX(),
+                    result.getY().getCoord() >= other.getY().getCoord()? result.getY() : other.getY(),
+                    result.getZ().getCoord() >= other.getZ().getCoord()? result.getZ() : other.getZ()
+            );
+        }
+
+        return result;
+    }
+
+    public Point3D min(Point3D... others){
+        Point3D result = new Point3D(this);
+
+        for (Point3D other : others){
+            result = new Point3D(
+                    result.getX().getCoord() <= other.getX().getCoord()? result.getX() : other.getX(),
+                    result.getY().getCoord() <= other.getY().getCoord()? result.getY() : other.getY(),
+                    result.getZ().getCoord() <= other.getZ().getCoord()? result.getZ() : other.getZ()
+            );
+        }
+
+        return result;
+    }
+
     //Overrides
     @Override
     public boolean equals(Object obj) {

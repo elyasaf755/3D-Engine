@@ -45,5 +45,4 @@ public interface Intersectable {
     }
 
     ArrayList<GeoPoint> findIntersections(Ray ray);
-
 }
