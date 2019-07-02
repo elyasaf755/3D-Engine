@@ -317,6 +317,7 @@ public class Render {
         Point3D intersection = new Point3D(intersectionGeoPoint.point);
         Vector3D Vr = ray.get_direction();
 
+        //distance the origin of the ray  "epsilon" from the original intersection point
         double scalar = 2 * ray.get_direction().dotProduct(normal);
         double epsilon = calcEpsilon(normal, normal);
 
@@ -327,19 +328,36 @@ public class Render {
         return new Ray(intersection.add(normal.scaled(epsilon)), ray.get_direction().subtract(normal.scaled(scalar)));
     }
 
+    /**
+     *  construct Refracted Ray from point
+     * @param intersectionGeoPoint the point
+     * @param ray the origin ray of the light
+     * @return the refraction ray
+     */
     private Ray constructRefractedRay(GeoPoint intersectionGeoPoint, Ray ray) {
         Point3D P = intersectionGeoPoint.point;
         Vector3D normal = intersectionGeoPoint.geometry.get_normal(P);
         Vector3D Vr = ray.get_direction();
 
+        //distance the origin of the ray  "epsilon" from the original intersection point
         double epsilon = calcEpsilon(Vr, normal);
         return new Ray(P.add(normal.scaled(epsilon)), Vr);
     }
 
+    /**
+     *
+     * @param direction
+     * @param normal
+     * @return 'epsilon' between -0.001 to 0.001
+     */
     private double calcEpsilon(Vector3D direction, Vector3D normal){
         return direction.dotProduct(normal) > 0 ? 0.001 : -0.001;
     }
 
+    /**
+     * print a net over the screen
+     * @param interval- num of pixels in every hole in the grid
+     */
     public void printGrid(int interval){
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
@@ -350,6 +368,11 @@ public class Render {
         }
     }
 
+    /**
+     * print a net over the screen
+     * @param interval  num of pixels in every hole in the grid
+     * @param color og the grid
+     */
     public void printGrid(int interval, java.awt.Color color){
         for (int i = 0; i < _imageWriter.getWidth(); ++i){
             for (int j = 0; j < _imageWriter.getHeight(); ++j){
@@ -360,10 +383,16 @@ public class Render {
         }
     }
 
+    /**
+     * make the picture from all the pixels
+     */
     public void writeToImage(){
         _imageWriter.writeToimage();
     }
 
+    /**
+     * print Axises
+     */
     public void printAxises(){
         Cylinder xAxis = new Cylinder(5,new Ray( new Vector3D(1,0,0)));
         Cylinder yAxis = new Cylinder(5,new Ray( new Vector3D(0,1,0)));

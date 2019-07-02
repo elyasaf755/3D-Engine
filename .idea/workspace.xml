@@ -34,13 +34,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-35">
-              <caret line="312" column="33" selection-start-line="312" selection-start-column="33" selection-end-line="312" selection-end-column="33" />
+            <state relative-caret-position="85">
+              <caret line="393" column="19" selection-start-line="393" selection-start-column="19" selection-end-line="393" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#13110#13111#0" expanded="true" />
-                <element signature="e#13153#13154#0" expanded="true" />
+                <element signature="e#14510#14511#0" expanded="true" />
+                <element signature="e#14553#14554#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -97,26 +106,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/geometries/AABB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="940">
-              <caret line="102" column="38" lean-forward="true" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#AABB#1;class#AABB#0" />
-                <element signature="method#set_min#0;class#AABB#0" />
-                <element signature="method#set_max#0;class#AABB#0" />
-                <element signature="method#calculateSurfaceArea#0;class#AABB#0" />
-                <element signature="method#setInfi#0;class#AABB#0" />
-                <element signature="e#10233#10234#0" expanded="true" />
-                <element signature="e#10309#10310#0" expanded="true" />
-                <element signature="method#equals#0;class#AABB#0" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -240,6 +229,7 @@
       <find>updateAABB</find>
       <find>getRodriguesRotation</find>
       <find>tran</find>
+      <find>writeToImage</find>
     </findStrings>
     <replaceStrings>
       <replace>Cylinder2</replace>
@@ -481,7 +471,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562076001507" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562077354593" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -882,7 +872,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561723465826</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Documentation">
+      <created>1562076867131</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1562076867131</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -918,7 +915,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58834000" />
+    <option name="totallyTimeSpent" value="59696000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -933,7 +930,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.16565809" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.16565809" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -943,14 +940,14 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.17551462" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3217768" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3217768" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.34127843" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4969743" weight="0.13071896" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.494705" visible="true" weight="0.13071896" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32502708" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5030257" side_tool="true" weight="0.13071896" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.505295" side_tool="true" weight="0.13071896" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.31310943" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
@@ -1056,7 +1053,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/ejml" />
     </ignored-roots>
-    <MESSAGE value="Matrix class" />
     <MESSAGE value="New Vector3 method, including ray-ray intersection" />
     <MESSAGE value="Camera class, constructRayThroughPixel method" />
     <MESSAGE value="constructRayThroughPixel Fix" />
@@ -1081,7 +1077,8 @@
     <MESSAGE value="Prefabs. Pre AABB." />
     <MESSAGE value="AABB implemented. pre refactor" />
     <MESSAGE value="AABB tested. x2 performence" />
-    <option name="LAST_COMMIT_MESSAGE" value="AABB tested. x2 performence" />
+    <MESSAGE value="Documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1270,26 +1267,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/geometries/SetDifference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-          <folding>
-            <element signature="method#SetDifference#0;class#SetDifference#0" />
-            <element signature="method#get_normal#0;class#SetDifference#0" />
-            <element signature="e#474#530#1" />
-            <element signature="method#contains#0;class#SetDifference#0" />
-            <element signature="e#753#789#1" />
-            <element signature="method#surfaceContains#0;class#SetDifference#0" />
-            <element signature="e#958#994#1" />
-            <element signature="method#findIntersections#0;class#SetDifference#0" />
-            <element signature="e#1149#1198#1" />
-            <element signature="e#1489#1646#1" />
-            <element signature="e#1579#1636#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/geometries/SetIntersection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -2018,14 +1995,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
-          <caret line="312" column="33" selection-start-line="312" selection-start-column="33" selection-end-line="312" selection-end-column="33" />
+        <state relative-caret-position="85">
+          <caret line="393" column="19" selection-start-line="393" selection-start-column="19" selection-end-line="393" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#13110#13111#0" expanded="true" />
-            <element signature="e#13153#13154#0" expanded="true" />
+            <element signature="e#14510#14511#0" expanded="true" />
+            <element signature="e#14553#14554#0" expanded="true" />
           </folding>
         </state>
       </provider>
