@@ -14,12 +14,12 @@ import java.util.Iterator;
 
 public class Scene {
     private String _name;
-    private Color _background;
-    private AmbientLight _ambientLight;
-    private Geometries _geometries;
+    private Color _background;//color of background
+    private AmbientLight _ambientLight;//light of the whole scene (without a source)
+    private Geometries _geometries;//list of geometries in the scene
     private Camera _camera;
-    private double _screenDistance;
-    ArrayList<LightSource> _lights;
+    private double _screenDistance;// from the camera
+    ArrayList<LightSource> _lights;// light sources in the scene
 
     //Constructors
 
@@ -90,6 +90,10 @@ public class Scene {
 
     //Methods
 
+    /**
+     * add some of geometries to the scene
+     * @param geometries first function get it as'geometry', or more than one, to add. and the second- as (list of) 'geometries'
+     */
     public void addGeometries(Geometry... geometries){
         _geometries.add_geometries(geometries);
     }
@@ -98,6 +102,10 @@ public class Scene {
         _geometries.add_geometries(geometries);
     }
 
+    /**
+     * add light sources
+     * @param lights sources
+     */
     public void addLights(LightSource... lights){
         for (LightSource light : lights){
             _lights.add(light);
