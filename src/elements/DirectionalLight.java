@@ -5,9 +5,8 @@ import primitives.Point3D;
 import primitives.Vector3D;
 
 public class DirectionalLight extends Light implements LightSource {
-    protected Vector3D _direction;
+    protected Vector3D _direction;//direction of light without source (like sun)
 
-    //TODO: Test class functions.
 
     //Constructors
 
@@ -38,6 +37,7 @@ public class DirectionalLight extends Light implements LightSource {
         return new Vector3D(_direction);
     }
 
+    //get the distance between the point to the source light. in this case- it defined to be infinity because it doesn't has any source
     @Override
     public double getDistanceFrom(Point3D point) {
         return Double.POSITIVE_INFINITY;

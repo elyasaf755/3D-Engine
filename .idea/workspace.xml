@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/DirectionalLight.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,17 +58,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="-233">
+              <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
+              <folding>
+                <element signature="e#9238#9239#0" expanded="true" />
+                <element signature="e#9280#9281#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/elements/DirectionalLight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="39" column="79" selection-start-line="39" selection-start-column="79" selection-end-line="39" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene/Scene.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="328">
               <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/elements/AmbientLight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-199">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -159,12 +182,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/primitives/Complex.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/ComplexTest.java" />
         <option value="$PROJECT_DIR$/Tests/primitives/UtilTest.java" />
         <option value="$PROJECT_DIR$/src/primitives/Transform.java" />
         <option value="$PROJECT_DIR$/src/primitives/Util.java" />
-        <option value="$PROJECT_DIR$/src/elements/Camera.java" />
         <option value="$PROJECT_DIR$/src/renderer/ImageWriter.java" />
         <option value="$PROJECT_DIR$/src/geometries/Square.java" />
         <option value="$PROJECT_DIR$/src/primitives/Vector3D.java" />
@@ -210,6 +231,8 @@
         <option value="$PROJECT_DIR$/src/geometries/Cuboid.java" />
         <option value="$PROJECT_DIR$/src/renderer/Render.java" />
         <option value="$PROJECT_DIR$/src/scene/Scene.java" />
+        <option value="$PROJECT_DIR$/src/elements/Camera.java" />
+        <option value="$PROJECT_DIR$/src/elements/DirectionalLight.java" />
       </list>
     </option>
   </component>
@@ -363,7 +386,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562091631953" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562093423281" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -778,7 +801,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562077516759</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Documentation">
+      <created>1562091942982</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1562091942982</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -814,7 +844,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60953000" />
+    <option name="totallyTimeSpent" value="62413000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -829,7 +859,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.16565809" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.16565809" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -843,10 +873,10 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.34127843" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.494705" visible="true" weight="0.13071896" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.49092284" visible="true" weight="0.13071896" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32502708" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.505295" side_tool="true" weight="0.13071896" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50907713" side_tool="true" weight="0.13071896" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.31310943" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
@@ -1166,44 +1196,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/geometries/Sphere.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-716">
-          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-          <folding>
-            <element signature="method#Sphere#0;class#Sphere#0" />
-            <element signature="method#Sphere#1;class#Sphere#0" />
-            <element signature="method#Sphere#2;class#Sphere#0" />
-            <element signature="method#Sphere#3;class#Sphere#0" />
-            <element signature="method#Sphere#4;class#Sphere#0" />
-            <element signature="method#Sphere#5;class#Sphere#0" />
-            <element signature="method#Sphere#6;class#Sphere#0" />
-            <element signature="method#Sphere#7;class#Sphere#0" />
-            <element signature="method#Sphere#8;class#Sphere#0" />
-            <element signature="method#set_point#0;class#Sphere#0" />
-            <element signature="method#contains#0;class#Sphere#0" />
-            <element signature="method#surfaceContains#0;class#Sphere#0" />
-            <element signature="method#updateAABB#0;class#Sphere#0" />
-            <element signature="method#findIntersections#0;class#Sphere#0" />
-            <element signature="method#getVolume#0;class#Sphere#0" />
-            <element signature="method#scaleVolume#0;class#Sphere#0" />
-            <element signature="method#translate#0;class#Sphere#0" />
-            <element signature="method#rotate#0;class#Sphere#0" />
-            <element signature="method#scale#0;class#Sphere#0" />
-            <element signature="method#transform#0;class#Sphere#0" />
-            <element signature="method#transform#1;class#Sphere#0" />
-            <element signature="method#equals#0;class#Sphere#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/geometries/TorusTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/geometries/SetUnion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1856,13 +1848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1893,6 +1878,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
           <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/AmbientLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-233">
+          <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
+          <folding>
+            <element signature="e#9238#9239#0" expanded="true" />
+            <element signature="e#9280#9281#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/DirectionalLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="39" column="79" selection-start-line="39" selection-start-column="79" selection-end-line="39" selection-end-column="79" />
         </state>
       </provider>
     </entry>

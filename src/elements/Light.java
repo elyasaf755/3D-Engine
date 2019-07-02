@@ -6,7 +6,6 @@ import primitives.Point3D;
 public abstract class Light {
     protected Color _color;
 
-    //TODO: Test class functions.
 
     //Constructors
 
@@ -24,5 +23,6 @@ public abstract class Light {
 
     //Methods
 
+    //return the color of the light
     public abstract Color getIntensity();
 }

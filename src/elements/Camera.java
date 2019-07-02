@@ -5,11 +5,11 @@ import primitives.*;
 import java.util.ArrayList;
 
 public class Camera implements ITransformable {
-    private Point3D _origin;
-    private Vector3D _direction;
-    private Vector3D _up;
-    private Vector3D _right;
-    private int _aa;
+    private Point3D _origin;//the place of the camera
+    private Vector3D _direction;// the direction the camera is looking to
+    private Vector3D _up;//the direction up of the camera
+    private Vector3D _right;//direction right of the camera
+    private int _aa;// A constant of the camera whose square is the number of rays produced through each pixel to determine its color
 
     //Constructors
 
@@ -153,10 +153,8 @@ public class Camera implements ITransformable {
 
     //Methods
 
-    /**
-    @param Nx Number of pixel in the width of the screen
-    @param Ny Number of pixel in the height of the screen
-    **/
+
+    /*
     public Ray constructRayThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
         //Fix pixel locations
 
@@ -198,6 +196,18 @@ public class Camera implements ITransformable {
 
         return new Ray(p0, v_ij.normalized());
     }
+    */
+    /**
+     *
+     * @param Nx Number of pixel in the width of the screen
+     * @param Ny Number of pixel in the height of the screen
+     * @param i number of the row of this pixel
+     * @param j number of the column of this pixel
+     * @param screenDistance from camera
+     * @param screenWidth
+     * @param screenHeight
+     * @return list of rays through this pixel (In accordance with 'aa' constant of the camera)
+     */
     public ArrayList<Ray> constructRaysThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
         //Fix pixel locations
 
@@ -240,10 +250,12 @@ public class Camera implements ITransformable {
         ArrayList<Ray> rays=new ArrayList<Ray>();
 
         int aa = this.getAa();
-        int numOfRowsColumns = aa+1;
+        int numOfRowsColumns = aa+1;//num of rows of the Imaginary grid which each ray will pass at every node of it
         double heightOfRow = Ry / numOfRowsColumns;
         double widthOfColumns = Rx / numOfRowsColumns;
 
+
+        //construct Rays through every node of the imaginary grid
         Point3D p= new Point3D();
         for (int k = 1; k <= aa; k++)
         {
