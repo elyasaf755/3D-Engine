@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4e4e490e-fc83-458b-bc87-94e540ee1bda" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/elements/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/DirectionalLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/LightSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/SpotLight.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,15 +47,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/elements/Camera.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-233">
@@ -68,11 +59,61 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/elements/DirectionalLight.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="39" column="79" selection-start-line="39" selection-start-column="79" selection-end-line="39" selection-end-column="79" />
+            <state relative-caret-position="447">
+              <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/elements/Light.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/elements/LightSource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/elements/PointLight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-199">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding>
+                <element signature="e#323#351#0" />
+                <element signature="method#PointLight#0;class#PointLight#0" />
+                <element signature="method#PointLight#1;class#PointLight#0" />
+                <element signature="method#PointLight#2;class#PointLight#0" />
+                <element signature="method#PointLight#3;class#PointLight#0" />
+                <element signature="method#PointLight#4;class#PointLight#0" />
+                <element signature="method#PointLight#5;class#PointLight#0" />
+                <element signature="method#getIntensity#1;class#PointLight#0" />
+                <element signature="method#getLightDirectionTo#0;class#PointLight#0" />
+                <element signature="e#2059#2095#1" />
+                <element signature="e#2207#2208#0" expanded="true" />
+                <element signature="e#2258#2259#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/elements/SpotLight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
@@ -182,9 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Tests/primitives/ComplexTest.java" />
-        <option value="$PROJECT_DIR$/Tests/primitives/UtilTest.java" />
-        <option value="$PROJECT_DIR$/src/primitives/Transform.java" />
         <option value="$PROJECT_DIR$/src/primitives/Util.java" />
         <option value="$PROJECT_DIR$/src/renderer/ImageWriter.java" />
         <option value="$PROJECT_DIR$/src/geometries/Square.java" />
@@ -233,6 +271,9 @@
         <option value="$PROJECT_DIR$/src/scene/Scene.java" />
         <option value="$PROJECT_DIR$/src/elements/Camera.java" />
         <option value="$PROJECT_DIR$/src/elements/DirectionalLight.java" />
+        <option value="$PROJECT_DIR$/src/elements/Light.java" />
+        <option value="$PROJECT_DIR$/src/elements/LightSource.java" />
+        <option value="$PROJECT_DIR$/src/elements/SpotLight.java" />
       </list>
     </option>
   </component>
@@ -386,7 +427,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562093423281" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562093570208" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -808,7 +849,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562091942982</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Documentation">
+      <created>1562093576112</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1562093576112</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -844,7 +892,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62413000" />
+    <option name="totallyTimeSpent" value="62874000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -859,7 +907,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.16565809" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.488746" visible="true" weight="0.16565809" />
       <window_info id="Structure" order="1" sideWeight="0.511254" side_tool="true" weight="0.15831557" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -873,7 +921,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.34127843" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.49092284" visible="true" weight="0.13071896" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49092284" visible="true" weight="0.13071896" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32502708" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50907713" side_tool="true" weight="0.13071896" />
@@ -1196,129 +1244,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/geometries/SetUnion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="n#!!block;n#SetUnion#0;n#SetUnion#0" />
-            <element signature="method#get_normal#0;class#SetUnion#0" />
-            <element signature="e#575#719#1" />
-            <element signature="e#766#825#1" />
-            <element signature="e#872#931#1" />
-            <element signature="method#contains#0;class#SetUnion#0" />
-            <element signature="e#1154#1190#1" />
-            <element signature="method#surfaceContains#0;class#SetUnion#0" />
-            <element signature="e#1407#1551#1" />
-            <element signature="e#1598#1634#1" />
-            <element signature="e#1681#1718#1" />
-            <element signature="method#findIntersections#0;class#SetUnion#0" />
-            <element signature="e#1939#1988#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Rectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-          <folding>
-            <element signature="method#initTransformFields#0;class#Rectangle#0" />
-            <element signature="method#init#0;class#Rectangle#0" />
-            <element signature="method#Rectangle#0;class#Rectangle#0" />
-            <element signature="method#Rectangle#1;class#Rectangle#0" />
-            <element signature="method#surfaceContains#0;class#Rectangle#0" />
-            <element signature="method#updateAABB#0;class#Rectangle#0" />
-            <element signature="method#findIntersections#0;class#Rectangle#0" />
-            <element signature="method#translate#0;class#Rectangle#0" />
-            <element signature="method#rotate#0;class#Rectangle#0" />
-            <element signature="method#scale#0;class#Rectangle#0" />
-            <element signature="method#scale#1;class#Rectangle#0" />
-            <element signature="method#transform#0;class#Rectangle#0" />
-            <element signature="method#transform#1;class#Rectangle#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/Triangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-          <folding>
-            <element signature="method#Triangle#0;class#Triangle#0" />
-            <element signature="method#Triangle#1;class#Triangle#0" />
-            <element signature="method#Triangle#2;class#Triangle#0" />
-            <element signature="method#Triangle#3;class#Triangle#0" />
-            <element signature="method#Triangle#4;class#Triangle#0" />
-            <element signature="method#Triangle#5;class#Triangle#0" />
-            <element signature="method#updateAABB#0;class#Triangle#0" />
-            <element signature="e#2479#2510#1" />
-            <element signature="method#flipNormal#0;class#Triangle#0" />
-            <element signature="method#isTriangle#0;class#Triangle#0" />
-            <element signature="method#getCentroid#0;class#Triangle#0" />
-            <element signature="e#3734#4126#0" />
-            <element signature="method#findIntersections#0;class#Triangle#0" />
-            <element signature="e#4252#4301#1" />
-            <element signature="e#4465#4515#1" />
-            <element signature="e#4623#4680#1" />
-            <element signature="e#4693#4743#1" />
-            <element signature="e#4787#4844#1" />
-            <element signature="e#4857#4907#1" />
-            <element signature="e#4951#5008#1" />
-            <element signature="e#5021#5071#1" />
-            <element signature="e#5236#5293#1" />
-            <element signature="e#5306#5368#1" />
-            <element signature="e#5396#5453#1" />
-            <element signature="e#5466#5528#1" />
-            <element signature="e#5556#5613#1" />
-            <element signature="e#5626#5688#1" />
-            <element signature="e#5899#5985#1" />
-            <element signature="e#5998#6446#1" />
-            <element signature="e#6553#6591#1" />
-            <element signature="e#6731#6789#1" />
-            <element signature="e#6940#6998#1" />
-            <element signature="method#translate#0;class#Triangle#0" />
-            <element signature="method#rotate#0;class#Triangle#0" />
-            <element signature="method#scale#0;class#Triangle#0" />
-            <element signature="method#scale#1;class#Triangle#0" />
-            <element signature="method#scaleInPlace#0;class#Triangle#0" />
-            <element signature="method#transform#0;class#Triangle#0" />
-            <element signature="method#transform#1;class#Triangle#0" />
-            <element signature="method#contains#0;class#Triangle#0" />
-            <element signature="e#9693#9725#1" />
-            <element signature="e#9738#9801#1" />
-            <element signature="e#9921#9953#1" />
-            <element signature="e#9966#10029#1" />
-            <element signature="e#10286#10318#1" />
-            <element signature="e#10331#10394#1" />
-            <element signature="method#equals#0;class#Triangle#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/geometries/TriangleMesh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="class#IndexedTriangle#0;class#TriangleMesh#0" />
-            <element signature="method#IndexedTriangle#0;class#IndexedTriangle#0;class#TriangleMesh#0" />
-            <element signature="method#IndexedTriangle#1;class#IndexedTriangle#0;class#TriangleMesh#0" />
-            <element signature="n#!!doc;n#pointList#0;n#TriangleMesh#0" />
-            <element signature="n#!!doc;n#triangleList#0;n#TriangleMesh#0" />
-            <element signature="n#!!block;n#TriangleMesh#0;n#TriangleMesh#0" />
-            <element signature="method#addTriangle#0;class#TriangleMesh#0" />
-            <element signature="method#findIntersections#0;class#TriangleMesh#0" />
-            <element signature="method#translate#0;class#TriangleMesh#0" />
-            <element signature="method#rotate#0;class#TriangleMesh#0" />
-            <element signature="method#scale#0;class#TriangleMesh#0" />
-            <element signature="method#scale#1;class#TriangleMesh#0" />
-            <element signature="method#transform#0;class#TriangleMesh#0" />
-            <element signature="method#transform#1;class#TriangleMesh#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/geometries/Tube.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -1901,8 +1826,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/elements/DirectionalLight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="39" column="79" selection-start-line="39" selection-start-column="79" selection-end-line="39" selection-end-column="79" />
+        <state relative-caret-position="447">
+          <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/Light.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/LightSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/PointLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="e#323#351#0" />
+            <element signature="method#PointLight#0;class#PointLight#0" />
+            <element signature="method#PointLight#1;class#PointLight#0" />
+            <element signature="method#PointLight#2;class#PointLight#0" />
+            <element signature="method#PointLight#3;class#PointLight#0" />
+            <element signature="method#PointLight#4;class#PointLight#0" />
+            <element signature="method#PointLight#5;class#PointLight#0" />
+            <element signature="method#getIntensity#1;class#PointLight#0" />
+            <element signature="method#getLightDirectionTo#0;class#PointLight#0" />
+            <element signature="e#2059#2095#1" />
+            <element signature="e#2207#2208#0" expanded="true" />
+            <element signature="e#2258#2259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/SpotLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>

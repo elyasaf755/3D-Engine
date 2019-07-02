@@ -3,11 +3,10 @@ package elements;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector3D;
-
+//point light with direction
 public class SpotLight extends PointLight{
     protected Vector3D _direction;
 
-    //TODO: Implement
 
     //Constructors
 
