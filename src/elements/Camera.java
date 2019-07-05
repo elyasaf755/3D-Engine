@@ -154,7 +154,6 @@ public class Camera implements ITransformable {
     //Methods
 
 
-    /*
     public Ray constructRayThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
         //Fix pixel locations
 
@@ -196,7 +195,7 @@ public class Camera implements ITransformable {
 
         return new Ray(p0, v_ij.normalized());
     }
-    */
+
     /**
      *
      * @param Nx Number of pixel in the width of the screen

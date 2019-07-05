@@ -92,4 +92,6 @@ public abstract class Geometry extends AABB implements Intersectable, ITransform
         return _emission.equals(geometry.get_emission()) &&
                 _material.equals(geometry.get_material());
     }
+
+
 }

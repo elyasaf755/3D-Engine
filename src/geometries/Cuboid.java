@@ -12,10 +12,18 @@ public class Cuboid extends Geometry {
     private double _length;//Z Axis - Length: +Front, -Back
 
     private Plane[] _faces;
+    private Point3D[] _vertices;
 
     private Matrix3 _R;//Default = Z axis
     private Matrix3 _RInv;
     private Point3D _q;
+
+    //Initializers
+
+    private void init(){
+        initTransformFields();
+        initVertices();
+    }
 
     private void initTransformFields(){
         _R = new Matrix3(Transform.getRodriguesRotation(_ray.get_direction(), Vector3D.zAxis));
@@ -23,7 +31,28 @@ public class Cuboid extends Geometry {
         _q = new Point3D(_R.mult(_ray.get_point()));
     }
 
-    //Initializers
+    private void initVertices(){
+        _vertices = new Point3D[8];
+
+        double x = _width / 2;//X Axis - Width: +Right, -Left
+        double y = _height / 2;//Y Axis - Height: +Up, -Down
+        double z = _length / 2;//Z Axis - Length: +Front, -Back
+
+        //R = Right, L = Left, U = Up, D = Down, F = Front, B = Back
+        _vertices[0] = new Point3D(x,y,z);//RUF
+        _vertices[1] = new Point3D(x,y,-z);//RUB
+        _vertices[2] = new Point3D(x,-y,z);//RDF
+        _vertices[3] = new Point3D(x,-y,-z);//RDB
+        _vertices[4] = new Point3D(-x,y,z);//LUF
+        _vertices[5] = new Point3D(-x,y,-z);//LUB
+        _vertices[6] = new Point3D(-x,-y,z);//LDF
+        _vertices[7] = new Point3D(-x,-y,-z);//LDB
+
+        for (int i = 0; i < 8; ++i){
+            _vertices[i] = _RInv.mult(_vertices[i]).add(_q);
+        }
+    }
+
     private void initPlanes(double width, double height, double length){
         _faces = new Plane[6];
 
@@ -399,6 +428,15 @@ public class Cuboid extends Geometry {
 
     //Methods
 
+    //TODO: TEST
+    @Override
+    public void updateAABB() {
+        init();
+
+        set_min(_vertices[0].min(_vertices));
+        set_max(_vertices[0].max(_vertices));
+    }
+
     @Override
     public Vector3D get_normal(Point3D point) {
         for (Plane face : this._faces){
@@ -485,42 +523,12 @@ public class Cuboid extends Geometry {
         return false;
     }
 
-    //TODO: TEST
-    @Override
-    public void updateAABB() {
-        //when cube direction is Z
-        double x = _width / 2.0;//X Axis - Width: +Right, -Left
-        double y = _height / 2.0;//Y Axis - Height: +Up, -Down
-        double z = _length / 2.0;//Z Axis - Length: +Front, -Back
-
-        Point3D rufT = new Point3D(x,y,z);
-        Point3D lufT = new Point3D(-x,y,z);
-        Point3D rdfT = new Point3D(x,-y,z);
-        Point3D ldfT = new Point3D(-x,-y,z);
-        Point3D rubT = new Point3D(x,y,-z);
-        Point3D lubT = new Point3D(-x,y,-z);
-        Point3D rdbT = new Point3D(x,-y,-z);
-        Point3D ldbT = new Point3D(-x,-y,-z);
-
-        Point3D ruf = _RInv.mult(rufT).add(_q);
-        Point3D luf = _RInv.mult(lufT).add(_q);
-        Point3D rdf = _RInv.mult(rdfT).add(_q);
-        Point3D ldf = _RInv.mult(ldfT).add(_q);
-        Point3D rub = _RInv.mult(rubT).add(_q);
-        Point3D lub = _RInv.mult(lubT).add(_q);
-        Point3D rdb = _RInv.mult(rdbT).add(_q);
-        Point3D ldb = _RInv.mult(ldbT).add(_q);
-
-        set_min(ruf.min(luf, rdf,ldf,rub,lub,rdb,ldb));
-        set_max(ruf.max(luf, rdf,ldf,rub,lub,rdb,ldb));
-    }
-
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
-       /* //TODO:TEST
+        //TODO:TEST
         if(!intersects(ray)){
             return new ArrayList<>();
-        }*/
+        }
 
         ArrayList<GeoPoint> result = new ArrayList<>();
 
@@ -547,6 +555,10 @@ public class Cuboid extends Geometry {
             face.translate(x, y, z);
         }
 
+        for (Point3D vertex : _vertices){
+            vertex.translate(x,y,z);
+        }
+
         //TODO: TEST
         updateAABB();
     }
@@ -557,6 +569,10 @@ public class Cuboid extends Geometry {
 
         for (Plane face : this._faces){
             face.rotate(x, y, z);
+        }
+
+        for (Point3D vertex : _vertices){
+            vertex.rotate(x,y,z);
         }
 
         //TODO: TEST
@@ -575,6 +591,10 @@ public class Cuboid extends Geometry {
             face.scale(x, y, z);
         }
 
+        for (Point3D vertex : _vertices){
+            vertex.scale(x,y,z);
+        }
+
         //TODO: TEST
         updateAABB();
     }
@@ -591,6 +611,10 @@ public class Cuboid extends Geometry {
             face.scale(scalar);
         }
 
+        for (Point3D vertex : _vertices){
+            vertex.scale(scalar);
+        }
+
         //TODO: TEST
         updateAABB();
     }
@@ -603,6 +627,10 @@ public class Cuboid extends Geometry {
             face.transform(_transform);
         }
 
+        for (Point3D vertex : _vertices){
+            vertex.transform(_transform);
+        }
+
         //TODO: TEST
         updateAABB();
     }
@@ -613,6 +641,10 @@ public class Cuboid extends Geometry {
 
         for (Plane face : this._faces){
             face.transform(translation, rotation, scale);
+        }
+
+        for (Point3D vertex : _vertices){
+            vertex.transform(translation, rotation, scale);
         }
 
         //TODO: TEST

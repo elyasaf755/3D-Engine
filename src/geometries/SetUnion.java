@@ -16,6 +16,10 @@ public class SetUnion extends GeometriesSet {
         super(lhs, rhs);
     }
 
+    public SetUnion(SetUnion other){
+        super(other.get_lhs(), other.get_rhs());
+    }
+
     //Methods
 
     @Override

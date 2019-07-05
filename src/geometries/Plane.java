@@ -10,6 +10,7 @@ public class Plane extends Geometry  implements FlatGeometry{
     protected Vector3D _normal;
 
     //Constructors
+
     public Plane(Point3D point3D, Vector3D normal){
         _point = new Point3D(point3D);
         _normal = (new Vector3D(normal)).normalized();

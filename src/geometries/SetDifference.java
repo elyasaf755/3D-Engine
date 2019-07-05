@@ -10,9 +10,10 @@ public class SetDifference extends GeometriesSet {
 
     public SetDifference(Geometry lhs, Geometry rhs){
         super(lhs, rhs);
-        //TODO: DEL BELOW?
-        _lhs = lhs;
-        _rhs = rhs;
+    }
+
+    public SetDifference(SetDifference other){
+        super(other.get_lhs(), other.get_rhs());
     }
 
     @Override

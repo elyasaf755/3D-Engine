@@ -15,6 +15,7 @@ import sun.print.SunPrinterJobService;
 
 import static geometries.Intersectable.GeoPoint;
 
+import java.awt.peer.CanvasPeer;
 import java.text.ParsePosition;
 import java.util.ArrayList;
 
@@ -721,18 +722,16 @@ class RenderTest {
         );
 
         //Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(50,50,-50), new Vector3D(1,0,0)), new Color(java.awt.Color.white));
-        /*Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)), new Color(java.awt.Color.white));
+        Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)), new Color(java.awt.Color.white));
         cuboid1.setBackFaceColor(new Color(java.awt.Color.green));
         cuboid1.setUpFaceColor(new Color(java.awt.Color.red));
         cuboid1.setFrontFaceColor(new Color(java.awt.Color.blue));
         cuboid1.setRightFaceColor(new Color(java.awt.Color.magenta));
         cuboid1.setDownFaceColor(new Color(java.awt.Color.yellow));
-        cuboid1.setLeftFaceColor(new Color(java.awt.Color.cyan));*/
+        cuboid1.setLeftFaceColor(new Color(java.awt.Color.cyan));
 
-        Cuboid cuboid1 = new Cuboid(25, 25, 25);
-        cuboid1.set_emission(java.awt.Color.green);
+        cuboid1.rotate(45,45,45);
 
-        cuboid1.translate(0,0,0);
 
         scene.addGeometries(cuboid1);
         scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
@@ -1146,6 +1145,62 @@ class RenderTest {
         //Render
 
         ImageWriter iw = new ImageWriter("23rdRenderTest - AABB TEST", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test//TEST 24 - Luber
+    void renderImage24(){
+
+        //Scene definitions
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(new Color(53, 215, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(0,0,0);
+        scene.get_camera().setAa(1);
+
+
+
+        //Geometries
+
+        Triangle t1 = new Triangle(new Point3D(-20,-20,0), new Point3D(0,20,0), new Point3D(20,-20,0));
+        t1.scale(2.5);
+        t1.set_emission(new Color(0,0,0));
+        Triangle t199 = new Triangle(t1);
+        t199.scale(0.90);
+        t199.set_emission(Color.GLASS);
+        t199.set_material(Material.GLASS);
+
+        SetDifference dif = new SetDifference(t1,t199);
+        SetUnion un = new SetUnion(dif, t199);
+        SetUnion un2 = new SetUnion(un);
+
+        un2.rotate(0,0,90);
+
+        scene.addGeometries(un, un2);
+
+        //Lights
+
+        DirectionalLight dLightFront = new DirectionalLight(new Color(100,100,100), new Vector3D(0,0,1));
+        DirectionalLight dLightDownLeft = new DirectionalLight(new Color(100,100,100), new Vector3D(-1,-1,0));
+
+
+
+        scene.addLights(
+                dLightFront,
+                dLightDownLeft
+        );
+
+
+
+        //Render
+
+        ImageWriter iw = new ImageWriter("24thRenderTest - Luber", 1000, 1000, 1000, 1000);
         Render render = new Render(scene, iw);
         //render.printAxises();
 
