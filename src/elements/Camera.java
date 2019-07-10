@@ -4,6 +4,9 @@ import primitives.*;
 
 import java.util.ArrayList;
 
+/**
+ * camera
+ */
 public class Camera implements ITransformable {
     private Point3D _origin;//the place of the camera
     private Vector3D _direction;// the direction the camera is looking to
@@ -13,6 +16,13 @@ public class Camera implements ITransformable {
 
     //Constructors
 
+    /**
+     * Constructor
+     * @param origin the place of the camera
+     * @param direction the direction the camera is looking to
+     * @param up the direction up of the camera
+     * @param right direction right of the camera
+     */
     public Camera(Point3D origin, Vector3D direction, Vector3D up, Vector3D right){
         if (direction.dotProduct(up) == 0 && direction.dotProduct(right) == 0 && up.dotProduct(right) == 0){
             _origin = new Point3D(origin);
@@ -31,6 +41,14 @@ public class Camera implements ITransformable {
         }
     }
 
+    /**
+     * Constructor
+     * @param origin the place of the camera
+     * @param direction the direction the camera is looking to
+     * @param up the direction up of the camera
+     * @param right direction right of the camera
+     * @param aa A constant of the camera whose square is the number of rays produced through each pixel to determine its color
+     */
     public Camera(Point3D origin, Vector3D direction, Vector3D up, Vector3D right, int aa){
         if (direction.dotProduct(up) == 0 && direction.dotProduct(right) == 0 && up.dotProduct(right) == 0){
             _origin = new Point3D(origin);
@@ -49,6 +67,12 @@ public class Camera implements ITransformable {
         }
     }
 
+    /**
+     * Constructor
+     * @param direction the direction the camera is looking to
+     * @param up the direction up of the camera
+     * @param right direction right of the camera
+     */
     public Camera(Vector3D direction, Vector3D up, Vector3D right){
         if (direction.dotProduct(up) == 0 && direction.dotProduct(right) == 0 && up.dotProduct(right) == 0){
             _origin = new Point3D();
@@ -67,6 +91,12 @@ public class Camera implements ITransformable {
         }
     }
 
+    /**
+     * Constructor
+     * @param origin the place of the camera
+     * @param direction the direction the camera is looking to
+     * @param up the direction up of the camera
+     */
     public Camera(Point3D origin, Vector3D direction, Vector3D up){
 
         if (direction.dotProduct(up) == 0){
@@ -86,6 +116,11 @@ public class Camera implements ITransformable {
         }
     }
 
+    /**
+     *constructor
+     * @param direction the direction the camera is looking to
+     * @param up the direction up of the camera
+     */
     public Camera(Vector3D direction, Vector3D up){
 
         if (direction.dotProduct(up) == 0){
@@ -105,6 +140,11 @@ public class Camera implements ITransformable {
         }
     }
 
+    /**
+     * Constructor
+     * @param origin the place of the camera
+     * @param direction the direction the camera is looking to
+     */
     public Camera(Point3D origin, Vector3D direction){
         Matrix orthonormalBase = Matrix.orthonormalBasis3X3(direction);
         _origin = new Point3D(origin);
@@ -114,6 +154,10 @@ public class Camera implements ITransformable {
         _aa = 1;
     }
 
+    /**
+     *constructor
+     * @param direction the direction the camera is looking to
+     */
     public Camera(Vector3D direction){
         Matrix orthonormalBase = Matrix.orthonormalBasis3X3(direction);
         _origin = new Point3D();
@@ -125,28 +169,52 @@ public class Camera implements ITransformable {
 
     //Getters
 
+    /**
+     * getter
+     * @return origin
+     */
     public Point3D get_origin(){
         return new Point3D(_origin);
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector3D get_up() {
         return new Vector3D(_up);
     }
 
+    /**
+     * getter
+     * @return direction
+     */
     public Vector3D get_direction() {
         return new Vector3D(_direction);
     }
 
+    /**
+     * getter
+     * @return right direction
+     */
     public Vector3D get_right() {
         return new Vector3D(_right);
     }
 
+    /**
+     * getter
+     * @return aa constant of the camera
+     */
     public int getAa() {
         return _aa;
     }
 
     //Setters
 
+    /**
+     * setter
+     * @param aa constant of the camera
+     */
     public void setAa(int aa) {
         this._aa = aa;
     }
@@ -154,6 +222,17 @@ public class Camera implements ITransformable {
     //Methods
 
 
+    /**
+     *
+     * @param Nx number of pixels in width
+     * @param Ny number of pixels in height
+     * @param i number of the row of this pixel
+     * @param j number of the column of this pixel
+     * @param screenDistance from camera
+     * @param screenWidth screen Width
+     * @param screenHeight screen Height
+     * @return
+     */
     public Ray constructRayThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
         //Fix pixel locations
 
@@ -203,8 +282,8 @@ public class Camera implements ITransformable {
      * @param i number of the row of this pixel
      * @param j number of the column of this pixel
      * @param screenDistance from camera
-     * @param screenWidth
-     * @param screenHeight
+     * @param screenWidth screen Width
+     * @param screenHeight screen Height
      * @return list of rays through this pixel (In accordance with 'aa' constant of the camera)
      */
     public ArrayList<Ray> constructRaysThroughPixel(int Nx, int Ny, int i, int j, double screenDistance, double screenWidth, double screenHeight){
