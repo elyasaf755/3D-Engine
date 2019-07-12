@@ -15,14 +15,22 @@ import java.util.concurrent.*;
 
 import static geometries.Intersectable.GeoPoint;
 
+/**
+ * Creates the scene
+ */
 public class Render {
     private Scene _scene;
     private ImageWriter _imageWriter;
-    private static final int RECURSION_LEVEL = 3;
-    private static final double MIN_CALC_COLOR_K = 0.001;
+    private static final int RECURSION_LEVEL = 3;//for calcColor
+    private static final double MIN_CALC_COLOR_K = 0.001; //for calcColor
 
     //Constructors
 
+    /**
+     * Constructor
+     * @param scene
+     * @param imageWriter write the scene into picture
+     */
     public Render(Scene scene, ImageWriter imageWriter){
         _scene = scene;
         _imageWriter = imageWriter;
@@ -31,6 +39,11 @@ public class Render {
     //Methods
 
     /*construct rays through every pixel and calculate its color*/
+
+    /**
+     * construct rays through every pixel and calculate its color
+     * (every line is thread)
+     */
     public void renderImage(){
         Camera camera = _scene.get_camera();
 
@@ -97,12 +110,12 @@ public class Render {
     }
 
     /**
-     *
+     *calculate the Diffusive light from light source in specific point
      * @param Kd Material's Kd (K_D variable in formula)
      * @param normal Normal to a geometry at an intersection point (N variable in formula)
      * @param lightDirection Direction vector from light to intersection point of a geometry (L variable in Diffusive formula)
      * @param lightColor Light's color (I_L variable in formula)
-     * @return
+     * @return color of the diffusion light
      */
     private Color calcDiffusive(double Kd, Vector3D normal, Vector3D lightDirection, Color lightColor){
         double k = Kd * normal.normalized().dotProduct(lightDirection.normalized());
@@ -111,14 +124,14 @@ public class Render {
     }
 
     /**
-     *
+     *calculate the Specular light from light source in specific point
      * @param Ks Material's Ks (K_S variable in formula)
      * @param cameraDirection Camera's direction (the negative direction of V in the formula)
      * @param lightDirection Light's direction to intersection point of a geometry (D variable in specular formula)
      * @param normal Normal to a geometry at an intersection point (N variable in formula)
      * @param nShininess Shininess factor (n variable in formula)
      * @param lightColor Light's color (I_L variable in formula)
-     * @return
+     * @return color of the Specular light
      */
     private Color calcSpecular(double Ks, Vector3D normal, Vector3D lightDirection, Vector3D cameraDirection, int nShininess, Color lightColor){
         Vector3D V = cameraDirection.scaled(-1).normalized();
@@ -145,8 +158,15 @@ public class Render {
         return lightColor.scale(Math.abs(k));//return the specular color ratio to the whole color
     }
 
-    /*this is the calcolor which called by the renderImage,
-    and it calls the recorsive calcolor*/
+
+
+    /**
+     * this is the calcolor which called by the renderImage,
+     *     and it calls the recorsive calcolor
+     * @param intersection point
+     * @param ray from camera
+     * @return color of the intersection point
+     */
     private java.awt.Color calcColor(GeoPoint intersection, Ray ray) {
         return calcColor(intersection, ray, 0, 1.0).add(_scene.get_ambientLight().getIntensity()).getColor();
     }
@@ -154,7 +174,7 @@ public class Render {
     /*calculate the color of the intersection point of the ray*/
 
     /**
-     *
+     *calculate the color of the intersection point of the ray with the geometry
      * @param intersection the intersection point
      * @param ray the ray which intersect the geometry
      * @param level -of the recorsive calls (in reflection and refraction)
@@ -239,7 +259,7 @@ public class Render {
     }
 
     /**
-     *
+     * find the closest point to the camera from all intersections
      * @param geoPoints list of all intersection (of specific ray)
      * @return the closest point to the camera
      */
@@ -345,7 +365,7 @@ public class Render {
     }
 
     /**
-     *
+     *calculate Epsilon (very little distance from point)
      * @param direction
      * @param normal
      * @return 'epsilon' between -0.001 to 0.001
@@ -383,8 +403,9 @@ public class Render {
         }
     }
 
+
     /**
-     * make the picture from all the pixels
+     *  make the picture from all the pixels
      */
     public void writeToImage(){
         _imageWriter.writeToimage();
