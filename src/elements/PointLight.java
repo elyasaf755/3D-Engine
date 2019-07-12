@@ -4,14 +4,20 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector3D;
 
+/**
+ * point light
+ */
 public class PointLight extends Light implements LightSource{
     protected Point3D _origin;
     protected double _Kc, _Kl, _Ke;//Attenuation factors: constant, linear, and exponent. brightests when kc+kl*d+ke*d^2 = 1
 
-    //TODO: Test class functions
 
     //Constructors
 
+    /**
+     * constructor
+     * @param origin the place of the light source
+     */
     public PointLight(Point3D origin){
         super();
         _origin = new Point3D(origin);
@@ -20,6 +26,11 @@ public class PointLight extends Light implements LightSource{
         _Ke = 0;
     }
 
+    /**
+     * constructor
+     * @param color of the light source (from local class 'color')
+     * @param origin the place of the light source
+     */
     public PointLight(Color color, Point3D origin){
         super(color);
         _origin = new Point3D(origin);
@@ -28,6 +39,11 @@ public class PointLight extends Light implements LightSource{
         _Ke = 0;
     }
 
+    /**
+     * constructor
+     * @param color of the light source (from java.awt.Color)
+     * @param origin the place of the light source
+     */
     public PointLight(java.awt.Color color, Point3D origin){
         super(color);
         _origin = new Point3D(origin);
@@ -36,6 +52,13 @@ public class PointLight extends Light implements LightSource{
         _Ke = 0;
     }
 
+    /**
+     * constructor
+     * @param origin the place of the light source
+     * @param Kc Attenuation factor: constant
+     * @param Kl Attenuation factor: linear (Relative to the distance)
+     * @param Kq Attenuation factor: exponent (Relative to the distance)
+     */
     public PointLight(Point3D origin, double Kc, double Kl, double Kq){
         super();
 
@@ -45,6 +68,14 @@ public class PointLight extends Light implements LightSource{
         _Ke = Kq;
     }
 
+    /**
+     *constructor
+     * @param color of the light source (from local class 'color')
+     * @param origin the place of the light source
+     * @param Kc Attenuation factor: constant
+     * @param Kl Attenuation factor: linear (Relative to the distance)
+     * @param Kq Attenuation factor: exponent (Relative to the distance)
+     */
     public PointLight(Color color, Point3D origin, double Kc, double Kl, double Kq){
         super(color);
 
@@ -54,6 +85,14 @@ public class PointLight extends Light implements LightSource{
         _Ke = Kq;
     }
 
+    /**
+     *constructor
+     * @param color of the light source (from java.awt.Color)
+     * @param origin the place of the light source
+     * @param Kc Attenuation factor: constant
+     * @param Kl Attenuation factor: linear (Relative to the distance)
+     * @param Kq Attenuation factor: exponent (Relative to the distance)
+     */
     public PointLight(java.awt.Color color, Point3D origin, double Kc, double Kl, double Kq){
         super(color);
 
