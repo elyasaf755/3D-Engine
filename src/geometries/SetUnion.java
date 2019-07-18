@@ -6,9 +6,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.ArrayList;
 
 public class SetUnion extends GeometriesSet {
-    static int counterIn = 0;
-    static int counterOut = 0;
-    static int total = 0;
 
     //Constructors
 
@@ -17,10 +14,15 @@ public class SetUnion extends GeometriesSet {
     }
 
     public SetUnion(SetUnion other){
-        super(other.get_lhs(), other.get_rhs());
+        super(other);
     }
 
     //Methods
+
+    @Override
+    public Geometry clone() {
+        return new SetUnion(this);
+    }
 
     @Override
     public Vector3D get_normal(Point3D point) {

@@ -5,77 +5,22 @@ import primitives.*;
 import java.util.ArrayList;
 
 public abstract class GeometriesSet extends Geometry {
-        protected Geometry _lhs;
-        protected Geometry _rhs;
+    protected Geometry _lhs;
+    protected Geometry _rhs;
 
-        //Constructors
+    //Constructors
 
-        public GeometriesSet(Geometry lhs, Geometry rhs){
-            _lhs = new Geometry() {
-                @Override
-                public Vector3D get_normal(Point3D point) {
-                    return null;
-                }
-
-                @Override
-                public boolean contains(Point3D point) {
-                    return false;
-                }
-
-                @Override
-                public boolean surfaceContains(Point3D point) {
-                    return false;
-                }
-
-                @Override
-                public void updateAABB() {
-
-                }
-
-                @Override
-                public ArrayList<GeoPoint> findIntersections(Ray ray) {
-                    return null;
-                }
-
-                @Override
-                public void translate(double x, double y, double z) {
-
-                }
-
-                @Override
-                public void rotate(double x, double y, double z) {
-
-                }
-
-                @Override
-                public void scale(double x, double y, double z) {
-
-                }
-
-                @Override
-                public void scale(double scalar) {
-
-                }
-
-                @Override
-                public void transform(Transform _transform) {
-
-                }
-
-                @Override
-                public void transform(Vector3D translation, Vector3D rotation, Vector3D scale) {
-
-                }
-            };
-            _rhs = rhs;
+    public GeometriesSet(Geometry lhs, Geometry rhs){
+            _lhs = lhs.clone();
+            _rhs = rhs.clone();
 
             //TODO: TEST
             updateAABB();
         }
 
     public GeometriesSet(GeometriesSet geometriesSet){
-        _lhs = geometriesSet.get_lhs();
-        _rhs = geometriesSet.get_rhs();
+        _lhs = geometriesSet.get_lhs().clone();
+        _rhs = geometriesSet.get_rhs().clone();
 
         //TODO: TEST
         updateAABB();
@@ -128,6 +73,7 @@ public abstract class GeometriesSet extends Geometry {
     //Methods
 
     //TODO:TEST
+
     @Override
     public void updateAABB() {
         _lhs.updateAABB();

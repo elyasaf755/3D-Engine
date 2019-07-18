@@ -5,7 +5,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
-public class Cone extends RadialGeometry {
+public class Cone extends RadialGeometry{
 
     private Ray _ray;
     private double _height;
@@ -52,6 +52,13 @@ public class Cone extends RadialGeometry {
         _height = height;
 
         initTransformFields();
+    }
+
+    public Cone(Cone other){
+        super(other.get_radius());
+
+        _ray = new Ray(other.get_ray());
+        _height = other.get_height();
     }
 
     //Getters
@@ -104,6 +111,11 @@ public class Cone extends RadialGeometry {
     @Override
     public void updateAABB() {
         throw new NotImplementedException();
+    }
+
+    @Override
+    public Geometry clone() {
+        return new Cone(this);
     }
 
     @Override

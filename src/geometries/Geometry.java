@@ -4,7 +4,7 @@ import primitives.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 //TODO: TEST AABB
-public abstract class Geometry extends AABB implements Intersectable, ITransformable {
+public abstract class Geometry extends AABB implements Intersectable, ITransformable, Cloneable {
     protected Color _emission;
     protected Material _material;
 
@@ -73,6 +73,8 @@ public abstract class Geometry extends AABB implements Intersectable, ITransform
 
     //TODO:TEST
     public abstract void updateAABB();
+
+    public abstract Geometry clone();
 
     //Overrides
 

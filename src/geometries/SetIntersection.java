@@ -13,7 +13,16 @@ public class SetIntersection extends GeometriesSet {
         super(lhs, rhs);
     }
 
+    public SetIntersection(SetIntersection other){
+        super(other);
+    }
+
     //Methods
+
+    @Override
+    public Geometry clone() {
+        return new SetIntersection(this.get_lhs(), this.get_rhs());
+    }
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {

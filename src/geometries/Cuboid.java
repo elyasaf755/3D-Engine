@@ -331,6 +331,22 @@ public class Cuboid extends Geometry {
         updateAABB();
     }
 
+    public Cuboid(Cuboid other){
+        super(other.get_emission(), other.get_material());
+
+        _ray = new Ray(other.get_ray());
+        _width = other.get_width();
+        _length = other.get_length();
+        _height = other.get_height();
+
+        initTransformFields();
+
+        initFaces(other.get_width(), other.get_height(), other.get_length(), other.get_ray(), other.get_emission(), other.get_material());
+
+        //TODO:
+        updateAABB();
+    }
+
     //Getters
 
     public Ray get_ray() {
@@ -433,8 +449,13 @@ public class Cuboid extends Geometry {
     public void updateAABB() {
         init();
 
-        set_min(_vertices[0].min(_vertices));
-        set_max(_vertices[0].max(_vertices));
+        set_min(Point3D.staticMin(_vertices));
+        set_max(Point3D.staticMax(_vertices));
+    }
+
+    @Override
+    public Geometry clone() {
+        return new Cuboid(this);
     }
 
     @Override
@@ -563,11 +584,18 @@ public class Cuboid extends Geometry {
         updateAABB();
     }
 
-    @Override//TODO: FIX, REFACTOR TO 8 VERTICES IN ADDITION TO 6 PLANES
+    @Override
     public void rotate(double x, double y, double z) {
         this._ray.rotate(x, y, z);
 
-        for (Plane face : this._faces){
+        initTransformFields();
+
+        initFaces(_width, _height, _length, _ray, _emission, _material);
+
+        //TODO:
+        updateAABB();
+
+        /*for (Plane face : this._faces){
             face.rotate(x, y, z);
         }
 
@@ -576,7 +604,7 @@ public class Cuboid extends Geometry {
         }
 
         //TODO: TEST
-        updateAABB();
+        updateAABB();*/
     }
 
     @Override

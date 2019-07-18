@@ -48,6 +48,31 @@ public class Rectangle extends Geometry {
         init();
     }
 
+    public Rectangle(Rectangle other){
+        super(other.get_emission(), other.get_material());
+
+        _width = other.get_width();
+        _height = other.get_height();
+
+        _ray = new Ray(other.get_ray());
+
+        init();
+    }
+
+    //Methods
+
+    public double get_width() {
+        return _width;
+    }
+
+    public double get_height() {
+        return _height;
+    }
+
+    public Ray get_ray() {
+        return _ray;
+    }
+
     @Override
     public Vector3D get_normal(Point3D point) {
         return _ray.get_direction();
@@ -107,6 +132,11 @@ public class Rectangle extends Geometry {
     }
 
     @Override
+    public Geometry clone() {
+        return new Rectangle(this);
+    }
+
+    @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         //TODO:TEST
         if(!intersects(ray)){
@@ -132,16 +162,14 @@ public class Rectangle extends Geometry {
     public void translate(double x, double y, double z) {
         _ray.translate(x, y, z);
 
-        //TODO: TEST
-        updateAABB();
+        init();
     }
 
     @Override
     public void rotate(double x, double y, double z) {
         _ray.rotate(x, y, z);
 
-        //TODO: TEST
-        updateAABB();
+        init();
     }
 
     @Override
@@ -150,8 +178,7 @@ public class Rectangle extends Geometry {
         _width = _width * x;
         _height = _height * y;
 
-        //TODO: TEST
-        updateAABB();
+        init();
     }
 
     @Override

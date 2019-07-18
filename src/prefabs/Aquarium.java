@@ -48,6 +48,11 @@ public class Aquarium extends Geometry {
         updateAABB();
     }
 
+    public Aquarium(Aquarium other){
+        _orientation = new Ray(other._orientation);
+        _aquarium = new SetUnion(other._aquarium);
+    }
+
     @Override
     public Vector3D get_normal(Point3D point) {
         return _aquarium.get_normal(point);
@@ -70,6 +75,11 @@ public class Aquarium extends Geometry {
 
         set_min(_aquarium.get_min());
         set_max(_aquarium.get_max());
+    }
+
+    @Override
+    public Geometry clone() {
+        return new Aquarium(this);
     }
 
     @Override

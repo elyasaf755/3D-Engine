@@ -13,7 +13,7 @@ public class SetDifference extends GeometriesSet {
     }
 
     public SetDifference(SetDifference other){
-        super(other.get_lhs(), other.get_rhs());
+        super(other);
     }
 
     @Override
@@ -41,6 +41,11 @@ public class SetDifference extends GeometriesSet {
         }
 
         return false;
+    }
+
+    @Override
+    public Geometry clone() {
+        return new SetDifference(this);
     }
 
     @Override

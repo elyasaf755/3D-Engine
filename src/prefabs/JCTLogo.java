@@ -20,6 +20,8 @@ public class JCTLogo extends Geometry {
     //R: 68 G: 39 B: 105
     //R: 109 G: 43 B: 91   Right Most
 
+    //Constructors
+
     public JCTLogo(){
         _orientation = new Ray(Vector3D.zAxis);
 
@@ -106,6 +108,14 @@ public class JCTLogo extends Geometry {
 
     }
 
+    public JCTLogo(JCTLogo other){
+        _orientation = new Ray(other._orientation);
+        _triangles = new SetUnion(other._triangles);
+        _surface = new Plane(other._surface);
+    }
+
+    //Methods
+
     @Override
     public Vector3D get_normal(Point3D point) {
         return _triangles.get_normal(point);
@@ -127,6 +137,11 @@ public class JCTLogo extends Geometry {
 
         _min = _triangles.get_min();
         _max = _triangles.get_max();
+    }
+
+    @Override
+    public Geometry clone() {
+        return new JCTLogo(this);
     }
 
     @Override

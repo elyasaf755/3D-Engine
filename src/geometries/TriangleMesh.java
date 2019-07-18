@@ -22,12 +22,8 @@ public class TriangleMesh extends Geometry{
         }
     }
 
-    // A list of all the vertex points used to define triangles.
-    // A given point may be referenced by one or more triangles.
     ArrayList<Point3D> pointList;
 
-    // A list of all the triangles, each of which refers
-    // to 3 distinct points in pointList.
     ArrayList<IndexedTriangle> triangleList;
 
     //Constructors
@@ -61,6 +57,11 @@ public class TriangleMesh extends Geometry{
     //TODO:
     @Override
     public void updateAABB() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public Geometry clone() {
         throw new NotImplementedException();
     }
 

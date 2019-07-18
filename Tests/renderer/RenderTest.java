@@ -609,18 +609,19 @@ class RenderTest {
 
         Sphere sphere1 = new Sphere(50, new Point3D());
         Sphere sphere2 = new Sphere(50, new Point3D(50,0,0));
+        sphere1.set_emission(java.awt.Color.MAGENTA);
+        sphere2.set_emission(java.awt.Color.GREEN);
         SetIntersection setIntersection = new SetIntersection(sphere1, sphere2);
         setIntersection.translate(100,100,0);
         scene.addGeometries(setIntersection);
 
-        sphere1.set_emission(java.awt.Color.MAGENTA);
-        sphere2.set_emission(java.awt.Color.GREEN);
+
         scene.addLights(new DirectionalLight(new Vector3D(1,0,0)));
 
         Sphere sphere3 = new Sphere(sphere1);
         Sphere sphere4 = new Sphere(sphere2);
         SetUnion setUnion = new SetUnion(sphere3, sphere4);
-        setUnion.translate(-150,0,0);
+        setUnion.translate(-50,100,100);
         scene.addGeometries(setUnion);
 
         Sphere sphere5 = new Sphere(50, new Point3D());
@@ -641,7 +642,7 @@ class RenderTest {
 
         ImageWriter iw = new ImageWriter("14thRenderTest - Set Operations", 500, 500, 500, 500);
         Render render = new Render(scene, iw);
-        //render.printAxises();
+        render.printAxises();
 
         render.renderImage();
         render.writeToImage();
@@ -711,7 +712,7 @@ class RenderTest {
         scene.set_background(new Color(75, 127,190));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.3));
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
-        scene.get_camera().rotate(45,15,0);
+        scene.get_camera().rotate(35,15,0);
         //scene.get_camera().setAa(2);
 
 
@@ -722,15 +723,17 @@ class RenderTest {
         );
 
         //Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(50,50,-50), new Vector3D(1,0,0)), new Color(java.awt.Color.white));
-        Cuboid cuboid1 = new Cuboid(60,60,90, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)), new Color(java.awt.Color.white));
-        cuboid1.setBackFaceColor(new Color(java.awt.Color.green));
+        Cuboid cuboid1 = new Cuboid(60,60,60, new Ray(new Point3D(0,0,0), new Vector3D(0,0,1)), new Color(java.awt.Color.blue));
+/*        cuboid1.setBackFaceColor(new Color(java.awt.Color.green));
         cuboid1.setUpFaceColor(new Color(java.awt.Color.red));
         cuboid1.setFrontFaceColor(new Color(java.awt.Color.blue));
         cuboid1.setRightFaceColor(new Color(java.awt.Color.magenta));
         cuboid1.setDownFaceColor(new Color(java.awt.Color.yellow));
-        cuboid1.setLeftFaceColor(new Color(java.awt.Color.cyan));
+        cuboid1.setLeftFaceColor(new Color(java.awt.Color.cyan));*/
 
-        cuboid1.rotate(45,45,45);
+        cuboid1.scale(2);
+        cuboid1.rotate(45,45,0);
+        cuboid1.translate(0,0,0);
 
 
         scene.addGeometries(cuboid1);
@@ -752,7 +755,7 @@ class RenderTest {
         scene.set_background(new Color(53, 215, 255));
         scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
         scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
-        scene.get_camera().rotate(0,0,0);
+        scene.get_camera().rotate(45,45,0);
         scene.get_camera().setAa(1);
 
         Aquarium aquarium = new Aquarium();
@@ -1207,4 +1210,868 @@ class RenderTest {
         render.renderImage();
         render.writeToImage();
     }
+
+    @Test//TEST 25 - Shadow Test 2
+    void renderImage25(){
+
+        //Scene definitions
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(Color.BLACK);
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(5,15,0);
+        scene.get_camera().setAa(1);
+
+
+
+        //Geometries
+
+        Triangle t1 = new Triangle(new Point3D(-50, 0, 0), new Point3D(0, 50, 0), new Point3D(50, 0, 0));
+        t1.set_emission(new Color(java.awt.Color.darkGray));
+        Triangle t2 = new Triangle(t1);
+        t2.rotate(180, 0, 0);
+        SetUnion union = new SetUnion(t1, t2);
+        union.rotate(45, 0,0);
+        union.scale(10);
+
+        Sphere sphere = new Sphere(100, new Point3D(0,100,-100));
+        sphere.translate(0,0,0);
+        sphere.set_emission(java.awt.Color.BLUE);
+
+
+
+        scene.addGeometries(union, sphere);
+
+        //Lights
+
+
+        Vector3D direction = new Point3D(-1, -1, 1).subtract(new Point3D(0,0,0));
+        SpotLight spotLight = new SpotLight(java.awt.Color.YELLOW, new Point3D(150, 150, -150), direction, 1, 0,0);
+        PointLight pl = new PointLight(java.awt.Color.YELLOW, new Point3D(200,300,-300));
+
+        scene.addLights(
+                pl
+        );
+
+
+
+        //Render
+
+        ImageWriter iw = new ImageWriter("25thRenderTest - Shadow Test 2", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test//TEST 26 - Sphere in Sphere
+    void renderImage26(){
+
+        //Scene definitions
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(Color.BLACK);
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(5,15,0);
+        scene.get_camera().setAa(1);
+
+
+
+        //Geometries
+
+        Triangle t1 = new Triangle(new Point3D(-50, 0, 0), new Point3D(0, 50, 0), new Point3D(50, 0, 0));
+        t1.set_emission(new Color(java.awt.Color.darkGray));
+        Triangle t2 = new Triangle(t1);
+        t2.rotate(180, 0, 0);
+        SetUnion union = new SetUnion(t1, t2);
+        union.rotate(45, 0,0);
+        union.scale(10);
+        union.set_material(new Material(0.05,0.05,1,0,4));
+
+        Sphere sphere = new Sphere(100, new Point3D(0,100,-100));
+        sphere.set_material(new Material(0.4,0.4,0,0.5,4));
+        sphere.translate(0,0,0);
+        sphere.set_emission(java.awt.Color.BLUE);
+
+        Sphere sp1 = new Sphere(sphere);
+        sp1.scale(0.5);
+
+
+
+        scene.addGeometries(union, sphere, sp1);
+
+        //Lights
+
+
+        Vector3D direction = new Point3D(-1, -1, 1).subtract(new Point3D(0,0,0));
+        SpotLight spotLight = new SpotLight(java.awt.Color.YELLOW, new Point3D(150, 150, -150), direction, 1, 0,0);
+        PointLight pl = new PointLight(java.awt.Color.YELLOW, new Point3D(200,300,-300));
+
+        scene.addLights(
+                pl
+        );
+
+
+
+        //Render
+
+        ImageWriter iw = new ImageWriter("26thRenderTest - Sphere In Sphere", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test//TEST 26 - Random Tests
+    void renderImage27(){
+
+        //Scene definitions
+
+        Scene scene = new Scene("renderTest");
+        scene.set_background(Color.WHITE_CREAM);
+        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.1));
+        scene.set_camera(new Camera(new Point3D(0,0,-1100), new Vector3D(0,0,1), new Vector3D(0,1,0)), 1000);
+        scene.get_camera().rotate(5,60,0);
+        scene.get_camera().setAa(1);
+
+
+
+        //Geometries
+
+        Rectangle r1 = new Rectangle(80,160,new Ray(new Vector3D(0,0,1)));
+        r1.set_emission(java.awt.Color.green);
+        //r1.rotate(45,0,0);
+        r1.scale(3);
+
+        Rectangle r2 = new Rectangle(r1);
+        r2.rotate(0,90,0);
+
+        scene.addGeometries(r1,r2);
+
+        //Lights
+
+
+        Vector3D direction = new Point3D(-1, -1, 1).subtract(new Point3D(0,0,0));
+        SpotLight spotLight = new SpotLight(java.awt.Color.YELLOW, new Point3D(150, 150, -150), direction, 1, 0,0);
+        PointLight pl = new PointLight(java.awt.Color.YELLOW, new Point3D(200,300,-300));
+
+        scene.addLights(
+                pl
+        );
+
+
+
+        //Render
+
+        ImageWriter iw = new ImageWriter("27thRenderTest - Random Test", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, iw);
+        //render.printAxises();
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+//    @Test
+//    public void projectPicture() {
+//
+////*************************setting the scene***************************//
+//        Scene scene = new Scene("Project scene");
+//
+//        ArrayList<LightSource> lights = new ArrayList<LightSource>();
+//
+//        Geometries geometries = new Geometries();
+//
+//        //The camera looks at the x,y axis as x is rightwards and y is upwards.
+//        scene.set_camera(new Camera(new Point3D(0, 160, 300),
+//                new Vector3D(0, 0, -1), new Vector3D(0, 1, 0)), 1500);
+//
+//
+//
+//        scene.addGeometries(geometries);
+//
+//        scene.addLights(lights);
+////*************************setting the lights*************************//
+//
+//        lights.add(new DirectionalLight(
+//                new Color(250,230,100),
+//                new Vector3D(2, -0.3, -0.5)));
+//
+////*************************setting the floor*************************//
+//
+//        Point3D FAR_LEFT_CORNER = new Point3D(-250,0,-250);
+//
+//        double XsizePanel = 25;
+//        double ZsizePanel = 15;
+//
+//        Color firstColor = new Color(30, 30, 30);
+//        Color secondColor = new Color(70, 70, 70);
+//
+//        Material material = new Material(0.3, 0.15, 80, 0.3, 0);
+//
+//        //first black triangle
+//        Point3D p1B = FAR_LEFT_CORNER,
+//                p2B = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel)),
+//                p3B = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, 0)),
+//
+//                //first white triangle
+//                p1W = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel)),
+//                p2W = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, 0)),
+//                p3W = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, ZsizePanel));
+//
+//        boolean flag = true;
+//        int count = 1;
+//
+//        for (int j = 0; j < 18; j++) {//j<4
+//            for (int i = 0; i < 10; i++) {//i<8
+//                geometries.add_geometries(new Triangle
+//                        (p1B, p2B, p3B, firstColor, material));
+//                geometries.add_geometries(new Triangle
+//                        (p1W, p2W, p3W, secondColor, material));
+//
+//                //first flip black triangle:
+//                p1B = p1B.add(new Point3D(XsizePanel*2,0,0));
+//                p2B = p2B.add(new Point3D(XsizePanel*2,0,0));
+//
+//                //first flip white triangle:
+//                p1W = p1W.add(new Point3D(XsizePanel*2,0,0));
+//
+//                geometries.add_geometries(new Triangle
+//                        (p1B, p2B, p3B, firstColor, material));
+//                geometries.add_geometries(new Triangle
+//                        (p1W, p2W, p3W, secondColor, material));
+//
+//                //second flip black triangle:
+//                p3B = p3B.add(new Point3D(XsizePanel*2,0,0));
+//
+//                //second flip white triangle:
+//                p2W = p2W.add(new Point3D(XsizePanel*2,0,0));
+//                p3W = p3W.add(new Point3D(XsizePanel*2,0,0));
+//
+//            }
+//            if (flag) {
+//                p1B = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel*2*count));
+//                p2B = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel + ZsizePanel*2*(count - 1)));
+//                p3B = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, ZsizePanel*2*count));
+//
+//                p1W = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel + ZsizePanel*2*(count - 1)));
+//                p2W = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, ZsizePanel*2*count));
+//                p3W = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, ZsizePanel + ZsizePanel*2*(count - 1)));
+//                flag = !flag;
+//            } else {
+//                p1B = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel*2*count));
+//                p2B = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel + ZsizePanel*2*count));
+//                p3B = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, ZsizePanel*2*count));
+//
+//                p1W = FAR_LEFT_CORNER.add(new Point3D(0, 0, ZsizePanel + ZsizePanel*2*count));
+//                p2W = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, ZsizePanel*2*count));
+//                p3W = FAR_LEFT_CORNER.add(new Point3D(XsizePanel, 0, ZsizePanel + ZsizePanel*2*count));
+//                count++;
+//                flag = !flag;
+//            }
+//        }
+//
+////******************************walls****************************//
+//
+//
+////****************************left wall****************************//
+//
+//        //Upper left wall
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,170,-250),
+//                new Point3D(-250, 170, 20),
+//                new Point3D(-250, 250, 20),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,170,-250),
+//                new Point3D(-250, 250, 20),
+//                new Point3D(-250, 250, -250),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        //Lower left wall
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,0,-250),
+//                new Point3D(-250, 0, 20),
+//                new Point3D(-250, 60, 20),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,0,-250),
+//                new Point3D(-250, 60, 20),
+//                new Point3D(-250, 60, -250),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        //Closer left wall
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,60,-50),
+//                new Point3D(-250, 60, 20),
+//                new Point3D(-250, 170, 20),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,60,-50),
+//                new Point3D(-250, 170, 20),
+//                new Point3D(-250, 170, -50),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        //Farther left wall
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,60,-250),
+//                new Point3D(-250, 60, -180),
+//                new Point3D(-250, 170, -180),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,60,-250),
+//                new Point3D(-250, 170, -180),
+//                new Point3D(-250, 170, -250),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+////****************************window*****************************//
+//
+//
+//        geometries.add_geometries(new Tube(
+//                2,
+//                new Point3D(-250,60,-50),
+//                new Point3D(-250,170,-50),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2,
+//                new Point3D(-250,60,-180),
+//                new Point3D(-250,170,-180),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2,
+//                new Point3D(-250,60,-50),
+//                new Point3D(-250,60,-180),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2,
+//                new Point3D(-250,170,-50),
+//                new Point3D(-250,170,-180),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0, 0)));
+//
+////************************window shutter*****************************//
+//
+//        for (int i = 0; i < 13; i++) {
+//            geometries.add_geometries(new Triangle(
+//                    new Point3D(-250,162-8*i,-50),
+//                    new Point3D(-250,162-8*i,-180),
+//                    new Point3D(-250,166-8*i,-180),
+//                    new Color(100, 100, 100),
+//                    new Material(0.2, 0.15, 80, 0, 0)));
+//
+//            geometries.add_geometries(new Triangle(
+//                    new Point3D(-250,166-8*i,-180),
+//                    new Point3D(-250,166-8*i,-50),
+//                    new Point3D(-250,162-8*i,-50),
+//                    new Color(100, 100, 100),
+//                    new Material(0.2, 0.15, 80, 0, 0)));
+//        }
+//
+////****************************************************************//
+//
+//        //Right wall
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(250,0,-250),
+//                new Point3D(250, 0, 20),
+//                new Point3D(250, 250, 20),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(250,0,-250),
+//                new Point3D(250, 250, 20),
+//                new Point3D(250, 250, -250),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        //Front wall
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,0,-250),
+//                new Point3D(-250,250,-250),
+//                new Point3D(250,0,-250),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250,250,-250),
+//                new Point3D(250,0,-250),
+//                new Point3D(250,250,-250),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        //Ceiling
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250, 250, -250),
+//                new Point3D(-250, 250, 20),
+//                new Point3D(250, 250, 20),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+//        geometries.add_geometries(new Triangle(
+//                new Point3D(-250, 250, -250),
+//                new Point3D(250, 250, 20),
+//                new Point3D(250, 250, -250),
+//                new Color(70, 70, 70),
+//                new Material(0.3, 0.15, 80, 0, 0)));
+//
+////****************************mirrors*********************************//
+//
+//
+////      //Right wall mirror
+////      geometries.add_geometries(new Triangle(
+////              new Point3D(249.5, 60,-200),
+////              new Point3D(249.5, 60, -20),
+////              new Point3D(249.5, 170, -20),
+////              new Color(100, 100, 100),
+////              new Material(0.3, 0.15, 80, 0.9, 0)));
+////
+////      geometries.add_geometries(new Triangle(
+////              new Point3D(249.5, 60,-200),
+////              new Point3D(249.5, 170, -20),
+////              new Point3D(249.5, 170, -200),
+////              new Color(100, 100, 100),
+////              new Material(0.3, 0.15, 80, 0.9, 0)));
+//
+//
+////*****************************bulbs**********************************//
+//
+//        geometries.add_geometries(new Tube(
+//                1,
+//                new Point3D(0, 250, -90),
+//                new Point3D(0, 220, -90),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0.6, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                10,
+//                new Point3D(0, 210, -90),
+//                new Color(30,30,30),
+//                new Material(0.04, 0.15, 0.1, 0.7, 85)));
+//
+//        lights.add(new PointLight(
+//                new Color(java.awt.Color.WHITE),
+//                new Point3D(0, 210, -90),
+//                0.1, 0.0001, 0.00005));
+//
+//
+//        geometries.add_geometries(new Tube(
+//                1,
+//                new Point3D(-20, 250, -55),
+//                new Point3D(-20, 210, -55),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0.6, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                10,
+//                new Point3D(-20, 200, -55),
+//                new Color(30,30,30),
+//                new Material(0.2, 0.20, 0.1, 0.5, 85)));
+//
+//        lights.add(new PointLight(
+//                new Color(java.awt.Color.white).scale(0.4),
+//                new Point3D(-20, 200, -55),
+//                0.1, 0.0001, 0.00005));
+//
+//
+//
+//
+//        geometries.add_geometries(new Tube(
+//                1,
+//                new Point3D(0, 250, -40),
+//                new Point3D(0, 200, -40),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0.6, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                10,
+//                new Point3D(0, 190, -40),
+//                new Color(30,30,30),
+//                new Material(0.2, 0.20, 0.1, 0.5, 85)));
+//
+//        lights.add(new PointLight(
+//                new Color(java.awt.Color.white).scale(0.4),
+//                new Point3D(0, 190, -40),
+//                0.1, 0.0001, 0.00005));
+//
+//
+//
+//        geometries.add_geometries(new Tube(
+//                1,
+//                new Point3D(20, 250, -55),
+//                new Point3D(20, 190, -55),
+//                new Color(120,120,120),
+//                new Material(0.5, 0.33, 35, 0.6, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                10,
+//                new Point3D(20, 180, -55),
+//                new Color(30,30,30),
+//                new Material(0.2, 0.20, 0.1, 0.5, 85)));
+//
+//        lights.add(new PointLight(
+//                new Color(java.awt.Color.white).scale(0.4),
+//                new Point3D(20, 180, -55),
+//                0.1, 0.0001, 0.00005));
+//
+////*************************OBJECTS IN THE ROOM*************************//
+//
+////*******************************table********************************//
+//
+//        geometries.add_geometries(new Tube(
+//                30,
+//                new Point3D(0, 0, -115),
+//                new Point3D(0, 3, -115),
+//                new Color(120,120,120),
+//                new Material(0.3, 0.33, 35, 0.2, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                3,
+//                new Point3D(0, 2, -115),
+//                new Point3D(0, 58, -115),
+//                new Color(120,120,120),
+//                new Material(0.3, 0.33, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                60,
+//                new Point3D(0, 57, -115),
+//                new Point3D(0, 60, -115),
+//                new Color(120,120,120),
+//                new Material(0.2, 0.2, 35, 0.2, 0)));
+//
+////*************************Just objects******************************//
+//
+//        //Undefined object (the object was there when we came, so we
+//        //did not move it...)
+//        geometries.add_geometries(new Tube(
+//                30,
+//                new Point3D(220, 30, -250),
+//                new Point3D(220, 30, -235),
+//                new Color(120,120,120),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+////****************************Spheres********************************//
+//
+//        geometries.add_geometries(new Sphere(
+//                35,
+//                new Point3D(-214, 35.5, -214),
+//                new Color(30,30,30),
+//                new Material(0.3, 0.20, 85, 0.85, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                25,
+//                new Point3D(-224, 26, -155),
+//                new Color(90,30,160),
+//                new Material(0.3, 0.20, 85, 0.2, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                20,
+//                new Point3D(-151, 21, -229),
+//                new Color(130,110,30),
+//                new Material(0.3, 0.20, 85, 0.3, 0)));
+//
+//
+//        //ON THE TABLE
+//        geometries.add_geometries(new Sphere(
+//                8,
+//                new Point3D(-16, 68, -117),
+//                new Color(50,210,130),
+//                new Material(0.3, 0.20, 85, 0.45, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                14,
+//                new Point3D(33, 74, -100),
+//                new Color(130,170,70),
+//                new Material(0.3, 0.20, 85, 0.45, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                6.5,
+//                new Point3D(-4, 66.5, -65),
+//                new Color(230,120,154),
+//                new Material(0.3, 0.20, 85, 0.45, 0)));
+//
+////*********************************STAR******************************//
+//
+//        geometries.add_geometries(new Sphere(
+//                8,
+//                new Point3D(125, 8, -50),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(125, 8, -50),
+//                new Point3D(150, 6, -40),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                6,
+//                new Point3D(150, 6, -40),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(150, 6, -40),
+//                new Point3D(110, 7, -25),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                7,
+//                new Point3D(110, 7, -25),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(110, 7, -25),
+//                new Point3D(190, 10, -25),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                10,
+//                new Point3D(190, 10, -25),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(190, 10, -25),
+//                new Point3D(150, 46, -40),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                9,
+//                new Point3D(150, 46, -40),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(150, 46, -40),
+//                new Point3D(125, 9, -5),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                9,
+//                new Point3D(125, 9, -5),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(150, 46, -40),
+//                new Point3D(172, 8, -84),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                8,
+//                new Point3D(172, 8, -84),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(172, 8, -84),
+//                new Point3D(125, 8, -50),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(150, 46, -40),
+//                new Point3D(125, 8, -50),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                1.5,
+//                new Point3D(172, 8, -84),
+//                new Point3D(150, 6, -40),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//
+////*************************spot light***************************//
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(10, 2.3, -5),
+//                new Point3D(50, 2.3, -15),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        lights.add(new SpotLight(
+//                new Color(java.awt.Color.white).scale(0.8),
+//                new Point3D(51, 2.3, -15.5),
+//                new Vector3D(new Point3D(50, 2.3, -15).subtract(new Point3D(10, 2.3, -5))),
+//                0.01, 0.0001, 0.00005));
+////*******************************shelf*******************************//
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-185),
+//                new Point3D(-40,85,-185),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-191),
+//                new Point3D(-40,85,-191),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-197),
+//                new Point3D(-40,85,-197),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-203),
+//                new Point3D(-40,85,-203),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-209),
+//                new Point3D(-40,85,-209),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-215),
+//                new Point3D(-40,85,-215),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-221),
+//                new Point3D(-40,85,-221),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-227),
+//                new Point3D(-40,85,-227),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-233),
+//                new Point3D(-40,85,-233),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-239),
+//                new Point3D(-40,85,-239),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-250,85,-245),
+//                new Point3D(-40,85,-245),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-40,85,-185),
+//                new Point3D(-40,250,-185),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                2.5,
+//                new Point3D(-40,85,-185),
+//                new Point3D(-40,85,-250),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Sphere(
+//                4,
+//                new Point3D(-40,85,-185),
+//                new Color(40,40,40),
+//                new Material(0.3, 0.20, 85, 0.40, 0)));
+//
+////*************************objects on the shelf**********************//
+//
+//        geometries.add_geometries(new Tube(
+//                25,
+//                new Point3D(-220, 87.5, -220),
+//                new Point3D(-220, 140, -220),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                18,
+//                new Point3D(-160, 87.5, -210),
+//                new Point3D(-160, 130, -210),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                13,
+//                new Point3D(-110, 87.5, -203),
+//                new Point3D(-110, 120, -203),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        geometries.add_geometries(new Tube(
+//                10,
+//                new Point3D(-80, 87.5, -200),
+//                new Point3D(-80, 108, -200),
+//                new Color(40,40,40),
+//                new Material(0.4, 0.2, 35, 0, 0)));
+//
+//        scene.addGeometries(geometries);
+//
+////*************************rendering the image***********************//
+//
+//        ImageWriter imageWriter16 = new ImageWriter("p16", 4000, 4000, 4000,4000);
+//
+//        Render render16 = new Render(scene, imageWriter16);
+//
+//        render16.renderImage();
+//
+//        render16.writeToImage();
+//
+//    }
 }

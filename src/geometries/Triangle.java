@@ -91,6 +91,12 @@ public class Triangle extends Plane implements FlatGeometry{
 
     //Methods
 
+
+    @Override
+    public Geometry clone() {
+        return new Triangle(this);
+    }
+
     //TODO: TEST
     @Override
     public void updateAABB(){

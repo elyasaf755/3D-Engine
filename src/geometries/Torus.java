@@ -97,6 +97,7 @@ public class Torus extends RadialGeometry{
 
     public Torus(Torus torus){
         super(torus.get_radius(), torus.get_emission(), torus.get_material());
+
         _radiusTube = torus.get_radiusTube();
         _ray = new Ray(torus.get_ray());
 
@@ -153,6 +154,11 @@ public class Torus extends RadialGeometry{
         Sphere sphere = new Sphere(_radius + _radiusTube, _ray.get_point());
         set_min(sphere.get_min());
         set_max(sphere.get_max());
+    }
+
+    @Override
+    public Geometry clone() {
+        return new Torus(this);
     }
 
     @Override

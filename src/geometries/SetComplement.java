@@ -10,7 +10,7 @@ public class SetComplement extends Geometry {
     //Constructors
 
     public SetComplement(Geometry geometry){
-        _geometry = geometry;
+        _geometry = geometry.clone();
 
         //TODO:TEST
         updateAABB();
@@ -57,6 +57,11 @@ public class SetComplement extends Geometry {
     @Override
     public void updateAABB() {
         _geometry.updateAABB();
+    }
+
+    @Override
+    public Geometry clone() {
+        return new SetComplement(this);
     }
 
     @Override

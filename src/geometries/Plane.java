@@ -178,6 +178,11 @@ public class Plane extends Geometry  implements FlatGeometry{
     }
 
     @Override
+    public Geometry clone() {
+        return new Plane(this);
+    }
+
+    @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         Point3D Pr = ray.get_point();
         Vector3D Vr = ray.get_direction();

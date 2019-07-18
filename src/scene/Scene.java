@@ -112,6 +112,12 @@ public class Scene {
         }
     }
 
+    public void addLights(ArrayList<LightSource> lights){
+        for (LightSource light : lights){
+            _lights.add(light);
+        }
+    }
+
     public Iterator<LightSource> getLightsIterator(){
         return _lights.iterator();
     }

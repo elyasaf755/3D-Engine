@@ -152,6 +152,11 @@ public class Sphere extends RadialGeometry {
 
     }
 
+    @Override
+    public Geometry clone() {
+        return new Sphere(this);
+    }
+
     //Course approach
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {

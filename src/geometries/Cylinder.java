@@ -174,6 +174,10 @@ public class Cylinder extends RadialGeometry{
         throw new NotImplementedException();
     }
 
+    @Override
+    public Geometry clone() {
+        return new Cylinder(this);
+    }
 
     @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {

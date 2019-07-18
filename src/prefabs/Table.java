@@ -35,8 +35,8 @@ public class Table extends Geometry {
         tableLegs = new SetUnion(tableLegs, leg4);
 
 
-        Cuboid tablePlate = new Cuboid(80,5,40, new Ray(new Vector3D(0,0,1)));
-        tablePlate.set_emission(new Color(133,94,66));
+        Cuboid tablePlate = new Cuboid(80,5,40, new Ray(new Vector3D(0,0,1)), new Color(133,94,66));
+        //tablePlate.set_emission(new Color(133,94,66));
         tablePlate.scale(2);
 
         _table = new SetUnion(tablePlate, tableLegs);
@@ -45,6 +45,10 @@ public class Table extends Geometry {
 
         //TODO: TEST
         updateAABB();
+    }
+
+    public Table(Table other){
+            _table = new SetUnion(other._table);
     }
 
     //Setters
@@ -111,6 +115,11 @@ public class Table extends Geometry {
 
         set_min(_table.get_min());
         set_max(_table.get_max());
+    }
+
+    @Override
+    public Geometry clone() {
+        return new Table(this);
     }
 
     @Override

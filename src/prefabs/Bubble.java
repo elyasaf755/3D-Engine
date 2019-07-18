@@ -80,6 +80,11 @@ public class Bubble extends Geometry {
     }
 
     @Override
+    public Geometry clone() {
+        return new Bubble(this);
+    }
+
+    @Override
     public ArrayList<GeoPoint> findIntersections(Ray ray) {
         //TODO:
         if (!intersects(ray)){

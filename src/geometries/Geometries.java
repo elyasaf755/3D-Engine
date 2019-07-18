@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 public class Geometries implements Intersectable, ITransformable, Iterable<Geometry>, Iterator<Geometry> {
 
-    private int index = -1;
+    private int index = -1;//iterator's index
 
     protected ArrayList<Geometry> _geometriesList;
 

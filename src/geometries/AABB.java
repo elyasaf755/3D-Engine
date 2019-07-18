@@ -256,9 +256,9 @@ public class AABB {
         double y = point.getY().getCoord();
         double z = point.getZ().getCoord();
 
-        double w = getWidth() / 2;
-        double h = getWidth() / 2;
-        double l = getLength() / 2;
+        double w = getAABBWidth() / 2;
+        double h = getAABBWidth() / 2;
+        double l = getAABBLength() / 2;
 
         Plane[] faces = {
                 new Plane(new Point3D(w,0,0), Vector3D.xAxis),
@@ -331,12 +331,12 @@ public class AABB {
         return true;
     }*/
 
-    public double getWidth() { return _max.getX().subtract(_min.getX()).getCoord(); }
-    public double getHeight() { return _max.getY().subtract(_min.getY()).getCoord(); }
-    public double getLength() { return _max.getZ().subtract(_min.getZ()).getCoord(); }
+    public double getAABBWidth() { return _max.getX().subtract(_min.getX()).getCoord(); }
+    public double getAABBHeight() { return _max.getY().subtract(_min.getY()).getCoord(); }
+    public double getAABBLength() { return _max.getZ().subtract(_min.getZ()).getCoord(); }
 
     protected double calculateSurfaceArea() {
-        return 2.0f * (getWidth() * getHeight() + getWidth()* getLength() + getHeight()* getLength());
+        return 2.0f * (getAABBWidth() * getAABBHeight() + getAABBWidth()* getAABBLength() + getAABBHeight()* getAABBLength());
     }
 
     protected void setInfi(){

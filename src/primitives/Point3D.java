@@ -1,5 +1,9 @@
 package primitives;
 
+import elements.PointLight;
+
+import java.awt.*;
+
 import static java.lang.Math.sqrt;
 
 public class Point3D extends Point2D implements ITransformable {
@@ -132,6 +136,36 @@ public class Point3D extends Point2D implements ITransformable {
                     result.getX().getCoord() <= other.getX().getCoord()? result.getX() : other.getX(),
                     result.getY().getCoord() <= other.getY().getCoord()? result.getY() : other.getY(),
                     result.getZ().getCoord() <= other.getZ().getCoord()? result.getZ() : other.getZ()
+            );
+        }
+
+        return result;
+    }
+
+    public static Point3D staticMin(Point3D... others){
+        Point3D result = new Point3D(others[0]);
+
+
+        for (int i = 1; i < others.length; ++i){
+            result = new Point3D(
+                    result.getX().getCoord() <= others[i].getX().getCoord()? result.getX() : others[i].getX(),
+                    result.getY().getCoord() <= others[i].getY().getCoord()? result.getY() : others[i].getY(),
+                    result.getZ().getCoord() <= others[i].getZ().getCoord()? result.getZ() : others[i].getZ()
+            );
+        }
+
+        return result;
+    }
+
+    public static Point3D staticMax(Point3D... others){
+        Point3D result = new Point3D(others[0]);
+
+
+        for (int i = 1; i < others.length; ++i){
+            result = new Point3D(
+                    result.getX().getCoord() >= others[i].getX().getCoord()? result.getX() : others[i].getX(),
+                    result.getY().getCoord() >= others[i].getY().getCoord()? result.getY() : others[i].getY(),
+                    result.getZ().getCoord() >= others[i].getZ().getCoord()? result.getZ() : others[i].getZ()
             );
         }
 
