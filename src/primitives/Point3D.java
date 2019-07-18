@@ -1,9 +1,5 @@
 package primitives;
 
-import elements.PointLight;
-
-import java.awt.*;
-
 import static java.lang.Math.sqrt;
 
 public class Point3D extends Point2D implements ITransformable {

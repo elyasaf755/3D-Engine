@@ -1,17 +1,16 @@
 package scene;
 
+
 import elements.AmbientLight;
 import elements.Camera;
 import elements.LightSource;
 import geometries.Geometries;
 import geometries.Geometry;
-import geometries.Intersectable;
 import primitives.Color;
 import primitives.Vector3D;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 
 public class Scene {
     private String _name;

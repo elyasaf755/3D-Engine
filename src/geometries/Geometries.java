@@ -1,6 +1,9 @@
 package geometries;
 
-import primitives.*;
+import primitives.ITransformable;
+import primitives.Ray;
+import primitives.Transform;
+import primitives.Vector3D;
 
 import java.util.ArrayList;
 import java.util.Iterator;
